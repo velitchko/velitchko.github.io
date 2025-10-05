@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
-  title: "Your Name - Academic Portfolio",
+  title: "<vfilipov/>",
   description: "Personal academic website showcasing research, projects, and publications",
 };
 

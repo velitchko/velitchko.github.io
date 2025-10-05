@@ -36,7 +36,7 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex-shrink-0">
             <h1 className="text-xl sm:text-2xl font-retro neon-glow-pink glitch">
-              &lt;YourName/&gt;
+              &lt;vfilipov/&gt;
             </h1>
           </div>
 
