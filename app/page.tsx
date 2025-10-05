@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import PublicationCard from '@/components/PublicationCard';
+import { publications, sortPublicationsByYear } from '@/data/publications';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -18,14 +21,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
           <div className="vhs-lines">
             <h1 
-              className={`text-4xl sm:text-6xl lg:text-7xl font-retro neon-glow-cyan mb-8 ${mounted ? 'glitch' : ''}`}
-              data-text="YOUR NAME"
+              className={`text-4xl sm:text-6xl lg:text-6xl font-retro neon-glow-cyan mb-8 ${mounted ? 'glitch' : ''}`}
+              data-text="velitchko filipov"
             >
-              YOUR NAME
+              velitchko filipov
             </h1>
             
             <div className="text-xl sm:text-2xl text-neon-pink neon-glow-pink font-mono mb-8">
-              <span className="cursor">PhD Researcher | Computer Scientist</span>
+              <span className="cursor">postdoc researcher | visualization expert</span>
             </div>
             
             <p className="text-lg sm:text-xl text-neon-cyan/80 max-w-3xl mx-auto mb-12 leading-relaxed">
@@ -64,11 +67,15 @@ export default function Home() {
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="retro-card">
-              <div className="aspect-square bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50">
-                <div className="text-center">
-                  <div className="text-6xl mb-4">👨‍💻</div>
-                  <p className="text-neon-cyan/60 text-sm">[ PROFILE.IMG ]</p>
-                </div>
+              <div className="aspect-[3/4] bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50 overflow-hidden">
+                <Image
+                  src="/nerd.png"
+                  alt="Velitchko Filipov Profile"
+                  width={500}
+                  height={667}
+                  className="object-cover w-full h-full"
+                  priority
+                />
               </div>
             </div>
             
@@ -242,87 +249,8 @@ export default function Home() {
           </h2>
           
           <div className="space-y-6">
-            {[
-              {
-                title: "Deep Learning Approaches to [Problem]: A Comprehensive Study",
-                authors: "Your Name, Co-Author A., Co-Author B.",
-                venue: "Proceedings of International Conference on [Topic] (IC[TOPIC] 2024)",
-                year: "2024",
-                link: "https://arxiv.org",
-                type: "Conference"
-              },
-              {
-                title: "Novel Framework for [Application] Using [Method]",
-                authors: "Your Name, Collaborator C.",
-                venue: "Journal of [Field], Vol. XX, No. X",
-                year: "2024",
-                link: "https://arxiv.org",
-                type: "Journal"
-              },
-              {
-                title: "Scalable Solutions for [Challenge] in [Domain]",
-                authors: "Co-Author D., Your Name, Co-Author E.",
-                venue: "Workshop on [Topic] at [Major Conference] 2023",
-                year: "2023",
-                link: "https://arxiv.org",
-                type: "Workshop"
-              },
-              {
-                title: "Towards Better [System]: An Empirical Analysis",
-                authors: "Your Name",
-                venue: "arXiv preprint",
-                year: "2023",
-                link: "https://arxiv.org",
-                type: "Preprint"
-              },
-            ].map((pub, index) => (
-              <div key={index} className="retro-card">
-                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-                  <span className="inline-block px-3 py-1 text-xs border border-neon-cyan/50 text-neon-cyan bg-neon-cyan/10 mb-2 md:mb-0">
-                    {pub.type}
-                  </span>
-                  <span className="text-neon-pink font-mono text-sm">{pub.year}</span>
-                </div>
-                
-                <h3 className="text-lg font-bold text-neon-cyan mb-2 leading-relaxed">
-                  {pub.title}
-                </h3>
-                
-                <p className="text-neon-cyan/70 text-sm mb-2">
-                  {pub.authors}
-                </p>
-                
-                <p className="text-neon-cyan/60 text-sm italic mb-4">
-                  {pub.venue}
-                </p>
-                
-                <div className="flex flex-wrap gap-4 text-sm">
-                  <a
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neon-pink hover:neon-glow transition-colors"
-                  >
-                    → PDF
-                  </a>
-                  <a
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neon-cyan hover:text-neon-pink transition-colors"
-                  >
-                    → BibTeX
-                  </a>
-                  <a
-                    href={pub.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-neon-cyan hover:text-neon-pink transition-colors"
-                  >
-                    → Code
-                  </a>
-                </div>
-              </div>
+            {sortPublicationsByYear(publications).map((pub) => (
+              <PublicationCard key={pub.id} publication={pub} />
             ))}
           </div>
         </div>
