@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import PublicationCard from '@/components/PublicationCard';
-import { publications, sortPublicationsByYear } from '@/data/publications';
+import { publications, groupPublicationsByYear } from '@/data/publications';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
@@ -17,25 +17,26 @@ export default function Home() {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden grid-bg">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/5 to-transparent"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
           <div className="vhs-lines">
-            <h1 
+            <h1
               className={`text-4xl sm:text-6xl lg:text-6xl font-retro neon-glow-cyan mb-8 ${mounted ? 'glitch' : ''}`}
               data-text="velitchko filipov"
             >
               velitchko filipov
             </h1>
-            
+
             <div className="text-xl sm:text-2xl text-neon-pink neon-glow-pink font-mono mb-8">
               <span className="cursor">postdoc researcher | visualization expert</span>
             </div>
-            
-            <p className="text-lg sm:text-xl text-neon-cyan/80 max-w-3xl mx-auto mb-12 leading-relaxed">
-              Exploring the frontiers of [Your Research Area] at the intersection of theory and practice. 
-              Passionate about pushing the boundaries of what&apos;s possible in [Your Field].
+
+            <p className="text-lg sm:text-xl text-neon-cyan/80 max-w-3xl mx-auto mb-12 leading-relaxed relative">
+              <span className="cylon-scan">
+                Rethinking how we visualize, analyze, and learn from complex networks.
+              </span>
             </p>
-            
+
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#research" className="retro-button">
                 VIEW RESEARCH
@@ -64,7 +65,7 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-retro neon-glow-pink mb-12 text-center">
             [ ABOUT.ME ]
           </h2>
-          
+
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="retro-card">
               <div className="aspect-[3/4] bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50 overflow-hidden">
@@ -78,34 +79,46 @@ export default function Home() {
                 />
               </div>
             </div>
-            
+
             <div className="space-y-6">
               <div className="retro-card">
                 <h3 className="text-xl font-retro text-neon-cyan mb-4">SYSTEM.INFO</h3>
                 <p className="text-neon-cyan/80 leading-relaxed mb-4">
-                  I&apos;m a [Your Title] at [Your Institution], where I focus on [brief description of your work]. 
-                  My research combines [Field 1] and [Field 2] to address fundamental questions in [Your Area].
+                  I&apos;m a postdoctoral researcher at&nbsp;
+                  <a
+                    href="https://www.cvast.tuwien.ac.at/"
+                    className="text-neon-pink neon-glow-pink underline transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    TU Wien in the Visual Analytics group
+                  </a>, where I study how people interact with and make sense of complex networked data.
+                  My research combines visualization and computational analysis to develop expressive and collaborative ways of exploring temporal, spatial, and relational structures.
                 </p>
-                <p className="text-neon-cyan/80 leading-relaxed">
-                  With a background in [Your Background], I&apos;m particularly interested in [Specific Interest] 
-                  and its applications in [Application Area].
-                </p>
+
+                <div className="flex flex-wrap gap-2 text-sm">
+                  <span className="px-3 py-1 bg-neon-pink/20 text-neon-pink rounded-full">Network Visualization</span>
+                  <span className="px-3 py-1 bg-neon-cyan/20 text-neon-cyan rounded-full">Visualization Literacy</span>
+                  <span className="px-3 py-1 bg-neon-yellow/20 text-neon-yellow rounded-full">Visualization Games</span>
+                  <span className="px-3 py-1 bg-neon-green/20 text-neon-green rounded-full">Data Physicalization</span>
+                  <span className="px-3 py-1 bg-neon-orange/20 text-neon-orange rounded-full">Cryptography & Blockchain</span>
+                </div>
               </div>
-              
+
               <div className="retro-card">
                 <h3 className="text-xl font-retro text-neon-pink mb-4">EDUCATION</h3>
                 <ul className="space-y-3 text-neon-cyan/80">
                   <li className="flex items-start">
                     <span className="text-neon-pink mr-2">▸</span>
-                    <span>PhD in [Field], [University] (Expected 20XX)</span>
+                    <span>PhD in Visual Analytics, TU Wien, 2024</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-neon-pink mr-2">▸</span>
-                    <span>MSc in [Field], [University] (20XX)</span>
+                    <span>MSc in Media Informatics, TU Wien 2018</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-neon-pink mr-2">▸</span>
-                    <span>BSc in [Field], [University] (20XX)</span>
+                    <span>BSc in Computer Science, TU Wien, 2013</span>
                   </li>
                 </ul>
               </div>
@@ -120,38 +133,38 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-retro neon-glow-cyan mb-12 text-center">
             [ RESEARCH.INTERESTS ]
           </h2>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Machine Learning",
-                description: "Deep learning architectures, neural networks, and their applications in solving complex computational problems.",
-                icon: "🧠"
+                title: "Network Visualization",
+                description: "Developing novel visual representations and interactive techniques for exploring complex network structures, temporal dynamics, and multi-layered relationships in data.",
+                icon: "⚛️"
               },
               {
-                title: "Computer Vision",
-                description: "Image processing, object detection, and visual recognition systems for real-world applications.",
-                icon: "👁️"
+                title: "Digital Humanities",
+                description: "Applying computational methods and visualization techniques to humanities research, enabling new perspectives on cultural heritage, historical data, and textual analysis.",
+                icon: "📚"
               },
               {
-                title: "Natural Language Processing",
-                description: "Language models, semantic analysis, and understanding human-computer interaction through text.",
-                icon: "💬"
-              },
-              {
-                title: "Data Science",
-                description: "Statistical analysis, data mining, and extracting insights from large-scale datasets.",
+                title: "Visualization Literacy",
+                description: "Investigating how people read, interpret, and learn from data visualizations, with focus on improving design practices and educational approaches.",
                 icon: "📊"
               },
               {
-                title: "Artificial Intelligence",
-                description: "Intelligent systems, autonomous agents, and the future of human-AI collaboration.",
-                icon: "🤖"
+                title: "Visualization Games",
+                description: "Creating playful and engaging ways to learn visualization concepts through game mechanics, fostering skill development and data literacy.",
+                icon: "🎮"
               },
               {
-                title: "Ethics in AI",
-                description: "Responsible AI development, fairness, transparency, and societal impact of technology.",
-                icon: "⚖️"
+                title: "Data Physicalization",
+                description: "Exploring tangible and physical representations of data, bridging digital and physical worlds to create embodied experiences with information.",
+                icon: "🎲"
+              },
+              {
+                title: "Cryptography & Blockchain",
+                description: "Visualizing cryptographic protocols and blockchain networks to make complex distributed systems more transparent and understandable.",
+                icon: "🔐"
               },
             ].map((interest, index) => (
               <div key={index} className="retro-card group">
@@ -172,7 +185,7 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-retro neon-glow-pink mb-12 text-center">
             [ PROJECTS.PORTFOLIO ]
           </h2>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
@@ -247,11 +260,22 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-retro neon-glow-cyan mb-12 text-center">
             [ PUBLICATIONS.LOG ]
           </h2>
-          
-          <div className="space-y-6">
-            {sortPublicationsByYear(publications).map((pub) => (
-              <PublicationCard key={pub.id} publication={pub} />
-            ))}
+
+          <div className="space-y-12">
+            {Object.entries(groupPublicationsByYear(publications))
+              .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+              .map(([year, pubs]) => (
+                <div key={year} className="space-y-6">
+                  <h3 className="text-2xl sm:text-3xl font-retro text-neon-pink mb-6">
+                    <span className="cylon-scan inline-block">
+                      {year}
+                    </span>
+                  </h3>
+                  {pubs.map((pub) => (
+                    <PublicationCard key={pub.id} publication={pub} />
+                  ))}
+                </div>
+              ))}
           </div>
         </div>
       </section>
@@ -262,13 +286,13 @@ export default function Home() {
           <h2 className="text-3xl sm:text-4xl font-retro neon-glow-pink mb-12">
             [ CONTACT.INIT ]
           </h2>
-          
+
           <div className="retro-card mb-12">
             <p className="text-xl text-neon-cyan mb-8 leading-relaxed">
-              Interested in collaboration, research opportunities, or just want to chat about [Your Field]? 
+              Interested in collaboration, research opportunities, or just want to chat about [Your Field]?
               Feel free to reach out!
             </p>
-            
+
             <div className="grid md:grid-cols-2 gap-6 text-left">
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-pink/50 transition-colors">
                 <h3 className="text-lg font-retro text-neon-cyan mb-3">EMAIL</h3>
@@ -279,7 +303,7 @@ export default function Home() {
                   your.email@university.edu
                 </a>
               </div>
-              
+
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-pink/50 transition-colors">
                 <h3 className="text-lg font-retro text-neon-cyan mb-3">LOCATION</h3>
                 <p className="text-neon-cyan/80">
@@ -289,7 +313,7 @@ export default function Home() {
               </div>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-6">
             <a
               href="https://github.com"
