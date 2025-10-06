@@ -6,18 +6,21 @@
 % 3. Then convert them to TypeScript format using the README.md guide
 % 
 % Or keep this file updated alongside your publications.ts for backup/sharing
-@Misc{
-	20.500.12708_187156,
-	author = {Velitchko Filipov and Alessio Arleo and Silvia Miksch},
-	title = {Are We There Yet? A Roadmap of Network Visualization from Surveys to Task Taxonomies},
-	year = {2023},
-	abstract = {Networks are abstract and ubiquitous data structures, defined as a set of data points and relationships between them. Network visualization provides meaningful representations of these data, supporting researchers in understanding the connections, gathering insights, and detecting and identifying unexpected patterns. Research in this field is focusing on increasingly challenging problems, such as visualizing dynamic, complex, multivariate, and geospatial networked data. This ever-growing, and widely varied, body of research led to several surveys being published, each covering one or more disciplines of network visualization. Despite this effort, the variety and complexity of this research represents an obstacle when surveying the domain and building a comprehensive overview of the literature. Furthermore, there exists a lack of clarification and uniformity between the terminology used in each of the surveys, which requires further effort when mapping and categorizing the plethora of different visualization techniques and approaches. In this paper, we aim at providing researchers and practitioners alike with a “roadmap” detailing the current research trends in the field of network visualization. We design our contribution as a meta-survey where we discuss, summarize, and categorize recent surveys and task taxonomies published in the context of network visualization. We identify more and less saturated disciplines of research and consolidate the terminology used in the surveyed literature. We also survey the available task taxonomies, providing a comprehensive analysis of their varying support to each network visualization discipline and by establishing and discussing a classification for the individual tasks. With this combined analysis of surveys and task taxonomies, we provide an overarching structure of the field, from which we extrapolate the current state of research and promising directions for future work.},
-	keywords = {information visualization; network visualization; visual analytics},
+@Inproceedings{DBLP:journals/corr/abs-2109-14992,
+	author       = {Victor Schetinger and Ignacio P{\'{e}}rez{-}Messina and Renan Guarese and Velitchko Filipov},
+	title        = {Xenakis: Experimenting with Data, Cities, and Sounds},
+	booktitle    = {alt.VIS Workshop at IEEE VIS 2021},
+	year         = {2021},
+	url          = {https://arxiv.org/abs/2109.14992},
+	eprinttype   = {arXiv},
+	eprint       = {2109.14992},
+	doi			 = {10.48550/ARXIV.2109.14992}
 }
+
 
 @Inproceedings{
 	20.500.12708_175703,
-	author = {Saminu Salisu and Velitchko Filipov and Barry Pene},
+	author = {Saminu Salisu and Velitchko Filipov},
 	title = {Blockchain Forensics: A Modern Approach to Investigating Cybercrime in the Age of Decentralisation},
 	year = {2023},
 	publisher = {Academic Conferences International Limited},
@@ -55,7 +58,6 @@
 	issn = {1077-2626},
 	abstract = {The dynamic network visualization design space consists of two major dimensions: network structural and temporal representation. As more techniques are developed and published, a clear need for evaluation and experimental comparisons between them emerges. Most studies explore the temporal dimension and diverse interaction techniques supporting the participants, focusing on a single structural representation. Empirical evidence about performance and preference for different visualization approaches is scattered over different studies, experimental settings, and tasks. This paper aims to comprehensively investigate the dynamic network visualization design space in two evaluations. First, a controlled study assessing participants' response times, accuracy, and preferences for different combinations of network structural and temporal representations on typical dynamic network exploration tasks, with and without the support of standard interaction methods. Second, the best-performing combinations from the first study are enhanced based on participants' feedback and evaluated in a heuristic-based qualitative study with visualization experts on a real-world network. Our results highlight node-link with animation and playback controls as the best-performing combination and the most preferred based on ratings. Matrices achieve similar performance to node-link in the first study but have considerably lower scores in our second evaluation. Similarly, juxtaposition exhibits evident scalability issues in more realistic analysis contexts.},
 	keywords = {graph drawing; Evaluation; Dynamic Graph Visualization},
-	doi = {10.34726/5410},
 	doi = {10.1109/TVCG.2023.3310019},
 }
 
@@ -63,11 +65,11 @@
 	20.500.12708_154456,
 	author = {Velitchko Filipov and Alessio Arleo and Markus Bögl and Silvia Miksch},
 	editor = {Patrizio Angelini and Reinhard von Hanxleden},
-	title = {On Time and Space: An Experimental Study on Graph Structural and Temporal Encodings},
+	title = {On Time and Space: An Experimental Study on Graph Structural and Temporal Encodings},
 	year = {2023},
 	publisher = {Springer Cham},
 	volume = {13764},
-	abstract = {Dynamic networks reflect temporal changes occurring to the graph’s structure and are used to model a wide variety of problems in many application fields. We investigate the design space of dynamic graph visualization along two major dimensions: the network structural and temporal representation. Significant research has been conducted evaluating the benefits and drawbacks of different structural representations for static graphs, however, few extend this comparison to a dynamic network setting. We conduct a study where we assess the participants’ response times, accuracy, and preferences for different combinations of the graph’s structural and temporal representations on typical dynamic network exploration tasks, with and without support of common interaction methods. Our results suggest that matrices provide better support for tasks on lower-level entities and basic interactions require longer response times while increasing accuracy. Node-link with auto animation proved to be the quickest and most accurate combination overall, while animation with playback control the most preferred temporal encoding.},
+	abstract = {Dynamic networks reflect temporal changes occurring to the graph's structure and are used to model a wide variety of problems in many application fields. We investigate the design space of dynamic graph visualization along two major dimensions: the network structural and temporal representation. Significant research has been conducted evaluating the benefits and drawbacks of different structural representations for static graphs, however, few extend this comparison to a dynamic network setting. We conduct a study where we assess the participants’ response times, accuracy, and preferences for different combinations of the graph’s structural and temporal representations on typical dynamic network exploration tasks, with and without support of common interaction methods. Our results suggest that matrices provide better support for tasks on lower-level entities and basic interactions require longer response times while increasing accuracy. Node-link with auto animation proved to be the quickest and most accurate combination overall, while animation with playback control the most preferred temporal encoding.},
 	keywords = {User study; Evaluation; Time-Oriented Data; Graphs and networks},
 	doi = {10.1007/978-3-031-22203-0_20},
 	pages = {271--288}
@@ -78,14 +80,17 @@
 	author = {Velitchko Filipov},
 	title = {Interactive Music Mapping Vienna: Networks In Time and Space},
 	year = {2022},
+	venue = {Groove The City ― Urban Music Studies and Digital Humanities, Music and Arts University of the City of Vienna},
 	abstract = {In the application domain of digital humanities network visualization is increasingly being used to conduct research as the main interests of the domain experts lie in exploring and analyzing relationships between entities and their changes over time. Visualizing the dynamics and different perspectives of such data is a non-trivial task but it enables researchers to explore connections between disparate entities and investigate historical narratives that emerge. We present our work on an interactive exploration environment to visualize event-based networks and support research in digital humanities through visualization of historical subjects in space and time. Our approach is a circular visualization that is flexible and transparent to the underlying subject. It uses event-based networks as inputs, considering the existence of a small set of entities in space and time: people, places, events, and themes. This minimal model is powerful enough to represent many facets of historical subjects and explore trends and narratives mainly through their temporal and spatial developments, serving as visual analytical support to humanists.},
 	keywords = {Visualization, Networks, Time-Oriented Data, Spatial Data},
+	invited = {true}
 }
 
-@Misc{
+@Inproceedings{
 	20.500.12708_153741,
 	author = {Victor Schetinger and Velitchko Filipov and Ignacio Baltazar Perez Messina and Ethan Smith and Rodrigo Oliveira de Oliveira},
 	title = {I Learn to Diffuse, or Data Alchemy 101: a Mnemonic Manifesto},
+	booktitle    = {alt.VIS Workshop at IEEE VIS 2021},
 	year = {2022},
 	abstract = {In this manifesto, we put forward the idea of data alchemy as a narrative device to discuss storytelling and transdisciplinarity in visualization. If data is the prima materia of modern science, how does one perform the Great Work? We use text-to-image diffusion-based generative art to develop the concept, and structure our argument in ten propositions, as if they were ten issues of a comic novel on data alchemy: Ad Disco Diffusionem. To follow the argument, the reader must immerse themselves in our miro board, and navigate a multimedia semiotic topology that includes comics, videos, code demos, and ergotic literature in a true alchemic sense. By accessing this paradigm one might find new sources of inspiration for scientific inquiry in familiar places, or get lost in the creative exploration of the unknown. Our colorful, sometimes poetic, exposition should not distract the reader from the seriousness of the ideas discussed, but ultimately it is about the journey.},
 	keywords = {Data Alchemy; Information Visualization; Generative Models; Transdisciplinarity; Storytelling},
@@ -114,18 +119,18 @@
 	volume = {5},
 	issue = {1},
 	issn = {2543-2656},
-	abstract = {Event-based networks, Information visualization, Digital humanities",
- abstract = "In the application domain of digital humanities network visualization is increasingly being used to conduct research as the main interests of the domain experts lie in exploring and analyzing relationships between entities and their changes over time. Visualizing the dynamics and different perspectives of such data is a non-trivial task but it enables researchers to explore connections between disparate entities and investigate historical narratives that emerge. In this paper we present Circular, an interactive exploration environment to visualize event-based networks and support research in digital humanities through visualization of historical subjects in space and time. Our radial design is the result of iterative collaboration with domain experts, and we discuss the process of collaborative development and exploration of public music festivities in Vienna as an example of immersive development methodology. We validate our approach by means of both domain and visualization expert interviews and show the potential of this approach in supporting the visual exploration of historical subjects. We discuss our design rationales, visual encodings, and interactions as to allow the reproducibility of this approach within a framework of transdisciplinary collaboration with digital humanities.},
+	abstract = "In the application domain of digital humanities network visualization is increasingly being used to conduct research as the main interests of the domain experts lie in exploring and analyzing relationships between entities and their changes over time. Visualizing the dynamics and different perspectives of such data is a non-trivial task but it enables researchers to explore connections between disparate entities and investigate historical narratives that emerge. In this paper we present Circular, an interactive exploration environment to visualize event-based networks and support research in digital humanities through visualization of historical subjects in space and time. Our radial design is the result of iterative collaboration with domain experts, and we discuss the process of collaborative development and exploration of public music festivities in Vienna as an example of immersive development methodology. We validate our approach by means of both domain and visualization expert interviews and show the potential of this approach in supporting the visual exploration of historical subjects. We discuss our design rationales, visual encodings, and interactions as to allow the reproducibility of this approach within a framework of transdisciplinary collaboration with digital humanities.",
 	keywords = {Software; Human-Computer Interaction; Computer Graphics and Computer-Aided Design; Information visualization; Event-based networks; Digital humanities},
 	doi = {10.1016/j.visinf.2021.01.001},
 	pages = {45--60}
 }
 
-@Misc{
+@Inproceedings{
 	20.500.12708_86980,
 	author = {Victor Schetinger and Kathrin Raminger and Velitchko Filipov and Nathalie Soursos and Susana Zapke and Silvia Miksch},
 	title = {Bridging the Gap between Visual Analytics and Digital Humanities: Beyond the Data-Users-Tasks Design Triangle},
-	year = {2020},
+	year = {2019},
+	booktitle = {Workshop on Visualization for Digital Humanities (VIS4DH) at IEEE VIS 2019},
 	abstract = {This paper is an exercise in bridge building through re-thinking the common methodological foundations of Visual Analytics (VA)from a Digital Humanities (DH) perspective. We introduce the Data-Users-Tasks design triangle and re-purpose it to expose the complexities underlying interdisciplinary DH projects, tying it to undergoing discussion in the literature. We describe our experiences interacting with researchers from various disciplines, including musicology and (art) history, and conclude with the lessons that we learned along the way.},
 	keywords = {Visualization; Visual Analytics; Interaction Design; Digital Humanities},
 }
@@ -145,10 +150,11 @@
 	pages = {58--71}
 }
 
-@Misc{
+@Inproceedings{
 	20.500.12708_86982,
 	author = {Saminu Salisu and Eva Mayr and Velitchko Filipov and Florian Windhager and Roger Almeida Leite and Silvia Miksch},
 	title = {Shapes of Time: Visualizing Set Changes Over Time},
+	booktitle = {Workshop on Set Visualization (SetVis) at IEEE VIS 2019},
 	year = {2019},
 	abstract = {In cultural heritage collections, categorization is an important technique used to document historical developments or cultural movements by grouping artifacts with set-typed metadata, like genres, groups, or categories. Visualizations can communicate to casual users how such sets organize a collection - and how they change over time. But existing interfaces fall short a) by not representing an overview of the temporal development of the sets in an integrated, multidimensional view and b) of not representing the set elements, i.e. the cultural objects, but only their aggregations. We developed two integrated, multidimensional visualization techniques - a superimposition and a space-time cube view - to depict the development of sets and their elements over time, and evaluated both approaches.},
 }
@@ -235,13 +241,28 @@
 	doi = {10.2312/eurorv3.20181142},
 }
 
-@Misc{
+@Inproceedings{
+	20.501.12708_86757,
+	author = {Velitchko Filipov and Alessio Arleo and Davide Ceneda and Silvia Miksch},
+	title = {The Fabric of Heroes: an Infographic about Marvel Cinematic Universe},
+	year = {2019},
+	booktitle = {International Symposium on Graph Drawing and Network Visualization (GD 2018) - Creative Contest},
+	abstract = {In this document we describe our submission to the contest held at the International Symposium on Graph Drawing and Network Visualization (GD) 2019. We participate to the Creative Topic challenge with ``The Fabric of Heroes'', an infographic based on the ``Marvel Cinematic Universe'' (MCU) franchise. We illustrate our design choices and how we aimed at obtaining a complete, yet pleasing and enjoyable, visualization.},
+	keywords = {Visualization; Storytelling; Visualization Techniques; Radial Layout; Infographics},
+	url = {https://www.cvast.tuwien.ac.at/publications/fabricofheroes},
+	award = {Winning Entry}
+}
+
+@Inproceedings{
 	20.500.12708_86757,
 	author = {Velitchko Filipov and Davide Ceneda and Micael Koller and Alessio Arleo and Silvia Miksch},
 	title = {The Circle Of Thrones: Conveying the Story of Game of Thrones Using Radial Infographics},
 	year = {2018},
+	booktitle = {International Symposium on Graph Drawing and Network Visualization (GD 2018) - Creative Contest},
 	abstract = {The use of infographics has proven to be effective in conveying information to an audience. Movie plots, given their complexity and rich metadata, are usually good candidates to be visualized using such an approach. In this project we investigated the problem of visualizing the relationships between the characters of the popular television show "Game Of Thrones" inspired by the book "A Song of Ice and Fire" by George R. R. Martin. The amount of information to display and the complexity of the relationships between the characters proved this task to be difficult, therefore we propose a radial layout designed to reduce clutter and enhance readability, which is suitable also to an audience not familiar with the show. Our proposal stands alongside the State-of-the-Art and opens the way to a new class of techniques for the visualization of complex social interactions.},
 	keywords = {Visualization; Storytelling; Visualization Techniques; Radial Layout; Infographics},
+	url = {https://www.cvast.tuwien.ac.at/bibcite/reference/477},
+	award = {Winning Entry}
 }
 
 @Inproceedings{
@@ -263,9 +284,9 @@
 	20.500.12708_7386,
 	author = {Velitchko Filipov},
 	title = {Visual exploration and comparison of multiple resume : focus on time and space},
+	venue = {TU Wien},
 	year = {2017},
 	address = {Wien},
-	abstract = {Daten, die in Lebensläufen vorhanden sind, haben sowohl zeitliche als auch räumliche Dimensionen, wie etwa die Berufserfahrung oder Bildung einer Person. Diese Information ist umfassend - es ist sehr klar, wann, wo und wie lange eine Person gearbeitet oder studiert hat. Es wird immer schwieriger, einen klaren Überblick zu erhalten, wenn man mehrere Lebensläufe, insbesondere ihre chronologischen Informationen, vergleichen will. Das Umschalten zwischen den verschiedenen Lebensläufen um jedes einzelne Ereignis zu vergleichen, ist sehr ineffizient. Die häufigste und intuitivste Art, Ereignisse aus mehreren Lebensläufen zu vergleichen, wäre, sie in einem Seite-an-Seite Modus zu sehen. Viele Ähnlichkeiten können aus diesem Modus schnell erkannt werden, aber in den Fällen, wo mehr als zwei Lebensläufe gleichzeitig verglichen werden müssen, verliert man den Überblick. Die Menge an Informationen steigt erheblich und der Vergleich von Ereignissen wird zu einer schwierigen Aufgabe. Wir schlagen das Design und die Implementierung einer Webapplikation vor - CV3, die die Möglichkeit anbietet, mehrere Chronologien gleichzeitig zu vergleichen und die Ergebnisse klar visualisieren kann. Dabei ist unsere Ziel einen sauberen Überblick der Ähnlichkeiten bzw. Unterschiede der verschiedenen Lebensläufen zu erhalten. Unser Ansatz unterstützt Benutzer_innen bei der Filterung von chronologischen Ereignissen über alle Lebensläufe hinweg, erkennt und extrahiert relevante Informationen aus Lebensläufen und visualisiert ihre Ähnlichkeiten effizient in einer einzigen klaren Übersicht.},
 	abstract = {Information present in resumes has temporal as well as spatial dimensions, such as a person¿s work experience or education. This information by itself is comprehensible - it is very clear when, where, and for how long a person has worked or studied. It becomes increasingly difficult to maintain a clear overview when comparing multiple resumes, specifically their chronological information. Navigating back and forth between resumes, switching between views and attempting to compare every single event is highly inefficient. The most common and intuitive way to compare events from multiple resumes, would be to view them in a side-by-side fashion. Many similarities can be quickly recognized by doing this, but in cases where more than two resumes need to be compared simultaneously, the overview becomes cluttered, the amount of information increases substantially and comparing events becomes a difficult task. We propose the design and implementation of a web application - CV3 - that is capable of comparing multiple chronologies and visualizing the output in a clear manner, whilst maintaining a clean overview. Our approach supports users in filtering timeline events across all resumes, recognizing and extracting relevant information from resumes and visualizing their similarities efficiently in a single overview.},
 	keywords = {Visual Analytics; Information Visualization; Time; Space; Visual Analytics; Information Visualization; Time; Space},
 	doi = {10.34726/hss.2017.43587},
@@ -291,21 +312,24 @@
 	author = {Velitchko Filipov},
 	title = {Networks in Motion},
 	year = {2025},
+	venue = {BioMedvis Seminar at Ludwig-Boltzmann Institute for Digital Health and Prevention},
 	abstract = {Networks are rarely static, they shift, evolve, and transmit activity over time. In this talk, I explore how visualization helps us make sense of networks in motion, from social systems to infrastructure and beyond. Drawing on metaphors like traffic flow, I compare temporal models, i.e., snapshots, aggregations, and event-based dynamics, and discuss how each supports different kinds of reasoning. I’ll highlight challenges like visual overload, temporal ambiguity, and complexity, and examine a range of visualization strategies, from traditional node-link diagrams to dimensionality reduction techniques. Ultimately, the talk reflects on how our choices, about time, representation, and abstraction, shape what we can see, understand, and communicate in dynamic networks.},
 	keywords = {Visual Analytics; Network Visualization},
 	doi = {10.34726/10139},
+	invited = {true}
 }
 
 @Inproceedings{
 	20.500.12708_216593,
 	author = {Daniel Pahr and Henry Ehlers and Velitchko Filipov},
-	title = {HoloGraphs: An Interactive Physicalization for Dynamic Graphs},
-	year = {2025},
-	volume = {1},
-	abstract = {We present HoloGraphs, a novel approach for physically representing, explaining, exploring, and interacting with dynamic networks. HoloGraphs addresses the challenges of visualizing and understanding evolving network structures by providing an engaging method of interacting and exploring dynamic network structures using physicalization techniques. In contrast to traditional digital interfaces, our approach leverages tangible artifacts made from transparent materials to provide an intuitive way for people with low visualization literacy to explore network data. The process involves printing network embeddings on transparent media and assembling them to create a 3D representation of dynamic networks, maintaining spatial perception and allowing the examination of each timeslice individually. Interactivity is envisioned using optional Focus+Context layers and overlays for node trajectories and labels. Focus layers highlight nodes of interest, context layers provide an overview of the network structure, and global overlays show node trajectories over time. In this paper, we outline the design principles and implementation of HoloGraphs and present how elementary digital interactions can be mapped to physical interactions to manipulate the elements of a network and temporal dimension in an engaging matter. We demonstrate the capabilities of our concept in a case study. Using a dynamic network of character interactions from a popular book series, we showcase how it represents and supports understanding complex concepts such as dynamic networks.},
-	keywords = {Dynamic Networks; Fabrication; Information Visualization; Physicalization},
-	doi = {10.5220/0013116000003912},
-	pages = {859--866}
+	title={HoloGraphs: An Interactive Physicalization for Dynamic Graphs},
+	booktitle={Proceedings of the 20th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications - Volume 1: IVAPP},
+	year={2025},
+	pages={859-866},
+	publisher={SciTePress},
+	organization={INSTICC},
+	doi={10.5220/0013116000003912},
+	isbn={978-989-758-728-3},
 }
 
 @Article{
@@ -348,6 +372,7 @@
 	keywords = {CCS Concepts; Empirical studies in visualization; human-centered computing; Visualization Application Domains},
 	url = {https://api.elsevier.com/content/abstract/scopus_id/105005787142},
 	doi = {10.1111/cgf.70140},
+	award = {Best Paper Award}
 }
 
 @Inproceedings{
@@ -379,15 +404,6 @@
 	pages = {1--15}
 }
 
-@Misc{
-	20.500.12708_203789,
-	author = {Velitchko Filipov and Alessio Arleo and Markus Bögl and Silvia Miksch},
-	title = {On Network Structural and Temporal Encodings: A Space and Time Odyssey},
-	year = {2024},
-	keywords = {Dynamic Network Visualization; Visual Analytics; User Study},
-	doi = {10.34726/7079},
-}
-
 @Inproceedings{
 	20.500.12708_199007,
 	author = {Michaela Tuscher and Velitchko Filipov and Teresa Kamencek and Raphael Rosenberg and Silvia Miksch},
@@ -399,24 +415,16 @@
 }
 
 @Misc{
-	20.500.12708_199153,
-	author = {Michaela Tuscher and Velitchko Filipov and Teresa Kamencek and Raphael Rosenberg and Silvia Miksch},
-	title = {Mapping the Avantgarde: Visualizing Modern Artists’ Exhibition Activity},
-	year = {2024},
-	abstract = {In this presentation, we address a crucial challenge for art historians by proposing a visual analytics approach consisting of multiple views designed to facilitate exploration and comparative analysis of artists and their exhibitions. Existing tools to support art-historical research are scarce and lack analytical means to navigate and analyze artists' exhibition activities. Our approach addresses this gap by supporting the identification of geospatial and temporal patterns and offering insights into the multifaceted exhibition behavior of artists in the early 20th century. To demonstrate the efficacy and validate our approach, we present a case study conducted by an art historian in the form of an expert interview. The discussion presents details about insights that were obtained and valuable feedback about the utility of the visual encodings and interactions. By integrating geospatial and temporal facets along with features to perform comparative analysis our approach emerges as a valuable asset for art historians providing a comprehensive look into artists' exhibition histories.},
-	keywords = {Information Visualization; Visual Analytics; Empirical studies in visualization},
-}
-
-@Misc{
 	20.500.12708_197713,
 	author = {Velitchko Filipov},
-	title = {Dynamic Perspectives:  Visualizing Time and Networks for Analytical Insights},
+	title = {Dynamic Perspectives: Visualizing Time and Networks for Analytical Insights},
 	year = {2024},
+	venue = {Shonan Seminar on Advancing Visual Computing in Materials Science No.189, Japan},
 	abstract = {Dynamic networks are structures where the graph's nodes and/or edges can appear or disappear over discrete or continuous intervals of time. The visualization and analysis of dynamic networks play an essential role in understanding the structural evolution of a network. The main goals are to support a better overview of the network's evolution and to identify patterns or behaviors. Dynamic networks are most commonly represented as node-link diagrams with the temporal dimension being depicted using animated approaches. 
- 
  In this talk, I present a number of different and alternative methods for visualizing and interacting with a network and its temporal dimension and discuss the most pressing challenges currently faced. Furthermore, possible intersections with the Materials Sciences domain are discussed to understand how dynamic network visualization can complement the current state-of-the-art in this domain, provide different perspectives, and facilitate new insights into the data.},
 	keywords = {Dynamic Network Visualization; Visual Analytics},
 	doi = {10.34726/6362},
+	invited = {true}
 }
 
 @Misc{
@@ -424,7 +432,9 @@
 	author = {Velitchko Filipov},
 	title = {Visual Analytics},
 	year = {2024},
+	venue = {WinterGraph, Kaprun (Austria)},
 	keywords = {Visual Analytics},
+	invited = {true},
 }
 
 @Inproceedings{
@@ -475,8 +485,9 @@
 @Phdthesis{
 	20.500.12708_198095,
 	author = {Velitchko Filipov},
-	title = {Networks in time and space : visual analytics of dynamic network representations},
+	title = {Networks in time and space: visual analytics of dynamic network representations},
 	year = {2024},
+	venue = {TU Wien},
 	address = {Wien},
 	abstract = {Networks are abstract and flexible data structures that model entities and relationships between them. Network visualization encompasses techniques, designed to produce aesthetic and scalable layouts of such data. In real-world applications data changes over time and investigating and analyzing these dynamics is of interest, motivating the study of dynamic network visualization. Dynamic network visualization explores how networks evolve and how these changes can be effectively conveyed. The goal is to construct representations depicting both structural and temporal information in a readable manner. This is a challenging task and current approaches often optimize standard network representations (i.e., node-link diagrams) to simultaneously portray topology and dynamics using animation. Alternative visualization modalities are seldom explored, presenting an interesting research direction. As network connectivity can be cumbersome to visualize, approaches make use of space to improve readability and implement aesthetic criteria, often presenting scalability concerns. These limitations pose interesting research questions that are investigated in this dissertation. Namely, how can we augment standard network visualization techniques to convey dynamics, which techniques are appropriate, effective, and avoid information overload, and are alternative visualization metaphors for dynamic networks useful? We contribute to dynamic network visualization by formally evaluating the design space and investigating novel dynamic network visualization approaches. Our results show promise for alternative visualization modalities and our evaluation of structural and temporal encodings highlights the usefulness of under-investigated combinations in related literature. Furthermore, we outline research challenges that present future work opportunities and provide recommendations to support researchers in developing dynamic network visualization approaches.},
 	keywords = {Networks; Graphs; Dynamic Networks; Dynamic Network Visualization; Time-oriented Data; Information Visualization; Visual Analytics},

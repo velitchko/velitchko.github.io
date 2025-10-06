@@ -4,13 +4,15 @@ export interface Publication {
   authors: string[];
   venue: string;
   year: number;
-  type: 'Conference' | 'Journal' | 'Workshop' | 'Preprint' | 'Book Chapter';
+  type: 'Conference' | 'Journal' | 'Workshop' | 'Preprint' | 'Book Chapter' | 'Invited Talk';
   doi?: string;
   url?: string;
   arxiv?: string;
   pdfUrl?: string;
   codeUrl?: string;
   bibtex: string;
+  award?: string; // Award name/description
+  invited?: boolean; // Is this an invited talk/paper?
 }
 
 // Your name to highlight in publications

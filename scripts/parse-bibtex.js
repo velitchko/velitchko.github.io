@@ -161,6 +161,9 @@ function processField(entry, key, value) {
     case 'booktitle':
       if (!entry.venue) entry.venue = value;
       break;
+    case 'venue':
+      if (!entry.venue) entry.venue = value;
+      break;
     case 'publisher':
       entry.publisher = value;
       if (!entry.venue) entry.venue = value;
@@ -185,12 +188,21 @@ function processField(entry, key, value) {
     case 'series':
       entry.series = value;
       break;
+    case 'award':
+      entry.award = value;
+      break;
+    case 'invited':
+      // Parse boolean values: true/yes/1 = true, everything else = false
+      const invitedValue = value.toLowerCase().trim();
+      entry.invited = invitedValue === 'true' || invitedValue === 'yes' || invitedValue === '1';
+      break;
   }
 }
 
 // Generate TypeScript code
 function generateTypeScriptCode(publications) {
-  let output = 'export const publications: Publication[] = [\n';
+  let output = "import type { Publication } from './publications';\n\n";
+  output += 'export const publications: Publication[] = [\n';
   
   publications.forEach((pub, index) => {
     output += '  {\n';
@@ -206,6 +218,12 @@ function generateTypeScriptCode(publications) {
     }
     if (pub.url) {
       output += `    url: "${pub.url}",\n`;
+    }
+    if (pub.award) {
+      output += `    award: "${escapeString(pub.award)}",\n`;
+    }
+    if (pub.invited) {
+      output += `    invited: ${pub.invited},\n`;
     }
     
     // Add bibtex (escape properly)

@@ -37,18 +37,28 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
 
   return (
     <div className="retro-card">
-      <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
-        <span className="inline-block px-3 py-1 text-xs border border-neon-cyan/50 text-neon-cyan bg-neon-cyan/10 mb-2 md:mb-0 w-fit">
+      <div className="flex flex-wrap items-center gap-2 mb-3">
+        <span className="inline-block px-2 py-0.5 text-xs border border-neon-cyan/50 text-neon-cyan bg-neon-cyan/10">
           {publication.type}
         </span>
-        <span className="text-neon-pink font-mono text-sm">{publication.year}</span>
+        {publication.award && (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs border border-neon-yellow/50 text-neon-yellow bg-neon-yellow/10" title={publication.award}>
+            🏆 Award
+          </span>
+        )}
+        {publication.invited && (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs border border-neon-purple/50 text-neon-purple bg-neon-purple/10">
+            ✨ Invited
+          </span>
+        )}
+        <span className="text-neon-pink font-mono text-xs ml-auto">{publication.year}</span>
       </div>
 
-      <h3 className="text-lg font-bold text-neon-cyan mb-3 leading-relaxed">
+      <h3 className="text-base font-bold text-neon-cyan mb-2 leading-snug">
         {publication.title}
       </h3>
 
-      <p className="text-neon-cyan/70 text-sm mb-2 flex flex-wrap gap-1">
+      <p className="text-neon-cyan/70 text-xs mb-1.5 flex flex-wrap gap-1">
         {authors.map((author, index) => (
           <span key={index} className="inline-flex items-center">
             <span
@@ -65,11 +75,11 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
         ))}
       </p>
 
-      <p className="text-neon-cyan/60 text-sm italic mb-4">
+      <p className="text-neon-cyan/60 text-xs italic mb-3">
         {publication.venue}
       </p>
 
-      <div className="flex flex-wrap gap-4 text-sm mb-4">
+      <div className="flex flex-wrap gap-3 text-xs mb-3">
         {publication.doi && (
           <a
             href={publication.url}
@@ -124,8 +134,8 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
       </div>
 
       {showBibtex && (
-        <div className="border-2 border-neon-cyan/30 bg-retro-darker/50 p-4 rounded">
-          <div className="flex justify-between items-center mb-3">
+        <div className="border-2 border-neon-cyan/30 bg-retro-darker/50 p-3 rounded">
+          <div className="flex justify-between items-center mb-2">
             <span className="text-xs text-neon-cyan/60 font-mono">BIBTEX CITATION</span>
             <div className="flex gap-2">
               <button
