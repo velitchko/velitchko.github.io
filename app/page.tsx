@@ -369,8 +369,8 @@ export default function Home() {
 
             {/* Contact Info */}
             <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div className="border-2 border-neon-pink/30 p-6 hover:border-neon-pink hover:neon-glow-pink transition-colors">
-                <h3 className="text-lg font-retro text-neon-pink mb-3">📧 EMAIL</h3>
+              <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors">
+                <h3 className="text-lg font-retro text-neon-cyan mb-3">📧 EMAIL</h3>
                 <a
                   href="mailto:velitchko.filipov@tuwien.ac.at"
                   className="text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors break-all"
@@ -379,8 +379,8 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className="border-2 border-neon-pink/30 p-6 hover:border-neon-pink hover:neon-glow-pink transition-colors">
-                <h3 className="text-lg font-retro text-neon-pink mb-3">📍 LOCATION</h3>
+              <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors">
+                <h3 className="text-lg font-retro text-neon-cyan mb-3">📍 LOCATION</h3>
                 <p className="text-neon-cyan/80">
                   TU Wien<br />
                   Visual Analytics Research Unit (E193-07)<br />

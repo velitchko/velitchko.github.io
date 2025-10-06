@@ -18,7 +18,15 @@ export default function Footer() {
               >
                 👨‍💻 @velitchko
               </a>
-              {' '}& 🤖 Claude Sonnet
+              {' '}& {' '}
+              <a
+                href="https://claude.ai/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neon-pink hover:neon-glow transition-colors"
+              >
+                🤖 Claude Sonnet
+              </a>
             </p>
             <a
               href="https://github.com/velitchko/velitchko.github.io"
