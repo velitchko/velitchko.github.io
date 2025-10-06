@@ -41,7 +41,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="flex items-center space-x-4">
               {navItems.map((item) => (
                 <button
@@ -60,7 +60,7 @@ export default function Navigation() {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => {
                 const menu = document.getElementById('mobile-menu');
@@ -87,7 +87,7 @@ export default function Navigation() {
       </div>
 
       {/* Mobile menu */}
-      <div id="mobile-menu" className="hidden md:hidden bg-retro-darker/95 border-t border-neon-cyan/30">
+      <div id="mobile-menu" className="hidden lg:hidden bg-retro-darker/95 border-t border-neon-cyan/30">
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
             <button
