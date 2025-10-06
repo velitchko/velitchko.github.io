@@ -62,8 +62,8 @@ export default function Home() {
       {/* About Section */}
       <section className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-retro neon-glow-pink mb-12 text-center">
-            [ ABOUT.ME ]
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
+            [about.md]
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -130,8 +130,8 @@ export default function Home() {
       {/* Research Interests */}
       <section id="research" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-retro neon-glow-cyan mb-12 text-center">
-            [ RESEARCH.INTERESTS ]
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan mb-12 text-center">
+            [research.json]
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -182,8 +182,8 @@ export default function Home() {
       {/* Projects */}
       <section id="projects" className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-retro neon-glow-pink mb-12 text-center">
-            [ PROJECTS.PORTFOLIO ]
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
+            [projects.tsx]
           </h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -257,8 +257,8 @@ export default function Home() {
       {/* Publications */}
       <section id="publications" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-retro neon-glow-cyan mb-12 text-center">
-            [ PUBLICATIONS.LOG ]
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan mb-12 text-center">
+            [pubs.bib]
           </h2>
 
           <div className="space-y-12">
@@ -266,7 +266,7 @@ export default function Home() {
               .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
               .map(([year, pubs]) => (
                 <div key={year} className="space-y-6">
-                  <h3 className="text-2xl sm:text-3xl font-retro text-neon-pink mb-6">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-retro text-neon-pink mb-6">
                     <span className="cylon-scan inline-block">
                       {year}
                     </span>
@@ -283,8 +283,8 @@ export default function Home() {
       {/* Contact */}
       <section id="contact" className="py-20 bg-retro-darker/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-retro neon-glow-pink mb-12">
-            [ CONTACT.INIT ]
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12">
+            [contact.sh]
           </h2>
 
           <div className="retro-card mb-12">
