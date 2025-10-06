@@ -71,7 +71,7 @@ export default function Home() {
               <div className="retro-card">
                 <div className="aspect-[3/4] bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50 overflow-hidden">
                   <Image
-                    src="/nerd.png"
+                    src="/nerd.jpg"
                     alt="Velitchko Filipov Profile"
                     width={500}
                     height={667}
