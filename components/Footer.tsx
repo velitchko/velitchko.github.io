@@ -93,7 +93,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://orcid.org/0000-0003-0786-7368"
+                href="https://orcid.org/0000-0001-9592-2179"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors"
