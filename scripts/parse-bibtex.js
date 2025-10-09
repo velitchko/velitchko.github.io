@@ -196,6 +196,10 @@ function processField(entry, key, value) {
       const invitedValue = value.toLowerCase().trim();
       entry.invited = invitedValue === 'true' || invitedValue === 'yes' || invitedValue === '1';
       break;
+    case 'keywords':
+      // Parse keywords/hashtags - split by comma or semicolon
+      entry.keywords = value.split(/[,;]/).map(k => k.trim()).filter(k => k.length > 0);
+      break;
   }
 }
 
@@ -224,6 +228,9 @@ function generateTypeScriptCode(publications) {
     }
     if (pub.invited) {
       output += `    invited: ${pub.invited},\n`;
+    }
+    if (pub.keywords && pub.keywords.length > 0) {
+      output += `    keywords: [${pub.keywords.map(k => `"${escapeString(k)}"`).join(', ')}],\n`;
     }
     
     // Add bibtex (escape properly)

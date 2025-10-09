@@ -3,14 +3,23 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import PublicationCard from '@/components/PublicationCard';
-import { publications, groupPublicationsByYear } from '@/data/publications';
+import { publications, groupPublicationsByYear, getKeywordsWithCounts, filterPublicationsByKeyword, sortPublicationsByYear } from '@/data/publications';
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
+  const [selectedKeyword, setSelectedKeyword] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Get top 15 keywords
+  const topKeywords = getKeywordsWithCounts(publications).slice(0, 15);
+  
+  // Filter publications based on selected keyword
+  const filteredPublications = selectedKeyword 
+    ? sortPublicationsByYear(filterPublicationsByKeyword(publications, selectedKeyword))
+    : publications;
 
   return (
     <div className="min-h-screen">
@@ -281,21 +290,73 @@ export default function Home() {
             [pubs.bib]
           </h2>
 
-          <div className="space-y-12">
-            {Object.entries(groupPublicationsByYear(publications))
-              .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
-              .map(([year, pubs]) => (
-                <div key={year} className="space-y-6">
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-retro text-neon-pink mb-6">
-                    <span className="cylon-scan inline-block">
-                      {year}
+          {/* Keyword Filter */}
+          {topKeywords.length > 0 && (
+            <div className="mb-12">
+              <div className="flex flex-wrap justify-center gap-3">
+                {selectedKeyword && (
+                  <button
+                    onClick={() => setSelectedKeyword(null)}
+                    className="px-4 py-2 text-sm font-mono border-2 border-neon-pink/50 text-neon-pink bg-neon-pink/10 hover:border-neon-pink transition-all duration-300 relative overflow-hidden group"
+                  >
+                    <span className="absolute inset-0 bg-neon-pink transform translate-y-full transition-transform duration-300 group-hover:translate-y-0 -z-10"></span>
+                    <span className="relative z-10 transition-colors duration-300 group-hover:text-retro-darker">✕ CLEAR FILTER</span>
+                  </button>
+                )}
+                {topKeywords.map(({ keyword, count }) => (
+                  <button
+                    key={keyword}
+                    onClick={() => setSelectedKeyword(keyword)}
+                    className={`px-4 py-2 text-sm font-mono border-2 transition-all duration-300 cursor-pointer relative overflow-hidden group ${
+                      selectedKeyword === keyword
+                        ? 'border-neon-pink text-retro-darker bg-neon-pink font-bold'
+                        : 'border-neon-cyan/50 text-neon-cyan bg-neon-cyan/10 hover:border-neon-cyan'
+                    }`}
+                  >
+                    <span className={`absolute inset-0 bg-neon-cyan transform translate-y-full transition-transform duration-300 ${selectedKeyword === keyword ? '' : 'group-hover:translate-y-0'} -z-10`}></span>
+                    <span className={`relative z-10 transition-colors duration-300 ${selectedKeyword === keyword ? '' : 'group-hover:text-retro-darker'}`}>
+                      #{keyword} <span className={`opacity-70 ${selectedKeyword === keyword ? '' : 'group-hover:opacity-100'}`}>({count})</span>
                     </span>
-                  </h3>
-                  {pubs.map((pub) => (
-                    <PublicationCard key={pub.id} publication={pub} />
-                  ))}
+                  </button>
+                ))}
+              </div>
+              
+              {selectedKeyword && (
+                <div className="text-center mt-6">
+                  <p className="text-neon-pink text-sm font-mono">
+                    Showing {filteredPublications.length} publication{filteredPublications.length !== 1 ? 's' : ''} tagged with #{selectedKeyword}
+                  </p>
                 </div>
-              ))}
+              )}
+            </div>
+          )}
+
+          {/* Publications List */}
+          <div className="space-y-12">
+            {selectedKeyword ? (
+              // Filtered view: flat list sorted by year
+              <div className="space-y-6">
+                {filteredPublications.map((pub) => (
+                  <PublicationCard key={pub.id} publication={pub} />
+                ))}
+              </div>
+            ) : (
+              // Default view: grouped by year
+              Object.entries(groupPublicationsByYear(filteredPublications))
+                .sort(([yearA], [yearB]) => Number(yearB) - Number(yearA))
+                .map(([year, pubs]) => (
+                  <div key={year} className="space-y-6">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-retro text-neon-pink mb-6">
+                      <span className="cylon-scan inline-block">
+                        {year}
+                      </span>
+                    </h3>
+                    {pubs.map((pub) => (
+                      <PublicationCard key={pub.id} publication={pub} />
+                    ))}
+                  </div>
+                ))
+            )}
           </div>
         </div>
       </section>

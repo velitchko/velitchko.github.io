@@ -13,6 +13,7 @@ export interface Publication {
   bibtex: string;
   award?: string; // Award name/description
   invited?: boolean; // Is this an invited talk/paper?
+  keywords?: string[]; // Keywords/hashtags for filtering
 }
 
 // Your name to highlight in publications
@@ -110,4 +111,33 @@ export function groupPublicationsByYear(pubs: Publication[]): Record<number, Pub
     acc[pub.year].push(pub);
     return acc;
   }, {} as Record<number, Publication[]>);
+}
+
+// Get all unique keywords/hashtags from publications with counts
+export function getKeywordsWithCounts(pubs: Publication[]): Array<{ keyword: string; count: number }> {
+  const keywordCounts = new Map<string, number>();
+  
+  pubs.forEach(pub => {
+    if (pub.keywords) {
+      pub.keywords.forEach(keyword => {
+        const normalizedKeyword = keyword.toLowerCase().trim();
+        keywordCounts.set(normalizedKeyword, (keywordCounts.get(normalizedKeyword) || 0) + 1);
+      });
+    }
+  });
+  
+  return Array.from(keywordCounts.entries())
+    .map(([keyword, count]) => ({ keyword, count }))
+    .sort((a, b) => b.count - a.count); // Sort by count descending
+}
+
+// Filter publications by keyword
+export function filterPublicationsByKeyword(pubs: Publication[], keyword: string): Publication[] {
+  if (!keyword) return pubs;
+  
+  const normalizedKeyword = keyword.toLowerCase().trim();
+  
+  return pubs.filter(pub => 
+    pub.keywords?.some(k => k.toLowerCase().trim() === normalizedKeyword)
+  );
 }
