@@ -11,6 +11,7 @@ export default function Navigation() {
     { id: 'research', label: '[ RESEARCH ]' },
     { id: 'projects', label: '[ PROJECTS ]' },
     { id: 'publications', label: '[ PUBLICATIONS ]' },
+    { id: 'blog', label: '[ BLOG ]', isExternal: true },
     { id: 'contact', label: '[ CONTACT ]' },
   ];
 
@@ -44,17 +45,27 @@ export default function Navigation() {
           <div className="hidden lg:block">
             <div className="flex items-center space-x-4">
               {navItems.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 text-sm font-mono transition-all duration-300 ${
-                    activeSection === item.id
-                      ? 'text-neon-pink neon-glow-pink'
-                      : 'text-neon-cyan hover:text-neon-pink hover:neon-glow'
-                  }`}
-                >
-                  {item.label}
-                </button>
+                item.isExternal ? (
+                  <Link
+                    key={item.id}
+                    href="/blog"
+                    className="px-3 py-2 text-sm font-mono transition-all duration-300 text-neon-cyan hover:text-neon-pink hover:neon-glow"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <button
+                    key={item.id}
+                    onClick={() => scrollToSection(item.id)}
+                    className={`px-3 py-2 text-sm font-mono transition-all duration-300 ${
+                      activeSection === item.id
+                        ? 'text-neon-pink neon-glow-pink'
+                        : 'text-neon-cyan hover:text-neon-pink hover:neon-glow'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )
               ))}
             </div>
           </div>
@@ -90,20 +101,31 @@ export default function Navigation() {
       <div id="mobile-menu" className="hidden lg:hidden bg-retro-darker/95 border-t border-neon-cyan/30">
         <div className="px-2 pt-2 pb-3 space-y-1">
           {navItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => {
-                scrollToSection(item.id);
-                document.getElementById('mobile-menu')?.classList.add('hidden');
-              }}
-              className={`block w-full text-left px-3 py-2 text-base font-mono ${
-                activeSection === item.id
-                  ? 'text-neon-pink neon-glow-pink'
-                  : 'text-neon-cyan hover:text-neon-pink'
-              }`}
-            >
-              {item.label}
-            </button>
+            item.isExternal ? (
+              <Link
+                key={item.id}
+                href="/blog"
+                onClick={() => document.getElementById('mobile-menu')?.classList.add('hidden')}
+                className="block w-full text-left px-3 py-2 text-base font-mono text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors"
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <button
+                key={item.id}
+                onClick={() => {
+                  scrollToSection(item.id);
+                  document.getElementById('mobile-menu')?.classList.add('hidden');
+                }}
+                className={`block w-full text-left px-3 py-2 text-base font-mono ${
+                  activeSection === item.id
+                    ? 'text-neon-pink neon-glow-pink'
+                    : 'text-neon-cyan hover:text-neon-pink'
+                }`}
+              >
+                {item.label}
+              </button>
+            )
           ))}
         </div>
       </div>
