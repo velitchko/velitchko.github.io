@@ -160,14 +160,14 @@ export default function NotFound() {
           </div>
           
           <p 
-            className="text-2xl md:text-3xl italic leading-relaxed"
+            className="text-3xl italic leading-relaxed mb-6"
             style={{ 
               fontFamily: "'VT323', monospace",
               color: '#00ffff',
               textShadow: '0 0 5px #00ffff, 0 0 10px #00ffff'
             }}
           >
-            "{reference.quote}"
+            &quot;{reference.quote}&quot;
           </p>
           
           <p 

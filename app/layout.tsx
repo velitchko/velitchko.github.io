@@ -3,7 +3,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
-import Script from "next/script";
+import FontSizeControl from "@/components/FontSizeControl";
 
 export const metadata: Metadata = {
   title: "<vfilipov/>",

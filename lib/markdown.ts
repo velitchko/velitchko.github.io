@@ -5,8 +5,6 @@ import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import remarkHtml from 'remark-html';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeKatex from 'rehype-katex';
 import { BlogPost } from '@/data/blog';
 
 const blogPostsDirectory = path.join(process.cwd(), 'data/blog-posts');
