@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getBlogPostBySlug, getAllBlogPostSlugs } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import ExportBibtex from './ExportBibtex';
+import FontSizeControl from '@/components/FontSizeControl';
 
 export async function generateStaticParams() {
   const slugs = getAllBlogPostSlugs();
@@ -20,6 +21,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="min-h-screen pt-32 pb-20">
+      <FontSizeControl />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <Link 
