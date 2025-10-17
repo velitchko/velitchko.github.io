@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import PublicationCard from '@/components/PublicationCard';
+import FontSizeControl from '@/components/FontSizeControl';
 import { publications, groupPublicationsByYear, getKeywordsWithCounts, filterPublicationsByKeyword, sortPublicationsByYear } from '@/data/publications';
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <FontSizeControl />
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden grid-bg">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/5 to-transparent"></div>
