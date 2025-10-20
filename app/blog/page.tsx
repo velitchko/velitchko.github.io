@@ -29,6 +29,24 @@ export default async function BlogPage() {
           </p>
         </div>
 
+        {/* Disclaimer */}
+        <div className="mb-12 p-6 border-2 border-neon-cyan/60 retro-card backdrop-blur-sm">
+          <div className="flex items-start gap-3">
+            <span className="text-xl mt-1 animate-pulse">⚠️</span>
+            <div>
+              <h2 className="text-neon-pink font-retro text-sm mb-2">
+                [DISCLAIMER.txt]
+              </h2>
+              <p className="text-neon-cyan/90 leading-relaxed text-sm">
+                <span className="text-neon-pink">{'>'}</span> All opinions expressed here are my own and definitely not those of my employer, my goldfish, or that voice in my head. 
+                If you disagree, that's <span className="text-neon-pink font-bold">totally fine</span>. The internet is big enough for both of us. 
+                Feel free to yell at clouds, write your own blog post, or simply move on with your life. 
+                <span className="italic"> No feelings will be hurt. Probably.</span> 
+              </p>
+            </div>
+          </div>
+        </div>
+
         <BlogListing posts={posts} categories={allCategories} />
       </div>
     </div>

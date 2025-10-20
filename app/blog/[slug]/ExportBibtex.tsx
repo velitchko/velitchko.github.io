@@ -75,7 +75,7 @@ export default function ExportBibtex({ post, websiteUrl = 'https://velitchko.git
   return (
     <div className="mt-12 pt-8 border-t border-neon-cyan/20">
       <h3 className="text-xl font-retro text-neon-cyan mb-4">
-        [ CITE THIS POST ]
+        [CITE THIS]
       </h3>
       
       <div className="retro-card bg-retro-darker/50">

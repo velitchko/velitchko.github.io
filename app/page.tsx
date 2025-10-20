@@ -107,7 +107,7 @@ export default function Home() {
 
             <div className="space-y-6">
               <div className="retro-card">
-                <h3 className="text-xl font-retro text-neon-cyan mb-4">SYSTEM.INFO</h3>
+                <h3 className="text-xl font-retro text-neon-cyan mb-4">INFO</h3>
                 <p className="text-neon-cyan/80 leading-relaxed mb-4">
                   I&apos;m a postdoctoral researcher at&nbsp;
                   <a
