@@ -42,12 +42,19 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
           {publication.type}
         </span>
         {publication.award && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs border border-neon-yellow/50 text-neon-yellow bg-neon-yellow/10" title={publication.award}>
+          <span
+            className="inline-flex items-center gap-1 px-2 py-0.5 text-xs border border-yellow-400 text-yellow-400 font-bold"
+            style={{ filter: 'drop-shadow(0 0 6px gold)' }}
+            title={publication.award}
+          >
             🏆 Award
           </span>
         )}
         {publication.invited && (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 text-xs border border-neon-purple/50 text-neon-purple bg-neon-purple/10">
+          <span
+            className="inline-flex items-center gap-1 px-2 py-0.5 text-xs border border-purple-500 text-purple-400 font-bold"
+            style={{ filter: 'drop-shadow(0 0 6px #a78bfa)' }}
+          >
             ✨ Invited
           </span>
         )}
