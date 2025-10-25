@@ -4,6 +4,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
+// Build an absolute OG image URL when a public site URL is provided via env.
+// In dev this will remain a relative path (localhost) which is expected.
+const PUBLIC_SITE = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "";
+const OG_PATH = "/og-image.png";
+const ogImage = PUBLIC_SITE ? new URL(OG_PATH, PUBLIC_SITE).toString() : OG_PATH;
+
 export const metadata: Metadata = {
   title: "<vfilipov/>",
   description: "Personal academic website showcasing research, projects, and publications",
@@ -14,19 +20,20 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.png',
     apple: '/favicon.png',
-  }, 
+  },
   openGraph: {
     images: [
       {
-        url: '/og-image.png',
+        url: ogImage,
         alt: 'Open graph preview',
       },
     ],
-    url: '/og-image.png',
+    // If we have a public site URL, expose it here; otherwise leave undefined.
+    url: PUBLIC_SITE || undefined,
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['/og-image.png'],
+    images: [ogImage],
   },
 };
 
