@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
-const metadata: Metadata = {
+export const metadata: Metadata = {
   title: "<vfilipov/>",
   description: "Personal academic website showcasing research, projects, and publications",
   icons: {
