@@ -758,7 +758,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 </div>
 
             <p className="text-sm text-neon-cyan/70 mt-3">
-                Nodes are co-authors; edges show co-authorship counts. The central node is you (if detected).
+                Nodes are co-authors; edges show co-authorship counts.
             </p>
         </div>
     );
