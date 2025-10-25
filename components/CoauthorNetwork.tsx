@@ -303,7 +303,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
             }
         })();
         return () => { cancelled = true; };
-    }, [linkBaseDistance, chargeStrength, collideBaseRadius, centerStrength, radialStrength, cx, cy]);
+    }, [linkBaseDistance, chargeStrength, collideBaseRadius, centerStrength, radialStrength, cx, cy, width, height]);
 
     // ...autoscale fitToBounds logic removed...
 
@@ -451,7 +451,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         return () => {
             targets.forEach(t => { if (t) t.removeEventListener('pointerdown', onPointerDown); });
         };
-    }, [tx, ty, layoutReady]);
+    }, [tx, ty, scale, layoutReady]);
 
     // wheel zoom
     React.useEffect(() => {
@@ -660,7 +660,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                         document.addEventListener('pointerup', docUp);
                                     };
 
-                                    const onNodePointerEnter = (e: React.PointerEvent) => {
+                                    const onNodePointerEnter = () => {
                                         // position tooltip centered under the node (compute from node coords)
                                         try {
                                             const screen = svgUserToClient(node.x ?? cx, node.y ?? cy);
@@ -694,7 +694,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                         }
                                     };
 
-                                    const onNodePointerMove = (e: React.PointerEvent) => {
+                                    const onNodePointerMove = () => {
                                         // update tooltip position to stay under node during pointer moves
                                         try {
                                             const screen = svgUserToClient(node.x ?? cx, node.y ?? cy);
