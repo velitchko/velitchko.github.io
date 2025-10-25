@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
-export const metadata: Metadata = {
+const metadata: Metadata = {
   title: "<vfilipov/>",
   description: "Personal academic website showcasing research, projects, and publications",
   icons: {
@@ -14,14 +14,19 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.png',
     apple: '/favicon.png',
-  },
+  }, 
   openGraph: {
     images: [
       {
-        url: '/og.png',
-        alt: "Open graph preview",
+        url: '/og-image.png',
+        alt: 'Open graph preview',
       },
     ],
+    url: '/og-image.png',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/og-image.png'],
   },
 };
 
