@@ -87,9 +87,10 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
       </p>
 
       <div className="flex flex-wrap gap-3 text-xs mb-3">
-        {publication.doi && (
+        {/* DOI or fallback URL link */}
+        {publication.doi ? (
           <a
-            href={publication.url}
+            href={`https://doi.org/${publication.doi.replace(/^https?:\/\/(dx\.)?doi\.org\//, '')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-neon-pink hover:neon-glow transition-colors inline-flex items-center"
@@ -97,7 +98,17 @@ export default function PublicationCard({ publication }: PublicationCardProps) {
           >
             <span className="mr-1">→</span> DOI
           </a>
-        )}
+        ) : publication.url ? (
+          <a
+            href={publication.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neon-pink hover:neon-glow transition-colors inline-flex items-center"
+            title="External URL"
+          >
+            <span className="mr-1">→</span> URL
+          </a>
+        ) : null}
 
         {publication.pdfUrl && (
           <a
