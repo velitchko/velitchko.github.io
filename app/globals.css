@@ -170,6 +170,16 @@ h1, h2, h3, h4, h5, h6 {
     0 0 40px #00ffff;
 }
 
+/* Golden neon variant for special accents (used by /chicken easter egg) */
+.neon-glow-gold {
+  color: #ffd700;
+  text-shadow:
+    0 0 6px #ffd700,
+    0 0 12px #ffd700,
+    0 0 24px #ffd700,
+    0 0 48px #ffd700;
+}
+
 .neon-border {
   border: 2px solid #00ffff;
   box-shadow: 
@@ -224,6 +234,30 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 
     -3px 0 #00ffff,
     3px 0 #ff00ff;
+  animation: horizontal-tear 3s steps(5) infinite;
+  clip: rect(0, 0, 0, 0);
+}
+
+/* Gold variant of the glitch effect: swaps magenta/cyan split for golden/yellow tones */
+.glitch-gold {
+  color: #ffd700;
+}
+
+.glitch-gold::before {
+  /* RGB split / bloom replaced by gold tones */
+  text-shadow: 
+    -2px 0 #ffcf33,
+    2px 0 #ffd700,
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 40px rgba(255, 193, 7, 0.35);
+  animation: rgb-split 4s steps(1) infinite;
+  opacity: 0.9;
+}
+
+.glitch-gold::after {
+  text-shadow:
+    -3px 0 #ffd700,
+    3px 0 #ffb347;
   animation: horizontal-tear 3s steps(5) infinite;
   clip: rect(0, 0, 0, 0);
 }
