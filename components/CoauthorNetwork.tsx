@@ -235,7 +235,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 try { simRef.current = null; } catch { /* ignore */ }
             }
         };
-    }, [containerWidth, containerHeight]);
+    }, [centerStrength, radialStrength, chargeStrength, collideBaseRadius, linkBaseDistance, containerWidth, containerHeight, height, width]);
 
     // measure wrapper/svg so component fills available space
     React.useEffect(() => {
