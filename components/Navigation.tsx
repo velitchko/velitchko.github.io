@@ -10,12 +10,12 @@ export default function Navigation() {
   const isHomePage = pathname === '/';
 
   const navItems = [
-    { id: 'home', label: '[ HOME ]', href: '/#home' },
-    { id: 'research', label: '[ RESEARCH ]', href: '/#research' },
-    { id: 'projects', label: '[ PROJECTS ]', href: '/#projects' },
-    { id: 'publications', label: '[ PUBLICATIONS ]', href: '/#publications' },
-    { id: 'blog', label: '[ BLOG ]', href: '/blog' },
-    { id: 'contact', label: '[ CONTACT ]', href: '/#contact' },
+    { id: 'home', label: '[home]', href: '/#home' },
+    { id: 'research', label: '[research]', href: '/#research' },
+    { id: 'projects', label: '[projects]', href: '/#projects' },
+    { id: 'publications', label: '[publications]', href: '/#publications' },
+    { id: 'blog', label: '[blog]', href: '/blog' },
+    { id: 'contact', label: '[contact]', href: '/#contact' },
   ];
 
   const scrollToSection = (id: string) => {
