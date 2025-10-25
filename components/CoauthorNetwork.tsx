@@ -78,6 +78,14 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
     // computed outer height to fill remaining viewport under header
     const [outerHeight, setOuterHeight] = React.useState<string>('60vh');
 
+    // layout tuning parameters (exposed via small UI)
+    const [linkBaseDistance, setLinkBaseDistance] = React.useState<number>(160);
+    const [chargeStrength, setChargeStrength] = React.useState<number>(-320);
+    const [collideBaseRadius, setCollideBaseRadius] = React.useState<number>(18);
+    const [centerStrength, setCenterStrength] = React.useState<number>(1);
+    const [radialStrength, setRadialStrength] = React.useState<number>(0.05);
+    const [controlsOpen, setControlsOpen] = React.useState<boolean>(true);
+
     // pointer move/up listeners to handle node dragging
     React.useEffect(() => {
         const clientToSvg = (clientX: number, clientY: number) => {
@@ -164,11 +172,11 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 const simLinks = l.map(d => ({ source: d.source, target: d.target, value: d.weight }));
 
                 const simulation = d3.forceSimulation(simNodes)
-                    .force('link', d3.forceLink(simLinks).id((d: any) => d.id).distance((d: any) => 160 - Math.min(80, d.value * 10)))
-                    .force('charge', d3.forceManyBody().strength(-320))
-                    .force('collide', d3.forceCollide().radius((d: any) => 18 + Math.min(14, d.degree * 0.7)).iterations(3))
-                    .force('center', d3.forceCenter(cxLocal, cyLocal).strength(1))
-                    .force('centering', d3.forceRadial(Math.min(cxLocal, cyLocal) * 0.7, cxLocal, cyLocal).strength(0.05));
+                    .force('link', d3.forceLink(simLinks).id((d: any) => d.id).distance((d: any) => linkBaseDistance - Math.min(80, d.value * 10)))
+                    .force('charge', d3.forceManyBody().strength(chargeStrength))
+                    .force('collide', d3.forceCollide().radius((d: any) => collideBaseRadius + Math.min(14, d.degree * 0.7)).iterations(3))
+                    .force('center', d3.forceCenter(cxLocal, cyLocal).strength(centerStrength))
+                    .force('centering', d3.forceRadial(Math.min(cxLocal, cyLocal) * 0.7, cxLocal, cyLocal).strength(radialStrength));
 
                 simRef.current = simulation;
 
@@ -242,6 +250,41 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
     const cx = containerWidth / 2;
     const cy = containerHeight / 2;
+
+    // when any tuning parameter changes, update the live simulation forces
+    React.useEffect(() => {
+        const sim = simRef.current;
+        if (!sim) return;
+        let cancelled = false;
+        (async () => {
+            try {
+                const d3 = (await import('d3-force')) as typeof import('d3-force');
+                // update link distance
+                const linkF = sim.force('link');
+                if (linkF && typeof linkF.distance === 'function') {
+                    linkF.distance((d: any) => linkBaseDistance - Math.min(80, d.value * 10));
+                }
+                // update charge
+                const chargeF = sim.force('charge');
+                if (chargeF && typeof chargeF.strength === 'function') {
+                    chargeF.strength(chargeStrength as any);
+                }
+                // update collide radius function
+                const collideF = sim.force('collide');
+                if (collideF && typeof collideF.radius === 'function') {
+                    collideF.radius((d: any) => collideBaseRadius + Math.min(14, d.degree * 0.7));
+                }
+                // replace center & radial forces so they capture new cx/cy and strengths
+                sim.force('center', d3.forceCenter(cx, cy).strength(centerStrength));
+                sim.force('centering', d3.forceRadial(Math.min(cx, cy) * 0.7, cx, cy).strength(radialStrength));
+
+                if (!cancelled) sim.alphaTarget(0.25).restart();
+            } catch (err) {
+                // ignore
+            }
+        })();
+        return () => { cancelled = true; };
+    }, [linkBaseDistance, chargeStrength, collideBaseRadius, centerStrength, radialStrength, cx, cy]);
 
     // ...autoscale fitToBounds logic removed...
 
@@ -327,7 +370,10 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         const onPointerDown = (e: PointerEvent) => {
             // only start pan on primary button and when target is svg (background)
             if (e.button !== 0) return;
-            if ((e.target as HTMLElement).closest('circle') || (e.target as HTMLElement).closest('text')) return;
+            const tgt = e.target as HTMLElement | null;
+            // if the pointer down happened on an interactive control (overlay) or a node label/circle, don't start pan
+            if (!tgt) return;
+            if (tgt.closest('[data-no-pan]') || tgt.closest('circle') || tgt.closest('text')) return;
             e.preventDefault();
             e.stopPropagation();
 
@@ -525,7 +571,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                     const p = { x: node.x ?? cx, y: node.y ?? cy };
                                     const isYou = node.id === YOUR_NAME;
                                     const r = isYou ? 10 + Math.min(12, node.degree) : 6 + Math.min(8, node.degree * 0.4);
-                                    const stroke = isYou ? '#ff77ee' : '#ffd670';
+                                    const stroke = isYou ? '#ff00ff' : '#ffd670';
                                     // subtle fill: gentle tint behind each node for better legibility
                                     const fill = isYou ? 'rgba(255,119,238,0.5)' : 'rgba(255,215,112,0.5)';
                                     const filter = isYou ? 'url(#glow-pink)' : undefined;
@@ -690,7 +736,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                                 x={r + 6}
                                                 y={4}
                                                 fontSize={12}
-                                                fill={isYou ? '#ff77ee' : '#ffdfe8'}
+                                                fill={isYou ? '#ff00ff' : '#ffdfe8'}
                                                 style={{
                                                     fontFamily: 'ui-monospace, monospace',
                                                     pointerEvents: 'none',
@@ -709,6 +755,36 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                             </g>
                         </g>
                         </svg>
+
+                        {/* layout controls overlay */}
+                        <div data-no-pan="true" style={{ position: 'absolute', right: 10, top: 10, zIndex: 80, background: 'linear-gradient(135deg, rgba(18,6,24,0.72), rgba(6,12,18,0.6))', padding: controlsOpen ? 10 : 6, borderRadius: 10, color: '#9ee6ff', fontSize: 12, minWidth: controlsOpen ? 260 : 40, width: controlsOpen ? 260 : 40, transition: 'width 220ms ease, padding 160ms ease' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: controlsOpen ? 8 : 0 }}>
+                                <strong style={{ fontSize: 13, color: '#ff00ff' }}>{controlsOpen ? 'Layout' : ''}</strong>
+                                <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+                                    {controlsOpen ? (
+                                        <>
+                                            <button onClick={() => { setLinkBaseDistance(220); setChargeStrength(-420); setCollideBaseRadius(20); setCenterStrength(0.9); setRadialStrength(0.06); }} style={{ background: 'transparent', color: '#ff00ff', border: '1px solid rgba(255,0,255,0.12)', padding: '3px 8px', borderRadius: 6 }}>Spread</button>
+                                            <button onClick={() => { setLinkBaseDistance(120); setChargeStrength(-240); setCollideBaseRadius(14); setCenterStrength(1.2); setRadialStrength(0.03); }} style={{ background: 'transparent', color: '#00ffff', border: '1px solid rgba(0,255,255,0.08)', padding: '3px 8px', borderRadius: 6 }}>Compact</button>
+                                        </>
+                                    ) : null}
+                                    <button aria-label={controlsOpen ? 'Collapse' : 'Open'} onClick={() => setControlsOpen(v => !v)} style={{ background: controlsOpen ? 'rgba(255,0,255,0.06)' : 'rgba(0,255,255,0.06)', color: controlsOpen ? '#ff00ff' : '#00ffff', border: 'none', padding: 6, borderRadius: 6 }}>{controlsOpen ? '–' : '≡'}</button>
+                                </div>
+                            </div>
+                            {controlsOpen ? (
+                            <div style={{ display: 'grid', gap: 8 }}>
+                                <label style={{ fontSize: 11, color: '#00ffff' }}>Link base distance: <span style={{ color: '#ff00ff', fontWeight: 700 }}>{linkBaseDistance}</span></label>
+                                <input style={{ accentColor: '#ff00ff' }} type="range" min={60} max={300} value={linkBaseDistance} onChange={e => setLinkBaseDistance(Number(e.target.value))} />
+                                <label style={{ fontSize: 11, color: '#00ffff' }}>Charge strength: <span style={{ color: '#ff00ff', fontWeight: 700 }}>{chargeStrength}</span></label>
+                                <input style={{ accentColor: '#ff00ff' }} type="range" min={-800} max={-80} value={chargeStrength} onChange={e => setChargeStrength(Number(e.target.value))} />
+                                <label style={{ fontSize: 11, color: '#00ffff' }}>Collide radius: <span style={{ color: '#ff00ff', fontWeight: 700 }}>{collideBaseRadius}</span></label>
+                                <input style={{ accentColor: '#ff00ff' }} type="range" min={6} max={40} value={collideBaseRadius} onChange={e => setCollideBaseRadius(Number(e.target.value))} />
+                                <label style={{ fontSize: 11, color: '#00ffff' }}>Center force: <span style={{ color: '#ff00ff', fontWeight: 700 }}>{Number(centerStrength.toFixed(2))}</span></label>
+                                <input style={{ accentColor: '#ff00ff' }} type="range" min={0} max={2} step={0.01} value={centerStrength} onChange={e => setCenterStrength(Number(e.target.value))} />
+                                <label style={{ fontSize: 11, color: '#00ffff' }}>Radial force: <span style={{ color: '#ff00ff', fontWeight: 700 }}>{Number(radialStrength.toFixed(3))}</span></label>
+                                <input style={{ accentColor: '#ff00ff' }} type="range" min={0} max={0.2} step={0.005} value={radialStrength} onChange={e => setRadialStrength(Number(e.target.value))} />
+                            </div>
+                            ) : null}
+                        </div>
 
                         {/* tooltip (hover) — inside left area */}
                         {hoverAuthor && tooltipPos ? (
