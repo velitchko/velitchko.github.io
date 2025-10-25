@@ -211,9 +211,14 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         })();
 
         return () => {
+            // mark this layout run as no longer mounted so async callbacks stop
             mounted = false;
+            // stop any running simulation from the previous run and clear the ref
+            // IMPORTANT: we clear simRef.current so a subsequent effect run (e.g. after resize)
+            // will recreate and restart the simulation instead of leaving a stopped sim.
             if (simRef.current) {
                 try { simRef.current.stop(); } catch (e) { }
+                try { simRef.current = null; } catch (e) { /* ignore */ }
             }
         };
     }, [containerWidth, containerHeight]);
