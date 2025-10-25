@@ -3,6 +3,24 @@
 import React from 'react';
 import { publications } from '@/data/publications';
 import { YOUR_NAME } from '@/data/publications';
+import type { Simulation, SimulationNodeDatum, SimulationLinkDatum, ForceLink, ForceManyBody, ForceCollide } from 'd3-force';
+
+// Simulation node/link typings to avoid using `any` everywhere
+interface SimNode extends SimulationNodeDatum {
+    id: string;
+    name: string;
+    degree: number;
+    x?: number;
+    y?: number;
+    fx?: number | null;
+    fy?: number | null;
+}
+
+interface SimLink extends SimulationLinkDatum<SimNode> {
+    source: string | SimNode;
+    target: string | SimNode;
+    value?: number;
+}
 
 type Node = { id: string; name: string; degree: number; x?: number; y?: number };
 type Link = { source: string; target: string; weight: number };
@@ -32,7 +50,7 @@ function buildCoauthorGraph() {
         nodeMap.set(b, (nodeMap.get(b) || 0) + w);
     });
 
-    const nodes: Node[] = Array.from(nodeMap.entries()).map(([name, _]) => ({
+    const nodes: Node[] = Array.from(nodeMap.entries()).map(([name]) => ({
         id: name,
         name,
         degree: nodeMap.get(name) || 0
@@ -59,7 +77,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
     const [scale, setScale] = React.useState(1);
 
     const svgRef = React.useRef<SVGSVGElement | null>(null);
-    const simRef = React.useRef<any>(null);
+    const simRef = React.useRef<Simulation<SimNode, SimLink> | null>(null);
     const draggingNodeRef = React.useRef<string | null>(null);
     const dragPointerIdRef = React.useRef<number | null>(null);
 
@@ -91,7 +109,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         const clientToSvg = (clientX: number, clientY: number) => {
             const svg = svgRef.current;
             if (!svg) return { x: clientX, y: clientY };
-            const pt = (svg as any).createSVGPoint();
+            const pt = (svg as SVGSVGElement).createSVGPoint();
             pt.x = clientX;
             pt.y = clientY;
             const ctm = svg.getScreenCTM();
@@ -108,7 +126,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 const x = p.x / scale - tx;
                 const y = p.y / scale - ty;
             if (simRef.current) {
-                const simNode = simRef.current.nodes().find((d: any) => d.id === draggingNodeRef.current);
+                const simNode = simRef.current.nodes().find((d: SimNode) => d.id === draggingNodeRef.current);
                 if (simNode) {
                     simNode.fx = x;
                     simNode.fy = y;
@@ -120,7 +138,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
             if (!draggingNodeRef.current) return;
             if (dragPointerIdRef.current != null && e.pointerId !== dragPointerIdRef.current) return;
             if (simRef.current) {
-                const simNode = simRef.current.nodes().find((d: any) => d.id === draggingNodeRef.current);
+                const simNode = simRef.current.nodes().find((d: SimNode) => d.id === draggingNodeRef.current);
                 if (simNode) {
                     simNode.fx = null;
                     simNode.fy = null;
@@ -131,13 +149,9 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 // release pointer capture if possible
                 const el = document.elementFromPoint(e.clientX, e.clientY) as Element | null;
                 if (el && dragPointerIdRef.current != null) {
-                    try {
-                        (el as Element).releasePointerCapture(dragPointerIdRef.current);
-                    } catch (err) {
-                        // ignore
-                    }
+                    try { (el as Element).releasePointerCapture(dragPointerIdRef.current); } catch { }
                 }
-            } catch (err) {
+            } catch {
                 // ignore
             }
             draggingNodeRef.current = null;
@@ -168,13 +182,13 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
             try {
                 const d3 = (await import('d3-force')) as typeof import('d3-force');
-                const simNodes = n.map(d => ({ ...d }));
-                const simLinks = l.map(d => ({ source: d.source, target: d.target, value: d.weight }));
+                const simNodes: SimNode[] = n.map(d => ({ ...d }));
+                const simLinks: SimLink[] = l.map(d => ({ source: d.source, target: d.target, value: d.weight }));
 
                 const simulation = d3.forceSimulation(simNodes)
-                    .force('link', d3.forceLink(simLinks).id((d: any) => d.id).distance((d: any) => linkBaseDistance - Math.min(80, d.value * 10)))
-                    .force('charge', d3.forceManyBody().strength(chargeStrength))
-                    .force('collide', d3.forceCollide().radius((d: any) => collideBaseRadius + Math.min(14, d.degree * 0.7)).iterations(3))
+                    .force('link', d3.forceLink(simLinks).id((d: SimulationNodeDatum) => (d as SimNode).id).distance((d: SimulationLinkDatum<SimNode>) => linkBaseDistance - Math.min(80, ((d as SimLink).value ?? 0) * 10)))
+                    .force('charge', d3.forceManyBody().strength(chargeStrength as unknown as number))
+                    .force('collide', d3.forceCollide().radius((d: SimulationNodeDatum) => collideBaseRadius + Math.min(14, ((d as SimNode).degree ?? 0) * 0.7)).iterations(3))
                     .force('center', d3.forceCenter(cxLocal, cyLocal).strength(centerStrength))
                     .force('centering', d3.forceRadial(Math.min(cxLocal, cyLocal) * 0.7, cxLocal, cyLocal).strength(radialStrength));
 
@@ -182,13 +196,13 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
                 simulation.on('tick', () => {
                     if (!mounted) return;
-                    setNodes(simNodes.map((nd: any) => ({ ...nd })));
+                    setNodes(simNodes.map((nd: SimNode) => ({ ...nd })));
                     setLinks(l);
                 });
 
                 simulation.alpha(1).restart();
                 setLayoutReady(true);
-            } catch (err) {
+            } catch {
                 // fallback radial
                 const you = n.find(x => x.id === YOUR_NAME) || null;
                 const others = n.filter(x => x.id !== YOUR_NAME).sort((a, b) => b.degree - a.degree || a.name.localeCompare(b.name));
@@ -213,12 +227,12 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         return () => {
             // mark this layout run as no longer mounted so async callbacks stop
             mounted = false;
-            // stop any running simulation from the previous run and clear the ref
+                // stop any running simulation from the previous run and clear the ref
             // IMPORTANT: we clear simRef.current so a subsequent effect run (e.g. after resize)
             // will recreate and restart the simulation instead of leaving a stopped sim.
             if (simRef.current) {
-                try { simRef.current.stop(); } catch (e) { }
-                try { simRef.current = null; } catch (e) { /* ignore */ }
+                try { simRef.current.stop(); } catch { }
+                try { simRef.current = null; } catch { /* ignore */ }
             }
         };
     }, [containerWidth, containerHeight]);
@@ -242,7 +256,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 setContainerHeight(Math.max(80, Math.floor(r.height)));
             }
         });
-        try { ro.observe(el as Element); } catch (e) { }
+    try { ro.observe(el as Element); } catch { }
         return () => {
             ro.disconnect();
             // clear any pending hover timeout on unmount
@@ -262,29 +276,29 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         if (!sim) return;
         let cancelled = false;
         (async () => {
-            try {
-                const d3 = (await import('d3-force')) as typeof import('d3-force');
-                // update link distance
-                const linkF = sim.force('link');
-                if (linkF && typeof linkF.distance === 'function') {
-                    linkF.distance((d: any) => linkBaseDistance - Math.min(80, d.value * 10));
-                }
-                // update charge
-                const chargeF = sim.force('charge');
-                if (chargeF && typeof chargeF.strength === 'function') {
-                    chargeF.strength(chargeStrength as any);
-                }
-                // update collide radius function
-                const collideF = sim.force('collide');
-                if (collideF && typeof collideF.radius === 'function') {
-                    collideF.radius((d: any) => collideBaseRadius + Math.min(14, d.degree * 0.7));
-                }
+                try {
+                    const d3 = (await import('d3-force')) as typeof import('d3-force');
+                    // update link distance
+                    const linkF = sim.force('link') as unknown as ForceLink<SimNode, SimLink> | undefined;
+                    if (linkF && typeof linkF.distance === 'function') {
+                        linkF.distance((d: SimulationLinkDatum<SimNode>) => linkBaseDistance - Math.min(80, ((d as SimLink).value ?? 0) * 10));
+                    }
+                    // update charge
+                    const chargeF = sim.force('charge') as unknown as ForceManyBody<SimNode> | undefined;
+                    if (chargeF && typeof chargeF.strength === 'function') {
+                        chargeF.strength(chargeStrength as unknown as number);
+                    }
+                    // update collide radius function
+                    const collideF = sim.force('collide') as unknown as ForceCollide<SimNode> | undefined;
+                    if (collideF && typeof collideF.radius === 'function') {
+                        collideF.radius((d: SimulationNodeDatum) => collideBaseRadius + Math.min(14, ((d as SimNode).degree ?? 0) * 0.7));
+                    }
                 // replace center & radial forces so they capture new cx/cy and strengths
                 sim.force('center', d3.forceCenter(cx, cy).strength(centerStrength));
                 sim.force('centering', d3.forceRadial(Math.min(cx, cy) * 0.7, cx, cy).strength(radialStrength));
 
                 if (!cancelled) sim.alphaTarget(0.25).restart();
-            } catch (err) {
+            } catch {
                 // ignore
             }
         })();
@@ -294,7 +308,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
     // ...autoscale fitToBounds logic removed...
 
     // helper: convert an SVG point (user-space) to client/screen coords
-    const svgUserToClient = (ux: number, uy: number) => {
+    const svgUserToClient = React.useCallback((ux: number, uy: number) => {
         const svg = svgRef.current;
         if (!svg) return null;
         try {
@@ -302,17 +316,17 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
             // so the root-user coordinates of a node are ((ux + tx) * scale, (uy + ty) * scale)
             const rootX = (ux + tx) * scale;
             const rootY = (uy + ty) * scale;
-            const pt = (svg as any).createSVGPoint();
+            const pt = (svg as SVGSVGElement).createSVGPoint();
             pt.x = rootX;
             pt.y = rootY;
             const ctm = svg.getScreenCTM();
             if (!ctm) return null;
             const p = pt.matrixTransform(ctm);
             return { x: p.x, y: p.y };
-        } catch (err) {
+        } catch {
             return null;
         }
-    };
+    }, [tx, ty, scale]);
 
     const hoverTimeoutRef = React.useRef<number | null>(null);
     const lastTooltipUpdateRef = React.useRef<number>(0);
@@ -357,16 +371,14 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         });
     // note: intentionally exclude tooltipPos from deps to avoid update-loop; the effect
     // should run when hoverAuthor, nodes, or transforms change
-    }, [hoverAuthor, nodes, tx, ty, scale, containerWidth, containerHeight, selectedAuthor]);
+    }, [hoverAuthor, nodes, tx, ty, scale, containerWidth, containerHeight, selectedAuthor, cx, cy, svgUserToClient]);
 
     // pointer-based pan handlers
     React.useEffect(() => {
         const svg = svgRef.current;
         if (!svg) return;
 
-        let dragging = false;
-        let startX = 0;
-        let startY = 0;
+    let dragging = false;
         let startTx = 0;
         let startTy = 0;
         let startSvgX = 0;
@@ -383,12 +395,10 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
             e.stopPropagation();
 
             dragging = true;
-            startX = e.clientX;
-            startY = e.clientY;
             startTx = tx;
             startTy = ty;
             // convert start client to svg user coords
-            const pt = (svg as any).createSVGPoint();
+            const pt = (svg as SVGSVGElement).createSVGPoint();
             pt.x = e.clientX;
             pt.y = e.clientY;
             const ctm = svg.getScreenCTM();
@@ -404,7 +414,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
             const docMove = (ev: PointerEvent) => {
                 if (!dragging) return;
-                const pt2 = (svg as any).createSVGPoint();
+                const pt2 = (svg as SVGSVGElement).createSVGPoint();
                 pt2.x = ev.clientX;
                 pt2.y = ev.clientY;
                 const ctm2 = svg.getScreenCTM();
@@ -426,7 +436,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
             const docUp = (ev: PointerEvent) => {
                 if (!dragging) return;
                 dragging = false;
-                try { (svg as any).releasePointerCapture(ev.pointerId); } catch (err) {}
+                try { svg.releasePointerCapture(ev.pointerId); } catch { }
                 document.removeEventListener('pointermove', docMove);
                 document.removeEventListener('pointerup', docUp);
             };
@@ -448,12 +458,12 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         const svg = svgRef.current;
         if (!svg) return;
 
-        const onWheel = (e: WheelEvent) => {
+    const onWheel = (e: WheelEvent) => {
             e.preventDefault();
             const delta = -e.deltaY;
             const zoomFactor = delta > 0 ? 1.08 : 0.92;
             // zoom around mouse: map pointer to svg root-user coordinates
-            const pt = (svg as any).createSVGPoint();
+            const pt = (svg as SVGSVGElement).createSVGPoint();
             pt.x = e.clientX;
             pt.y = e.clientY;
             const ctm = svg.getScreenCTM();
@@ -473,9 +483,9 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
         };
 
         const target = wrapperRef.current || svg;
-        if (target) target.addEventListener('wheel', onWheel as any, { passive: false });
+        if (target) target.addEventListener('wheel', onWheel as unknown as EventListener, { passive: false });
         return () => {
-            if (target) target.removeEventListener('wheel', onWheel as any);
+            if (target) target.removeEventListener('wheel', onWheel as unknown as EventListener);
         };
     }, [scale, tx, ty, layoutReady]);
 
@@ -489,7 +499,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                 // leave some breathing room (padding/margins)
                 const extra = 200; // px
                 setOuterHeight(`calc(100vh - ${Math.round(headerH + extra)}px)`);
-            } catch (err) {
+            } catch {
                 setOuterHeight('60vh');
             }
         };
@@ -572,7 +582,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
                             {/* nodes (with drag handlers) */}
                             <g>
-                                {nodes.map((node, i) => {
+                                {nodes.map((node) => {
                                     const p = { x: node.x ?? cx, y: node.y ?? cy };
                                     const isYou = node.id === YOUR_NAME;
                                     const r = isYou ? 10 + Math.min(12, node.degree) : 6 + Math.min(8, node.degree * 0.4);
@@ -585,15 +595,15 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                         // prevent other handlers (pan) from interfering
                                         e.stopPropagation();
                                         e.preventDefault();
-                                        try { (e.nativeEvent as any).stopImmediatePropagation(); } catch (err) {}
+                                        try { (e.nativeEvent as Event & { stopImmediatePropagation?: () => void }).stopImmediatePropagation?.(); } catch {}
 
                                         draggingNodeRef.current = node.id;
                                         dragPointerIdRef.current = e.pointerId;
                                         const targetEl = e.target as Element;
-                                        try { targetEl.setPointerCapture(e.pointerId); } catch (err) {}
+                                        try { targetEl.setPointerCapture(e.pointerId); } catch {}
 
                                         if (simRef.current) {
-                                            const simNode = simRef.current.nodes().find((d: any) => d.id === node.id);
+                                            const simNode = simRef.current.nodes().find((d: SimNode) => d.id === node.id);
                                             if (simNode) {
                                                 simNode.fx = node.x;
                                                 simNode.fy = node.y;
@@ -606,7 +616,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                             if (ev.pointerId !== e.pointerId) return;
                                             const svg = svgRef.current;
                                             if (!svg) return;
-                                            const pt = (svg as any).createSVGPoint();
+                                            const pt = (svg as SVGSVGElement).createSVGPoint();
                                             pt.x = ev.clientX;
                                             pt.y = ev.clientY;
                                             const ctm = svg.getScreenCTM();
@@ -621,7 +631,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                             const x = px / scale - tx;
                                             const y = py / scale - ty;
                                             if (simRef.current) {
-                                                const simNode = simRef.current.nodes().find((d: any) => d.id === draggingNodeRef.current);
+                                                const simNode = simRef.current.nodes().find((d: SimNode) => d.id === draggingNodeRef.current);
                                                 if (simNode) {
                                                     simNode.fx = x;
                                                     simNode.fy = y;
@@ -631,11 +641,11 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
                                         const docUp = (ev: PointerEvent) => {
                                             if (ev.pointerId !== e.pointerId) return;
-                                            try { targetEl.releasePointerCapture(ev.pointerId); } catch (err) {}
+                                            try { targetEl.releasePointerCapture(ev.pointerId); } catch {}
                                             draggingNodeRef.current = null;
                                             dragPointerIdRef.current = null;
                                             if (simRef.current) {
-                                                const simNode = simRef.current.nodes().find((d: any) => d.id === node.id);
+                                                const simNode = simRef.current.nodes().find((d: SimNode) => d.id === node.id);
                                                 if (simNode) {
                                                     simNode.fx = null;
                                                     simNode.fy = null;
@@ -679,7 +689,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                                     hoverTimeoutRef.current = null;
                                                 }, 80);
                                             }
-                                        } catch (err) {
+                                        } catch {
                                             if (!hoverAuthor) setHoverAuthor(node.id);
                                         }
                                     };
@@ -697,7 +707,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                                 if (!prev || prev.left !== left || prev.top !== top) return { left, top };
                                                 return prev;
                                             });
-                                        } catch (err) {}
+                                        } catch {}
                                     };
 
                                     const onNodePointerLeave = () => {
