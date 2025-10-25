@@ -288,9 +288,11 @@ export default function Home() {
       {/* Publications */}
       <section id="publications" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan mb-12 text-center">
-            [pubs.bib]
-          </h2>
+          <div className="flex items-center justify-center mb-6 gap-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan m-0">
+              [pubs.bib]
+            </h2>
+          </div>
 
           {/* Keyword Filter */}
           {topKeywords.length > 0 && (
@@ -332,6 +334,13 @@ export default function Home() {
               )}
             </div>
           )}
+
+          {/* Golden separator with icon (under keywords, before first publication) */}
+          <div className="flex items-center justify-center mb-8">
+            <a href="/coauthors" className="inline-block text-sm text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors" aria-label="Explore co-author network">
+              → Explore co-author network
+            </a>
+          </div>
 
           {/* Publications List */}
           <div className="space-y-12">
