@@ -94,7 +94,7 @@ export default function Home() {
               
               {/* CV Download Button */}
               <a
-                href="/resume.pdf"
+                href="/cv.pdf"
                 download="Velitchko_Filipov_CV.pdf"
                 className="retro-button w-full text-center inline-flex items-center justify-center gap-2"
               >
