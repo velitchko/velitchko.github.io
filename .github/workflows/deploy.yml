@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  # Allow manual (UI) triggers so you can redeploy from Actions -> Run workflow
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -17,6 +19,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # Expose the public site URL at build-time so Next can render absolute OG URLs.
+    env:
+      NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,6 +37,9 @@ jobs:
 
       - name: Build with Next.js
         run: npm run build
+        # As an alternative to job-level env, you can also inject at step-level:
+        # env:
+        #   NEXT_PUBLIC_SITE_URL: ${{ secrets.NEXT_PUBLIC_SITE_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
