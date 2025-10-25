@@ -43,7 +43,7 @@ export default function Footer() {
               </a>
             </p>
             <p className="text-neon-cyan text-sm">
-              <span className="text-neon-pink">Totally</span> no kernel panics detected
+              <span className="text-neon-pink">Totally</span> no kernel panic. I wouldn&apos;t lie to you.
             </p>
           </div>
 
