@@ -102,7 +102,10 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
     const [collideBaseRadius, setCollideBaseRadius] = React.useState<number>(18);
     const [centerStrength, setCenterStrength] = React.useState<number>(1);
     const [radialStrength, setRadialStrength] = React.useState<number>(0.05);
-    const [controlsOpen, setControlsOpen] = React.useState<boolean>(true);
+    // start with controls closed by default for a cleaner initial view (user can open)
+    const [controlsOpen, setControlsOpen] = React.useState<boolean>(false);
+    // Apply a responsive default for controls on first mount: keep them closed on small screens
+    const initialResponsiveAppliedRef = React.useRef(false);
 
     // pointer move/up listeners to handle node dragging
     React.useEffect(() => {
@@ -266,6 +269,16 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
             }
         };
     }, [layoutReady]);
+
+    // apply mobile defaults once after we have measured containerWidth
+    React.useEffect(() => {
+        if (initialResponsiveAppliedRef.current) return;
+        // treat narrow containers as mobile; close controls by default
+        if (containerWidth && containerWidth < 700) {
+            setControlsOpen(false);
+        }
+        initialResponsiveAppliedRef.current = true;
+    }, [containerWidth]);
 
     const cx = containerWidth / 2;
     const cy = containerHeight / 2;
@@ -510,7 +523,8 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
     return (
     <div className="rounded-lg bg-black/40" style={{ userSelect: 'none', WebkitUserSelect: 'none', height: outerHeight, display: 'flex', flexDirection: 'column', justifyContent: 'stretch', alignItems: 'stretch', gap: 0, padding: 0 }}>
-                <div style={{ display: 'flex', gap: 0, alignItems: 'stretch', width: '100%', margin: 0, flex: 1, overflow: 'hidden' }}>
+                            {/* switch to column layout on narrow containers for better mobile UX */}
+                            <div style={{ display: 'flex', gap: 0, alignItems: 'stretch', width: '100%', margin: 0, flex: 1, overflow: 'hidden', flexDirection: containerWidth && containerWidth < 700 ? 'column' : 'row' }}>
                     {/* left: svg area (measured) */}
                     <div ref={wrapperRef} style={{ flex: 1, position: 'relative', minWidth: 0, height: '100%', overflow: 'hidden' }}>
                         <svg ref={svgRef} width="100%" height="100%" viewBox={`0 0 ${containerWidth} ${containerHeight}`} style={{ touchAction: 'none', userSelect: 'none', width: '100%', height: '100%', display: 'block' }}>
@@ -772,7 +786,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                         </svg>
 
                         {/* layout controls overlay */}
-                        <div data-no-pan="true" style={{ position: 'absolute', right: 10, top: 10, zIndex: 80, background: 'linear-gradient(135deg, rgba(18,6,24,0.72), rgba(6,12,18,0.6))', padding: controlsOpen ? 10 : 6, borderRadius: 10, color: '#9ee6ff', fontSize: 12, minWidth: controlsOpen ? 260 : 40, width: controlsOpen ? 260 : 40, transition: 'width 220ms ease, padding 160ms ease' }}>
+                                        <div data-no-pan="true" style={{ position: 'absolute', right: 10, top: 10, zIndex: 80, background: 'linear-gradient(135deg, rgba(18,6,24,0.72), rgba(6,12,18,0.6))', padding: controlsOpen ? 10 : 8, borderRadius: 10, color: '#9ee6ff', fontSize: 12, minWidth: controlsOpen ? 260 : 56, width: controlsOpen ? 260 : 56, transition: 'width 220ms ease, padding 160ms ease' }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: controlsOpen ? 8 : 0 }}>
                                 <strong style={{ fontSize: 13, color: '#ff00ff' }}>{controlsOpen ? 'Layout' : ''}</strong>
                                 <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
@@ -782,7 +796,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                             <button onClick={() => { setLinkBaseDistance(120); setChargeStrength(-240); setCollideBaseRadius(14); setCenterStrength(1.2); setRadialStrength(0.03); }} style={{ background: 'transparent', color: '#00ffff', border: '1px solid rgba(0,255,255,0.08)', padding: '3px 8px', borderRadius: 6 }}>Compact</button>
                                         </>
                                     ) : null}
-                                    <button aria-label={controlsOpen ? 'Collapse' : 'Open'} onClick={() => setControlsOpen(v => !v)} style={{ background: controlsOpen ? 'rgba(255,0,255,0.06)' : 'rgba(0,255,255,0.06)', color: controlsOpen ? '#ff00ff' : '#00ffff', border: 'none', padding: 6, borderRadius: 6 }}>{controlsOpen ? '–' : '≡'}</button>
+                                    <button aria-label={controlsOpen ? 'Collapse' : 'Open'} onClick={() => setControlsOpen(v => !v)} style={{ background: controlsOpen ? 'rgba(255,0,255,0.06)' : 'rgba(0,255,255,0.06)', color: controlsOpen ? '#ff00ff' : '#00ffff', border: 'none', padding: controlsOpen ? 6 : 10, borderRadius: controlsOpen ? 6 : 10, fontSize: controlsOpen ? 12 : 18, width: controlsOpen ? 'auto' : 44, height: controlsOpen ? 'auto' : 44, display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{controlsOpen ? '–' : '≡'}</button>
                                 </div>
                             </div>
                             {controlsOpen ? (
@@ -810,8 +824,8 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                         ) : null}
                     </div>
 
-                    {/* right: publications panel (outside SVG) */}
-                    <div style={{ width: selectedAuthor ? 340 : 180, transition: 'width 240ms ease', minWidth: 0 }}>
+                    {/* right: publications panel (outside SVG) — on narrow screens stack below the SVG and use full width */}
+                    <div style={{ width: containerWidth && containerWidth < 700 ? '100%' : (selectedAuthor ? 340 : 180), transition: 'width 240ms ease', minWidth: 0, marginTop: containerWidth && containerWidth < 700 ? 12 : 0 }}>
                         {selectedAuthor ? (
                             <div className="border-2 border-neon-cyan/30 bg-retro-darker/90 p-3 rounded" style={{ maxHeight: '70vh', overflowY: 'auto' }}>
                                 <div className="flex items-start justify-between mb-3">
