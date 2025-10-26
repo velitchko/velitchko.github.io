@@ -57,6 +57,12 @@ export default function RootLayout({
           integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
           crossOrigin="anonymous"
         />
+        {/* GoatCounter analytics (https://www.goatcounter.com) */}
+        <script
+          data-goatcounter="https://velitchko.goatcounter.com/count"
+          async
+          src="//gc.zgo.at/count.js"
+        ></script>
       </head>
       <body className="crt-screen">
         {/* Background geometric shapes */}
