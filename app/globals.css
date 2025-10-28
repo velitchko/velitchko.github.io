@@ -1175,3 +1175,73 @@ h1, h2, h3, h4, h5, h6 {
   image-rendering: pixelated;
   border-color: rgba(255, 0, 255, 0.5);
 }
+
+/* Chicken game specific styles (moved from inline in page.tsx) */
+@keyframes pulse {
+  0% { transform: scale(0.98); opacity: 0.95 }
+  50% { transform: scale(1.04); opacity: 1 }
+  100% { transform: scale(0.98); opacity: 0.95 }
+}
+.pulse-chicken { animation: pulse 1.6s ease-in-out infinite }
+.pulse-die { animation: pulse 1.6s ease-in-out infinite }
+
+/* Page layout helpers for chicken game */
+.chicken-main { min-height: 100vh; display:flex; align-items:center; justify-content:center; padding:3rem }
+.chicken-container { width:100%; max-width:960px; text-align:center }
+.chicken-stack { display:flex; flex-direction:column; align-items:center; gap:1.25rem }
+
+/* Die and emoji sizing */
+.die-large { display:inline-block; font-size: 40vmin; line-height: 0.9; position: relative; z-index: 1 }
+.die-large.angled { transform: rotate(-6deg); -webkit-font-smoothing:antialiased }
+
+/* Heading and stacking adjustments so glow doesn't visually collide */
+.chicken-heading { position: relative; z-index: 10; margin-bottom: 3vmin }
+
+/* Ensure the large die doesn't visually intrude into the heading area */
+.chicken-stack > .die-large { margin-top: 1.5vmin; z-index: 1 }
+
+/* Make the die's glitch pseudo-elements sit underneath the heading by lowering their stacking */
+.die-large.glitch::before,
+.die-large.glitch::after {
+  z-index: 0;
+}
+
+/* Play / Try buttons — larger and gold-glow variant */
+.play-btn {
+  background: transparent;
+  color: #ffd86b;
+  font-weight: 900;
+  border-radius: 12px;
+  padding: 0.9rem 1.4rem;
+  font-size: clamp(16px, 3.6vmin, 22px);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+  border: 2px solid rgba(255,215,0,0.16);
+  cursor: pointer;
+  transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease, background 160ms ease;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 140px;
+  height: 60px;
+}
+.play-btn:hover { transform: translateY(-2px); }
+.play-btn.glitch {
+  /* stronger gold neon glow */
+  box-shadow: 0 12px 80px rgba(255,215,0,0.14), 0 0 160px rgba(255,223,0,0.06);
+  border-color: rgba(255,215,0,0.45);
+  color: #ffd86b;
+  text-shadow: 0 0 18px rgba(255,238,170,0.22);
+  filter: drop-shadow(0 0 28px rgba(255,215,0,0.16));
+}
+.play-btn:active { transform: translateY(1px) scale(0.996); }
+
+/* wheel styles */
+.wheel-viewport { width: 56vmin; max-width: 420px; height: 40vmin; max-height: 320px; overflow: hidden; margin: 1.2rem auto; border-radius: 18px; background: linear-gradient(180deg, rgba(8,6,12,0.6), rgba(6,8,12,0.4)); box-shadow: inset 0 6px 24px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; position:relative }
+.wheel-list { will-change: transform; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; z-index:1; width:100%; }
+.wheel-item { display:flex; align-items:center; justify-content:center; height: 12vmin; font-size: 10vmin; min-height: 80px; line-height:1; z-index:1; color: #fff; font-family: 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','Segoe UI Symbol', system-ui, sans-serif; text-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 10px rgba(255,215,0,0.04); }
+.wheel-center-ring { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:12vmin; pointer-events:none; border-radius:12px; box-shadow: 0 0 40px rgba(255,215,0,0.08) inset; border: 2px solid rgba(255,215,112,0.06); }
+.wheel-viewport.spinning::after { content: ''; position:absolute; inset:0; backdrop-filter: blur(0px); pointer-events:none; }
+
