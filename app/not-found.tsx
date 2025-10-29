@@ -266,6 +266,12 @@ export default function NotFound() {
     setIndex(next);
   };
 
+  // Press state for tactile feedback on touch devices
+  const [isPressed, setIsPressed] = useState(false);
+  const handlePointerDown = () => setIsPressed(true);
+  const handlePointerUp = () => setIsPressed(false);
+  const handlePointerCancel = () => setIsPressed(false);
+
   // Show loading state until client-side random selection is complete
   if (!reference) {
     return (
@@ -278,7 +284,7 @@ export default function NotFound() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden grid-bg px-4">
+    <div className="notfound-page min-h-screen flex items-center justify-center relative overflow-hidden grid-bg px-4">
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/5 to-transparent pointer-events-none"></div>
       
@@ -391,33 +397,25 @@ export default function NotFound() {
 
         {/* Easter egg hint + refresh button (centered above text) */}
         <div className="flex flex-col items-center gap-3 mt-8">
-          <div className="relative flex items-center justify-center">
-            {/* soft glow ring */}
-            <span
-              aria-hidden
-              className="absolute rounded-full w-24 h-24 blur-lg"
-              style={{ boxShadow: '0 0 30px rgba(0,255,255,0.25), 0 0 60px rgba(0,255,255,0.12)' }}
-            />
+          <div className="relative flex items-center justify-center refresh-wrapper">
+            {/* soft golden glow ring */}
+            <span aria-hidden className="refresh-glow" />
 
-            {/* subtle border ring that pulses */}
-            <span
-              aria-hidden
-              className="absolute rounded-full w-24 h-24 border border-cyan-400 opacity-25 animate-pulse"
-            />
+            {/* subtle golden border ring that pulses */}
+            <span aria-hidden className="refresh-pulse-ring" />
 
             <button
               onClick={refreshReference}
+              onPointerDown={handlePointerDown}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerCancel}
+              onPointerLeave={handlePointerCancel}
               aria-label="Refresh reference"
               title="Get a new reference"
-              className="relative z-10 w-20 h-20 flex items-center justify-center rounded-full text-3xl font-bold transform-gpu transition-all duration-200 hover:scale-110 hover:shadow-[0_0_30px_rgba(0,255,255,0.85)]"
-              style={{
-                fontFamily: "'Press Start 2P', cursive",
-                border: '2px solid #00ffff',
-                color: '#00ffff',
-                background: 'transparent'
-              }}
+              className={`refresh-btn ${isPressed ? 'pressed' : ''}`}
             >
-              <span className="relative z-10" style={{ lineHeight: 1 }}>↻</span>
+              {/* micro-adjust the icon so it reads visually centered in the circle */}
+              <span className="refresh-icon">↻</span>
             </button>
           </div>
 

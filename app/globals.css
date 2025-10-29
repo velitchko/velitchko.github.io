@@ -1238,10 +1238,44 @@ h1, h2, h3, h4, h5, h6 {
 }
 .play-btn:active { transform: translateY(1px) scale(0.996); }
 
+/* Refresh control (gold neon) */
+.refresh-wrapper { display:inline-flex; align-items:center; justify-content:center; position:relative }
+.refresh-glow { position:absolute; border-radius:50%; width:5.25rem; height:5.25rem; box-shadow: 0 0 28px rgba(255,200,0,0.22), 0 0 56px rgba(255,200,0,0.10); pointer-events: none; }
+.refresh-pulse-ring { position:absolute; border-radius:50%; width:5.25rem; height:5.25rem; opacity:0.25; animation: pulse 1.8s ease-in-out infinite; border:1.5px solid rgba(255,200,0,0.9); pointer-events: none; }
+.refresh-btn { width:5rem; height:5rem; display:flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; border:2px solid rgba(255,200,0,0.95); color:rgba(255,200,0,1); font-family: 'Press Start 2P', monospace; font-size:1.375rem; transition: transform 150ms ease, box-shadow 150ms ease; box-shadow: 0 0 10px rgba(255,200,0,0.35); }
+.refresh-btn:hover { transform: scale(1.12); box-shadow: 0 0 30px rgba(255,200,0,0.85); }
+.refresh-wrapper:hover .refresh-btn { transform: scale(1.12); box-shadow: 0 0 30px rgba(255,200,0,0.85); }
+.refresh-btn:active { transform: scale(0.96); box-shadow: inset 0 0 8px rgba(255,200,0,0.12), 0 0 10px rgba(255,200,0,0.35); }
+.refresh-btn.pressed { transform: scale(0.96); box-shadow: inset 0 0 8px rgba(255,200,0,0.12), 0 0 10px rgba(255,200,0,0.35); }
+.refresh-icon { display:inline-block; line-height:1; transform: translateY(-0.12rem); font-size: 1.6rem; }
+
 /* wheel styles */
 .wheel-viewport { width: 56vmin; max-width: 420px; height: 40vmin; max-height: 320px; overflow: hidden; margin: 1.2rem auto; border-radius: 18px; background: linear-gradient(180deg, rgba(8,6,12,0.6), rgba(6,8,12,0.4)); box-shadow: inset 0 6px 24px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; position:relative }
 .wheel-list { will-change: transform; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; z-index:1; width:100%; }
 .wheel-item { display:flex; align-items:center; justify-content:center; height: 12vmin; font-size: 10vmin; min-height: 80px; line-height:1; z-index:1; color: #fff; font-family: 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','Segoe UI Symbol', system-ui, sans-serif; text-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 10px rgba(255,215,0,0.04); }
 .wheel-center-ring { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:12vmin; pointer-events:none; border-radius:12px; box-shadow: 0 0 40px rgba(255,215,0,0.08) inset; border: 2px solid rgba(255,215,112,0.06); }
 .wheel-viewport.spinning::after { content: ''; position:absolute; inset:0; backdrop-filter: blur(0px); pointer-events:none; }
+
+/* Compact mobile layout for the 404 page */
+@media (max-width: 480px) {
+  .notfound-page .max-w-2xl { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .notfound-page .glitch { font-size: 5.5rem; }
+  .notfound-page h1.glitch { font-size: 5.5rem; }
+  .notfound-page .space-y-8 { gap: 0.75rem; }
+  .notfound-page .space-y-4 { gap: 0.5rem; }
+  .notfound-page .space-y-4 .text-3xl { font-size: 1.5rem; }
+  .notfound-page .space-y-4 p.text-3xl { font-size: 1.6rem; }
+  .notfound-page .space-y-4 p.text-lg { font-size: 0.95rem; }
+  .notfound-page .space-y-4 p.text-xl { font-size: 1rem; }
+  .notfound-page .space-y-4 .p-6 { padding: 0.75rem; }
+  .notfound-page .flex.flex-col.sm\:flex-row { gap: 0.5rem; }
+  .notfound-page .group.relative.px-8 { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .notfound-page .group.relative.px-8.py-4 { padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  .notfound-page .retro-button, .notfound-page .retro-card, .notfound-page .retro-button { font-size: 0.8rem; }
+  /* compact the refresh area */
+  .notfound-page .refresh-wrapper { margin-top: 0.5rem; }
+  .notfound-page .refresh-glow, .notfound-page .refresh-pulse-ring { width: 4.25rem; height: 4.25rem; }
+  .notfound-page .refresh-btn { width: 3.5rem; height: 3.5rem; font-size: 1.125rem; }
+  .notfound-page .text-lg { font-size: 0.95rem; }
+}
 
