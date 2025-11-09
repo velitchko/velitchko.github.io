@@ -74,7 +74,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {post.hashtags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 text-sm font-mono border border-neon-pink/30 text-neon-pink/80 bg-neon-pink/5"
+                  className="px-3 py-1 text-md border border-neon-pink/30 text-neon-pink/80 bg-neon-pink/5"
+                  style={{ fontFamily: 'VT323, monospace' }}
                 >
                   #{tag}
                 </span>
@@ -87,7 +88,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {post.categories.map((category) => (
               <span
                 key={category}
-                className="px-3 py-1 text-xs border border-neon-cyan/30 text-neon-cyan/80 bg-neon-cyan/5"
+                className="px-3 py-1 text-md border border-neon-cyan/30 text-neon-cyan/80 bg-neon-cyan/5"
+                style={{ fontFamily: 'VT323, monospace' }}
               >
                 {category}
               </span>

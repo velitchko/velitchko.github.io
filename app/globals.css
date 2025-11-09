@@ -53,6 +53,16 @@ body {
   letter-spacing: 0.05em;
 }
 
+/* Global anchor offset so hash links aren't hidden under fixed nav */
+html {
+  scroll-padding-top: 4.25rem; /* calibrated to place target just below 64px nav */
+}
+
+/* Ensure any element acting as scroll container inherits (defensive) */
+.crt-screen {
+  scroll-padding-top: 4.25rem;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Press Start 2P', monospace;
   letter-spacing: 0.1em;
@@ -771,6 +781,30 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.02em;
 }
 
+/* Force ALL elements to use the same font size */
+.blog-content *,
+.blog-content h1,
+.blog-content h2,
+.blog-content h3,
+.blog-content h4,
+.blog-content h5,
+.blog-content h6,
+.blog-content p,
+.blog-content li,
+.blog-content a,
+.blog-content span,
+.blog-content div,
+.blog-content blockquote,
+.blog-content code,
+.blog-content pre,
+.blog-content strong,
+.blog-content em,
+.blog-content table,
+.blog-content th,
+.blog-content td {
+  font-size: inherit !important;
+}
+
 /* Font size variants */
 .blog-content[data-font-size="small"] {
   --blog-font-size: 1.5rem;
@@ -802,7 +836,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Headings */
 .blog-content h1 {
-  font-size: 2rem;
+  font-size: var(--blog-font-size, 1.75rem);
   font-family: 'Press Start 2P', monospace;
   color: #ff00ff;
   text-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.5);
@@ -818,12 +852,12 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 768px) {
   .blog-content h1 {
-    font-size: 2.5rem;
+    font-size: var(--blog-font-size, 1.75rem);
   }
 }
 
 .blog-content h2 {
-  font-size: 1.75rem;
+  font-size: var(--blog-font-size, 1.75rem);
   font-family: 'Press Start 2P', monospace;
   color: #00ffff;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
@@ -835,12 +869,12 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 768px) {
   .blog-content h2 {
-    font-size: 2rem;
+    font-size: var(--blog-font-size, 1.75rem);
   }
 }
 
 .blog-content h3 {
-  font-size: var(--blog-h3-size, 1.875rem);
+  font-size: var(--blog-font-size, 1.75rem);
   font-family: 'VT323', monospace;
   font-weight: bold;
   color: rgba(255, 0, 255, 0.9);
@@ -850,7 +884,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .blog-content h4 {
-  font-size: var(--blog-h4-size, 1.75rem);
+  font-size: var(--blog-font-size, 1.75rem);
   font-family: 'VT323', monospace;
   font-weight: bold;
   color: rgba(0, 255, 255, 0.9);
@@ -861,13 +895,13 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 768px) {
   .blog-content h4 {
-    font-size: 1.75rem;
+    font-size: var(--blog-font-size, 1.75rem);
   }
 }
 
 .blog-content h5,
 .blog-content h6 {
-  font-size: var(--blog-h4-size, 1.75rem);
+  font-size: var(--blog-font-size, 1.75rem);
   font-family: 'VT323', monospace;
   font-weight: bold;
   color: rgba(0, 255, 255, 0.8);
@@ -958,7 +992,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow-x: auto;
   border-radius: 0;
   font-family: 'VT323', monospace;
-  font-size: var(--blog-code-size, 1.5rem);
+  font-size: inherit;
   line-height: 1.6;
 }
 
@@ -968,7 +1002,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .blog-content pre code {
-  font-size: var(--blog-code-size, 1.5rem);
+  font-size: inherit;
   line-height: 1.6;
 }
 
@@ -982,7 +1016,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(0, 255, 255, 0.3);
   color: #00ffff;
   font-family: 'VT323', monospace;
-  font-size: var(--blog-code-size, 1.5rem);
+  font-size: inherit;
 }
 
 /* Blockquotes */
@@ -993,7 +1027,7 @@ h1, h2, h3, h4, h5, h6 {
   font-style: italic;
   color: rgba(0, 255, 255, 0.7);
   font-family: 'VT323', monospace;
-  font-size: var(--blog-font-size, 1.75rem);
+  font-size: inherit;
   line-height: 1.8;
 }
 
@@ -1027,7 +1061,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5rem;
   border: 2px solid rgba(0, 255, 255, 0.3);
   font-family: 'VT323', monospace;
-  font-size: var(--blog-code-size, 1.5rem);
+  font-size: inherit;
 }
 
 .blog-content thead {
@@ -1038,7 +1072,7 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0.75rem 1rem;
   text-align: left;
   font-family: 'VT323', monospace;
-  font-size: var(--blog-code-size, 1.5rem);
+  font-size: inherit;
   font-weight: bold;
   color: #ff00ff;
   border-bottom: 2px solid rgba(0, 255, 255, 0.3);
@@ -1050,7 +1084,7 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid rgba(0, 255, 255, 0.2);
   color: rgba(0, 255, 255, 0.8);
   font-family: 'VT323', monospace;
-  font-size: 1.25rem;
+  font-size: inherit;
 }
 
 .blog-content tr:last-child td {
@@ -1176,106 +1210,47 @@ h1, h2, h3, h4, h5, h6 {
   border-color: rgba(255, 0, 255, 0.5);
 }
 
-/* Chicken game specific styles (moved from inline in page.tsx) */
-@keyframes pulse {
-  0% { transform: scale(0.98); opacity: 0.95 }
-  50% { transform: scale(1.04); opacity: 1 }
-  100% { transform: scale(0.98); opacity: 0.95 }
-}
-.pulse-chicken { animation: pulse 1.6s ease-in-out infinite }
-.pulse-die { animation: pulse 1.6s ease-in-out infinite }
+/* Anchor offset for fixed header (handled globally via scroll-padding) */
 
-/* Page layout helpers for chicken game */
-.chicken-main { min-height: 100vh; display:flex; align-items:center; justify-content:center; padding:3rem }
-.chicken-container { width:100%; max-width:960px; text-align:center }
-.chicken-stack { display:flex; flex-direction:column; align-items:center; gap:1.25rem }
-
-/* Die and emoji sizing */
-.die-large { display:inline-block; font-size: 40vmin; line-height: 0.9; position: relative; z-index: 1 }
-.die-large.angled { transform: rotate(-6deg); -webkit-font-smoothing:antialiased }
-
-/* Heading and stacking adjustments so glow doesn't visually collide */
-.chicken-heading { position: relative; z-index: 10; margin-bottom: 3vmin }
-
-/* Ensure the large die doesn't visually intrude into the heading area */
-.chicken-stack > .die-large { margin-top: 1.5vmin; z-index: 1 }
-
-/* Make the die's glitch pseudo-elements sit underneath the heading by lowering their stacking */
-.die-large.glitch::before,
-.die-large.glitch::after {
-  z-index: 0;
+/* Notes & References list styling - override general list styles */
+.blog-content ol {
+  font-size: inherit;
+  margin-left: 2rem;
 }
 
-/* Play / Try buttons — larger and gold-glow variant */
-.play-btn {
-  background: transparent;
-  color: #ffd86b;
-  font-weight: 900;
-  border-radius: 12px;
-  padding: 0.9rem 1.4rem;
-  font-size: clamp(16px, 3.6vmin, 22px);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
-  border: 2px solid rgba(255,215,0,0.16);
-  cursor: pointer;
-  transition: transform 160ms ease, opacity 160ms ease, box-shadow 160ms ease, background 160ms ease;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-width: 140px;
-  height: 60px;
-}
-.play-btn:hover { transform: translateY(-2px); }
-.play-btn.glitch {
-  /* stronger gold neon glow */
-  box-shadow: 0 12px 80px rgba(255,215,0,0.14), 0 0 160px rgba(255,223,0,0.06);
-  border-color: rgba(255,215,0,0.45);
-  color: #ffd86b;
-  text-shadow: 0 0 18px rgba(255,238,170,0.22);
-  filter: drop-shadow(0 0 28px rgba(255,215,0,0.16));
-}
-.play-btn:active { transform: translateY(1px) scale(0.996); }
-
-/* Refresh control (gold neon) */
-.refresh-wrapper { display:inline-flex; align-items:center; justify-content:center; position:relative }
-.refresh-glow { position:absolute; border-radius:50%; width:5.25rem; height:5.25rem; box-shadow: 0 0 28px rgba(255,200,0,0.22), 0 0 56px rgba(255,200,0,0.10); pointer-events: none; }
-.refresh-pulse-ring { position:absolute; border-radius:50%; width:5.25rem; height:5.25rem; opacity:0.25; animation: pulse 1.8s ease-in-out infinite; border:1.5px solid rgba(255,200,0,0.9); pointer-events: none; }
-.refresh-btn { width:5rem; height:5rem; display:flex; align-items:center; justify-content:center; border-radius:50%; background:transparent; border:2px solid rgba(255,200,0,0.95); color:rgba(255,200,0,1); font-family: 'Press Start 2P', monospace; font-size:1.375rem; transition: transform 150ms ease, box-shadow 150ms ease; box-shadow: 0 0 10px rgba(255,200,0,0.35); }
-.refresh-btn:hover { transform: scale(1.12); box-shadow: 0 0 30px rgba(255,200,0,0.85); }
-.refresh-wrapper:hover .refresh-btn { transform: scale(1.12); box-shadow: 0 0 30px rgba(255,200,0,0.85); }
-.refresh-btn:active { transform: scale(0.96); box-shadow: inset 0 0 8px rgba(255,200,0,0.12), 0 0 10px rgba(255,200,0,0.35); }
-.refresh-btn.pressed { transform: scale(0.96); box-shadow: inset 0 0 8px rgba(255,200,0,0.12), 0 0 10px rgba(255,200,0,0.35); }
-.refresh-icon { display:inline-block; line-height:1; transform: translateY(-0.12rem); font-size: 1.6rem; }
-
-/* wheel styles */
-.wheel-viewport { width: 56vmin; max-width: 420px; height: 40vmin; max-height: 320px; overflow: hidden; margin: 1.2rem auto; border-radius: 18px; background: linear-gradient(180deg, rgba(8,6,12,0.6), rgba(6,8,12,0.4)); box-shadow: inset 0 6px 24px rgba(0,0,0,0.6); display:flex; align-items:center; justify-content:center; position:relative }
-.wheel-list { will-change: transform; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; z-index:1; width:100%; }
-.wheel-item { display:flex; align-items:center; justify-content:center; height: 12vmin; font-size: 10vmin; min-height: 80px; line-height:1; z-index:1; color: #fff; font-family: 'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji','Segoe UI Symbol', system-ui, sans-serif; text-shadow: 0 6px 18px rgba(0,0,0,0.6), 0 0 10px rgba(255,215,0,0.04); }
-.wheel-center-ring { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); height:12vmin; pointer-events:none; border-radius:12px; box-shadow: 0 0 40px rgba(255,215,0,0.08) inset; border: 2px solid rgba(255,215,112,0.06); }
-.wheel-viewport.spinning::after { content: ''; position:absolute; inset:0; backdrop-filter: blur(0px); pointer-events:none; }
-
-/* Compact mobile layout for the 404 page */
-@media (max-width: 480px) {
-  .notfound-page .max-w-2xl { padding-left: 0.5rem; padding-right: 0.5rem; }
-  .notfound-page .glitch { font-size: 5.5rem; }
-  .notfound-page h1.glitch { font-size: 5.5rem; }
-  .notfound-page .space-y-8 { gap: 0.75rem; }
-  .notfound-page .space-y-4 { gap: 0.5rem; }
-  .notfound-page .space-y-4 .text-3xl { font-size: 1.5rem; }
-  .notfound-page .space-y-4 p.text-3xl { font-size: 1.6rem; }
-  .notfound-page .space-y-4 p.text-lg { font-size: 0.95rem; }
-  .notfound-page .space-y-4 p.text-xl { font-size: 1rem; }
-  .notfound-page .space-y-4 .p-6 { padding: 0.75rem; }
-  .notfound-page .flex.flex-col.sm\:flex-row { gap: 0.5rem; }
-  .notfound-page .group.relative.px-8 { padding-left: 0.75rem; padding-right: 0.75rem; }
-  .notfound-page .group.relative.px-8.py-4 { padding-top: 0.6rem; padding-bottom: 0.6rem; }
-  .notfound-page .retro-button, .notfound-page .retro-card, .notfound-page .retro-button { font-size: 0.8rem; }
-  /* compact the refresh area */
-  .notfound-page .refresh-wrapper { margin-top: 0.5rem; }
-  .notfound-page .refresh-glow, .notfound-page .refresh-pulse-ring { width: 4.25rem; height: 4.25rem; }
-  .notfound-page .refresh-btn { width: 3.5rem; height: 3.5rem; font-size: 1.125rem; }
-  .notfound-page .text-lg { font-size: 0.95rem; }
+.blog-content ol li {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  color: rgba(0, 255, 255, 0.9);
+  padding-left: 0.5rem;
+  font-family: 'VT323', monospace;
+  font-size: inherit;
 }
 
+.blog-content ol li::marker {
+  color: #ff00ff;
+}
+
+.blog-content ol li strong {
+  color: #ff00ff;
+  font-weight: bold;
+  font-family: 'VT323', monospace;
+  font-size: inherit;
+}
+
+.blog-content ol li em {
+  color: rgba(0, 255, 255, 0.7);
+  font-style: italic;
+  font-family: 'VT323', monospace;
+  font-size: inherit;
+  background: none;
+  padding: 0;
+  text-shadow: none;
+  font-weight: normal;
+}
+
+.blog-content ol li a {
+  font-family: 'VT323', monospace;
+  font-size: inherit;
+  word-break: break-all;
+}
