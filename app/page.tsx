@@ -23,7 +23,7 @@ export default function Home() {
     : publications;
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen home-content">
       <FontSizeControl />
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden grid-bg">
@@ -208,19 +208,19 @@ export default function Home() {
               {
                 title: "ArtVis",
                 description: "Network visualization system modeling complex interactions between persons, objects, places, institutions, and events in art history over time.",
-                tags: ["Visual Analytics", "Networks", "Digital Humanities"],
+                tags: ["Dynamic Networks", "Digital Humanities", "Art History"],
                 link: "https://artvis.cvast.tuwien.ac.at/"
               },
               {
                 title: "SANE",
                 description: "Visual analytics framework for event-based information diffusion with uncertainty across dynamic networks like pandemics and misinformation campaigns.",
-                tags: ["Diffusion Processes", "Event-based Networks", "Uncertainty"],
+                tags: ["Dynamic Networks", "Diffusion Processes", "Uncertainty"],
                 link: "https://www.cvast.tuwien.ac.at/projects/sane"
               },
               {
                 title: "VisGames",
                 description: "Workshop advancing data visualization games as dynamic tools for communication, co-creation, and collaborative problem-solving beyond education.",
-                tags: ["Gamification", "Collaboration", "Workshop"],
+                tags: ["Visualization Activities", "Collaboration", "Co-Creation"],
                 link: "https://visgames.netlify.app/"
               },
               {
@@ -232,26 +232,26 @@ export default function Home() {
               {
                 title: "TimeLighting",
                 description: "Interactive visual analytics tool exploring temporal networks by projecting node trajectories and edge surfaces from 3D space-time cubes to 2D.",
-                tags: ["D3.js", "Temporal Graphs", "3D Visualization"],
+                tags: ["Dynamic Networks", "Event-Based Graphs", "Projections"],
                 link: "https://github.com/velitchko/timelighting"
               },
               {
                 title: "CV3",
                 description: "Interactive exploration environment enabling recruiters to explore, assess, and compare multiple CVs simultaneously for efficient candidate selection.",
-                tags: ["Visual Analytics", "Comparison", "HR Tech"],
+                tags: ["Visual Analytics", "Comparison", "Human Resources"],
                 link: "https://github.com/velitchko/cvthree"
               },
               {
                 title: "PolyCube",
                 description: "Space-time cube visualization method for exploring cultural heritage data, integrating spatial and temporal information to improve mental model construction.",
-                tags: ["Space-Time Cube", "Cultural Heritage", "Cognitive Science"],
+                tags: ["Space-Time-Cube", "Cultural Heritage", "Cognitive Science"],
                 link: "https://bigdata-vis.github.io/polycube/combined/home"
               },
               
               {
                 title: "IMMV",
                 description: "Interactive visual analytics platform exploring music as an urban identification tool, making the interaction between music and urban texture accessible.",
-                tags: ["Music Mapping", "Urban Studies", "Interactive"],
+                tags: ["Visual Analytics", "Musicology", "Cultural Heritage"],
                 link: "https://github.com/velitchko/interactive-music-mapping-vienna"
               }
             ].map((project, index) => (
@@ -380,7 +380,7 @@ export default function Home() {
           </h2>
 
           <div className="retro-card mb-12 border-neon-pink/30">
-            <p className="text-xl text-neon-pink neon-glow-pink mb-4 leading-relaxed font-retro">
+            <p className="text-neon-pink neon-glow-pink mb-4 leading-relaxed font-retro" style={{ fontSize: '2.5rem' }}>
               Let&apos;s connect! 🚀
             </p>
             <p className="text-lg text-neon-cyan/80 mb-8 leading-relaxed">
@@ -440,25 +440,47 @@ export default function Home() {
             </div>
 
             {/* Contact Info */}
-            <div className="grid md:grid-cols-2 gap-6 text-left">
-              <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors">
-                <h3 className="text-lg font-retro text-neon-cyan mb-3">📧 EMAIL</h3>
+            <div className="grid md:grid-cols-3 gap-6 text-left">
+              <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors flex flex-col">
+                <h3 className="text-base font-retro text-neon-cyan mb-3">📧 EMAIL</h3>
+                <p className="text-neon-cyan/80 mb-4 text-sm flex-grow">
+                  Drop me a line about anything—questions, ideas, or collaborations.
+                </p>
                 <a
-                  href="mailto:velitchko.filipov@tuwien.ac.at"
-                  className="text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors break-all"
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = 'mailto:' + 'velitchko.filipov' + '@' + 'tuwien.ac.at';
+                  }}
+                  className="contact-button inline-block px-4 py-2 text-sm self-end"
                 >
-                  velitchko.filipov@tuwien.ac.at
+                  Send email →
                 </a>
               </div>
 
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors">
-                <h3 className="text-lg font-retro text-neon-cyan mb-3">📍 LOCATION</h3>
-                <p className="text-neon-cyan/80">
+                <h3 className="text-base font-retro text-neon-cyan mb-3">📍 LOCATION</h3>
+                <p className="text-neon-cyan/80 text-sm">
                   TU Wien<br />
                   Visual Analytics Research Unit (E193-07)<br />
                   Favoritenstrasse 9-11<br />
                   1040 Vienna, Austria
                 </p>
+              </div>
+
+              <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors flex flex-col">
+                <h3 className="text-base font-retro text-neon-cyan mb-3">💬 SCHEDULE</h3>
+                <p className="text-neon-cyan/80 mb-4 text-sm flex-grow">
+                  Let&apos;s chat about research, collaboration, or ideas.
+                </p>
+                <a
+                  href="https://cal.com/velitchko-filipov-x1pkcx/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-button inline-block px-4 py-2 text-sm self-end"
+                >
+                  Schedule a call →
+                </a>
               </div>
             </div>
           </div>
