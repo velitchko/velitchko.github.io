@@ -21,8 +21,8 @@ export default function FontSizeControl() {
   useEffect(() => {
     if (!mounted) return;
     
-    // Apply to all blog-content elements
-    const blogContent = document.querySelectorAll('.blog-content');
+    // Apply to all blog-content and home-content elements
+    const blogContent = document.querySelectorAll('.blog-content, .home-content');
     blogContent.forEach(el => {
       el.setAttribute('data-font-size', fontSize);
     });

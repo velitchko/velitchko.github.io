@@ -23,10 +23,10 @@ export default function Home() {
     : publications;
 
   return (
-    <div className="min-h-screen home-content">
+    <div className="min-h-screen">
       <FontSizeControl />
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden grid-bg">
+      <section id="home" className="hero-section min-h-screen flex items-center justify-center relative overflow-hidden grid-bg">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-purple/5 to-transparent"></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center relative z-10">
@@ -70,6 +70,8 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Rest of content with font control */}
+      <div className="home-content">
       {/* About Section */}
       <section className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -380,9 +382,9 @@ export default function Home() {
           </h2>
 
           <div className="retro-card mb-12 border-neon-pink/30">
-            <p className="text-neon-pink neon-glow-pink mb-4 leading-relaxed font-retro" style={{ fontSize: '2.5rem' }}>
+            <h3 className="text-xl sm:text-2xl text-neon-pink neon-glow-pink mb-4 leading-relaxed font-retro">
               Let&apos;s connect! 🚀
-            </p>
+            </h3>
             <p className="text-lg text-neon-cyan/80 mb-8 leading-relaxed">
               Whether you want to collaborate on research, discuss visualization projects, 
               or just chat about unconventional ideas—I&apos;m always happy to hear from you.
@@ -486,6 +488,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div> {/* End home-content wrapper */}
     </div>
   );
 }

@@ -818,10 +818,22 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Home Page Content - Responsive to font size control */
 .home-content {
-  font-size: var(--blog-font-size, 1.875rem);
+  font-size: var(--home-font-size, 1rem);
 }
 
-/* Force ALL elements to use the same font size */
+/* Target text content in home-content, avoiding UI elements like nav, buttons, and section titles */
+.home-content p,
+.home-content li,
+.home-content blockquote,
+.home-content span:not(nav *):not(button *):not(.retro-button *):not(.contact-button *),
+.home-content div:not(nav):not(nav *):not(button):not(button *):not(.retro-button):not(.contact-button),
+.home-content a:not(nav *):not(button *):not(.retro-button):not(.contact-button),
+.home-content h3:not(nav *):not(.font-retro),
+.home-content .section-text {
+  font-size: inherit !important;
+}
+
+/* Force ALL elements in blog-content to use the same font size */
 .blog-content *,
 .blog-content h1,
 .blog-content h2,
@@ -847,31 +859,43 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Font size variants */
 .blog-content[data-font-size="small"] {
-  --blog-font-size: 1.625rem;
-  --blog-h3-size: 1.625rem;
-  --blog-h4-size: 1.5rem;
-  --blog-code-size: 1.25rem;
+  --blog-font-size: 1.375rem;
+  --blog-h3-size: 1.375rem;
+  --blog-h4-size: 1.25rem;
+  --blog-code-size: 1.125rem;
+}
+.home-content[data-font-size="small"] {
+  --home-font-size: 1rem;
 }
 
 .blog-content[data-font-size="medium"] {
-  --blog-font-size: 1.875rem;
-  --blog-h3-size: 1.875rem;
-  --blog-h4-size: 1.75rem;
-  --blog-code-size: 1.5rem;
+  --blog-font-size: 1.75rem;
+  --blog-h3-size: 1.75rem;
+  --blog-h4-size: 1.625rem;
+  --blog-code-size: 1.375rem;
+}
+.home-content[data-font-size="medium"] {
+  --home-font-size: 1.125rem;
 }
 
 .blog-content[data-font-size="large"] {
-  --blog-font-size: 2.125rem;
-  --blog-h3-size: 2.125rem;
-  --blog-h4-size: 2rem;
-  --blog-code-size: 1.75rem;
+  --blog-font-size: 2rem;
+  --blog-h3-size: 2rem;
+  --blog-h4-size: 1.875rem;
+  --blog-code-size: 1.625rem;
+}
+.home-content[data-font-size="large"] {
+  --home-font-size: 1.25rem;
 }
 
 .blog-content[data-font-size="xlarge"] {
-  --blog-font-size: 2.375rem;
-  --blog-h3-size: 2.375rem;
-  --blog-h4-size: 2.25rem;
-  --blog-code-size: 2rem;
+  --blog-font-size: 2.25rem;
+  --blog-h3-size: 2.25rem;
+  --blog-h4-size: 2.125rem;
+  --blog-code-size: 1.875rem;
+}
+.home-content[data-font-size="xlarge"] {
+  --home-font-size: 1.5rem;
 }
 
 /* Headings */
