@@ -44,15 +44,15 @@ export default function FontSizeControl() {
   if (!mounted) return null;
 
   return (
-    <div className="hidden md:block fixed right-0 top-1/2 -translate-y-1/2 z-50">
+    <div className="fixed right-0 top-1/2 -translate-y-1/2 z-50">
       <div className="flex flex-row items-center">
         {/* Collapsible panel */}
         <div
-          className={`bg-retro-darker border-2 border-neon-cyan/50 p-3 backdrop-blur-sm transition-all duration-300 ${
+          className={`bg-retro-darker border-2 border-neon-cyan/50 p-2 md:p-3 backdrop-blur-sm transition-all duration-300 ${
             isOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
           }`}
         >
-          <div className="text-xs font-mono text-neon-cyan mb-2 text-center whitespace-nowrap">
+          <div className="text-[0.6rem] md:text-xs font-mono text-neon-cyan mb-1 md:mb-2 text-center whitespace-nowrap">
             FONT SIZE
           </div>
           <div className="flex flex-col gap-1">
@@ -64,7 +64,7 @@ export default function FontSizeControl() {
                   setIsOpen(false);
                 }}
                 className={`
-                  px-3 py-2 text-sm font-mono border-2 transition-all duration-300 relative overflow-hidden group
+                  px-2 md:px-3 py-1.5 md:py-2 text-sm font-mono border-2 transition-all duration-300 relative overflow-hidden group
                   ${fontSize === value
                     ? 'border-neon-cyan text-retro-darker bg-neon-cyan font-bold'
                     : 'border-neon-cyan/30 text-neon-cyan bg-neon-cyan/5 hover:border-neon-cyan hover:bg-neon-cyan/10'
@@ -88,11 +88,11 @@ export default function FontSizeControl() {
         {/* Chevron toggle button - sticks to right edge */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-2 hover:scale-110 transition-all duration-300 group"
+          className="p-1.5 md:p-2 hover:scale-110 transition-all duration-300 group"
           aria-label="Toggle font size control"
         >
           <svg
-            className={`w-8 h-8 text-neon-cyan transition-all duration-300 ${
+            className={`w-6 h-6 md:w-8 md:h-8 text-neon-cyan transition-all duration-300 ${
               isOpen ? 'rotate-180' : ''
             } group-hover:text-neon-pink group-hover:drop-shadow-[0_0_10px_rgba(255,0,255,0.8)]`}
             fill="none"

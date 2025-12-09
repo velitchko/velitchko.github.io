@@ -23,10 +23,9 @@ function GameOverDisplay() {
                     <span
                         role="img"
                         aria-label="Giant glowing chicken"
-                        className="glitch neon-glow-gold pulse-chicken"
+                        className="emoji-large glitch neon-glow-gold pulse-chicken"
                         data-text="🐔"
                         style={{
-                            fontSize: '40vmin',
                             lineHeight: 0.9,
                             transform: 'rotate(-8deg)',
                             WebkitFontSmoothing: 'antialiased',
@@ -54,95 +53,121 @@ function GameOverDisplay() {
 export default function ChickenPage() {
     const DEBUG = false; // debug visuals disabled
     const [phase, setPhase] = React.useState<'idle'|'spinning'|'result'>('idle');
-    const wheelRef = React.useRef<HTMLDivElement | null>(null);
-    const itemRef = React.useRef<HTMLDivElement | null>(null);
-    const [items, setItems] = React.useState<string[]>([]);
+    const [reels, setReels] = React.useState<string[][]>([[], [], []]);
     const [spinning, setSpinning] = React.useState(false);
+    const reelRefs = [
+        React.useRef<HTMLDivElement | null>(null),
+        React.useRef<HTMLDivElement | null>(null),
+        React.useRef<HTMLDivElement | null>(null)
+    ];
 
-    // prepare a long list of emojis so the wheel can spin a long distance
+    // prepare 3 independent reels with shuffled emojis
     React.useEffect(() => {
-        const repeats = 12;
-        const long: string[] = [];
-        for (let i = 0; i < repeats; i++) {
-            long.push(...EMOJI_SET);
-        }
-        // insert an extra chicken early so we can land within a short number of steps
-    const insertPos = 12 + Math.floor(Math.random() * 20); // between 12 and 31
-        if (insertPos >= long.length) long.push('🐔'); else long.splice(insertPos, 0, '🐔');
-        // finally ensure the very last item is also a chicken so we always have one at the end
-        long.push('🐔');
-        setItems(long);
+        const createReel = () => {
+            const repeats = 12;
+            const reel: string[] = [];
+            for (let i = 0; i < repeats; i++) {
+                // Shuffle emoji set for each repeat to avoid patterns
+                const shuffled = [...EMOJI_SET].sort(() => Math.random() - 0.5);
+                reel.push(...shuffled);
+            }
+            // insert a chicken at random position
+            const insertPos = 12 + Math.floor(Math.random() * 20);
+            if (insertPos >= reel.length) reel.push('🐔'); 
+            else reel.splice(insertPos, 0, '🐔');
+            reel.push('🐔'); // ensure one at the end
+            return reel;
+        };
+
+        setReels([createReel(), createReel(), createReel()]);
     }, []);
 
     const start = React.useCallback(() => {
-        if (!wheelRef.current || items.length === 0) {
+        if (reels[0].length === 0) {
             setPhase('result');
             return;
         }
         setPhase('spinning');
         setSpinning(true);
 
-    // small delay to allow CSS transitions to apply
-    requestAnimationFrame(async () => {
-            const viewport = wheelRef.current!;
-            const listEl = viewport.querySelector('.wheel-list') as HTMLElement | null;
-            const firstItem = viewport.querySelector('[data-item]') as HTMLElement | null;
-            if (!listEl || !firstItem) {
-                setPhase('result');
-                setSpinning(false);
-                return;
-            }
+        requestAnimationFrame(async () => {
+            // Animate each reel with different speeds
+            const speeds = [150, 180, 210]; // ms per step, increasing for cascading effect
+            
+            // Calculate shared measurements from first reel to ensure all reels align on center row
+            const firstViewport = reelRefs[0].current;
+            if (!firstViewport) return;
+            const firstItem = firstViewport.querySelector('[data-item]') as HTMLElement | null;
+            if (!firstItem) return;
+            
+            // Use offsetHeight to include padding and get exact rendered height
+            const sharedItemHeight = firstItem.offsetHeight;
+            const sharedContainerHeight = firstViewport.offsetHeight;
+            const sharedCenterOffset = (sharedContainerHeight / 2) - (sharedItemHeight / 2) + 24; // +24px to align with golden bar center
+            
+            const promises = reelRefs.map(async (reelRef, index) => {
+                const viewport = reelRef.current;
+                if (!viewport) return;
 
-            const itemHeight = firstItem.getBoundingClientRect().height || 64;
-            const containerRect = viewport.getBoundingClientRect();
-            const centerOffset = containerRect.height / 2 - itemHeight / 2;
+                const listEl = viewport.querySelector('.wheel-list') as HTMLElement | null;
+                if (!listEl) return;
 
-            // compute offsets per-item below; we choose a nearby chicken index for target
+                const itemHeight = sharedItemHeight;
+                const centerOffset = sharedCenterOffset;
 
-            // Animate one emoji per step for smooth consistent motion (350ms per emoji).
-            const animateTo = (el: HTMLElement, y: number, dur: number) => new Promise<void>(resolve => {
-                const onEndOne = () => {
-                    el.removeEventListener('transitionend', onEndOne);
-                    resolve();
-                };
-                el.style.transition = `transform ${dur}ms cubic-bezier(.08,.9,.22,1)`;
-                el.style.willChange = 'transform';
-                el.style.transform = `translateY(${y}px)`;
-                el.addEventListener('transitionend', onEndOne);
+                const animateTo = (el: HTMLElement, y: number, dur: number) => new Promise<void>(resolve => {
+                    const onEndOne = () => {
+                        el.removeEventListener('transitionend', onEndOne);
+                        resolve();
+                    };
+                    el.style.transition = `transform ${dur}ms cubic-bezier(.08,.9,.22,1)`;
+                    el.style.willChange = 'transform';
+                    el.style.transform = `translateY(${y}px)`;
+                    el.addEventListener('transitionend', onEndOne);
+                });
+
+                listEl.style.filter = 'blur(2px) saturate(1.05)';
+
+                const minSteps = 16;
+                const maxSteps = 36;
+                const currentReel = reels[index];
+                let targetIndex = currentReel.findIndex((v, idx) => v === '🐔' && idx >= minSteps && idx <= maxSteps);
+                if (targetIndex === -1) targetIndex = currentReel.length - 1;
+
+                const stepDuration = speeds[index];
+                let timedOut = false;
+                const timeout = setTimeout(() => { timedOut = true; }, 6000);
+
+                for (let step = 1; step <= targetIndex; step++) {
+                    if (timedOut) break;
+                    const y = -(step * itemHeight) + centerOffset;
+                    // eslint-disable-next-line no-await-in-loop
+                    await animateTo(listEl, y, stepDuration);
+                }
+
+                clearTimeout(timeout);
+                
+                // Final alignment: ensure target emoji is perfectly centered
+                const finalY = -(targetIndex * itemHeight) + centerOffset;
+                listEl.style.transform = `translateY(${finalY}px)`;
+                
+                listEl.style.transition = '';
+                listEl.style.filter = '';
+                listEl.style.willChange = '';
             });
 
-            // small blur while moving
-            listEl.style.filter = 'blur(2px) saturate(1.05)';
-
-            const minSteps = 16;
-            const maxSteps = 36;
-            // find an inserted chicken within the early range, otherwise fall back to last
-            let targetIndex = items.findIndex((v, idx) => v === '🐔' && idx >= minSteps && idx <= maxSteps);
-            if (targetIndex === -1) targetIndex = items.length - 1;
-
-            const stepDuration = 150;
-
-            // enforce a maximum spin time (6 seconds) — race the per-step loop against a timeout
-            let timedOut = false;
-            const timeout = setTimeout(() => { timedOut = true; }, 6000);
-
-            for (let step = 1; step <= targetIndex; step++) {
-                if (timedOut) break;
-                const y = -(step * itemHeight) + centerOffset;
-                // eslint-disable-next-line no-await-in-loop
-                await animateTo(listEl, y, stepDuration);
-            }
-
-            clearTimeout(timeout);
-
-            // if we timed out, snap to a nearby chicken (or leave at current transform) and end
-            listEl.style.transition = '';
-            listEl.style.filter = '';
-            listEl.style.willChange = '';
+            // Wait for all reels to finish spinning
+            await Promise.all(promises);
             setSpinning(false);
+            
+            // Wait 3 seconds before showing game over screen (keep phase as 'spinning' to keep reels visible)
+            await new Promise<void>(resolve => {
+                setTimeout(() => resolve(), 3000);
+            });
+            
             setPhase('result');
         });
-    }, [items]);
+    }, [reels]);
 
     const playClick = () => {
         // fade out button then start
@@ -161,7 +186,7 @@ export default function ChickenPage() {
                             <h2 className="neon-glow-gold chicken-heading" style={{ margin: 0, fontSize: '4vmin', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Chicken Game</h2>
                             <p style={{ margin: 0, opacity: 0.9, fontSize: '2.25vmin' }}>Press PLAY to spin the wheel — try not to lose the chicken.</p>
                         </div>
-                        <span role="img" aria-label="Die" data-text="🎲" className="die-large angled glitch pulse-die neon-glow-gold" style={{ color: '#FFD700', opacity: 0.95 }}>🎲</span>
+                        <span role="img" aria-label="Die" data-text="🎲" className="emoji-large die-large angled glitch pulse-die neon-glow-gold" style={{ color: '#FFD700', opacity: 0.95 }}>🎲</span>
                         <button aria-label="Play the chicken game" className={`play-btn glitch`} onClick={playClick}>
                             PLAY
                         </button>
@@ -170,19 +195,22 @@ export default function ChickenPage() {
 
                 {phase === 'spinning' && (
                     <div>
-                        <div style={{ opacity: spinning ? 1 : 0, transition: 'opacity 260ms ease' }}>
+                        <div style={{ opacity: 1, transition: 'opacity 260ms ease' }}>
                             <div className="chicken-stack">
-                                <div ref={wheelRef} className={`wheel-viewport ${spinning ? 'spinning' : ''}`}>
-                                    <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                                        <div className="wheel-list" style={{ transform: 'translateY(0px)' }}>
-                                            {items.map((e, i) => (
-                                                <div data-item key={i} data-index={i} data-item-style className={`wheel-item`} style={{ color: e === '🐔' ? '#ffd700' : '#fff' }}>{e}</div>
-                                            ))}
+                                <div className={`wheel-viewport-container ${spinning ? 'spinning' : ''}`}>
+                                    {reelRefs.map((reelRef, reelIndex) => (
+                                        <div key={reelIndex} ref={reelRef} className="wheel-viewport">
+                                            <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                                <div className="wheel-list">
+                                                    {reels[reelIndex].map((e, i) => (
+                                                        <div data-item key={i} data-index={i} className={`wheel-item`} style={{ color: e === '🐔' ? '#ffd700' : '#fff' }}>{e}</div>
+                                                    ))}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    ))}
                                     <div className="wheel-center-ring" aria-hidden />
                                 </div>
-                                {/* debug panel removed */}
                                 <div style={{ marginTop: 12 }}>
                                     <button className="play-btn glitch" onClick={() => { /* allow restart mid-spin? do nothing */ }}>Spinning…</button>
                                 </div>
@@ -196,16 +224,18 @@ export default function ChickenPage() {
                         <GameOverDisplay />
                         <div style={{ marginTop: 24 }}>
                             <button className="play-btn glitch" onClick={() => {
-                                // reset list transform so wheel shows initial state
-                                const viewport = wheelRef.current;
-                                if (viewport) {
-                                    const listEl = viewport.querySelector('.wheel-list') as HTMLElement | null;
-                                    if (listEl) {
-                                        listEl.style.transition = '';
-                                        listEl.style.transform = 'translateY(0px)';
-                                        listEl.style.filter = '';
+                                // reset all reels
+                                reelRefs.forEach(reelRef => {
+                                    const viewport = reelRef.current;
+                                    if (viewport) {
+                                        const listEl = viewport.querySelector('.wheel-list') as HTMLElement | null;
+                                        if (listEl) {
+                                            listEl.style.transition = '';
+                                            listEl.style.transform = 'translateY(0px)';
+                                            listEl.style.filter = '';
+                                        }
                                     }
-                                }
+                                });
                                 setPhase('idle');
                             }}>Try again</button>
                         </div>

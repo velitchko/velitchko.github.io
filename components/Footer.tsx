@@ -124,7 +124,7 @@ export default function Footer() {
             © {currentYear} [SYS.BOOT.v1.0] • Built with Next.js & Tailwind CSS
           </p>
           <p className="text-neon-pink/60 text-xs font-mono mt-2">
-            [ RETRO-FUTURISM ENGAGED ]
+            [ RETRO-FUTURISM ENGAGED ] <a href="/chicken" className="opacity-30 hover:opacity-60 transition-opacity inline-block" style={{ fontSize: '0.6rem' }}>🥚</a>
           </p>
         </div>
       </div>
