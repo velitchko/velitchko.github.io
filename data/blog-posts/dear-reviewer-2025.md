@@ -154,8 +154,7 @@ What I wish, really, is that reviewing worked more like a good code review.
 > You don’t reject a pull request; you help it merge cleanly.  
 > You point out what’s broken — maybe even how to fix it.  
 
-That’s not lowering the bar.  
-That’s **raising the quality of the conversation** and helping someone get better.
+That’s how we **raise quality** and help someone get better.
 
 ---
 
