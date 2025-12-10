@@ -1015,10 +1015,12 @@ h1, h2, h3, h4, h5, h6 {
 /* Wheel viewport - slot machine style */
 .wheel-viewport {
   position: relative;
-  flex: 1;
+  flex: 1 1 33%;
+  min-width: 80px;
   max-width: 250px;
   height: 300px;
   overflow: hidden;
+  contain: layout style;
   background: linear-gradient(
     180deg,
     rgba(10, 10, 10, 0.95) 0%,
@@ -1032,6 +1034,26 @@ h1, h2, h3, h4, h5, h6 {
     inset 0 0 30px rgba(0, 0, 0, 0.8),
     inset 0 4px 10px rgba(255, 215, 0, 0.2),
     inset 0 -4px 10px rgba(255, 215, 0, 0.2);
+}
+
+/* Mobile responsive - ensure all 3 columns fit and emojis are larger */
+@media (max-width: 640px) {
+  .wheel-viewport-container {
+    gap: 0.25rem;
+    padding: 0 0.25rem;
+    max-width: 100%;
+  }
+  
+  .wheel-viewport {
+    flex: 1 1 33%;
+    min-width: 90px;
+    max-width: none;
+    height: 280px;
+  }
+  
+  .wheel-center-ring {
+    height: 120px;
+  }
 }
 
 /* Remove slot machine vertical divider for 3-column layout */
@@ -1148,7 +1170,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Individual wheel items */
 .wheel-item {
-  font-size: 8vmin !important;
+  font-size: min(20vw, 80px) !important;
   line-height: 1;
   padding: 0.5rem;
   user-select: none;
@@ -1166,7 +1188,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* This will be overridden dynamically based on scroll position, but provides base styling */
 .wheel-item[data-center="true"] {
-  font-size: 8vmin !important;
+  font-size: min(20vw, 80px) !important;
   opacity: 1;
   transform: scale(1.5);
   filter: drop-shadow(0 0 25px currentColor);

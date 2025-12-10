@@ -103,7 +103,8 @@ export default function ChickenPage() {
             // Use offsetHeight to include padding and get exact rendered height
             const sharedItemHeight = firstItem.offsetHeight;
             const sharedContainerHeight = firstViewport.offsetHeight;
-            const sharedCenterOffset = (sharedContainerHeight / 2) - (sharedItemHeight / 2) + 24; // +24px to align with golden bar center
+            // Account for the 1.5x scale transform on centered items: shift up by ~20% of item height
+            const sharedCenterOffset = (sharedContainerHeight / 2) - (sharedItemHeight / 2) - (sharedItemHeight * 0.5); // Center align with silver bar
             
             const promises = reelRefs.map(async (reelRef, index) => {
                 const viewport = reelRef.current;
