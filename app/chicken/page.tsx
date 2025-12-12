@@ -51,9 +51,21 @@ function GameOverDisplay() {
 }
 
 export default function ChickenPage() {
-    const DEBUG = false; // debug visuals disabled
+    // Helper to create a randomized reel
+    const createReel = React.useCallback(() => {
+        const repeats = 12;
+        const reel: string[] = [];
+        for (let i = 0; i < repeats; i++) {
+            // Shuffle emoji set for each repeat to avoid patterns
+            const shuffled = [...EMOJI_SET].sort(() => Math.random() - 0.5);
+            reel.push(...shuffled);
+        }
+        return reel;
+    }, []);
+
     const [phase, setPhase] = React.useState<'idle'|'spinning'|'result'>('idle');
-    const [reels, setReels] = React.useState<string[][]>([[], [], []]);
+    // Initialize reels immediately with data instead of empty arrays
+    const [reels, setReels] = React.useState<string[][]>(() => [createReel(), createReel(), createReel()]);
     const [spinning, setSpinning] = React.useState(false);
     const reelRefs = [
         React.useRef<HTMLDivElement | null>(null),
@@ -61,34 +73,16 @@ export default function ChickenPage() {
         React.useRef<HTMLDivElement | null>(null)
     ];
 
-    // prepare 3 independent reels with shuffled emojis
-    React.useEffect(() => {
-        const createReel = () => {
-            const repeats = 12;
-            const reel: string[] = [];
-            for (let i = 0; i < repeats; i++) {
-                // Shuffle emoji set for each repeat to avoid patterns
-                const shuffled = [...EMOJI_SET].sort(() => Math.random() - 0.5);
-                reel.push(...shuffled);
-            }
-            // insert a chicken at random position
-            const insertPos = 12 + Math.floor(Math.random() * 20);
-            if (insertPos >= reel.length) reel.push('🐔'); 
-            else reel.splice(insertPos, 0, '🐔');
-            reel.push('🐔'); // ensure one at the end
-            return reel;
-        };
-
-        setReels([createReel(), createReel(), createReel()]);
-    }, []);
-
     const start = React.useCallback(() => {
-        if (reels[0].length === 0) {
-            setPhase('result');
-            return;
-        }
+        // Randomize reels for each spin to get different results
+        const newReels = [createReel(), createReel(), createReel()];
+        setReels(newReels);
+        
         setPhase('spinning');
         setSpinning(true);
+        
+        // Wait a moment for reels to update in DOM
+        setTimeout(() => {
 
         requestAnimationFrame(async () => {
             // Animate each reel with different speeds
@@ -129,11 +123,16 @@ export default function ChickenPage() {
 
                 listEl.style.filter = 'blur(2px) saturate(1.05)';
 
-                const minSteps = 16;
-                const maxSteps = 36;
-                const currentReel = reels[index];
+                const currentReel = newReels[index]; // Use newReels directly instead of stale reels from closure
+                // Find the first chicken that appears in a reasonable animation range (40%-70% of reel)
+                const minSteps = Math.floor(currentReel.length * 0.4);
+                const maxSteps = Math.floor(currentReel.length * 0.7);
                 let targetIndex = currentReel.findIndex((v, idx) => v === '🐔' && idx >= minSteps && idx <= maxSteps);
-                if (targetIndex === -1) targetIndex = currentReel.length - 1;
+                if (targetIndex === -1) {
+                    // Fallback: find ANY chicken in the reel
+                    targetIndex = currentReel.findIndex((v) => v === '🐔');
+                    if (targetIndex === -1) targetIndex = Math.floor(currentReel.length * 0.5);
+                }
 
                 const stepDuration = speeds[index];
                 let timedOut = false;
@@ -167,8 +166,9 @@ export default function ChickenPage() {
             });
             
             setPhase('result');
-        });
-    }, [reels]);
+            });
+        }, 50);
+    }, [createReel]);
 
     const playClick = () => {
         // fade out button then start
@@ -225,6 +225,8 @@ export default function ChickenPage() {
                         <GameOverDisplay />
                         <div style={{ marginTop: 24 }}>
                             <button className="play-btn glitch" onClick={() => {
+                                // Randomize reels for next game
+                                setReels([createReel(), createReel(), createReel()]);
                                 // reset all reels
                                 reelRefs.forEach(reelRef => {
                                     const viewport = reelRef.current;
