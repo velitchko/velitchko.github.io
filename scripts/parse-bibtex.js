@@ -43,7 +43,7 @@ while ((match = entryPattern.exec(bibContent)) !== null) {
   entry.title = fields.title || 'Unknown Title';
   entry.authors = parseAuthors(fields.author || 'Unknown Author');
   entry.year = parseInt(fields.year) || new Date().getFullYear();
-  entry.venue = fields.journal || fields.booktitle || fields.publisher || fields.series || 'Unknown Venue';
+  entry.venue = fields.venue || fields.journal || fields.booktitle || fields.publisher || fields.series || 'Unknown Venue';
   
   // Optional fields
   if (fields.doi) {

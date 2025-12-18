@@ -122,7 +122,7 @@ export const publications: Publication[] = [
     id: "20.500.12708_152680",
     title: "Interactive Music Mapping Vienna: Networks In Time And Space",
     authors: ["Filipov, V."],
-    venue: "Unknown Venue",
+    venue: "Groove The City ― Urban Music Studies and Digital Humanities, Music and Arts University of the City of Vienna",
     year: 2022,
     type: "Preprint",
     doi: "20.500.12708/152680",
@@ -463,7 +463,7 @@ export const publications: Publication[] = [
     id: "20.500.12708_7386",
     title: "Visual Exploration And Comparison Of Multiple Resume: Focus On Time And Space",
     authors: ["Filipov, V."],
-    venue: "Unknown Venue",
+    venue: "TU Wien",
     year: 2017,
     type: "Book Chapter",
     doi: "10.34726/hss.2017.43587",
@@ -508,7 +508,7 @@ export const publications: Publication[] = [
     id: "20.500.12708_217311",
     title: "Networks In Motion",
     authors: ["Filipov, V."],
-    venue: "Unknown Venue",
+    venue: "BioMedvis Seminar at Ludwig-Boltzmann Institute for Digital Health and Prevention",
     year: 2025,
     type: "Preprint",
     doi: "10.34726/10139",
@@ -689,7 +689,7 @@ export const publications: Publication[] = [
     id: "20.500.12708_197713",
     title: "Dynamic Perspectives: Visualizing Time And Networks For Analytical Insights",
     authors: ["Filipov, V."],
-    venue: "Unknown Venue",
+    venue: "Shonan Seminar on Advancing Visual Computing in Materials Science No.189, Japan",
     year: 2024,
     type: "Preprint",
     doi: "10.34726/6362",
@@ -711,7 +711,7 @@ export const publications: Publication[] = [
     id: "20.500.12708_193508",
     title: "Presenting CVAST Research Group",
     authors: ["Filipov, V."],
-    venue: "Unknown Venue",
+    venue: "WinterGraph, Kaprun (Austria)",
     year: 2024,
     type: "Preprint",
     doi: "20.500.12708/193508",
@@ -803,7 +803,7 @@ export const publications: Publication[] = [
     id: "20.500.12708_198095",
     title: "Networks In Time And Space: Visual Analytics Of Dynamic Network Representations",
     authors: ["Filipov, V."],
-    venue: "Unknown Venue",
+    venue: "TU Wien",
     year: 2024,
     type: "Book Chapter",
     doi: "10.34726/hss.2024.123022",
@@ -951,8 +951,70 @@ export const publications: Publication[] = [
 	abstract     = {Information Diffusion (ID) is shaped by uncertainty, yet most visualizations overlook it, leading to oversimplified or misleading interpretations. This work enhances two existing ID visualizations by integrating uncertainty through visual encodings within the original research goals. We are exploring how visualizing uncertainty might influence interpretation, including the potential for signal suppression or amplification. We discuss design alternatives and insights that apply to visualizing uncertainty in two existing visualization techniques. Future work directions are focusing on evaluating the designs and eliciting user feedback and comments on the interpretability and intuitiveness of the proposed uncertainty visualization encodings.},
 	keywords     = {Uncerainty; Information Visualization; Visual Analytics}
 }
-%% Don't Stop me now
-%% Kaleidoscope
-%% Layers of Doubt`
+`
+  },
+  {
+    id: "20.500.12708_222642",
+    title: "A Kaleidoscopic View of Artist Co-Exhibition Networks",
+    authors: ["Tuscher, M.", "Rauchenberger, L.", "Kamencek, T.", "Rosenberg, R.", "Miksch, S.", "Filipov, V."],
+    venue: "IEEE VIS 2025 - Posters",
+    year: 2025,
+    type: "Conference",
+    doi: "20.500.12708_222642",
+    url: "https://doi.org/20.500.12708_222642",
+    keywords: ["Information Visualization", "Dynamic Network Visualization", "Centrality", "Visual Analytics", "Temporal Data", "Art History"],
+    bibtex: `@inproceedings{20.500.12708_222642,
+	author 		= {M. Tuscher and L. Rauchenberger and T. Kamencek and R. Rosenberg and S. Miksch and V. Filipov},
+	title		= {{A Kaleidoscopic View of Artist Co-Exhibition Networks}},
+	year        = 2025,
+	journal     = {IEEE VIS 2025 - Posters},
+	note        = {Poster},
+	doi 		= {20.500.12708_222642},
+	abstract 	= {Centralities are network measures that reveal important nodes in a network. We visualize four different centralities in a co-exhibition network of artists in a Kaleidoscope-like visualization that makes it possible to see different patterns over the years.},
+	keywords 	= {Information Visualization; Dynamic Network Visualization; Centrality; Visual Analytics; Temporal Data; Art History},
+}
+
+`
+  },
+  {
+    id: "rajendran2025dontstopme",
+    title: "Don't Stop Me Now: Visualizing Disruptions in Railroad Networks",
+    authors: ["Rajendran, S.", "Arleo, A.", "Landesberger, T.", "Miksch, S.", "Sondag, M.", "Tuscher, M.", "Filipov, V."],
+    venue: "IEEE VIS 2025",
+    year: 2025,
+    type: "Conference",
+    keywords: ["Information Visualization", "Dynamic Network Visualization", "Visual Analytics", "Temporal Data", "Spatial Data", "Information Diffusion"],
+    bibtex: `@inproceedings{rajendran2025dontstopme,
+	author 		= {S. Rajendran and A. Arleo and T. von Landesberger and S. Miksch and M. Sondag and M. Tuscher and V. Filipov},
+	title		= {{Don't Stop Me Now: Visualizing Disruptions in Railroad Networks}},
+	year        = 2025,
+	journal     = {IEEE VIS 2025},
+	note        = {Short Paper},
+	doi 		= {},
+	abstract 	= {Railroad networks are complex systems where a single disruption can have cumulative effects, impacting services' planned schedules and degrading the network's performance. To support railroad planners in identifying these disruptions, we propose a Visual Analytics approach with multiple coordinated views: a map, calendar heatmap, Marey graph, and a multi-line chart. Our proposed approach enables the exploration and analysis of the disruptions' spatial and temporal patterns and delay accumulation to identify vulnerable segments in the railroad network. We assess the effectiveness of our approach through an expert interview highlighting how the accumulation of delays and disruptions is lucidly communicated and provides valuable insights into their spread across the network. We discuss the outcomes of the expert interview alongside the limitations we identified and how we resolve these. Finally, we illustrate directions for future work, including online data to assist railroad planners with real-time monitoring for proactive decision-making and improved operations.},
+	keywords 	= {Information Visualization; Dynamic Network Visualization; Visual Analytics; Temporal Data; Spatial Data, Information Diffusion},
+}
+`
+  },
+  {
+    id: "baumgartl2025typology",
+    title: "Layers of Doubt: Typology of Temporal Uncertainty in Dynamic Diffusion Networks",
+    authors: ["Baumgartl, T.", "Filipov, V.", "Rajendran, S.", "Miksch, a.", "Archambault, D.", "Arleo, A.", "Landesberger, T."],
+    venue: "IEEE VIS Uncertainty Visualization Workshop",
+    year: 2025,
+    type: "Conference",
+    keywords: ["Uncertainty", "Information Visualization", "Dynamic Network Visualization", "Visual Analytics", "Temporal Data", "Information Diffusion"],
+    award: "Best Paper Honorable Mention",
+    bibtex: `@inproceedings{baumgartl2025typology,
+	author 		= {T. Baumgartl and V. Filipov and S. Rajendran and and S. Miksch and D. Archambault and A. Arleo and T. von Landesberger},
+	title		= {{Layers of Doubt: Typology of Temporal Uncertainty in Dynamic Diffusion Networks}},
+	year        = 2025,
+	journal     = {IEEE VIS Uncertainty Visualization Workshop},
+	note        = {Short Paper},
+	abstract 	= {Investigating diffusion on dynamic networks has become an important problem, e.g., how misinformation spreads across social platforms or pathogens circulate across contact tracing networks. Uncertainty plays a major role: the exact time a contact takes place, whether the nodes existed, or if the diffusion took place may be unknown. However, it is unclear which types of uncertainty need to be shown so that appropriate visualizations can be designed. Therefore, we present a novel typology of temporal uncertainty in dynamic networks and their associated diffusion processes. Our paper systematizes where uncertainty can arise. It can be used to characterize user requirements for new visualizations, assess their appropriateness, and support the development of novel designs.},	
+	keywords 	= {Uncertainty, Information Visualization; Dynamic Network Visualization; Visual Analytics; Temporal Data; Information Diffusion},
+	doi 		= {},
+	award		 = {Best Paper Honorable Mention}
+}`
   }
 ];
