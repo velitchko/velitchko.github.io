@@ -999,14 +999,14 @@ export const publications: Publication[] = [
   {
     id: "baumgartl2025typology",
     title: "Layers of Doubt: Typology of Temporal Uncertainty in Dynamic Diffusion Networks",
-    authors: ["Baumgartl, T.", "Filipov, V.", "Rajendran, S.", "Miksch, a.", "Archambault, D.", "Arleo, A.", "Landesberger, T."],
+    authors: ["Baumgartl, T.", "Filipov, V.", "Rajendran, S.", "Miksch, S.", "Archambault, D.", "Arleo, A.", "Landesberger, T."],
     venue: "IEEE VIS Uncertainty Visualization Workshop",
     year: 2025,
     type: "Conference",
     keywords: ["Uncertainty", "Information Visualization", "Dynamic Network Visualization", "Visual Analytics", "Temporal Data", "Information Diffusion"],
     award: "Best Paper Honorable Mention",
     bibtex: `@inproceedings{baumgartl2025typology,
-	author 		= {T. Baumgartl and V. Filipov and S. Rajendran and and S. Miksch and D. Archambault and A. Arleo and T. von Landesberger},
+	author 		= {T. Baumgartl and V. Filipov and S. Rajendran and S. Miksch and D. Archambault and A. Arleo and T. von Landesberger},
 	title		= {{Layers of Doubt: Typology of Temporal Uncertainty in Dynamic Diffusion Networks}},
 	year        = 2025,
 	journal     = {IEEE VIS Uncertainty Visualization Workshop},
@@ -1014,7 +1014,7 @@ export const publications: Publication[] = [
 	abstract 	= {Investigating diffusion on dynamic networks has become an important problem, e.g., how misinformation spreads across social platforms or pathogens circulate across contact tracing networks. Uncertainty plays a major role: the exact time a contact takes place, whether the nodes existed, or if the diffusion took place may be unknown. However, it is unclear which types of uncertainty need to be shown so that appropriate visualizations can be designed. Therefore, we present a novel typology of temporal uncertainty in dynamic networks and their associated diffusion processes. Our paper systematizes where uncertainty can arise. It can be used to characterize user requirements for new visualizations, assess their appropriateness, and support the development of novel designs.},	
 	keywords 	= {Uncertainty, Information Visualization; Dynamic Network Visualization; Visual Analytics; Temporal Data; Information Diffusion},
 	doi 		= {},
-	award		 = {Best Paper Honorable Mention}
+	award		= {Best Paper Honorable Mention}
 }`
   }
 ];
