@@ -2,13 +2,16 @@
 
 import { useEffect } from 'react';
 
+// Use a WeakSet to track which buttons already have handlers attached
+const attachedButtons = new WeakSet<HTMLButtonElement>();
+
 export default function CodeCopyHandler() {
   useEffect(() => {
     function attachCopyHandlers() {
       document.querySelectorAll('button.copy-code-btn[data-code-copy]').forEach((btn) => {
         const button = btn as HTMLButtonElement;
-        if ((button as any)._copyHandlerAttached) return;
-        (button as any)._copyHandlerAttached = true;
+        if (attachedButtons.has(button)) return;
+        attachedButtons.add(button);
         
         button.addEventListener('click', () => {
           const codeElement = button.nextElementSibling as HTMLElement;
