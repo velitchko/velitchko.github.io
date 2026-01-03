@@ -3,6 +3,7 @@ import { getBlogPostBySlug, getAllBlogPostSlugs } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 import ExportBibtex from './ExportBibtex';
 import FontSizeControl from '@/components/FontSizeControl';
+import InteractiveCheckboxes from '@/components/InteractiveCheckboxes';
 
 export async function generateStaticParams() {
   const slugs = getAllBlogPostSlugs();
@@ -22,6 +23,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   return (
     <div className="min-h-screen pt-32 pb-20">
       <FontSizeControl />
+      <InteractiveCheckboxes slug={slug} />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Back Link */}
         <Link 
@@ -101,6 +103,33 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <div 
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
+            {/* Copy button handler for code blocks */}
+            <script dangerouslySetInnerHTML={{ __html: `
+              (function() {
+                function attachCopyHandlers() {
+                  document.querySelectorAll('button.copy-code-btn[data-code-copy]').forEach(function(btn) {
+                    if (btn._copyHandlerAttached) return;
+                    btn._copyHandlerAttached = true;
+                    btn.addEventListener('click', function() {
+                      const code = btn.nextElementSibling && btn.nextElementSibling.innerText;
+                      if (code && navigator.clipboard) {
+                        navigator.clipboard.writeText(code).then(() => {
+                          btn.classList.add('copied');
+                          setTimeout(function() {
+                            btn.classList.remove('copied');
+                          }, 1200);
+                        });
+                      }
+                    });
+                  });
+                }
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', attachCopyHandlers);
+                } else {
+                  attachCopyHandlers();
+                }
+              })();
+            ` }} />
           </div>
 
           {/* Attachments */}

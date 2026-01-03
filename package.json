@@ -11,16 +11,19 @@
   "dependencies": {
     "d3-force": "^3.0.0",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "next": "15.5.9",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "rehype-highlight": "^7.0.2",
     "rehype-katex": "^7.0.1",
+    "rehype-stringify": "^10.0.1",
     "remark": "^15.0.1",
     "remark-gfm": "^4.0.1",
     "remark-highlight.js": "^7.0.1",
     "remark-html": "^16.0.1",
-    "remark-math": "^6.0.0"
+    "remark-math": "^6.0.0",
+    "remark-rehype": "^11.1.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

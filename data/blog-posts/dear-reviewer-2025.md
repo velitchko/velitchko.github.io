@@ -56,7 +56,7 @@ They're probably just **overworked, burnt out, and still trying to do the right 
 I've experienced it too: reviewing paper after paper, telling myself I'm objective while my focus is elsewhere.
 
 That's what makes it hard to be angry.  
-Because it's not just them, **it's me and it's you, it's all of us.**<sup>[9](#note-9)</sup>
+It's not just them, **it's me and it's you, it's all of us.**<sup>[9](#note-9)</sup>
 
 We're running on fumes and pretending it's fine.
 

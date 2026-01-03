@@ -4,8 +4,16 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
-import remarkHtml from 'remark-html';
+import remarkRehype from 'remark-rehype';
+import rehypeStringify from 'rehype-stringify';
+import rehypeHighlight from 'rehype-highlight';
+import hljs from 'highlight.js/lib/core';
+import latex from 'highlight.js/lib/languages/latex';
+import rehypeCopyButton from './rehypeCopyButton';
 import { BlogPost } from '@/data/blog';
+
+// Register LaTeX language for syntax highlighting
+hljs.registerLanguage('latex', latex);
 
 const blogPostsDirectory = path.join(process.cwd(), 'data/blog-posts');
 
@@ -30,16 +38,28 @@ export function getAllBlogPostSlugs(): string[] {
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(blogPostsDirectory, `${slug}.md`);
+    
+    // Check if file exists before trying to read it
+    if (!fs.existsSync(fullPath)) {
+      return null;
+    }
+    
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
     // Parse frontmatter
     const { data, content } = matter(fileContents);
 
-    // Process markdown to HTML with syntax highlighting and LaTeX support
+    // Process markdown to HTML with syntax highlighting, LaTeX, and copy button
     const processedContent = await remark()
-      .use(remarkGfm) // GitHub Flavored Markdown (tables, strikethrough, etc.)
-      .use(remarkMath) // LaTeX math support
-      .use(remarkHtml, { sanitize: false }) // Convert to HTML
+      .use(remarkGfm)
+      .use(remarkMath)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeHighlight, { 
+        languages: { latex },
+        prefix: 'hljs-'
+      })
+      .use(rehypeCopyButton)
+      .use(rehypeStringify, { allowDangerousHtml: true })
       .process(content);
 
     const contentHtml = processedContent.toString();

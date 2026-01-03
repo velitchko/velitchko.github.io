@@ -1,5 +1,53 @@
+
 @import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
 @import "tailwindcss";
+
+.copy-code-btn .checkmark-icon {
+  display: none;
+}
+.copy-code-btn.copied .copy-icon {
+  display: none;
+}
+.copy-code-btn.copied .checkmark-icon {
+  display: inline;
+}
+
+/* Copy button for code blocks */
+.blog-content pre {
+  position: relative;
+}
+.copy-code-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  background: transparent;
+  color: #00ffff;
+  border: none;
+  border-radius: 0;
+  font-family: 'VT323', monospace;
+  font-size: 1rem;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.85;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: 24px;
+}
+.copy-code-btn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+.copy-code-btn:hover, .copy-code-btn:focus {
+  color: #ff00ff;
+  opacity: 1;
+}
+.copy-code-btn.copied {
+  color: #00ff99;
+}
 
 :root {
   --background: #0a0a0a;
