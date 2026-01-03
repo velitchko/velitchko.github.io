@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import ExportBibtex from './ExportBibtex';
 import FontSizeControl from '@/components/FontSizeControl';
 import InteractiveCheckboxes from '@/components/InteractiveCheckboxes';
+import CodeCopyHandler from '@/components/CodeCopyHandler';
 
 export async function generateStaticParams() {
   const slugs = getAllBlogPostSlugs();
@@ -100,36 +101,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           {/* Post Content - Markdown rendered as HTML */}
           <div className="blog-content">
+            <CodeCopyHandler />
             <div 
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
-            {/* Copy button handler for code blocks */}
-            <script dangerouslySetInnerHTML={{ __html: `
-              (function() {
-                function attachCopyHandlers() {
-                  document.querySelectorAll('button.copy-code-btn[data-code-copy]').forEach(function(btn) {
-                    if (btn._copyHandlerAttached) return;
-                    btn._copyHandlerAttached = true;
-                    btn.addEventListener('click', function() {
-                      const code = btn.nextElementSibling && btn.nextElementSibling.innerText;
-                      if (code && navigator.clipboard) {
-                        navigator.clipboard.writeText(code).then(() => {
-                          btn.classList.add('copied');
-                          setTimeout(function() {
-                            btn.classList.remove('copied');
-                          }, 1200);
-                        });
-                      }
-                    });
-                  });
-                }
-                if (document.readyState === 'loading') {
-                  document.addEventListener('DOMContentLoaded', attachCopyHandlers);
-                } else {
-                  attachCopyHandlers();
-                }
-              })();
-            ` }} />
           </div>
 
           {/* Attachments */}
