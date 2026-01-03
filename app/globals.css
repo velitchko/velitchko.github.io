@@ -52,6 +52,9 @@
 :root {
   --background: #0a0a0a;
   --foreground: #00ffff;
+}
+
+@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-neon-cyan: #00ffff;
@@ -60,6 +63,10 @@
   --color-retro-darker: #0a0a0a;
   
   --animate-scan: scan 3s linear infinite;
+}
+
+/* Global font size control */
+:root {
   --global-font-size: 1rem;
 }
 
