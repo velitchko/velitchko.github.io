@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -52,19 +54,19 @@ export default function Footer() {
             <h3 className="text-lg font-retro neon-glow-cyan mb-4">QUICK.ACCESS</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="/#research" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
+                <Link href="/#research" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
                   → Research
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#projects" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
+                <Link href="/#projects" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
                   → Projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#publications" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
+                <Link href="/#publications" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
                   → Publications
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
