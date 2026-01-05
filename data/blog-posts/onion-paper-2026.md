@@ -210,6 +210,8 @@ Because at the end of the day, we're all tired readers sometimes. And we're all 
 
 **Like an onion: layers that protect, preserve, and progressively reveal what matters most.** 
 
+<p align="left" style="font-size:1.1em; font-style:italic; color:#666;">Now all I gotta do is follow my own advice 🫣.</p>
+
 ---
 
 ## Practical LaTeX Visual Anchors: Tags, Badges, Callouts, and Labeled Margins
