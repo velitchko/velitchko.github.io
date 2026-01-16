@@ -208,6 +208,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
+                title: "refhub.io",
+                description: "A modern reference management platform for organizing academic publications, building citation networks, and sharing research collections.",
+                tags: ["Reference Management", "Productivity", "Knowledge Graphs"],
+                link: "https://refhub.io/"
+              },
+              {
                 title: "ArtVis",
                 description: "Network visualization system modeling complex interactions between persons, objects, places, institutions, and events in art history over time.",
                 tags: ["Dynamic Networks", "Digital Humanities", "Art History"],

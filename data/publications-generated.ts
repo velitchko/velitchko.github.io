@@ -138,6 +138,7 @@ export const publications: Publication[] = [
 	venue        = {Groove The City ― Urban Music Studies and Digital Humanities, Music and Arts University of the City of Vienna},
 	abstract     = {In the application domain of digital humanities network visualization is increasingly being used to conduct research as the main interests of the domain experts lie in exploring and analyzing relationships between entities and their changes over time. Visualizing the dynamics and different perspectives of such data is a non-trivial task but it enables researchers to explore connections between disparate entities and investigate historical narratives that emerge. We present our work on an interactive exploration environment to visualize event-based networks and support research in digital humanities through visualization of historical subjects in space and time. Our approach is a circular visualization that is flexible and transparent to the underlying subject. It uses event-based networks as inputs, considering the existence of a small set of entities in space and time: people, places, events, and themes. This minimal model is powerful enough to represent many facets of historical subjects and explore trends and narratives mainly through their temporal and spatial developments, serving as visual analytical support to humanists.},
 	keywords     = {Visualization; Networks; Time-Oriented Data; Spatial Data; Digital Humanities},
+	note		 = {(Invited Talk)},
 	invited      = {true}
 }`
   },
@@ -523,6 +524,7 @@ export const publications: Publication[] = [
 	venue        = {BioMedvis Seminar at Ludwig-Boltzmann Institute for Digital Health and Prevention},
 	abstract     = {Networks are rarely static, they shift, evolve, and transmit activity over time. In this talk, I explore how visualization helps us make sense of networks in motion, from social systems to infrastructure and beyond. Drawing on metaphors like traffic flow, I compare temporal models, i.e., snapshots, aggregations, and event-based dynamics, and discuss how each supports different kinds of reasoning. I’ll highlight challenges like visual overload, temporal ambiguity, and complexity, and examine a range of visualization strategies, from traditional node-link diagrams to dimensionality reduction techniques. Ultimately, the talk reflects on how our choices, about time, representation, and abstraction, shape what we can see, understand, and communicate in dynamic networks.},
 	keywords     = {Visual Analytics; Network Visualization; Temporal Data; Dynamic Network Visualization; Information Visualization},
+	note		 = {(Invited Talk)},
 	invited      = {true}
 }`
   },
@@ -608,7 +610,7 @@ export const publications: Publication[] = [
     award: "Best Paper Award",
     bibtex: `@article{20.500.12708_216536,
 	title        = {{NODKANT: Exploring Constructive Network Physicalization}},
-	author       = {D. Pahr and S. Di Bartolomeo and H. Ehlers and V. A. Filipov and C. Stoiber and W. Aigner and H.-Y. Wu and R. G. Raidou},
+	author       = {D. Pahr and S. Di Bartolomeo and H. Ehlers and V. Filipov and C. Stoiber and W. Aigner and H.-Y. Wu and R. G. Raidou},
 	year         = 2025,
 	journal      = {Computer Graphics Forum},
 	publisher    = {WILEY},
@@ -704,6 +706,7 @@ export const publications: Publication[] = [
 	venue        = {Shonan Seminar on Advancing Visual Computing in Materials Science No.189, Japan},
 	abstract     = {Dynamic networks are structures where the graph's nodes and/or edges can appear or disappear over discrete or continuous intervals of time. The visualization and analysis of dynamic networks play an essential role in understanding the structural evolution of a network. The main goals are to support a better overview of the network's evolution and to identify patterns or behaviors. Dynamic networks are most commonly represented as node-link diagrams with the temporal dimension being depicted using animated approaches.  In this talk, I present a number of different and alternative methods for visualizing and interacting with a network and its temporal dimension and discuss the most pressing challenges currently faced. Furthermore, possible intersections with the Materials Sciences domain are discussed to understand how dynamic network visualization can complement the current state-of-the-art in this domain, provide different perspectives, and facilitate new insights into the data.},
 	keywords     = {Visual Analytics; Network Visualization; Temporal Data; Dynamic Network Visualization; Information Visualization},
+	note		 = {(Invited Talk)},
 	invited      = {true}
 }`
   },
@@ -726,6 +729,7 @@ export const publications: Publication[] = [
 	url          = {https://repositum.tuwien.at/handle/20.500.12708/193508},
 	venue        = {WinterGraph, Kaprun (Austria)},
 	keywords     = {Visual Analytics; Information Visualization; Data Analysis; User Interaction; Human-Computer Interaction},
+	note		 = {(Invited Talk)},
 	invited      = {true}
 }`
   },
@@ -841,6 +845,7 @@ export const publications: Publication[] = [
 	url          = {https://repositum.tuwien.at/handle/20.500.12708/193549},
 	abstract     = {The richness and potential of the Database of Modern Exhibitions (DoME) lies in its innovative capacity, encompassing a comprehensive collection of more than 1350 Modern Art exhibitions in Europe from 1905 to 1915, documented and collected through printed exhibition catalogues. Due to its large scope, DoME serves as an ideal database for visual analysis, extracting insights, and communicating advances in Digital Art History research. However, creating visually appealing, effective, and intuitive representations of such data is challenging due to its large scale. Providing such overview/summary visualizations and balancing simplicity with meaningful insights that can be extracted is crucial for clearly communicating this information. We propose an approach that leverages the strengths of sparklines combined with interactive features, such as dynamically re-ordering artists’ exhibition activities based on similar behaviour (Similarity Ordering), or Co-Exhibition Activity. This facilitates the tasks of researchers that are investigating patterns and trends, for instance, in Digital Art History. These techniques enable the exploration and understanding of the dynamic trajectories of individual artists’ careers while addressing the challenges associated with summarizing such large scale data. The concept of summarizing and visualizing such large datasets, as exemplified through our proposed approach, can be generalized to various domains. Whether it is depicting exhibition activities in Digital Art History, publication records in scientific research, or stock performance in business analytics, this approach can provide valuable insights into the temporal patterns and relationships within complex datasets. Future opportunities for research are: exploring the multi-dimensional aspects of the data, such as, incorporating additional data dimensions, i.e. artistic styles, geographic locations, age, gender and nationality, providing a more nuanced understanding of the similarities between artists’ exhibition activities.},
 	keywords     = {Visual Analytics; Information Visualization; Digital Humanities; Art History; Temporal Data; Biographical Data},
+	note		 = {(Invited Talk)},
 	invited      = {true}
 }`
   },
@@ -973,7 +978,6 @@ export const publications: Publication[] = [
 	abstract 	= {Centralities are network measures that reveal important nodes in a network. We visualize four different centralities in a co-exhibition network of artists in a Kaleidoscope-like visualization that makes it possible to see different patterns over the years.},
 	keywords 	= {Information Visualization; Dynamic Network Visualization; Centrality; Visual Analytics; Temporal Data; Art History},
 }
-
 `
   },
   {
@@ -983,6 +987,8 @@ export const publications: Publication[] = [
     venue: "IEEE VIS 2025",
     year: 2025,
     type: "Conference",
+    doi: "10.1109/VIS60296.2025.00040",
+    url: "https://doi.org/10.1109/VIS60296.2025.00040",
     keywords: ["Information Visualization", "Dynamic Network Visualization", "Visual Analytics", "Temporal Data", "Spatial Data", "Information Diffusion"],
     bibtex: `@inproceedings{rajendran2025dontstopme,
 	author 		= {S. Rajendran and A. Arleo and T. von Landesberger and S. Miksch and M. Sondag and M. Tuscher and V. Filipov},
@@ -990,7 +996,7 @@ export const publications: Publication[] = [
 	year        = 2025,
 	journal     = {IEEE VIS 2025},
 	note        = {Short Paper},
-	doi 		= {},
+	doi 		= {10.1109/VIS60296.2025.00040},
 	abstract 	= {Railroad networks are complex systems where a single disruption can have cumulative effects, impacting services' planned schedules and degrading the network's performance. To support railroad planners in identifying these disruptions, we propose a Visual Analytics approach with multiple coordinated views: a map, calendar heatmap, Marey graph, and a multi-line chart. Our proposed approach enables the exploration and analysis of the disruptions' spatial and temporal patterns and delay accumulation to identify vulnerable segments in the railroad network. We assess the effectiveness of our approach through an expert interview highlighting how the accumulation of delays and disruptions is lucidly communicated and provides valuable insights into their spread across the network. We discuss the outcomes of the expert interview alongside the limitations we identified and how we resolve these. Finally, we illustrate directions for future work, including online data to assist railroad planners with real-time monitoring for proactive decision-making and improved operations.},
 	keywords 	= {Information Visualization; Dynamic Network Visualization; Visual Analytics; Temporal Data; Spatial Data, Information Diffusion},
 }
@@ -1003,6 +1009,8 @@ export const publications: Publication[] = [
     venue: "IEEE VIS Uncertainty Visualization Workshop",
     year: 2025,
     type: "Conference",
+    doi: "10.1109/UncertaintyVisualization68947.2025.00012",
+    url: "https://doi.org/10.1109/UncertaintyVisualization68947.2025.00012",
     keywords: ["Uncertainty", "Information Visualization", "Dynamic Network Visualization", "Visual Analytics", "Temporal Data", "Information Diffusion"],
     award: "Best Paper Honorable Mention",
     bibtex: `@inproceedings{baumgartl2025typology,
@@ -1013,7 +1021,7 @@ export const publications: Publication[] = [
 	note        = {Short Paper},
 	abstract 	= {Investigating diffusion on dynamic networks has become an important problem, e.g., how misinformation spreads across social platforms or pathogens circulate across contact tracing networks. Uncertainty plays a major role: the exact time a contact takes place, whether the nodes existed, or if the diffusion took place may be unknown. However, it is unclear which types of uncertainty need to be shown so that appropriate visualizations can be designed. Therefore, we present a novel typology of temporal uncertainty in dynamic networks and their associated diffusion processes. Our paper systematizes where uncertainty can arise. It can be used to characterize user requirements for new visualizations, assess their appropriateness, and support the development of novel designs.},	
 	keywords 	= {Uncertainty, Information Visualization; Dynamic Network Visualization; Visual Analytics; Temporal Data; Information Diffusion},
-	doi 		= {},
+	doi 		= {10.1109/UncertaintyVisualization68947.2025.00012},
 	award		= {Best Paper Honorable Mention}
 }`
   }
