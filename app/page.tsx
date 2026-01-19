@@ -253,7 +253,7 @@ export default function Home() {
                 title: "PolyCube",
                 description: "Space-time cube visualization method for exploring cultural heritage data, integrating spatial and temporal information to improve mental model construction.",
                 tags: ["Space-Time-Cube", "Cultural Heritage", "Cognitive Science"],
-                link: "https://bigdata-vis.github.io/polycube/combined/home"
+                link: "https://bigdata-vis.github.io/polycube/combined"
               },
               
               {
