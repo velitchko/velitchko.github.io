@@ -9,11 +9,23 @@ import rehypeStringify from 'rehype-stringify';
 import rehypeHighlight from 'rehype-highlight';
 import hljs from 'highlight.js/lib/core';
 import latex from 'highlight.js/lib/languages/latex';
+import bash from 'highlight.js/lib/languages/bash';
+import markdown from 'highlight.js/lib/languages/markdown';
+import dockerfile from 'highlight.js/lib/languages/dockerfile';
+import typescript from 'highlight.js/lib/languages/typescript';
+import python from 'highlight.js/lib/languages/python';
 import rehypeCopyButton from './rehypeCopyButton';
 import { BlogPost } from '@/data/blog';
 
-// Register LaTeX language for syntax highlighting
+// Register languages for syntax highlighting
 hljs.registerLanguage('latex', latex);
+hljs.registerLanguage('bash', bash);
+hljs.registerLanguage('markdown', markdown);
+hljs.registerLanguage('dockerfile', dockerfile);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('python', python);
+// bibtex falls back to latex highlighting
+hljs.registerLanguage('bibtex', latex);
 
 const blogPostsDirectory = path.join(process.cwd(), 'data/blog-posts');
 
@@ -55,7 +67,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       .use(remarkMath)
       .use(remarkRehype, { allowDangerousHtml: true })
       .use(rehypeHighlight, { 
-        languages: { latex },
+        languages: { latex, bash, markdown, dockerfile, typescript, python, bibtex: latex },
         prefix: 'hljs-'
       })
       .use(rehypeCopyButton)
