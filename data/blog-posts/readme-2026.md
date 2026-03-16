@@ -51,7 +51,7 @@ This is a **problem**, the cost of not doing it falls <mark>almost entirely on o
 
 ---
 
-There are real reasons people don't develop and publish with reproducabiliy in mind, and they're worth naming honestly.  
+There are real reasons people don't develop and publish with reproducibility in mind, and they're worth naming honestly.  
 
 Time is the obvious one.<sup>[2](#note-2)</sup>  
 Disclosure concerns are real too: sometimes you can't share data due to licensing or privacy, sometimes you can't share code before a deadline for anonymity reasons.  
@@ -68,7 +68,7 @@ The harder truth is that most of these barriers dissolve if you stop thinking ab
 
 ---
 
-Before getting precise about terms. *Because the community uses them loosely and it matters.* Here's how reproducability and replicability differ:
+Before getting precise about terms. *Because the community uses them loosely and it matters.* Here's how reproducibility and replicability differ:
 
 **Reproducibility** means: same data + same code → same results. You're giving someone the exact inputs to verify your exact outputs.  
 **Replicability** means: different data + same method → consistent findings. You're showing your approach generalizes beyond your specific dataset and conditions.<sup>[4](#note-4)</sup>
@@ -290,7 +290,7 @@ This trick pays off constantly and in unexpected ways:
 There's a newer challenge that I think the community <mark>hasn't critically figured out yet.</mark>
 
 A noticeable trend over the last few years is research done *with* LLMs. Specifically, using LLMs to do the qualitative analysis, related work and literature search, summarization and synthesis, interpretation of results, and just generally writing up **large** portions of the paper.
-I believe there are some serious ethical concerns and other discussion points to be made here, BUT: I want to talk about the reproducability.
+I believe there are some serious ethical concerns and other discussion points to be made here, BUT: I want to talk about the reproducibility.
 
 The problem is that things are developing rapidly.
 Ask a model to classify your open-ended survey responses today. Ask it again in six months.  
