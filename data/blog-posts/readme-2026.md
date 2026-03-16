@@ -1,7 +1,7 @@
 ---
 title: "README.md"
 subtitle: "An Essay On Reproducibility"
-date: "11-03-2026"
+date: "03-17-2026"
 author: "Velitchko Filipov"
 hashtags:
   - Research & Development
