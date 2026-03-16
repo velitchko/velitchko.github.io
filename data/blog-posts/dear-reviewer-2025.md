@@ -228,7 +228,7 @@ How and what we review shapes what gets published, what ideas survive, and ultim
 
 ## Notes & References
 
-Below is a list of references so you can scan everything in one place. 
+Below is a list of references so you can scan everything in one place.
 
 <ol>
   <li id="note-1">
