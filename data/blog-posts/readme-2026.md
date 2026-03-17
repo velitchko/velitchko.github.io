@@ -223,7 +223,7 @@ WORKDIR /app
 
 # Copy anything from your local directory that needs to be in the virtual machine
 COPY requirements.txt .
-# Run any dependnecy installation scripts, environment setup, or pre-processing tweaks.
+# Run any dependency installation scripts, environment setup, or pre-processing tweaks.
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
@@ -247,7 +247,7 @@ docker run -it -v $(pwd)/output:/app/output myproject bash
 
 One practice that pays off disproportionately: make every figure in your paper producible by running a single command.  
 This could be as easy to do as setting up individual python scripts for each figure.
-No need to run blocks in nodebooks, to figure out which sequence to run them in, what parameters need adjustment, or how to export them manually.
+No need to run blocks in notebooks, to figure out which sequence to run them in, what parameters need adjustment, or how to export them manually.
 Just one file, <mark>one command,</mark> one figure.
 
 ```bash
