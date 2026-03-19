@@ -103,7 +103,7 @@ It also quietly improves everything else: your code is cleaner because it has to
 
 If you're not version-controlling your research, start there. Everything else builds ontop of this.
 
-<mark>Git</mark> is the standard. Think of your commit history as your lab notebook: records what changed, when, and if you write commit messages, why. The key habit is to commit when things work, not one giant dump at the end. Commit when an experiment runs cleanly. Commit when you add a figure. Commit when you fix a bug. Each commit is a checkpoint you can return to.
+<mark>Git</mark> is the standard. Think of your commit history as your lab notebook: record what changed, when, and if you write commit messages, why. The key habit is to commit when things work, not one giant dump at the end. Commit when an experiment runs cleanly. Commit when you add a figure. Commit when you fix a bug. Each commit is a checkpoint you can return to.
 
 ```bash
 # Initialize a repo at the start of every project
@@ -128,7 +128,7 @@ Every repository needs a <mark>README.md</mark>. This shouldn't be a placeholder
 # [Project Title]
 
 Brief description of the project (1-2 sentences). 
-> You can essentially copy from your abstract.
+> [You can essentially copy from your abstract.]
 
 ## Paper
 
@@ -203,7 +203,7 @@ conda env export > environment.yml
 
 Commit that file  right after you ensure the code runs cleanly.
 
-For JavaScript, TypeScript, and Node projects, your `package-lock.json` already contains this information. BUT: a lot of people add this to `.gitignore` I assume because they don't understand it's purpose. **Don't exclude this file**, the lockfile is <mark>what makes your dependencies reproducible.</mark>
+For JavaScript, TypeScript, and Node projects, your `package-lock.json` already contains this information. BUT: a lot of people add this to `.gitignore` I assume because they don't understand its purpose. **Don't exclude this file**, the lockfile is <mark>what makes your dependencies reproducible.</mark>
 
 ```bash
 # package-lock.json is already generated — commit it
@@ -364,7 +364,7 @@ If you're going to be there, come by. If not, the repository will be there when 
 The README.md sitting at the top of your repository is a small file.
 
 It's also, somehow, one of the most important things you may write this year.  
-Write it for the person who needs it most: the researcher who finds your paper two years from now, gets excited, follows the link, and is met with either a working system or a dead end.
+Write it for the person who needs it most: the researcher who finds your paper two years from now, gets excited, follows the link, and is met with a working system and reproducible results.
 
 That researcher might be a PhD student building on your work.  
 It might be a reviewer.  
