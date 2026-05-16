@@ -116,13 +116,13 @@ The collaboration works. But only if you do too.
 
 ### We've Been Here Before
 
-Cars killed people and hey still do (well drivers technically). They also affect the air quality in cities, enabled sprawl, and fundamentally changed how humans relate to physical space.
+Cars killed people and they still do (well drivers technically). They also affect the air quality in cities, enabled sprawl, and fundamentally changed how humans relate to physical space.
 
-But our response wasn't to stop using cars. We implemented safeguareds and guidelines, seatbelts, catalytic converters, emissions standards, electric vehicles. The critique got <mark>institutionalized into engineering</mark>. The people who understood the blind spots deeply were the ones who built the solutions.
+But our response wasn't to stop using cars. We implemented safeguards and guidelines, seatbelts, catalytic converters, emissions standards, electric vehicles. The critique got <mark>institutionalized into engineering</mark>. The people who understood the blind spots deeply were the ones who built the solutions.
 
-We are at that same inflection point. LLMs are already embedded in research workflows, writing pipelines, and evaluation processes, often without acknowledgment. Adding a disclosure field and calling it responsible use isn't really a solution to the problem. It's turning a blind eye and avoiding confrontation. What's missing is the harder work: developing norms that go beyond a checkbox, workflows that account for the known limitations, and a culture that treats responsible use as a skill rather than a disclaimer.
+We are at that same inflection point. LLMs are already embedded in research workflows, writing pipelines, and evaluation processes, often without acknowledgment. Adding a disclosure field and calling it responsible use isn't really a solution to the problem. It's turning a blind eye and avoiding confrontation. What's missing is the harder work: developing norms that go beyond a checkbox, workflows that account for the known limitations, and a culture that treats responsible use as a skill not a disclaimer.
 
-Every generation of researchers has had to learn new sets of tools,their limitations, and figure out how to use them responsibly. Statistical methods, eye-tracking, crowdsourcing, these did not arrive without their own problems and critique. But, we also didn't abandon them because of that, we developed methods and standards.
+Every generation of researchers has had to learn new sets of tools, their limitations, and figure out how to use them responsibly. Statistical methods, eye-tracking, crowdsourcing, these did not arrive without their own problems and critique. But, we also didn't abandon them because of that, we developed methods and standards.
 
 The researchers who move this field forward won't be the loudest voices in the Q&A. They'll be the ones quietly studying the blind spots, building better workflows, and asking harder questions than *"but what if it hallucinates?"*
 
@@ -142,7 +142,7 @@ Rather than a checklist, a few questions that have shaped how I think about this
 
 **Frustration is diagnostic.** When something goes wrong, it's worth asking whether it was a bad output or a bad input. It might be both. Blaming the model is how you miss the chance to get better at working with it.
 
-And more broadly: are you approaching this the way you'd approach any complex tool? Are you investing time in understanding and masteirng it? Or do you expect fluency to come for free?
+And more broadly: Are you approaching this the way you'd approach any complex tool? Are you investing time in understanding and masteirng it? Or do you expect fluency to come for free and for things to "*just work*"?
 
 ---
 
