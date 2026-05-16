@@ -150,7 +150,7 @@ And more broadly: Are you approaching this the way you'd approach any complex to
 
 A few things worth carrying forward.
 
-You are the <mark>driver</mark>. The model is a tool, yes, powerful, fast, but occasionally overconfident and wrong. The work is yours and so are the outcomes. Whatever it produces, you're the one who decides what to do with it and you're the one responsible for that decision.
+You are the <mark>driver</mark>. The model is a tool, yes, powerful, fast, but occasionally overconfident and sometimes wrong. The work is yours and so are the outcomes. Whatever it produces, you're the one who decides what to do with it and you're the one responsible for that decision.
 
 <mark>Context is how you steer.</mark> What you put in, how you scope it, how deliberately you manage what the window holds. This is where the quality of the human-AI collaboration lives.
 
