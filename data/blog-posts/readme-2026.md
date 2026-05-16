@@ -380,38 +380,38 @@ Below is a list of references so you can scan everything in one place.
 
 <ol>
   <li id="note-1">
-    <strong>Fekete & Freire</strong> — <em>Exploring Reproducibility in Visualization.</em><br />
-    IEEE Computer Graphics and Applications 40(5), 2020.<br />
+    <strong>Exploring Reproducibility in Visualization</strong><br />
+    Fekete, J.-D., Freire, J. & Rhyne, T.-M. (2020). IEEE Computer Graphics and Applications, 40(5), 108–119.<br />
     <a href="https://doi.org/10/ghd59m" target="_blank" rel="noopener noreferrer">https://doi.org/10/ghd59m</a><br />
     Extended: Outlines that most researchers cannot recreate their own results from two years ago without proper practices, and proposes a framework for thinking about reproducibility in visualization.
   </li>
   <li id="note-2">
-    <strong>Franke, Reina & Koch</strong> — <em>Toward Reproducible Visual Analysis Results.</em><br />
-    Proc. PacificVis 2023, IEEE Computer Society.<br />
+    <strong>Toward Reproducible Visual Analysis Results</strong><br />
+    Franke, M., Reina, G. & Koch, S. (2023). PacificVis 2023, IEEE Computer Society.<br />
     <a href="https://doi.org/10/gtw42q" target="_blank" rel="noopener noreferrer">https://doi.org/10/gtw42q</a><br />
     Extended: Estimates researchers spend 20–30% of their time attempting (and often failing) to reproduce others' work, representing massive wasted effort and slowed scientific progress.
   </li>
   <li id="note-3">
-    <strong>Haroz</strong> — <em>Open Practices in Visualization Research.</em><br />
-    Proc. BELIV 2018, IEEE Computer Society.<br />
+    <strong>Open Practices in Visualization Research</strong><br />
+    Haroz, S. (2018). BELIV 2018, IEEE Computer Society.<br />
     <a href="https://doi.org/10/gtw4sp" target="_blank" rel="noopener noreferrer">https://doi.org/10/gtw4sp</a><br />
     Extended: Analyzes practices for open data and material sharing, with quantified citation benefits for papers that share code and data openly.
   </li>
   <li id="note-4">
-    <strong>Kosara & Haroz</strong> — <em>Skipping the Replication Crisis in Visualization: Threats to Study Validity and How to Address Them.</em><br />
-    Proc. BELIV 2018, IEEE Computer Society.<br />
+    <strong>Skipping the Replication Crisis in Visualization</strong> — <em>Threats to Study Validity and How to Address Them.</em><br />
+    Kosara, R. & Haroz, S. (2018). BELIV 2018, IEEE Computer Society.<br />
     <a href="https://doi.org/10/gtw4sq" target="_blank" rel="noopener noreferrer">https://doi.org/10/gtw4sq</a><br />
     Extended: Establishes clear terminology distinguishing reproducibility (same data + code → same results) from replicability (different data + same method → consistent findings), and examines threats to study validity in visualization research.
   </li>
   <li id="note-5">
-    <strong>Reina</strong> — <em>Can Image Data Facilitate Reproducibility of Graphics and Visualizations?</em><br />
-    IEEE Computer Graphics and Applications 43(2), 2023.<br />
+    <strong>Can Image Data Facilitate Reproducibility of Graphics and Visualizations?</strong><br />
+    Reina, G. (2023). IEEE Computer Graphics and Applications, 43(2).<br />
     <a href="https://doi.org/10/gtw4nt" target="_blank" rel="noopener noreferrer">https://doi.org/10/gtw4nt</a><br />
     Extended: Proposes lightweight methods for embedding pipeline state in images to support reproducibility, addressing the challenge of capturing computational environments.
   </li>
   <li id="note-6">
-    <strong>Quadri & Rosen</strong> — <em>You Can't Publish Replication Studies (and How To Anyways).</em><br />
-    Proc. IEEE Workshop on Visualization for the People 2019. arXiv:1908.08893.<br />
+    <strong>You Can't Publish Replication Studies (and How To Anyways)</strong><br />
+    Quadri, G.J. & Rosen, P. (2019). IEEE Workshop on Visualization for the People. arXiv:1908.08893.<br />
     <a href="https://doi.org/10/gtxgh9" target="_blank" rel="noopener noreferrer">https://doi.org/10/gtxgh9</a><br />
     Extended: Proposes re-evaluation, expansion, and specialization strategies to make replication studies impactful and publishable within novel contributions.
   </li>
@@ -421,14 +421,14 @@ Below is a list of references so you can scan everything in one place.
     Extended: Awards a stamp to papers that share working code and meet documentation criteria. Voluntary but increasingly visible in CVs and citation records.
   </li>
   <li id="note-8">
-    <strong>Isenberg</strong> — <em>The State of Reproducibility Stamps for Visualization Research Papers.</em><br />
-    Proc. BELIV 2024, IEEE Computer Society.<br />
+    <strong>The State of Reproducibility Stamps for Visualization Research Papers</strong><br />
+    Isenberg, P. (2024). BELIV 2024, IEEE Computer Society.<br />
     <a href="https://doi.org/10/nt3t" target="_blank" rel="noopener noreferrer">https://doi.org/10/nt3t</a><br />
     Extended: Quantifies how few published visualization works meet reproducibility standards, and shows that GRSI-certified papers receive more citations and wider adoption.
   </li>
   <li id="note-9">
-    <strong>Cutler et al.</strong> — <em>reVISit 2: A Full Experiment Life Cycle User Study Framework.</em><br />
-    IEEE Transactions on Visualization and Computer Graphics, 2026. To appear.<br />
+    <strong>reVISit 2</strong> — <em>A Full Experiment Life Cycle User Study Framework.</em><br />
+    Cutler, L. et al. (2026). IEEE Transactions on Visualization and Computer Graphics. To appear.<br />
     <a href="https://doi.org/10/hbkxwp" target="_blank" rel="noopener noreferrer">https://doi.org/10/hbkxwp</a><br />
     Extended: A comprehensive framework supporting the full experiment lifecycle from design through dissemination, enabling reproducible study workflows through domain-specific languages, provenance tracking, and participant replay. Best paper award at IEEE VIS 2025.
   </li>

@@ -233,31 +233,37 @@ Below is a list of references so you can scan everything in one place.
 <ol>
   <li id="note-1">
     <strong>Dear Reviewer 2: Go F' Yourself</strong> — <em>Empirical test of the Reviewer #2 myth.</em><br />
+    Peterson, D.A.M. (2020). Social Science Quarterly, 101(4), 1648–1652.<br />
     <a href="https://onlinelibrary.wiley.com/doi/10.1111/ssqu.12824" target="_blank" rel="noopener noreferrer">https://onlinelibrary.wiley.com/doi/10.1111/ssqu.12824</a><br />
     Extended: Challenges the cultural narrative that "Reviewer 2" is uniquely harsh; shows variance is normal and our storytelling amplifies perceived negativity.
   </li>
   <li id="note-2">
-    <strong>The Peer Review Crisis</strong> — <em>Peer review framed as an evolutionary pressure point.</em><br />
+    <strong>The Crisis of Peer Review</strong> — <em>Part of the evolution of science.</em><br />
+    Horta, H. & Jung, J. (2024). Higher Education Quarterly, 78, e12511.<br />
     <a href="https://onlinelibrary.wiley.com/doi/10.1111/hequ.12511" target="_blank" rel="noopener noreferrer">https://onlinelibrary.wiley.com/doi/10.1111/hequ.12511</a><br />
     Extended: Argues current strain can catalyze reforms: bias reduction, inclusivity measures, and structural recognition of reviewing as core scholarly labor.
   </li>
   <li id="note-3">
     <strong>Reviewer Fatigue</strong> — <em>Workload saturation threatens quality sustainability.</em><br />
-    <a href="https://journals.sagepub.com/doi/full/10.1177/03635465231210848" target="_blank" rel="noopener noreferrer">https://journals.sagepub.com/doi/full/10.1177/03635465231210848</a><br />
+    Fleming, B.C. (2023). The American Journal of Sports Medicine, 51(14).<br />
+    <a href="https://journals.sagepub.com/doi/full/10.1177/03635465231210848" target="_blank" rel="noopener noreferrer">https://doi.org/10.1177/03635465231210848</a><br />
     Extended: Documents growing mismatch between submission volume and stable reviewer pools; highlights risks of rushed, low-fidelity assessments.
   </li>
   <li id="note-4">
     <strong>IEEE Reviewer Ethics / Guidelines</strong> — <em>Normative template for constructive evaluation.</em><br />
+    IEEE VGTC.<br />
     <a href="https://tc.computer.org/vgtc/conferences/ethics-guidelines/reviewer-ethics" target="_blank" rel="noopener noreferrer">https://tc.computer.org/vgtc/conferences/ethics-guidelines/reviewer-ethics</a><br />
-    Extended: Emphasizes objectivity, actionable feedback, time investment, and professional integrity—often cited but unevenly internalized.
+    Extended: Emphasizes objectivity, actionable feedback, time investment, and professional integrity — often cited but unevenly internalized.
   </li>
   <li id="note-5">
     <strong>IEEE VIS 2025 Panel: Reviewing on a Path to Self-Destruction?</strong> — <em>Community self-reflection on sustainability.</em><br />
+    IEEE VIS (2025).<br />
     <a href="https://ieeevis.org/year/2025/program/session_panel7.html" target="_blank" rel="noopener noreferrer">https://ieeevis.org/year/2025/program/session_panel7.html</a><br />
-    Extended: Explores systemic pressure, reviewer load metrics, and potential cultural adjustments (mentorship, expectation calibration).
+    Extended: Explores systemic pressure, reviewer load metrics, and potential cultural adjustments including mentorship and expectation calibration.
   </li>
   <li id="note-6">
-    <strong>Transparent Peer Review for All (Nature Communications)</strong> — <em>Advocacy for open accountability.</em><br />
+    <strong>Transparent Peer Review for All</strong> — <em>Advocacy for open accountability.</em><br />
+    Nature Communications (2022).<br />
     <a href="https://www.nature.com/articles/s41467-022-33056-8" target="_blank" rel="noopener noreferrer">https://www.nature.com/articles/s41467-022-33056-8</a><br />
     Extended: Argues transparency increases trust, mitigates bias opacity, and clarifies revision pathways; notes adoption barriers.
   </li>
@@ -267,17 +273,20 @@ Below is a list of references so you can scan everything in one place.
     Extended: Enables versioned discourse and community oversight; cultural inertia and uneven incentives slow broader uptake.
   </li>
   <li id="note-8">
-    <strong>IEEE VIS Review System Changes (2025)</strong> — <em>Incremental process evolution.</em><br />
+    <strong>IEEE VIS Review System Changes</strong> — <em>Incremental process evolution.</em><br />
+    IEEE VIS OPC (2025).<br />
     <a href="https://ieeevis.org/year/2025/blog/vis-2025-OPC-blog-Changes" target="_blank" rel="noopener noreferrer">https://ieeevis.org/year/2025/blog/vis-2025-OPC-blog-Changes</a><br />
     Extended: Details experiments in reviewer assignment, mentoring pipelines, and tracking burden to counter fatigue and uneven quality.
   </li>
   <li id="note-9">
-    <strong>Academic Life Getting Harder (Glen O'Hara)</strong> — <em>Macro-level stressors and systemic strain.</em><br />
+    <strong>It's Not Your Fault That Academic Life Is Getting Harder</strong> — <em>Macro-level stressors and systemic strain.</em><br />
+    O'Hara, G. (2024). Voices of Academia.<br />
     <a href="https://voicesofacademia.com/2024/04/05/its-not-your-fault-that-academic-life-is-getting-harder-by-glen-ohara/" target="_blank" rel="noopener noreferrer">https://voicesofacademia.com/2024/04/05/its-not-your-fault-that-academic-life-is-getting-harder-by-glen-ohara/</a><br />
-    Extended: Attributes difficulty to structural under-resourcing, expansion of administrative overhead, and normative productivity escalation—not personal failure.
+    Extended: Attributes difficulty to structural under-resourcing, expansion of administrative overhead, and normative productivity escalation — not personal failure.
   </li>
   <li id="note-10">
     <strong>Slow Science Manifesto</strong> — <em>Temporal defense of deep scholarship.</em><br />
+    The Slow Science Academy (2010).<br />
     <a href="https://slowscience.be/the-slow-science-manifesto-2/" target="_blank" rel="noopener noreferrer">https://slowscience.be/the-slow-science-manifesto-2/</a><br />
     Extended: Advocates protected cognitive time for reflection, iteration, and failure; implicitly critiques accelerated review cycles that erode deliberation.
   </li>
