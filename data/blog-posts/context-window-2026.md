@@ -84,7 +84,7 @@ You also have a limited context window. In a long meeting, you lose track of wha
 
 Conceptually, we are not that different. Does that make us poor collaborators?
 
-This might sound absurd, because as humans we don't frame cognitive limitations as disqualifying. We build systems around them. We take notes, structure agendas, summarize before continuing. Empires have been build around databases, knowledge graphs, and complex systems. We manage these limitations.
+This might sound absurd, because as humans we don't frame cognitive limitations as disqualifying. We build systems around them. We take notes, structure agendas, summarize before continuing. Empires have been built around databases, knowledge graphs, and complex systems. We manage these limitations.
 
 The productive response to context rot in LLMs is exactly the same: <mark>structure the input, summarize intermediate states, keep the window purposeful.</mark> Same problem, same fix!
 
