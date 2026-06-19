@@ -1173,7 +1173,7 @@ export const publications: Publication[] = [
     title: "ArtVis -- Art History Visualized",
     authors: ["Filipov, V.", "Tuscher, M.", "Miksch, S.", "Rosenberg, R.", "Kamencek, T."],
     venue: "Digital Humanities (DH) Awards 2025",
-    year: 2025,
+    year: 2026,
     type: "Preprint",
     url: "https://artvis.cvast.tuwien.ac.at/",
     keywords: ["Digital Humanities", "Information Visualization", "Art History", "Network Visualization", "Visual Analytics"],
