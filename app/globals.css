@@ -2508,6 +2508,38 @@ html[data-theme="professional"] {
   letter-spacing: 0.02em;
 }
 
+/* --- Drop ALL CAPS: capitalize buttons, card sub-headings, toggle --- */
+[data-theme="professional"] .retro-button,
+[data-theme="professional"] .contact-button {
+  text-transform: capitalize !important;
+  letter-spacing: 0.03em;
+}
+
+[data-theme="professional"] .retro-card h3 {
+  text-transform: capitalize !important;
+}
+
+[data-theme="professional"] .theme-toggle-btn {
+  text-transform: capitalize !important;
+}
+
+/* Back/nav links that contain all-caps text */
+[data-theme="professional"] a[class*="inline-flex"][class*="text-neon-cyan"] {
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+}
+
+/* FontSizeControl "FONT SIZE" label */
+[data-theme="professional"] .whitespace-nowrap.font-mono {
+  text-transform: capitalize !important;
+}
+
+/* Blog post tags / categories: override inline VT323 font */
+[data-theme="professional"] [style*="VT323"] {
+  font-family: 'Lora', 'Georgia', serif !important;
+  font-size: inherit !important;
+}
+
 /* --- text-retro-darker: baked as near-black; make it white for selected button contrast --- */
 [data-theme="professional"] .text-retro-darker { color: #FFFFFF !important; }
 

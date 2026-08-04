@@ -50,13 +50,16 @@ export default function Home() {
 
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#research" className="retro-button">
-                VIEW RESEARCH
+                <span className="retro-only">VIEW RESEARCH</span>
+                <span className="pro-only">View research</span>
               </a>
               <a href="#publications" className="retro-button">
-                PUBLICATIONS
+                <span className="retro-only">PUBLICATIONS</span>
+                <span className="pro-only">Publications</span>
               </a>
               <a href="#contact" className="retro-button">
-                GET IN TOUCH
+                <span className="retro-only">GET IN TOUCH</span>
+                <span className="pro-only">Get in touch</span>
               </a>
             </div>
           </div>
@@ -64,7 +67,8 @@ export default function Home() {
           {/* Decorative elements */}
           <div className="mt-16 flex justify-center items-center space-x-4 text-neon-cyan/40">
             <span className="animate-pulse">▼</span>
-            <span>SCROLL TO EXPLORE</span>
+            <span className="retro-only">SCROLL TO EXPLORE</span>
+            <span className="pro-only">scroll to explore</span>
             <span className="animate-pulse">▼</span>
           </div>
         </div>
@@ -97,7 +101,8 @@ export default function Home() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                DOWNLOAD CV
+                <span className="retro-only">DOWNLOAD CV</span>
+                <span className="pro-only">Download CV</span>
               </a>
             </div>
 
