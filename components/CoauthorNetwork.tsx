@@ -568,7 +568,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
                         {/* everything that should pan/zoom together */}
                         <g transform={`translate(${tx},${ty}) scale(${scale})`}>
-                            <g filter="url(#glow-gold)">
+                            <g className="coauthor-links" filter="url(#glow-gold)">
                                 {links.map((l, i) => {
                                     const aNode = nodes.find(n => n.id === l.source);
                                     const bNode = nodes.find(n => n.id === l.target);
@@ -584,6 +584,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                             y1={a.y}
                                             x2={b.x}
                                             y2={b.y}
+                                            className={isDirect ? 'coauthor-link-direct' : 'coauthor-link-indirect'}
                                             stroke={isDirect ? "#ffd70088" : "#ffd70044"}
                                             strokeWidth={isDirect ? strokeWidth : Math.max(1.5, strokeWidth * 0.7)}
                                             strokeLinecap="round"
@@ -755,6 +756,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                                 stroke={stroke}
                                                 strokeWidth={2}
                                                 filter={filter}
+                                                className={isYou ? 'coauthor-node coauthor-node-you' : 'coauthor-node'}
                                                 onPointerDown={onNodePointerDown}
                                                 onPointerEnter={onNodePointerEnter}
                                                 onPointerMove={onNodePointerMove}
@@ -766,6 +768,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
                                                 y={4}
                                                 fontSize={12}
                                                 fill={isYou ? '#ff00ff' : '#ffdfe8'}
+                                                className={isYou ? 'coauthor-label coauthor-label-you' : 'coauthor-label'}
                                                 style={{
                                                     fontFamily: 'ui-monospace, monospace',
                                                     pointerEvents: 'none',
@@ -817,7 +820,7 @@ export default function CoauthorNetwork({ width = 760, height = 460 }: { width?:
 
                         {/* tooltip (hover) — inside left area */}
                         {hoverAuthor && tooltipPos ? (
-                            <div style={{ position: 'absolute', left: tooltipPos.left, top: tooltipPos.top, transform: 'translateX(-50%)', background: 'rgba(10,10,12,0.95)', color: '#fff', padding: '6px 8px', borderRadius: 6, boxShadow: '0 6px 18px rgba(0,0,0,0.6)', pointerEvents: 'none', fontSize: 12, zIndex: 40, transition: 'left 120ms linear, top 120ms linear, opacity 120ms linear', willChange: 'left, top, opacity' }}>
+                            <div className="coauthor-tooltip" style={{ position: 'absolute', left: tooltipPos.left, top: tooltipPos.top, transform: 'translateX(-50%)', background: 'rgba(10,10,12,0.95)', color: '#fff', padding: '6px 8px', borderRadius: 6, boxShadow: '0 6px 18px rgba(0,0,0,0.6)', pointerEvents: 'none', fontSize: 12, zIndex: 40, transition: 'left 120ms linear, top 120ms linear, opacity 120ms linear', willChange: 'left, top, opacity' }}>
                                 <div style={{ fontWeight: 700 }} className="text-neon-cyan">{(hoverAuthor && hoverAuthor.split) ? hoverAuthor.split(',')[0] : hoverAuthor}</div>
                                 <div style={{ fontSize: 11 }} className="text-neon-cyan/70">click to list publications · drag to move</div>
                             </div>
