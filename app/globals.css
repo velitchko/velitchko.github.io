@@ -2501,6 +2501,13 @@ html[data-theme="professional"] {
   font-family: 'Lora', serif !important;
 }
 
+/* --- Navigation: serif font + no borders on pro mode links --- */
+[data-theme="professional"] nav a.font-mono {
+  font-family: 'Lora', 'Georgia', serif !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.02em;
+}
+
 /* --- text-retro-darker: baked as near-black; make it white for selected button contrast --- */
 [data-theme="professional"] .text-retro-darker { color: #FFFFFF !important; }
 

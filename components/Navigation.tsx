@@ -11,12 +11,12 @@ export default function Navigation() {
   const isHomePage = pathname === '/';
 
   const navItems = [
-    { id: 'home', label: '[home]', href: '/#home' },
-    { id: 'research', label: '[research]', href: '/#research' },
-    { id: 'projects', label: '[projects]', href: '/#projects' },
-    { id: 'publications', label: '[publications]', href: '/#publications' },
-    { id: 'blog', label: '[blog]', href: '/blog' },
-    { id: 'contact', label: '[contact]', href: '/#contact' },
+    { id: 'home',         label: '[home]',         proLabel: 'Home',         href: '/#home' },
+    { id: 'research',    label: '[research]',    proLabel: 'Research',    href: '/#research' },
+    { id: 'projects',   label: '[projects]',   proLabel: 'Projects',   href: '/#projects' },
+    { id: 'publications', label: '[publications]', proLabel: 'Publications', href: '/#publications' },
+    { id: 'blog',        label: '[blog]',        proLabel: 'Writing',     href: '/blog' },
+    { id: 'contact',    label: '[contact]',    proLabel: 'Contact',    href: '/#contact' },
   ];
 
   const scrollToSection = (id: string) => {
@@ -69,7 +69,8 @@ export default function Navigation() {
                       : 'text-neon-cyan hover:text-neon-pink hover:neon-glow'
                   }`}
                 >
-                  {item.label}
+                  <span className="retro-only">{item.label}</span>
+                  <span className="pro-only">{item.proLabel}</span>
                 </Link>
               ))}
             </div>
@@ -121,7 +122,8 @@ export default function Navigation() {
                   : 'text-neon-cyan hover:text-neon-pink'
               }`}
             >
-              {item.label}
+              <span className="retro-only">{item.label}</span>
+              <span className="pro-only">{item.proLabel}</span>
             </Link>
           ))}
         </div>
