@@ -2667,6 +2667,60 @@ html[data-theme="professional"] {
 /* Scrollbar thumb */
 [data-theme="professional"] .crt-screen::-webkit-scrollbar-thumb { border-radius: 6px !important; }
 
+/* --- Syntax highlighting — professional theme (GitHub Light-inspired) ---
+   Override the retro neon .hljs-* rules defined earlier in this file.
+   ------------------------------------------------------------------- */
+[data-theme="professional"] .blog-content .hljs {
+  background: transparent;
+  color: #1A1A1A;
+}
+
+/* Keywords, control flow, selectors → warm dark red */
+[data-theme="professional"] .blog-content .hljs-keyword,
+[data-theme="professional"] .blog-content .hljs-selector-tag,
+[data-theme="professional"] .blog-content .hljs-literal,
+[data-theme="professional"] .blog-content .hljs-section,
+[data-theme="professional"] .blog-content .hljs-link {
+  color: #CF222E !important;
+}
+
+/* Strings, titles, names, types, attributes → dark navy */
+[data-theme="professional"] .blog-content .hljs-string,
+[data-theme="professional"] .blog-content .hljs-title,
+[data-theme="professional"] .blog-content .hljs-name,
+[data-theme="professional"] .blog-content .hljs-type,
+[data-theme="professional"] .blog-content .hljs-attribute,
+[data-theme="professional"] .blog-content .hljs-symbol,
+[data-theme="professional"] .blog-content .hljs-bullet,
+[data-theme="professional"] .blog-content .hljs-built_in,
+[data-theme="professional"] .blog-content .hljs-variable,
+[data-theme="professional"] .blog-content .hljs-template-tag,
+[data-theme="professional"] .blog-content .hljs-template-variable {
+  color: #0550AE !important;
+}
+
+/* Additions (diff) → dark green */
+[data-theme="professional"] .blog-content .hljs-addition {
+  color: #116329 !important;
+}
+
+/* Comments, meta, deletions → muted gray italic */
+[data-theme="professional"] .blog-content .hljs-comment,
+[data-theme="professional"] .blog-content .hljs-quote,
+[data-theme="professional"] .blog-content .hljs-deletion,
+[data-theme="professional"] .blog-content .hljs-meta {
+  color: #6E7781 !important;
+  font-style: italic;
+}
+
+/* Numbers, regexp, selectors → steel blue */
+[data-theme="professional"] .blog-content .hljs-number,
+[data-theme="professional"] .blog-content .hljs-regexp,
+[data-theme="professional"] .blog-content .hljs-selector-id,
+[data-theme="professional"] .blog-content .hljs-selector-class {
+  color: #8C4A2F !important;
+}
+
 /* ============================================================
    END PROFESSIONAL THEME
    ============================================================ */
