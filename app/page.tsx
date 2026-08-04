@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import PublicationCard from '@/components/PublicationCard';
 import FontSizeControl from '@/components/FontSizeControl';
+import ProfilePicture from '@/components/ProfilePicture';
 import { publications, groupPublicationsByYear, getKeywordsWithCounts, filterPublicationsByKeyword, sortPublicationsByYear } from '@/data/publications';
 
 export default function Home() {
@@ -83,16 +83,7 @@ export default function Home() {
             <div className="space-y-6">
               <div className="retro-card">
                 <div className="aspect-[3/4] bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50 overflow-hidden">
-                  <Image
-                    src="/nerd.jpg"
-                    alt="Velitchko Filipov Profile"
-                    width={500}
-                    height={667}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
-                </div>
-              </div>
+                    <ProfilePicture />
               
               {/* CV Download Button */}
               <a

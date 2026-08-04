@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home');
@@ -54,7 +55,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-2">
             <div className="flex items-center space-x-4">
               {navItems.map((item) => (
                 <Link
@@ -71,10 +72,12 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
+            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
             <button
               onClick={() => {
                 const menu = document.getElementById('mobile-menu');

@@ -3,6 +3,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 // Build an absolute OG image URL when a public site URL is provided via env.
 // In dev this will remain a relative path (localhost) which is expected.
@@ -45,6 +46,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Prevent flash of unstyled theme — reads localStorage before paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('site-theme')||'retro';document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
+          }}
+        />
         {/* Syntax highlighting CSS */}
         <link
           rel="stylesheet"
@@ -65,28 +72,30 @@ export default function RootLayout({
         ></script>
       </head>
       <body className="crt-screen">
-        {/* Background geometric shapes */}
-        <div className="retro-bg-shapes">
-          <div className="shape-1"></div>
-          <div className="shape-2"></div>
-          <div className="shape-3"></div>
-          <div className="shape-4"></div>
-          <div className="shape-5"></div>
-          <div className="shape-6"></div>
-        </div>
-        
-        {/* Scanline overlay */}
-        <div className="scanlines"></div>
-        
-        <Navigation />
-        
-        <main className="relative z-10 pt-16">
-          {children}
-        </main>
-        
-        <Footer />
-        
-        <ScrollToTop />
+        <ThemeProvider>
+          {/* Background geometric shapes */}
+          <div className="retro-bg-shapes">
+            <div className="shape-1"></div>
+            <div className="shape-2"></div>
+            <div className="shape-3"></div>
+            <div className="shape-4"></div>
+            <div className="shape-5"></div>
+            <div className="shape-6"></div>
+          </div>
+
+          {/* Scanline overlay */}
+          <div className="scanlines"></div>
+
+          <Navigation />
+
+          <main className="relative z-10 pt-16">
+            {children}
+          </main>
+
+          <Footer />
+
+          <ScrollToTop />
+        </ThemeProvider>
       </body>
     </html>
   );
