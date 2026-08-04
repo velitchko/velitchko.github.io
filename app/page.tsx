@@ -76,14 +76,17 @@ export default function Home() {
       <section className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
-            [about.md]
+            <span className="retro-only">[about.md]</span>
+            <span className="pro-only">About</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="retro-card">
                 <div className="aspect-[3/4] bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50 overflow-hidden">
-                    <ProfilePicture />
+                  <ProfilePicture />
+                </div>
+              </div>
               
               {/* CV Download Button */}
               <a
@@ -141,7 +144,8 @@ export default function Home() {
       <section id="research" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan mb-12 text-center">
-            [research.json]
+            <span className="retro-only">[research.json]</span>
+            <span className="pro-only">Research</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -193,7 +197,8 @@ export default function Home() {
       <section id="projects" className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
-            [projects.tsx]
+            <span className="retro-only">[projects.tsx]</span>
+            <span className="pro-only">Projects</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -289,7 +294,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mb-6 gap-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan m-0">
-              [pubs.bib]
+              <span className="retro-only">[pubs.bib]</span>
+              <span className="pro-only">Publications</span>
             </h2>
           </div>
 
@@ -375,12 +381,14 @@ export default function Home() {
       <section id="contact" className="py-20 bg-retro-darker/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12">
-            [contact.sh]
+            <span className="retro-only">[contact.sh]</span>
+            <span className="pro-only">Contact</span>
           </h2>
 
           <div className="retro-card mb-12 border-neon-pink/30">
             <h3 className="text-xl sm:text-2xl text-neon-pink neon-glow-pink mb-4 leading-relaxed font-retro">
-              Let&apos;s connect! 🚀
+              <span className="retro-only">Let&apos;s connect! 🚀</span>
+              <span className="pro-only">Get in Touch</span>
             </h3>
             <p className="text-lg text-neon-cyan/80 mb-8 leading-relaxed">
               Whether you want to collaborate on research, discuss visualization projects, 
