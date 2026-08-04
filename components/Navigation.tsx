@@ -51,7 +51,7 @@ export default function Navigation() {
           <div className="flex-shrink-0">
             <h1 className="text-xl sm:text-2xl font-retro neon-glow-pink glitch" data-text="<vfilipov/>">
               <span className="retro-only">&lt;vfilipov/&gt;</span>
-              <span className="pro-only pro-logo">Velitchko Filipov</span>
+              <span className="pro-only pro-logo">velitchko filipov</span>
             </h1>
           </div>
 
