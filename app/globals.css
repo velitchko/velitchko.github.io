@@ -2012,15 +2012,19 @@ html[data-theme="professional"] {
   color: #1A1A1A !important;
   box-shadow: none !important;
   letter-spacing: 0.04em;
+  /* isolation: isolate creates a local stacking context so ::before at z-index:-1
+     stays within the button rather than falling behind the white page background */
+  isolation: isolate;
 }
 
 [data-theme="professional"] .retro-button::before {
-  background: #1A1A1A !important;
+  background: #8C4A2F !important;  /* terracotta fill — visually distinct from white bg */
 }
 
 [data-theme="professional"] .retro-button:hover {
   color: #FFFFFF !important;
-  box-shadow: 0 2px 8px rgba(43, 87, 151, 0.25) !important;
+  border-color: #8C4A2F !important;
+  box-shadow: 0 2px 8px rgba(140, 74, 47, 0.3) !important;
 }
 
 [data-theme="professional"] .contact-button {
@@ -2028,6 +2032,7 @@ html[data-theme="professional"] {
   border-color: #8C4A2F !important;
   color: #8C4A2F !important;
   box-shadow: none !important;
+  isolation: isolate;
 }
 
 [data-theme="professional"] .contact-button::before {
@@ -2036,7 +2041,7 @@ html[data-theme="professional"] {
 
 [data-theme="professional"] .contact-button:hover {
   color: #FFFFFF !important;
-  box-shadow: 0 2px 8px rgba(139, 26, 26, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(140, 74, 47, 0.25) !important;
 }
 
 [data-theme="professional"] .social-link::before {
@@ -2540,8 +2545,15 @@ html[data-theme="professional"] {
   font-size: inherit !important;
 }
 
-/* --- text-retro-darker: baked as near-black; make it white for selected button contrast --- */
-[data-theme="professional"] .text-retro-darker { color: #FFFFFF !important; }
+/* --- text-retro-darker: baked as near-black; make it white for selected button contrast ---
+   Also covers group-hover:text-retro-darker (different Tailwind utility, needs [class*] match) --- */
+[data-theme="professional"] .text-retro-darker,
+[data-theme="professional"] [class*="text-retro-darker"] {
+  color: #FFFFFF !important;
+}
+[data-theme="professional"] .group:hover [class*="text-retro-darker"] {
+  color: #FFFFFF !important;
+}
 
 /* --- bg-retro-darker/70 (co-author hint panel) --- */
 [data-theme="professional"] .bg-retro-darker\/70 { background-color: rgba(255,255,255,0.97) !important; }
