@@ -2546,12 +2546,13 @@ html[data-theme="professional"] {
 }
 
 /* --- text-retro-darker: baked as near-black; make it white for selected button contrast ---
-   Also covers group-hover:text-retro-darker (different Tailwind utility, needs [class*] match) --- */
-[data-theme="professional"] .text-retro-darker,
-[data-theme="professional"] [class*="text-retro-darker"] {
+   IMPORTANT: use the exact escaped class, NOT [class*="..."] which would also match
+   group-hover:text-retro-darker making that text permanently white (invisible on light bg) --- */
+[data-theme="professional"] .text-retro-darker {
   color: #FFFFFF !important;
 }
-[data-theme="professional"] .group:hover [class*="text-retro-darker"] {
+/* group-hover variant: only applies inside a hovered .group container */
+[data-theme="professional"] .group:hover .group-hover\:text-retro-darker {
   color: #FFFFFF !important;
 }
 
