@@ -2054,6 +2054,15 @@ html[data-theme="professional"] {
 
 [data-theme="professional"] .social-link::before {
   background: #1A1A1A !important;
+  z-index: 1 !important;
+}
+[data-theme="professional"] .social-link > * {
+  position: relative;
+  z-index: 2;
+}
+[data-theme="professional"] .social-link:hover svg,
+[data-theme="professional"] .social-link:hover span {
+  color: #FFFFFF !important;
 }
 
 /* --- Navigation --- */

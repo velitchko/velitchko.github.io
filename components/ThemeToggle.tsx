@@ -26,11 +26,12 @@ export default function ThemeToggle() {
             strokeLinejoin="round"
             aria-hidden="true"
           >
-            {/* Terminal / CRT icon */}
-            <rect x="2" y="3" width="20" height="15" rx="2" />
-            <polyline points="8 21 12 17 16 21" />
-            <line x1="5" y1="10" x2="8" y2="10" />
-            <line x1="5" y1="13" x2="11" y2="13" />
+            {/* Robot icon */}
+            <rect x="3" y="11" width="18" height="11" rx="2" />
+            <path d="M12 2a3 3 0 0 1 3 3v6H9V5a3 3 0 0 1 3-3z" />
+            <circle cx="9" cy="15" r="1" fill="currentColor" />
+            <circle cx="15" cy="15" r="1" fill="currentColor" />
+            <line x1="9" y1="19" x2="15" y2="19" />
           </svg>
           <span>RETRO</span>
         </span>

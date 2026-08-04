@@ -15,11 +15,11 @@ export const ThemeContext = createContext<ThemeContextValue>({
 });
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('retro');
+  const [theme, setTheme] = useState<Theme>('professional');
 
   useEffect(() => {
     // Sync with the value applied by the FOUC-prevention inline script
-    const stored = (localStorage.getItem('site-theme') as Theme) || 'retro';
+    const stored = (localStorage.getItem('site-theme') as Theme) || 'professional';
     setTheme(stored);
   }, []);
 

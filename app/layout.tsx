@@ -49,7 +49,7 @@ export default function RootLayout({
         {/* Prevent flash of unstyled theme — reads localStorage before paint */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('site-theme')||'retro';document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
+            __html: `try{var t=localStorage.getItem('site-theme')||'professional';document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
           }}
         />
         {/* Syntax highlighting CSS */}
