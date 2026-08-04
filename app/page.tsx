@@ -475,7 +475,7 @@ export default function Home() {
                   }}
                   className="contact-button inline-block px-4 py-2 text-sm self-end"
                 >
-                  Send email →
+                  <span>Send email →</span>
                 </a>
               </div>
 
@@ -506,7 +506,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="contact-button inline-block px-4 py-2 text-sm self-end"
                 >
-                  Schedule a call →
+                  <span>Schedule a call →</span>
                 </a>
               </div>
             </div>
