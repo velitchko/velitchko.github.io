@@ -108,7 +108,10 @@ export default function Home() {
 
             <div className="space-y-6">
               <div className="retro-card">
-                <h3 className="text-xl font-retro text-neon-cyan mb-4">INFO</h3>
+                <h3 className="text-xl font-retro text-neon-cyan mb-4">
+                  <span className="retro-only">INFO</span>
+                  <span className="pro-only">Info</span>
+                </h3>
                 <p className="text-neon-cyan/80 leading-relaxed mb-4">
                   I&apos;m a postdoctoral researcher at&nbsp;
                   <a
@@ -124,7 +127,10 @@ export default function Home() {
               </div>
 
               <div className="retro-card">
-                <h3 className="text-xl font-retro text-neon-cyan mb-4">EDUCATION</h3>
+                <h3 className="text-xl font-retro text-neon-cyan mb-4">
+                  <span className="retro-only">EDUCATION</span>
+                  <span className="pro-only">Education</span>
+                </h3>
                 <ul className="space-y-3 text-neon-cyan/80">
                   <li className="flex items-start">
                     <span className="text-neon-pink mr-2">▸</span>
@@ -454,7 +460,10 @@ export default function Home() {
             {/* Contact Info */}
             <div className="grid md:grid-cols-3 gap-6 text-left">
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors flex flex-col">
-                <h3 className="text-base font-retro text-neon-cyan mb-3">📧 EMAIL</h3>
+                <h3 className="text-base font-retro text-neon-cyan mb-3">
+                  <span className="retro-only">📧 EMAIL</span>
+                  <span className="pro-only">📧 Email</span>
+                </h3>
                 <p className="text-neon-cyan/80 mb-4 text-sm flex-grow">
                   Drop me a line about anything—questions, ideas, or collaborations.
                 </p>
@@ -471,7 +480,10 @@ export default function Home() {
               </div>
 
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors">
-                <h3 className="text-base font-retro text-neon-cyan mb-3">📍 LOCATION</h3>
+                <h3 className="text-base font-retro text-neon-cyan mb-3">
+                  <span className="retro-only">📍 LOCATION</span>
+                  <span className="pro-only">📍 Location</span>
+                </h3>
                 <p className="text-neon-cyan/80 text-sm">
                   TU Wien<br />
                   Visual Analytics Research Unit (E193-07)<br />
@@ -481,7 +493,10 @@ export default function Home() {
               </div>
 
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors flex flex-col">
-                <h3 className="text-base font-retro text-neon-cyan mb-3">💬 SCHEDULE</h3>
+                <h3 className="text-base font-retro text-neon-cyan mb-3">
+                  <span className="retro-only">💬 SCHEDULE</span>
+                  <span className="pro-only">💬 Schedule</span>
+                </h3>
                 <p className="text-neon-cyan/80 mb-4 text-sm flex-grow">
                   Let&apos;s chat about research, collaboration, or ideas.
                 </p>

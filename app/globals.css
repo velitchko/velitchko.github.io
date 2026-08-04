@@ -2012,13 +2012,17 @@ html[data-theme="professional"] {
   color: #1A1A1A !important;
   box-shadow: none !important;
   letter-spacing: 0.04em;
-  /* isolation: isolate creates a local stacking context so ::before at z-index:-1
-     stays within the button rather than falling behind the white page background */
-  isolation: isolate;
 }
 
+/* Fix hover fill: z-index:-1 falls behind white page bg.
+   z-index:1 on fill + z-index:2 on content keeps proper layering. */
 [data-theme="professional"] .retro-button::before {
-  background: #8C4A2F !important;  /* terracotta fill — visually distinct from white bg */
+  background: #8C4A2F !important;
+  z-index: 1 !important;
+}
+[data-theme="professional"] .retro-button > * {
+  position: relative;
+  z-index: 2;
 }
 
 [data-theme="professional"] .retro-button:hover {
@@ -2032,11 +2036,15 @@ html[data-theme="professional"] {
   border-color: #8C4A2F !important;
   color: #8C4A2F !important;
   box-shadow: none !important;
-  isolation: isolate;
 }
 
 [data-theme="professional"] .contact-button::before {
   background: #8C4A2F !important;
+  z-index: 1 !important;
+}
+[data-theme="professional"] .contact-button > * {
+  position: relative;
+  z-index: 2;
 }
 
 [data-theme="professional"] .contact-button:hover {
