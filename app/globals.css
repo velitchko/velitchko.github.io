@@ -166,6 +166,18 @@ html {
   background: rgba(26, 26, 26, 0.8);
 }
 
+/* On touch/mobile devices, let the browser use its native overlay scrollbar
+   so the custom 14px track doesn't eat into the layout width. */
+@media (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  * {
+    scrollbar-width: none;
+  }
+}
+
 /* Ensure any element acting as scroll container inherits (defensive) */
 .crt-screen {
   scroll-padding-top: 4.25rem;
