@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home');
@@ -10,12 +11,12 @@ export default function Navigation() {
   const isHomePage = pathname === '/';
 
   const navItems = [
-    { id: 'home', label: '[home]', href: '/#home' },
-    { id: 'research', label: '[research]', href: '/#research' },
-    { id: 'projects', label: '[projects]', href: '/#projects' },
-    { id: 'publications', label: '[publications]', href: '/#publications' },
-    { id: 'blog', label: '[blog]', href: '/blog' },
-    { id: 'contact', label: '[contact]', href: '/#contact' },
+    { id: 'home',         label: '[home]',         proLabel: 'Home',         href: '/#home' },
+    { id: 'research',    label: '[research]',    proLabel: 'Research',    href: '/#research' },
+    { id: 'projects',   label: '[projects]',   proLabel: 'Projects',   href: '/#projects' },
+    { id: 'publications', label: '[publications]', proLabel: 'Publications', href: '/#publications' },
+    { id: 'blog',        label: '[blog]',        proLabel: 'Writing',     href: '/blog' },
+    { id: 'contact',    label: '[contact]',    proLabel: 'Contact',    href: '/#contact' },
   ];
 
   const scrollToSection = (id: string) => {
@@ -48,13 +49,14 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-xl sm:text-2xl font-retro neon-glow-pink glitch">
-              &lt;vfilipov/&gt;
+            <h1 className="text-xl sm:text-2xl font-retro neon-glow-pink glitch" data-text="<vfilipov/>">
+              <span className="retro-only">&lt;vfilipov/&gt;</span>
+              <span className="pro-only pro-logo">velitchko filipov</span>
             </h1>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-2">
             <div className="flex items-center space-x-4">
               {navItems.map((item) => (
                 <Link
@@ -67,14 +69,17 @@ export default function Navigation() {
                       : 'text-neon-cyan hover:text-neon-pink hover:neon-glow'
                   }`}
                 >
-                  {item.label}
+                  <span className="retro-only">{item.label}</span>
+                  <span className="pro-only">{item.proLabel}</span>
                 </Link>
               ))}
             </div>
+            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="lg:hidden flex items-center gap-2">
+            <ThemeToggle />
             <button
               onClick={() => {
                 const menu = document.getElementById('mobile-menu');
@@ -117,7 +122,8 @@ export default function Navigation() {
                   : 'text-neon-cyan hover:text-neon-pink'
               }`}
             >
-              {item.label}
+              <span className="retro-only">{item.label}</span>
+              <span className="pro-only">{item.proLabel}</span>
             </Link>
           ))}
         </div>

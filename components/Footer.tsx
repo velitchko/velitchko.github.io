@@ -9,7 +9,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Column 1 */}
           <div>
-            <h3 className="text-lg font-retro neon-glow-pink mb-4">SYSTEM.INFO</h3>
+            <h3 className="text-lg font-retro neon-glow-pink mb-4">
+              <span className="retro-only">SYSTEM.INFO</span>
+              <span className="pro-only">About</span>
+            </h3>
             <p className="text-neon-cyan text-sm mb-3">
               vibe-coded by{' '}
               <br />
@@ -51,7 +54,10 @@ export default function Footer() {
 
           {/* Column 2 */}
           <div>
-            <h3 className="text-lg font-retro neon-glow-cyan mb-4">QUICK.ACCESS</h3>
+            <h3 className="text-lg font-retro neon-glow-cyan mb-4">
+              <span className="retro-only">QUICK.ACCESS</span>
+              <span className="pro-only">Quick Links</span>
+            </h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/#research" className="text-neon-cyan/80 hover:text-neon-pink hover:neon-glow transition-colors">
@@ -73,7 +79,10 @@ export default function Footer() {
 
           {/* Column 3 */}
           <div>
-            <h3 className="text-lg font-retro neon-glow-pink mb-4">CONNECT</h3>
+            <h3 className="text-lg font-retro neon-glow-pink mb-4">
+              <span className="retro-only">CONNECT</span>
+              <span className="pro-only">Connect</span>
+            </h3>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/velitchko"
@@ -123,10 +132,12 @@ export default function Footer() {
 
         <div className="mt-8 pt-8 border-t border-neon-cyan/30 text-center">
           <p className="text-neon-cyan/60 text-sm font-mono">
-            © {currentYear} [SYS.BOOT.v1.0] • Built with Next.js & Tailwind CSS
+            <span className="retro-only">© {currentYear} [SYS.BOOT.v1.0] • Built with Next.js &amp; Tailwind CSS</span>
+            <span className="pro-only">© {currentYear} Velitchko Filipov</span>
           </p>
           <p className="text-neon-pink/60 text-xs font-mono mt-2">
-            [ RETRO-FUTURISM ENGAGED ] <a href="/chicken" className="opacity-30 hover:opacity-60 transition-opacity inline-block" style={{ fontSize: '0.6rem' }}>🥚</a>
+            <span className="retro-only">[ RETRO-FUTURISM ENGAGED ] <a href="/chicken" className="opacity-30 hover:opacity-60 transition-opacity inline-block" style={{ fontSize: '0.6rem' }}>🥚</a></span>
+            <span className="pro-only">Built with Next.js &amp; Tailwind CSS</span>
           </p>
         </div>
       </div>

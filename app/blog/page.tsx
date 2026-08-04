@@ -18,14 +18,17 @@ export default async function BlogPage() {
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            BACK TO HOME
+            <span className="retro-only">BACK TO HOME</span>
+            <span className="pro-only">Back to home</span>
           </Link>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-retro neon-glow-pink mb-4">
-            [blog.log]
+            <span className="retro-only">[blog.log]</span>
+            <span className="pro-only">Writing</span>
           </h1>
           <p className="text-neon-cyan/80 text-lg">
-            updates, thoughts, and rants on visualization research
+            <span className="retro-only">updates, thoughts, and rants on visualization research</span>
+            <span className="pro-only">Thoughts and reflections on visualization research</span>
           </p>
         </div>
 
@@ -35,9 +38,10 @@ export default async function BlogPage() {
             <span className="text-xl mt-1 animate-pulse">⚠️</span>
             <div>
               <h2 className="text-neon-pink font-retro text-sm mb-2">
-                [DISCLAIMER.txt]
+                <span className="retro-only">[DISCLAIMER.txt]</span>
+                <span className="pro-only">Disclaimer</span>
               </h2>
-              <p className="text-neon-cyan/90 leading-relaxed text-sm">
+              <p className="text-neon-cyan/90 leading-relaxed text-sm" style={{fontFamily: 'inherit', fontSize: 'inherit'}}>
                 <span className="text-neon-pink">{'>'}</span> All opinions expressed here are my own and definitely not those of my employer, my goldfish, or that voice in my head. 
                 If you disagree, that&apos;s <span className="text-neon-pink font-bold">totally fine</span>. The internet is big enough for both of us. 
                 Feel free to yell at clouds, write your own blog post, or simply move on with your life. 

@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import PublicationCard from '@/components/PublicationCard';
 import FontSizeControl from '@/components/FontSizeControl';
+import ProfilePicture from '@/components/ProfilePicture';
 import { publications, groupPublicationsByYear, getKeywordsWithCounts, filterPublicationsByKeyword, sortPublicationsByYear } from '@/data/publications';
 
 export default function Home() {
@@ -50,13 +50,16 @@ export default function Home() {
 
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#research" className="retro-button">
-                VIEW RESEARCH
+                <span className="retro-only">VIEW RESEARCH</span>
+                <span className="pro-only">View research</span>
               </a>
               <a href="#publications" className="retro-button">
-                PUBLICATIONS
+                <span className="retro-only">PUBLICATIONS</span>
+                <span className="pro-only">Publications</span>
               </a>
               <a href="#contact" className="retro-button">
-                GET IN TOUCH
+                <span className="retro-only">GET IN TOUCH</span>
+                <span className="pro-only">Get in touch</span>
               </a>
             </div>
           </div>
@@ -64,7 +67,8 @@ export default function Home() {
           {/* Decorative elements */}
           <div className="mt-16 flex justify-center items-center space-x-4 text-neon-cyan/40">
             <span className="animate-pulse">▼</span>
-            <span>SCROLL TO EXPLORE</span>
+            <span className="retro-only">SCROLL TO EXPLORE</span>
+            <span className="pro-only">scroll to explore</span>
             <span className="animate-pulse">▼</span>
           </div>
         </div>
@@ -76,21 +80,15 @@ export default function Home() {
       <section className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
-            [about.md]
+            <span className="retro-only">[about.md]</span>
+            <span className="pro-only">About</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="retro-card">
                 <div className="aspect-[3/4] bg-gradient-to-br from-neon-cyan/20 to-neon-pink/20 rounded-lg flex items-center justify-center border-2 border-neon-cyan/50 overflow-hidden">
-                  <Image
-                    src="/nerd.jpg"
-                    alt="Velitchko Filipov Profile"
-                    width={500}
-                    height={667}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
+                  <ProfilePicture />
                 </div>
               </div>
               
@@ -103,13 +101,17 @@ export default function Home() {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-                DOWNLOAD CV
+                <span className="retro-only">DOWNLOAD CV</span>
+                <span className="pro-only">Download CV</span>
               </a>
             </div>
 
             <div className="space-y-6">
               <div className="retro-card">
-                <h3 className="text-xl font-retro text-neon-cyan mb-4">INFO</h3>
+                <h3 className="text-xl font-retro text-neon-cyan mb-4">
+                  <span className="retro-only">INFO</span>
+                  <span className="pro-only">Info</span>
+                </h3>
                 <p className="text-neon-cyan/80 leading-relaxed mb-4">
                   I&apos;m a postdoctoral researcher at&nbsp;
                   <a
@@ -125,7 +127,10 @@ export default function Home() {
               </div>
 
               <div className="retro-card">
-                <h3 className="text-xl font-retro text-neon-cyan mb-4">EDUCATION</h3>
+                <h3 className="text-xl font-retro text-neon-cyan mb-4">
+                  <span className="retro-only">EDUCATION</span>
+                  <span className="pro-only">Education</span>
+                </h3>
                 <ul className="space-y-3 text-neon-cyan/80">
                   <li className="flex items-start">
                     <span className="text-neon-pink mr-2">▸</span>
@@ -150,7 +155,8 @@ export default function Home() {
       <section id="research" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan mb-12 text-center">
-            [research.json]
+            <span className="retro-only">[research.json]</span>
+            <span className="pro-only">Research</span>
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -202,7 +208,8 @@ export default function Home() {
       <section id="projects" className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
-            [projects.tsx]
+            <span className="retro-only">[projects.tsx]</span>
+            <span className="pro-only">Projects</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -298,7 +305,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mb-6 gap-4">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-cyan m-0">
-              [pubs.bib]
+              <span className="retro-only">[pubs.bib]</span>
+              <span className="pro-only">Publications</span>
             </h2>
           </div>
 
@@ -384,12 +392,14 @@ export default function Home() {
       <section id="contact" className="py-20 bg-retro-darker/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12">
-            [contact.sh]
+            <span className="retro-only">[contact.sh]</span>
+            <span className="pro-only">Contact</span>
           </h2>
 
           <div className="retro-card mb-12 border-neon-pink/30">
             <h3 className="text-xl sm:text-2xl text-neon-pink neon-glow-pink mb-4 leading-relaxed font-retro">
-              Let&apos;s connect! 🚀
+              <span className="retro-only">Let&apos;s connect! 🚀</span>
+              <span className="pro-only">Get in Touch</span>
             </h3>
             <p className="text-lg text-neon-cyan/80 mb-8 leading-relaxed">
               Whether you want to collaborate on research, discuss visualization projects, 
@@ -450,7 +460,10 @@ export default function Home() {
             {/* Contact Info */}
             <div className="grid md:grid-cols-3 gap-6 text-left">
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors flex flex-col">
-                <h3 className="text-base font-retro text-neon-cyan mb-3">📧 EMAIL</h3>
+                <h3 className="text-base font-retro text-neon-cyan mb-3">
+                  <span className="retro-only">📧 EMAIL</span>
+                  <span className="pro-only">📧 Email</span>
+                </h3>
                 <p className="text-neon-cyan/80 mb-4 text-sm flex-grow">
                   Drop me a line about anything—questions, ideas, or collaborations.
                 </p>
@@ -467,7 +480,10 @@ export default function Home() {
               </div>
 
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors">
-                <h3 className="text-base font-retro text-neon-cyan mb-3">📍 LOCATION</h3>
+                <h3 className="text-base font-retro text-neon-cyan mb-3">
+                  <span className="retro-only">📍 LOCATION</span>
+                  <span className="pro-only">📍 Location</span>
+                </h3>
                 <p className="text-neon-cyan/80 text-sm">
                   TU Wien<br />
                   Visual Analytics Research Unit (E193-07)<br />
@@ -477,7 +493,10 @@ export default function Home() {
               </div>
 
               <div className="border-2 border-neon-cyan/30 p-6 hover:border-neon-cyan hover:neon-glow transition-colors flex flex-col">
-                <h3 className="text-base font-retro text-neon-cyan mb-3">💬 SCHEDULE</h3>
+                <h3 className="text-base font-retro text-neon-cyan mb-3">
+                  <span className="retro-only">💬 SCHEDULE</span>
+                  <span className="pro-only">💬 Schedule</span>
+                </h3>
                 <p className="text-neon-cyan/80 mb-4 text-sm flex-grow">
                   Let&apos;s chat about research, collaboration, or ideas.
                 </p>

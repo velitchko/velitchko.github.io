@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap');
 @import "tailwindcss";
 
 .copy-code-btn .checkmark-icon {
@@ -1835,3 +1835,892 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
 }
+
+/* ============================================================
+   THEME TOGGLE BUTTON
+   Visible in both themes, styled appropriately per-theme.
+   ============================================================ */
+
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  border: 2px solid rgba(0, 255, 255, 0.6);
+  background: transparent;
+  color: #00ffff;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: #ff00ff;
+  color: #ff00ff;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.4);
+}
+
+.theme-toggle-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.theme-toggle-inner svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   PROFESSIONAL THEME
+   Applied when html[data-theme="professional"].
+   Overrides retro CSS variables, removes CRT effects,
+   and applies a newspaper-editorial aesthetic.
+   ============================================================ */
+
+/* --- CSS variable overrides (drives all Tailwind color utilities) --- */
+html[data-theme="professional"] {
+  --background: #FFFFFF;
+  --foreground: #0D0D0D;
+  --color-neon-cyan: #1A1A1A;
+  --color-neon-pink: #8C4A2F;
+  --color-neon-purple: #5C3426;
+  --color-retro-darker: #FFFFFF;
+}
+
+/* --- Body & base typography --- */
+[data-theme="professional"] body {
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.7;
+}
+
+[data-theme="professional"] h1,
+[data-theme="professional"] h2,
+[data-theme="professional"] h3,
+[data-theme="professional"] h4,
+[data-theme="professional"] h5,
+[data-theme="professional"] h6 {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  letter-spacing: -0.01em;
+}
+
+/* --- Remove all CRT / retro visual effects --- */
+[data-theme="professional"] .crt-screen {
+  background: #FFFFFF !important;
+}
+
+[data-theme="professional"] .crt-screen::before,
+[data-theme="professional"] .crt-screen::after {
+  display: none !important;
+}
+
+[data-theme="professional"] .scanlines,
+[data-theme="professional"] .retro-bg-shapes {
+  display: none;
+}
+
+[data-theme="professional"] .glitch {
+  animation: none !important;
+  filter: none !important;
+}
+
+[data-theme="professional"] .glitch::before,
+[data-theme="professional"] .glitch::after {
+  display: none !important;
+}
+
+[data-theme="professional"] .neon-glow {
+  text-shadow: none !important;
+  color: inherit;
+}
+
+[data-theme="professional"] .neon-glow-cyan {
+  color: #1A1A1A !important;
+  text-shadow: none !important;
+}
+
+[data-theme="professional"] .neon-glow-pink {
+  color: #8C4A2F !important;
+  text-shadow: none !important;
+}
+
+[data-theme="professional"] .neon-glow-gold {
+  color: #7A4A22 !important;
+  text-shadow: none !important;
+}
+
+/* Hero subtitle — swap monospace for serif in professional mode */
+[data-theme="professional"] .hero-section .font-mono {
+  font-family: 'Lora', 'Georgia', serif;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="professional"] .neon-border {
+  border-color: #C8C3BA !important;
+  box-shadow: none !important;
+}
+
+[data-theme="professional"] .neon-border-pink {
+  border-color: #B8927A !important;
+  box-shadow: none !important;
+}
+
+[data-theme="professional"] .grid-bg {
+  background-image: none;
+}
+
+[data-theme="professional"] .vhs-lines::before {
+  display: none;
+}
+
+[data-theme="professional"] .cylon-scan::before,
+[data-theme="professional"] .cylon-scan::after {
+  display: none;
+}
+
+[data-theme="professional"] .cursor::after {
+  display: none;
+}
+
+/* --- Cards --- */
+[data-theme="professional"] .retro-card {
+  background: #FFFFFF !important;
+  border: 1px solid #DDD8CE !important;
+  border-left: 4px solid #8C4A2F !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) !important;
+  backdrop-filter: none;
+}
+
+[data-theme="professional"] .retro-card:hover {
+  border-left-color: #1A1A1A !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10) !important;
+  transform: translateY(-2px);
+}
+
+/* --- Buttons --- */
+[data-theme="professional"] .retro-button {
+  font-family: 'Lora', serif !important;
+  font-size: 0.875rem !important;
+  border-color: #1A1A1A !important;
+  color: #1A1A1A !important;
+  box-shadow: none !important;
+  letter-spacing: 0.04em;
+}
+
+/* Fix hover fill: z-index:-1 falls behind white page bg.
+   z-index:1 on fill + z-index:2 on content keeps proper layering. */
+[data-theme="professional"] .retro-button::before {
+  background: #8C4A2F !important;
+  z-index: 1 !important;
+}
+[data-theme="professional"] .retro-button > * {
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="professional"] .retro-button:hover {
+  color: #FFFFFF !important;
+  border-color: #8C4A2F !important;
+  box-shadow: 0 2px 8px rgba(140, 74, 47, 0.3) !important;
+}
+
+[data-theme="professional"] .contact-button {
+  font-family: 'Lora', serif !important;
+  border-color: #8C4A2F !important;
+  color: #8C4A2F !important;
+  box-shadow: none !important;
+}
+
+[data-theme="professional"] .contact-button::before {
+  background: #8C4A2F !important;
+  z-index: 1 !important;
+}
+[data-theme="professional"] .contact-button > * {
+  position: relative;
+  z-index: 2;
+}
+
+[data-theme="professional"] .contact-button:hover {
+  color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(140, 74, 47, 0.25) !important;
+}
+
+[data-theme="professional"] .social-link::before {
+  background: #1A1A1A !important;
+}
+
+/* --- Navigation --- */
+[data-theme="professional"] nav.fixed {
+  background: rgba(250, 248, 243, 0.97) !important;
+  border-bottom-width: 1px !important;
+  backdrop-filter: blur(8px);
+}
+
+/* --- Theme toggle button in professional mode --- */
+[data-theme="professional"] .theme-toggle-btn {
+  border-color: #8C4A2F;
+  color: #8C4A2F;
+  font-family: 'Lora', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: none;
+}
+
+[data-theme="professional"] .theme-toggle-btn:hover {
+  background: rgba(139, 26, 26, 0.06);
+  border-color: #1A1A1A;
+  color: #1A1A1A;
+  box-shadow: 0 1px 4px rgba(43, 87, 151, 0.2);
+}
+
+/* --- Scrollbar --- */
+[data-theme="professional"] * {
+  scrollbar-color: #B8A890 #FFFFFF;
+}
+
+[data-theme="professional"] ::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border: 1px solid #DDD8CE;
+  box-shadow: none;
+}
+
+[data-theme="professional"] ::-webkit-scrollbar-thumb {
+  background: #B8A890;
+  border: 1px solid #A89878;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+[data-theme="professional"] ::-webkit-scrollbar-thumb:hover {
+  background: #988060;
+  box-shadow: none;
+}
+
+[data-theme="professional"] ::-webkit-scrollbar-thumb:active {
+  background: #7A6448;
+}
+
+/* --- Hero section --- */
+[data-theme="professional"] .hero-section {
+  min-height: 80vh;
+}
+
+/* --- Profile picture frame (about section) --- */
+[data-theme="professional"] .aspect-\[3\/4\] {
+  background: linear-gradient(135deg, #F4F4F2, #E8E0D0) !important;
+  border-color: #C8C3BA !important;
+}
+
+/* --- Blog content --- */
+[data-theme="professional"] .blog-content {
+  font-family: 'Lora', serif;
+  font-size: 1.125rem;
+  line-height: 1.9;
+  color: #0D0D0D;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="professional"] .blog-content h1 {
+  font-family: 'Playfair Display', serif;
+  color: #0D0D0D;
+  text-shadow: none;
+  letter-spacing: -0.02em;
+  font-size: 2rem;
+}
+
+[data-theme="professional"] .blog-content h2 {
+  font-family: 'Playfair Display', serif;
+  color: #0D0D0D;
+  text-shadow: none;
+  letter-spacing: -0.01em;
+  font-size: 1.6rem;
+  border-bottom: 1px solid #DDD8CE;
+  padding-bottom: 0.25rem;
+}
+
+[data-theme="professional"] .blog-content h3,
+[data-theme="professional"] .blog-content h4 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #8C4A2F;
+  text-shadow: none;
+  font-size: 1.3rem;
+}
+
+[data-theme="professional"] .blog-content h5,
+[data-theme="professional"] .blog-content h6 {
+  font-family: 'Playfair Display', serif;
+  color: #2A2A2A;
+  text-shadow: none;
+}
+
+[data-theme="professional"] .blog-content p {
+  font-family: 'Lora', serif;
+  color: #0D0D0D;
+}
+
+[data-theme="professional"] .blog-content a {
+  color: #1A1A1A;
+  text-decoration-color: rgba(43, 87, 151, 0.4);
+  text-shadow: none;
+}
+
+[data-theme="professional"] .blog-content a:hover {
+  text-decoration-color: #1A1A1A;
+  text-shadow: none;
+}
+
+[data-theme="professional"] .blog-content a[href^="http"]::after,
+[data-theme="professional"] .blog-content a[href^="https://"]::after {
+  color: #1A1A1A;
+  text-shadow: none;
+}
+
+[data-theme="professional"] .blog-content strong,
+[data-theme="professional"] .blog-content b {
+  color: #0D0D0D;
+  font-family: 'Lora', serif;
+}
+
+[data-theme="professional"] .blog-content em,
+[data-theme="professional"] .blog-content i {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  color: #8C4A2F;
+  background: none;
+  padding: 0;
+  text-shadow: none;
+  font-weight: normal;
+  letter-spacing: 0;
+}
+
+[data-theme="professional"] .blog-content blockquote {
+  border-left-color: #8C4A2F;
+  color: #2A2A2A;
+  font-family: 'Lora', serif;
+  font-style: italic;
+}
+
+[data-theme="professional"] .blog-content code {
+  color: #0D0D0D;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+[data-theme="professional"] .blog-content pre {
+  background: #F2F2F0;
+  border-color: #DDD8CE;
+  border-width: 1px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="professional"] .blog-content p code,
+[data-theme="professional"] .blog-content li code,
+[data-theme="professional"] .blog-content td code,
+[data-theme="professional"] .blog-content th code {
+  background: #F2F2F0;
+  border-color: #DDD8CE;
+  color: #8C4A2F;
+}
+
+[data-theme="professional"] .blog-content ul li,
+[data-theme="professional"] .blog-content ol li {
+  color: #0D0D0D;
+  font-family: 'Lora', serif;
+}
+
+[data-theme="professional"] .blog-content ul li::marker {
+  color: #8C4A2F;
+}
+
+[data-theme="professional"] .blog-content ol li::marker {
+  color: #8C4A2F;
+}
+
+[data-theme="professional"] .blog-content table {
+  border-color: #DDD8CE;
+  font-family: 'Lora', serif;
+}
+
+[data-theme="professional"] .blog-content thead {
+  background: #F2F2F0;
+}
+
+[data-theme="professional"] .blog-content th {
+  color: #0D0D0D;
+  border-bottom-color: #DDD8CE;
+  font-family: 'Playfair Display', serif;
+  text-shadow: none;
+}
+
+[data-theme="professional"] .blog-content td {
+  color: #2A2A2A;
+  border-bottom-color: #DDD8CE;
+  font-family: 'Lora', serif;
+}
+
+[data-theme="professional"] .blog-content tr:hover {
+  background: #F2F2F0;
+}
+
+[data-theme="professional"] .blog-content hr {
+  background: linear-gradient(to right, transparent, #8C4A2F, transparent);
+}
+
+[data-theme="professional"] .blog-content img {
+  image-rendering: auto;
+  border-color: #DDD8CE;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="professional"] .blog-content img:hover {
+  border-color: #8C4A2F;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="professional"] .blog-content mark {
+  background: rgba(139, 26, 26, 0.1);
+  color: #8C4A2F;
+  text-shadow: none;
+}
+
+[data-theme="professional"] .blog-content .katex {
+  color: #0D0D0D;
+}
+
+[data-theme="professional"] .blog-content .katex .base,
+[data-theme="professional"] .blog-content .katex .strut {
+  color: #0D0D0D;
+}
+
+[data-theme="professional"] .blog-content ul.contains-task-list li input[type="checkbox"] {
+  border-color: #C8C3BA;
+  background: #FFFFFF;
+  box-shadow: none;
+}
+
+[data-theme="professional"] .blog-content ul.contains-task-list li input[type="checkbox"]:hover {
+  border-color: #8C4A2F;
+  box-shadow: none;
+}
+
+[data-theme="professional"] .blog-content ul.contains-task-list li input[type="checkbox"]:checked {
+  background: rgba(43, 87, 151, 0.1);
+  border-color: #1A1A1A;
+  box-shadow: none;
+}
+
+[data-theme="professional"] .blog-content ul.contains-task-list li input[type="checkbox"]:checked::after {
+  color: #1A1A1A;
+  text-shadow: none;
+}
+
+/* --- Copy code button --- */
+[data-theme="professional"] .copy-code-btn {
+  color: #8C4A2F;
+  font-family: 'Lora', serif;
+}
+
+[data-theme="professional"] .copy-code-btn:hover,
+[data-theme="professional"] .copy-code-btn:focus {
+  color: #1A1A1A;
+}
+
+[data-theme="professional"] .copy-code-btn.copied {
+  color: #2B6B2B;
+}
+
+/* --- Publication card enhancements in professional mode --- */
+[data-theme="professional"] .retro-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #0D0D0D;
+  line-height: 1.35;
+}
+
+/* Emphasize your own name in author list with serif italic */
+[data-theme="professional"] .retro-card .font-bold.text-neon-pink {
+  font-style: italic;
+  font-family: 'Lora', serif;
+}
+
+/* --- Font-size control panel in professional mode --- */
+[data-theme="professional"] .bg-retro-darker {
+  background: #FFFFFF !important;
+}
+
+/* --- Text label visibility: retro ↔ professional ---
+   Both spans live in the DOM; CSS toggles which one is visible.
+   The FOUC-prevention script sets data-theme before content renders,
+   so there is no flash of the wrong label.
+   ----------------------------------------------------------- */
+.pro-only  { display: none; }
+
+[data-theme="professional"] .retro-only { display: none; }
+[data-theme="professional"] .pro-only   { display: inline; }
+
+/* Professional nav logo */
+[data-theme="professional"] .pro-only.pro-logo {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  color: #0D0D0D;
+  font-size: 1.15rem;
+}
+
+/* Professional section headings — larger, cleaner than retro */
+[data-theme="professional"] h2 .pro-only {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  letter-spacing: -0.02em;
+}
+
+/* Contact sub-heading */
+[data-theme="professional"] h3 .pro-only {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+/* --- Tailwind baked-in color utility overrides ---
+   Tailwind v4 @theme inline bakes static hex values directly into utility
+   classes at build time. CSS variable overrides won't affect them, so we
+   override each utility class explicitly here.
+   ----------------------------------------------------------- */
+
+/* Text — neon-cyan family */
+[data-theme="professional"] .text-neon-cyan        { color: #1A1A1A !important; }
+[data-theme="professional"] .text-neon-cyan\/90     { color: rgba(26,26,26,0.92) !important; }
+[data-theme="professional"] .text-neon-cyan\/80     { color: rgba(26,26,26,0.75) !important; }
+[data-theme="professional"] .text-neon-cyan\/70     { color: rgba(26,26,26,0.65) !important; }
+[data-theme="professional"] .text-neon-cyan\/60     { color: rgba(26,26,26,0.55) !important; }
+[data-theme="professional"] .text-neon-cyan\/40     { color: rgba(26,26,26,0.38) !important; }
+[data-theme="professional"] .text-neon-cyan\/30     { color: rgba(26,26,26,0.28) !important; }
+
+/* Text — neon-pink family */
+[data-theme="professional"] .text-neon-pink         { color: #8C4A2F !important; }
+[data-theme="professional"] .text-neon-pink\/80     { color: rgba(140,74,47,0.9) !important; }
+[data-theme="professional"] .text-neon-pink\/60     { color: rgba(140,74,47,0.65) !important; }
+[data-theme="professional"] .text-neon-pink\/30     { color: rgba(140,74,47,0.35) !important; }
+
+/* Section / container backgrounds */
+[data-theme="professional"] .bg-retro-darker\/95    { background-color: rgba(255,255,255,0.98) !important; }
+[data-theme="professional"] .bg-retro-darker\/90    { background-color: rgba(255,255,255,0.97) !important; }
+[data-theme="professional"] .bg-retro-darker\/80    { background-color: rgba(255,255,255,0.9) !important; }
+[data-theme="professional"] .bg-retro-darker\/50    { background-color: #F4F4F2 !important; }
+
+/* Full-opacity button fill backgrounds (used by hover/selected state) */
+[data-theme="professional"] .bg-neon-pink           { background-color: #8C4A2F !important; }
+[data-theme="professional"] .bg-neon-cyan           { background-color: #1A1A1A !important; }
+
+/* Card / component tint backgrounds */
+[data-theme="professional"] .bg-neon-cyan\/20       { background-color: rgba(26,26,26,0.06) !important; }
+[data-theme="professional"] .bg-neon-cyan\/10       { background-color: rgba(26,26,26,0.04) !important; }
+[data-theme="professional"] .bg-neon-cyan\/5        { background-color: rgba(26,26,26,0.02) !important; }
+[data-theme="professional"] .bg-neon-pink\/20       { background-color: rgba(140,74,47,0.08) !important; }
+[data-theme="professional"] .bg-neon-pink\/10       { background-color: rgba(140,74,47,0.05) !important; }
+[data-theme="professional"] .bg-neon-pink\/5        { background-color: rgba(140,74,47,0.03) !important; }
+
+/* Border — neon-cyan family */
+[data-theme="professional"] .border-neon-cyan       { border-color: #1A1A1A !important; }
+[data-theme="professional"] .border-neon-cyan\/60   { border-color: rgba(26,26,26,0.2) !important; }
+[data-theme="professional"] .border-neon-cyan\/50   { border-color: rgba(26,26,26,0.15) !important; }
+[data-theme="professional"] .border-neon-cyan\/30   { border-color: rgba(26,26,26,0.12) !important; }
+[data-theme="professional"] .border-neon-cyan\/20   { border-color: rgba(26,26,26,0.1) !important; }
+
+/* Border — neon-pink family */
+[data-theme="professional"] .border-neon-pink       { border-color: #8C4A2F !important; }
+[data-theme="professional"] .border-neon-pink\/50   { border-color: rgba(140,74,47,0.3) !important; }
+[data-theme="professional"] .border-neon-pink\/30   { border-color: rgba(140,74,47,0.2) !important; }
+
+/* Gradient from/to overrides */
+[data-theme="professional"] .from-neon-cyan\/20     { --tw-gradient-from: rgba(26,26,26,0.04) !important; }
+[data-theme="professional"] .to-neon-pink\/20       { --tw-gradient-to: rgba(140,74,47,0.04) !important; }
+
+/* Hover box-shadows — neutralize neon glow */
+[data-theme="professional"] [class*="hover:shadow-"] {
+  --tw-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* --- Font-size control: use CSS variable so the control panel works --- */
+[data-theme="professional"] .blog-content {
+  font-size: var(--blog-font-size, 1.125rem) !important;
+}
+[data-theme="professional"] .home-content {
+  font-size: var(--home-font-size, 1rem);
+}
+
+/* --- Scrollbar — must target .crt-screen (the scrolling body element) --- */
+[data-theme="professional"] .crt-screen::-webkit-scrollbar-track {
+  background: #F4F4F2 !important;
+  border: 1px solid #E4E4E2 !important;
+  box-shadow: none !important;
+}
+
+[data-theme="professional"] .crt-screen::-webkit-scrollbar-thumb {
+  background: #C8C7C2 !important;
+  border: 1px solid #B8B7B2 !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+}
+
+[data-theme="professional"] .crt-screen::-webkit-scrollbar-thumb:hover {
+  background: #A8A7A0 !important;
+  box-shadow: none !important;
+}
+
+[data-theme="professional"] .crt-screen::-webkit-scrollbar-thumb:active {
+  background: #989790 !important;
+}
+
+html[data-theme="professional"] {
+  scrollbar-color: #C8C7C2 #F4F4F2;
+}
+
+/* --- Badge overrides (Award / Invited) --- */
+/* Remove neon glow filter on all inline-styled badges */
+[data-theme="professional"] [style*="drop-shadow"] {
+  filter: none !important;
+}
+
+/* Invited badge: muted slate-purple */
+[data-theme="professional"] .border-purple-500 { border-color: #7C6898 !important; }
+[data-theme="professional"] .text-purple-400   { color: #7C6898 !important; }
+
+/* Award badge: warm amber-gold instead of neon yellow */
+[data-theme="professional"] .border-yellow-400 { border-color: #A68B44 !important; }
+[data-theme="professional"] .text-yellow-400   { color: #A68B44 !important; }
+
+/* --- Footer professional overrides --- */
+[data-theme="professional"] footer {
+  background: #F4F4F2 !important;
+  border-top: 1px solid #E4E4E2 !important;
+}
+
+[data-theme="professional"] footer .font-retro {
+  font-family: 'Playfair Display', 'Georgia', serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+[data-theme="professional"] footer .font-mono {
+  font-family: 'Lora', serif !important;
+}
+
+/* --- Navigation: serif font + no borders on pro mode links --- */
+[data-theme="professional"] nav a.font-mono {
+  font-family: 'Lora', 'Georgia', serif !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.02em;
+}
+
+/* --- Drop ALL CAPS: capitalize buttons, card sub-headings, toggle --- */
+[data-theme="professional"] .retro-button,
+[data-theme="professional"] .contact-button {
+  text-transform: capitalize !important;
+  letter-spacing: 0.03em;
+}
+
+[data-theme="professional"] .retro-card h3 {
+  text-transform: capitalize !important;
+}
+
+[data-theme="professional"] .theme-toggle-btn {
+  text-transform: capitalize !important;
+}
+
+/* Back/nav links that contain all-caps text */
+[data-theme="professional"] a[class*="inline-flex"][class*="text-neon-cyan"] {
+  text-transform: capitalize;
+  letter-spacing: 0.01em;
+}
+
+/* FontSizeControl "FONT SIZE" label */
+[data-theme="professional"] .whitespace-nowrap.font-mono {
+  text-transform: capitalize !important;
+}
+
+/* Blog post tags / categories: override inline VT323 font */
+[data-theme="professional"] [style*="VT323"] {
+  font-family: 'Lora', 'Georgia', serif !important;
+  font-size: inherit !important;
+}
+
+/* --- text-retro-darker: baked as near-black; make it white for selected button contrast ---
+   IMPORTANT: use the exact escaped class, NOT [class*="..."] which would also match
+   group-hover:text-retro-darker making that text permanently white (invisible on light bg) --- */
+[data-theme="professional"] .text-retro-darker {
+  color: #FFFFFF !important;
+}
+/* group-hover variant: only applies inside a hovered .group container */
+[data-theme="professional"] .group:hover .group-hover\:text-retro-darker {
+  color: #FFFFFF !important;
+}
+
+/* --- bg-retro-darker/70 (co-author hint panel) --- */
+[data-theme="professional"] .bg-retro-darker\/70 { background-color: rgba(255,255,255,0.97) !important; }
+
+/* --- Scroll-to-top button: override inline cyan box-shadow --- */
+[data-theme="professional"] button[aria-label="Scroll to top"] {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+  background: #FFFFFF !important;
+  border-color: rgba(26,26,26,0.2) !important;
+}
+[data-theme="professional"] button[aria-label="Scroll to top"] > div {
+  border-color: rgba(26,26,26,0.12) !important;
+}
+
+/* --- mark element: override VT323 monospace + neon background --- */
+[data-theme="professional"] .blog-content mark {
+  font-family: 'Lora', 'Georgia', serif !important;
+  font-size: inherit !important;
+  background: rgba(140,74,47,0.12) !important;
+  color: #6B2A10 !important;
+  text-shadow: none !important;
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+}
+
+/* Also fix strong/bold font in blog content */
+[data-theme="professional"] .blog-content strong,
+[data-theme="professional"] .blog-content b {
+  font-family: 'Lora', 'Georgia', serif !important;
+}
+
+/* --- Co-author network: container, SVG elements, controls, tooltip --- */
+
+/* Container background */
+[data-theme="professional"] .bg-black\/40 { background-color: rgba(245,245,244,0.95) !important; }
+
+/* Disable glitch + glow filters on the links group */
+[data-theme="professional"] .coauthor-links { filter: none !important; }
+
+/* Links */
+[data-theme="professional"] .coauthor-link-direct   { stroke: rgba(140,74,47,0.55) !important; }
+[data-theme="professional"] .coauthor-link-indirect  { stroke: rgba(140,74,47,0.22) !important; }
+
+/* Nodes */
+[data-theme="professional"] .coauthor-node          { stroke: #7A7975 !important; fill: #CECDCB !important; }
+[data-theme="professional"] .coauthor-node-you       { stroke: #0D0D0D !important; fill: #1A1A1A !important; filter: none !important; }
+
+/* Labels */
+[data-theme="professional"] .coauthor-label          { fill: #1A1A1A !important; font-family: 'Lora', serif !important; }
+[data-theme="professional"] .coauthor-label-you       { fill: #1A1A1A !important; font-weight: 900 !important; font-size: 14px !important; }
+
+/* Disable the glitch-animate on you node */
+[data-theme="professional"] .glitch-animate { animation: none !important; filter: none !important; }
+
+/* Controls overlay (data-no-pan) */
+[data-theme="professional"] [data-no-pan="true"] {
+  background: rgba(250,250,249,0.97) !important;
+  border: 1px solid rgba(220,220,218,0.9) !important;
+  color: #2A2A2A !important;
+}
+[data-theme="professional"] [data-no-pan="true"] strong { color: #8C4A2F !important; }
+[data-theme="professional"] [data-no-pan="true"] label  { color: #4A4A4A !important; }
+[data-theme="professional"] [data-no-pan="true"] label span { color: #8C4A2F !important; }
+[data-theme="professional"] [data-no-pan="true"] button {
+  color: #4A4A4A !important;
+  border-color: rgba(60,60,60,0.25) !important;
+}
+[data-theme="professional"] [data-no-pan="true"] input[type="range"] {
+  accent-color: #8C4A2F !important;
+}
+
+/* Tooltip */
+[data-theme="professional"] .coauthor-tooltip {
+  background: rgba(255,255,255,0.98) !important;
+  color: #1A1A1A !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12) !important;
+  border: 1px solid #E4E4E2 !important;
+}
+
+/* --- Rounded corners throughout the professional theme --- */
+[data-theme="professional"] .retro-card              { border-radius: 10px !important; }
+[data-theme="professional"] .retro-button            { border-radius: 6px !important; }
+[data-theme="professional"] .contact-button          { border-radius: 6px !important; }
+[data-theme="professional"] .theme-toggle-btn        { border-radius: 6px !important; }
+
+/* Filter / keyword / category buttons */
+[data-theme="professional"] button[class*="border-2"] { border-radius: 6px !important; }
+
+/* Inline badges (type, award, invited, hashtags, categories) */
+[data-theme="professional"] span[class*="border"][class*="px-2"] { border-radius: 4px !important; }
+[data-theme="professional"] span[class*="border"][class*="px-3"] { border-radius: 4px !important; }
+[data-theme="professional"] span[class*="border"][class*="px-4"] { border-radius: 4px !important; }
+
+/* Code blocks */
+[data-theme="professional"] .blog-content pre         { border-radius: 8px !important; }
+[data-theme="professional"] .blog-content p code,
+[data-theme="professional"] .blog-content li code     { border-radius: 3px !important; }
+
+/* FontSizeControl panel border */
+[data-theme="professional"] [class*="border-neon-cyan"][class*="backdrop"] { border-radius: 10px !important; }
+
+/* Scrollbar thumb */
+[data-theme="professional"] .crt-screen::-webkit-scrollbar-thumb { border-radius: 6px !important; }
+
+/* --- Syntax highlighting — professional theme (GitHub Light-inspired) ---
+   Override the retro neon .hljs-* rules defined earlier in this file.
+   ------------------------------------------------------------------- */
+[data-theme="professional"] .blog-content .hljs {
+  background: transparent;
+  color: #1A1A1A;
+}
+
+/* Keywords, control flow, selectors → warm dark red */
+[data-theme="professional"] .blog-content .hljs-keyword,
+[data-theme="professional"] .blog-content .hljs-selector-tag,
+[data-theme="professional"] .blog-content .hljs-literal,
+[data-theme="professional"] .blog-content .hljs-section,
+[data-theme="professional"] .blog-content .hljs-link {
+  color: #CF222E !important;
+}
+
+/* Strings, titles, names, types, attributes → dark navy */
+[data-theme="professional"] .blog-content .hljs-string,
+[data-theme="professional"] .blog-content .hljs-title,
+[data-theme="professional"] .blog-content .hljs-name,
+[data-theme="professional"] .blog-content .hljs-type,
+[data-theme="professional"] .blog-content .hljs-attribute,
+[data-theme="professional"] .blog-content .hljs-symbol,
+[data-theme="professional"] .blog-content .hljs-bullet,
+[data-theme="professional"] .blog-content .hljs-built_in,
+[data-theme="professional"] .blog-content .hljs-variable,
+[data-theme="professional"] .blog-content .hljs-template-tag,
+[data-theme="professional"] .blog-content .hljs-template-variable {
+  color: #0550AE !important;
+}
+
+/* Additions (diff) → dark green */
+[data-theme="professional"] .blog-content .hljs-addition {
+  color: #116329 !important;
+}
+
+/* Comments, meta, deletions → muted gray italic */
+[data-theme="professional"] .blog-content .hljs-comment,
+[data-theme="professional"] .blog-content .hljs-quote,
+[data-theme="professional"] .blog-content .hljs-deletion,
+[data-theme="professional"] .blog-content .hljs-meta {
+  color: #6E7781 !important;
+  font-style: italic;
+}
+
+/* Numbers, regexp, selectors → steel blue */
+[data-theme="professional"] .blog-content .hljs-number,
+[data-theme="professional"] .blog-content .hljs-regexp,
+[data-theme="professional"] .blog-content .hljs-selector-id,
+[data-theme="professional"] .blog-content .hljs-selector-class {
+  color: #8C4A2F !important;
+}
+
+/* ============================================================
+   END PROFESSIONAL THEME
+   ============================================================ */
