@@ -157,9 +157,10 @@ Below is a short list of resources referenced above.
 
 <li id="note-1">
 <strong>European Commission - Dealing with requests from individuals</strong><br/>
-European Commission<br/>
+European Commission / EUR-Lex<br/>
 <a href="https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en" target="_blank">https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en</a><br/>
-Explains how organizations should handle GDPR data-subject requests, including response timing.
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679</a><br/>
+Explains response timing for data-subject requests and links to the official GDPR text for Articles 12 and 17.
 </li>
 
 <li id="note-2">
