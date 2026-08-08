@@ -2422,6 +2422,7 @@ html[data-theme="professional"] {
 [data-theme="professional"] .text-neon-cyan\/80     { color: rgba(26,26,26,0.75) !important; }
 [data-theme="professional"] .text-neon-cyan\/70     { color: rgba(26,26,26,0.65) !important; }
 [data-theme="professional"] .text-neon-cyan\/60     { color: rgba(26,26,26,0.55) !important; }
+[data-theme="professional"] .text-neon-cyan\/50     { color: rgba(26,26,26,0.45) !important; }
 [data-theme="professional"] .text-neon-cyan\/40     { color: rgba(26,26,26,0.38) !important; }
 [data-theme="professional"] .text-neon-cyan\/30     { color: rgba(26,26,26,0.28) !important; }
 
@@ -2451,6 +2452,7 @@ html[data-theme="professional"] {
 
 /* Border — neon-cyan family */
 [data-theme="professional"] .border-neon-cyan       { border-color: #1A1A1A !important; }
+[data-theme="professional"] .hover\:border-neon-cyan:hover { border-color: #1A1A1A !important; }
 [data-theme="professional"] .border-neon-cyan\/60   { border-color: rgba(26,26,26,0.2) !important; }
 [data-theme="professional"] .border-neon-cyan\/50   { border-color: rgba(26,26,26,0.15) !important; }
 [data-theme="professional"] .border-neon-cyan\/30   { border-color: rgba(26,26,26,0.12) !important; }
