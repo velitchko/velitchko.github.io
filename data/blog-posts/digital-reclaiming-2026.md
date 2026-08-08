@@ -109,7 +109,7 @@ On the one side creating an account has been optimized because every additional 
 
 At some point I realized that what I actually want to understand is where my personal data lives, who still holds it, why it is still being retained, and how much control I have over my own digital identity once the easy opt-out buttons run out.
 
-That is what I my definition of digital sovereignty. Not disappearing from the internet. Not pretending every cloud service is bad. Not building a bunker out of self-hosted dashboards.
+That is my definition of *digital sovereignty*. Not disappearing from the internet. Not pretending every cloud service is bad. Not building a bunker out of self-hosted dashboards.
 
 But just being more deliberate about the services I depend on, the accounts I leave behind, and the amount of trust I give to organizations that no longer provide me with value.
 
