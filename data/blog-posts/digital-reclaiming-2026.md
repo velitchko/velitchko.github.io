@@ -16,6 +16,8 @@ featured: true
 
 # Reclaiming Your Digital Life
 
+![Reclaiming Your Digital Life](/blog/deleteme.png)
+
 Over the past few weeks I've done something I had never seriously attempted before.
 
 I've started deleting myself from the internet.
@@ -24,14 +26,15 @@ Not in a dramatic "I'm leaving technology" sense. Quite the opposite. I work in 
 
 What I am trying to leave behind is the assumption that every company should profile me and keep my personal data indefinitely because I once created an account. Or because I logged in with Google OAuth once and then forgot the service existed.
 
-To date I have sent hundreds of GDPR erasure requests to companies whose services I no longer use. Some processed the request within days. Others required manual verification. Many sent me through broken forms, non-functional login systems, or support loops that looked almost designed to make leaving boring enough that I would stop.
+To date I have sent hundreds of GDPR erasure requests to companies whose services I no longer use. Some processed the request within days. Others required manual verification. Many sent me through broken forms, non-functional login systems, or support loops that looked almost designed to make leaving annoying enough that I would stop. Sometimes our email exchange would look like:
 
 > Person A: Please contact email/person B<br/>
 > Person B: Please contact email/person A
 
-A surprising number simply never replied.
+A surprising number simply never replied, ignored me, or thought I forgot.
+I had to fill in so many captchas, I actually got to the advanced captcha stage.
 
-One request has involved more than 37 emails. Another has bounced between departments for weeks. Several companies pointed me toward forms that do not work, maybe never worked, and then asked me to use those same forms again. Others required me to repeatedly prove my identity just to delete an account I could no longer access because their own authentication systems were broken.
+One request has involved more than **37 emails**. Another has bounced between departments for weeks (*five to be precise*). Several companies pointed me toward forms that do not work, maybe never worked, and then asked me to use those same forms again. Others required me to repeatedly prove my identity just to delete an account I could no longer access because their own authentication systems were broken.
 
 <mark>None of this should be normal.</mark>
 
@@ -39,7 +42,7 @@ And yet it is.
 
 ---
 
-## The experiment
+## My process
 
 The rules were simple. For every service I no longer use, I first try to delete the account through the web interface. If that fails, I look for a support address or data protection officer contact and request deletion of the account and associated personal data. Then I record what happened.
 
@@ -49,14 +52,14 @@ I expected three possible outcomes:
 2. The company explains why it legally cannot delete some data.
 3. The company asks me to verify my identity.
 
-Instead I discovered a fourth possibility.
+Instead I discovered a <mark>fourth</mark> possibility.
 
-**The process itself often does not work.**
+**The process itself does not work.**
 
 Some observations after only a few weeks:
 
 - Login systems no longer worked.
-- Google OAuth authentication silently failed.
+- OAuth authentication silently failed.
 - Password recovery mechanisms were broken.
 - Privacy forms redirected to dead links.
 - Privacy policies had placeholder text that looked like it was never meant to be published.
@@ -65,14 +68,14 @@ Some observations after only a few weeks:
 - Customer support redirected me to privacy, and privacy redirected me back to customer support.
 - Departments repeatedly requested information they already had.
 - Identity verification sometimes required more personal information than the account needed in the first place.
-- Some companies never replied. Some listed email addresses bounced.
+- Some companies never replied. Some listed email addresses bounced. Some ceased to exist. *RIP*
 - Others handled everything professionally within a single day. Praise where it is due.
 
-The strange part was that the hard cases were not always the companies with the most sensitive data. Sometimes the companies legally required to retain certain records gave the clearest explanations. The worst cases were often the ordinary services that seemed to have optimized account creation down to seconds and then never built a serious exit.
+At the start I assumed going against the big companies was gonna be challenging, and to my surprise they had the most straight forward process and quickly resolved the requests and for data they were legally required to retain, they gave clear explanations. The worst cases were often the sma;ller services or companies that seemed to have optimized account creation down to seconds and then never built a serious exit.
 
 The funniest, in the bleak sense, was the automated "sad to see you go" email after a deletion request finally succeeded.
 
-Sorry, not sorry. I am extremely fine being deleted from your service.
+Sorry, not sorry. I am extremely fine being deleted from your service. Arrivederci!
 
 ---
 
@@ -84,45 +87,33 @@ Some existed for a single purchase. Some were created to try a piece of software
 
 Unfortunately, my data had not.
 
-Every account leaves something behind: name, email address, billing information, support conversations, purchase history, device identifiers, IP addresses, location signals, analytics, telemetry, behavioral data. Most of it is uninteresting on its own. At scale it becomes a profile of where I have been, what I tried, what I bought, what I asked for, and which systems I depended on.
+Every account leaves something behind: name, email address, billing information, support conversations, purchase history, device identifiers, IP addresses, location signals, analytics, telemetry, behavioral data. Most of it is uninteresting on its own. But connected at scale it becomes a profile of where I have been, what I tried, what I bought, what I asked for, and which systems I depended on.
 
-The question that started this project was simple:
+This became my motivation:
 
 > **If I no longer use a service, why should it continue storing my personal information?**
 
 GDPR gives me a mechanism to ask that question formally. Article 17 is useful because it turns "please delete my account" into a right that organizations have to handle; Article 12 says organizations generally have one month to respond.<sup>[1](#note-1)</sup> But the experience quickly stopped being only about legal compliance.
 
-The law is not the part that surprised me.
-
-The organizational reality did.
+The law is not the part that surprised me. The organizational reality did.
 
 Deletion is a useful stress test because it touches parts of an organization that account creation can ignore: old authentication systems, support ownership, retention policies, legal obligations, and the question of who is actually responsible when a user wants to leave.
 
-This is not really a story about villainous companies hovering over a database. It is more boring, and probably more common: technical debt, fragmented responsibility, cheap storage, abandoned privacy pages, and internal processes that were never tested from the perspective of departure.
+This is not really a story about super evil companies hovering over a database. It is more boring, and probably more common: technical debt, fragmented responsibility, cheap storage, abandoned privacy pages, and internal processes that were never tested from the perspective of departure.
 
-Creating an account has been optimized because every additional click risks losing a user.
-
-Deleting one often still feels like a favor.
+On the one side creating an account has been optimized because every additional click risks losing a potential user. However, on the other side deleting one's account often still feels like companies are doing you a favor (*which they are not*).
 
 ---
 
 ## Beyond GDPR
 
-At some point I realized the project had become larger than a collection of deletion requests.
+At some point I realized that what I actually want to understand is where my personal data lives, who still holds it, why it is still being retained, and how much control I have over my own digital identity once the easy opt-out buttons run out.
 
-GDPR is the tool. It is not the reason I started.
+That is what I my definition of digital sovereignty. Not disappearing from the internet. Not pretending every cloud service is bad. Not building a bunker out of self-hosted dashboards.
 
-What I actually want to understand is where my personal data lives, who still holds it, why it is still being retained, and how much control I have over my own digital identity once the easy opt-out buttons run out.
+But just being more deliberate about the services I depend on, the accounts I leave behind, and the amount of trust I give to organizations that no longer provide me with value.
 
-That is what I mean by digital sovereignty here. Not disappearing from the internet. Not pretending every cloud service is bad. Not building a bunker out of self-hosted dashboards.
-
-Just being more deliberate about the services I depend on, the accounts I leave behind, and the amount of trust I give to organizations that no longer provide me with value.
-
-The AI angle makes this harder to ignore. Data that used to be treated as exhaust now has new uses: training, profiling, personalization, risk scoring, recommendation, automation. A support conversation or abandoned profile may be useless to me, but that does not mean it has no value to someone else.
-
-So the question is no longer simply whether companies collect data.
-
-It is whether leaving a service should also mean leaving its memory.
+The AI angle makes this harder to ignore. Data that used to be treated as exhaust now has new uses: training, profiling, personalization, risk scoring, recommendation, automation. A support conversation or abandoned profile may be useless to me, but that does not mean it has no value to someone else. So maybe the following tips based on my experience might be useful to you. These are some things you can actionably do today.
 
 ---
 
@@ -146,15 +137,13 @@ Here is the checklist I would use now:
 - [ ] Replace one recurring service only if there is a better trade-off. Privacy Guides and EFF's Surveillance Self-Defense are useful starting points, but copying someone else's setup blindly is just another way to stop thinking.<sup>[5](#note-5)</sup>
 - [ ] Before buying a new connected device or app, check whether someone has already reviewed its privacy behavior. Mozilla's *Privacy Not Included* is useful for that kind of first pass.<sup>[6](#note-6)</sup>
 
-The log matters more than it sounds. Once you write things down, patterns become visible quickly: which companies respond clearly, which ones route you through support theatre, which ones ask for more data than they need, and which ones cannot delete you because their own systems have forgotten how you logged in.
+The point is not to completely disappear and go off-grid. I still use cloud services and some proprietary software. I am trying to limit this and I will detail more of my experiences in the upcoming post.
 
-The point is not to become perfectly private. I still use cloud services. I still use proprietary software. I still choose convenience when the trade-off makes sense.
+But the important things is that **I want those choices to be choices**.
 
-But I want those choices to be choices.
+For me, reclaiming my digital life starts there: with old accounts, broken deletion workflows, and the absurd realization that leaving the internet is often much harder than joining it.
 
-For me, reclaiming my digital life starts there: with old accounts, broken deletion workflows, and the mildly absurd realization that leaving the internet is often much harder than joining it.
-
-This is the first post in a series about how I approached that process in practice. Account deletion is just the visible edge. From there the questions start multiplying: which apps do I trust, which services do I depend on, what is my operating system doing in the background, what should I replace, and what is worth keeping because convenience still matters.
+This is the first post in a series about how I approached that process. Account deletion is just the visible edge. From there the questions start multiplying: which apps do I trust, which services do I depend on, what is my operating system doing in the background, what should I replace, and what is worth keeping because convenience still matters.
 
 In other words, this is where the rabbit hole starts. I am going down it piece by piece, and I will write up the route as I go.
 
