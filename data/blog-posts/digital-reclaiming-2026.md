@@ -1,6 +1,6 @@
 ---
 title: "Reclaiming Your Digital Life"
-subtitle: "Why I'm deleting accounts, reducing my digital footprint, and taking back control."
+subtitle: "Why I'm deleting old accounts and finding out how much control I actually have."
 date: "2026-08-05"
 author: "Velitchko Filipov"
 hashtags:
@@ -10,148 +10,50 @@ categories:
   - Privacy
   - Technology
   - Opinion
-excerpt: "What started as a simple attempt to delete a few unused accounts quickly turned into a month-long investigation into privacy, AI, broken deletion procedures, and what digital sovereignty means in 2026."
+excerpt: "I started deleting old accounts and expected boring GDPR admin. Instead I found broken forms, dead login systems, support loops, and a much clearer picture of how hard it is to leave."
 featured: true
 ---
 
 # Reclaiming Your Digital Life
 
-Over the past few weeks I've done something I hadn't seriously attempted before.
+Over the past few weeks I've done something I had never seriously attempted before.
 
 I've started deleting myself from the internet.
 
-Not in a dramatic "I'm leaving technology" sense. Quite the opposite. I work in AI, visualization, and software. Technology is central to both my research and my daily life.
+Not in a dramatic "I'm leaving technology" sense. Quite the opposite. I work in AI, visualization, and software. Technology is central to my research and my daily life.
 
-What I'm trying to leave behind is the assumption that every company should profile me and indefinitely retain my personal data simply because I once created an account -- *or logged in with google oauth 🙄*.
+What I am trying to leave behind is the assumption that every company should profile me and keep my personal data indefinitely because I once created an account. Or because I logged in with Google OAuth once and then forgot the service existed.
 
-To date I've submitted hundreds of GDPR erasure requests to companies whose services I no longer use. Some processed the request within days. Others required manual verification. Many redirected me through broken forms, non-functional login systems, or endless support loops. 
+To date I have sent hundreds of GDPR erasure requests to companies whose services I no longer use. Some processed the request within days. Others required manual verification. Many sent me through broken forms, non-functional login systems, or support loops that looked almost designed to make leaving boring enough that I would stop.
 
-> Person A: Please contact email/person B
+> Person A: Please contact email/person B<br/>
 > Person B: Please contact email/person A
 
-A surprising number just never really replied.
+A surprising number simply never replied.
 
-One request has involved more than thirty emails. Another has bounced between departments for weeks. Several companies pointed me toward forms that do not work (maybe they never did?). Others required me to repeatedly prove my identity just to delete an account that I could no longer access because their own authentication systems were broken.
+One request has involved more than 37 emails. Another has bounced between departments for weeks. Several companies pointed me toward forms that do not work, maybe never worked, and then asked me to use those same forms again. Others required me to repeatedly prove my identity just to delete an account I could no longer access because their own authentication systems were broken.
 
-<mark>None of this should be normal.</mark> -- And yet it is.
+<mark>None of this should be normal.</mark>
 
-The experience made me realize something: The internet has quietly evolved into a place where creating an account takes seconds, but deleting one can take weeks -- **or be practically impossible**.
-
-At the same time, our personal data is dramatically more valuable than it was just a few years/decades ago.
-
-Large language models are trained on enormous quantities of publicly and privately available information. Advertising ecosystems continue to profile users across services. Companies collect telemetry, behavioral data, support conversations, purchase histories, location data, and countless other signals that persist long after we stop using a service.
-
-The question is no longer whether companies collect data.
-
-The question and problem I am facing now is:
-
-> Do we still have meaningful control over our own data and digital footprint?
-
-This series is my attempt to answer that question and this post is about that journey.
+And yet it is.
 
 ---
 
-What started as digital housekeeping became something much larger.
-This opened up the question of **why I think reclaiming our digital lives has become one of the most important technical and societal challenges of this decade.**
-
----
-
-# Why I'm Reclaiming My Digital Life
-
-Like most people, I've accumulated online accounts over the years.
-
-Some existed for a single purchase; some for trying a piece of software; some because a website insisted that creating an account was the only way forward.
-
-Most of these accounts have long since disappeared from my memory.
-Unfortunately, my personal data has not. Every account leaves something behind that is used to understand your online behavior, market products to you, determine your risk profile, adjust pricing according to all of that.
-
-Concerning, right? Here are some of the things that are **way too easy** to collect about your person:
-
-- Name
-- Email address
-- Phone number
-- Purchase history
-- Billing information
-- Customer support conversations
-- Device identifiers
-- IP addresses
-- Location information
-- Analytics and telemetry
-- Behavioral data
-
-Hundreds of companies quietly retain this information, often years after we've stopped using their services and until recently, I never really questioned that.
-
-Then I asked myself a very simple question.
-
-> **If I no longer use a service, why should it continue storing my personal information?**
-
-That question is my motivation for this project.
-
----
-
-# The State of Privacy in 2026
-
-Privacy has always mattered to me. I believe it matters even **more today than at any point in the history of the internet.**
-
-AI has fundamentally changed the economics of data. Twenty years ago, data collection primarily enabled analytics; ten years ago, it fueled personalized advertising; today it fuels something much larger.
-
-Support conversations become training datasets.
-
-Images become computer vision benchmarks.
-
-Public text becomes language model corpora.
-
-Behavioral logs become recommendation systems.
-
-Interaction histories become personalization engines.
-
-Large Language Models have made one thing abundantly clear:
-
-> **Data has become infrastructure.**
-
-At the same time, companies continue collecting more information than ever before.
-
-Not necessarily because they intend to misuse it.
-
-Sometimes because storage is cheap.
-
-Sometimes because nobody ever designed a deletion workflow.
-
-Sometimes because the data has simply become too valuable to discard.
-
-This doesn't make every company malicious.
-
-But it does change the conversation.
-
-Privacy is no longer only about advertising.
-
-It's increasingly about ownership, control, transparency, and agency over our own digital identity.
-
----
-
-# My Experiment
+## The experiment
 
 About a month ago I decided to find out what deleting myself from the internet actually looks like.
 
-The rules were simple.
+The rules were simple. For every service I no longer use, I would first try to delete the account through the web interface. If that failed, I would look for a support address or data protection officer contact and request deletion of the account and associated personal data. Then I would record what happened.
 
-For every service I no longer use:
+I expected three possible outcomes:
 
-- Try to delete account if possible through the web interface.
-- If not try to find support or data protection officer contact and request deletion of the account and associated personal data.
-- Record the experience.
-
-I expected three possible outcomes.
-
-Either the company would:
-
-1. Delete my account.
-2. Explain why they legally could not.
-3. Ask me to verify my identity.
+1. The company deletes my account.
+2. The company explains why it legally cannot delete some data.
+3. The company asks me to verify my identity.
 
 Instead I discovered a fourth possibility.
 
-**The process itself often doesn't work.**
+**The process itself often does not work.**
 
 Some observations after only a few weeks:
 
@@ -159,83 +61,96 @@ Some observations after only a few weeks:
 - Google OAuth authentication silently failed.
 - Password recovery mechanisms were broken.
 - Privacy forms redirected to dead links.
-- Privacy policies were *vibe-coded*, in some cases even with placeholder information, telling people to fill this out before deploying.
-- Some services did not even have public facing privacy forms or terms of service
-- Privacy forms themselves DID NOT have the required details about storing and processing your data.
-- Customer support redirected me to privacy - Privacy redirected me back to customer support.
-- Departments repeatedly requested information they already possessed.
-- Identity verification sometimes required providing even more personal information than was necessary to even create the account in the first place.
-- Some companies never replied, some emails no longer worked (maildaemon failure), despite being listed.
-- Others handled everything professionally within a single day. Praise you 🙏.
+- Privacy policies had placeholder text that looked like it was never meant to be published.
+- Some services had no public-facing privacy form or terms of service.
+- Some privacy forms did not include the required information about data processing.
+- Customer support redirected me to privacy, and privacy redirected me back to customer support.
+- Departments repeatedly requested information they already had.
+- Identity verification sometimes required more personal information than the account needed in the first place.
+- Some companies never replied. Some listed email addresses bounced.
+- Others handled everything professionally within a single day. Praise where it is due.
 
-One deletion request exceeded **37 emails**.
+The strange part was that the hard cases were not always the companies with the most sensitive data. Sometimes the companies legally required to retain certain records gave the clearest explanations. The worst cases were often the ordinary services that seemed to have optimized account creation down to seconds and then never built a serious exit.
 
-Another redirected me to the same privacy form **four separate times**.
+The funniest, in the bleak sense, was the automated "sad to see you go" email after a deletion request finally succeeded.
 
-Several companies responded only after escalating the issue and data protection officers became involved. 
-
-Ironically, the hardest part wasn't convincing companies to delete my data. It was convincing them that I was in my rights to request so. 
-
-The part that made me giggle was the *Sad to see you go email* that is automatically sent to me after the fact. Sorry, not sorry - but I am so not sad to be deleted from your services.
-
----
-# Beyond GDPR
-
-When I started this project, I assumed the difficult part would be understanding the legal framework surrounding data deletion requests. Instead, I found the opposite to be true. The GDPR is surprisingly clear in defining both the rights of individuals and the obligations of organizations that process personal data. The legislation itself was rarely the obstacle. What consistently surprised me was how often the real challenge lay within the organizations themselves.
-
-Over the past month I encountered companies that processed my request within hours and others that took weeks simply to acknowledge it. Some organizations were transparent about what they could delete, what they were legally required to retain, and why. Others redirected me between departments, pointed me toward broken privacy portals, or repeatedly asked me to fill out forms that I had already completed. In several cases, login systems had stopped functioning altogether, leaving me unable to access the very account I was trying to delete. Ironically, the companies that were legally obligated to retain certain categories of data often provided the clearest explanations, while others that prominently advertised their commitment to privacy struggled with the most basic aspects of the deletion process.
-
-What became increasingly apparent was that this wasn't really a legal problem—it was an organizational one. The technology to store our information has matured enormously over the past two decades, yet the processes for removing it often feel like an afterthought. Creating an account has been optimized to take seconds because every additional click risks losing a potential customer. Deleting that same account, however, frequently requires navigating outdated support systems, fragmented internal processes, and in some cases weeks of email correspondence before reaching someone capable of handling the request.
-
-Some of these problems are undoubtedly the result of technical debt. Others stem from organizational complexity or regulatory obligations. But regardless of the cause, the outcome is the same: exercising what is supposed to be a fundamental right often becomes far more difficult than it should be.
-
-At some point I realized that this project had quietly evolved into something much larger than a collection of GDPR requests. The legislation is merely the mechanism that allows us to exercise our rights; it is not the reason I started this journey. What I have really become interested in is the broader question of **digital sovereignty**—understanding where my personal data resides, who continues to hold it, why it is still being retained, and how much control I genuinely have over my own digital identity.
-
-That, to me, is a far more interesting question than whether a particular company complies with Article 17.
-
-This series is therefore not about disappearing from the internet, nor is it an argument that technology companies are inherently malicious. Rather, it is about becoming more deliberate in the relationship we have with the services we use. It is about understanding our digital footprint, questioning whether years-old accounts still deserve to exist, and gradually reducing the amount of trust we place in organizations that no longer provide us with value. GDPR happens to be one of the tools that makes this possible, but the broader objective is reclaiming ownership over our digital lives.
----
-
-# Where This Series Goes Next
-
-This article intentionally focuses on **why**.
-
-The next articles will focus on **how**.
-
-Topics I plan to cover include:
-
-- My GDPR deletion workflow.
-- Email templates that consistently worked.
-- What to pay attention to in privacy policies.
-- Useful services such as YourDigitalRights.org.
-- Practical de-Googling, de-Microsofting and other large ecosystems.
-- Self-hosting services without becoming a full-time system administrator.
-- Privacy-friendly communication.
-- AI, data brokers, and the changing value of personal information.
-- Practical tools that make privacy significantly easier.
-
-I hope this provides some perspectives on how you can reduce your digital dependence while maintaining convenience.
-
-Not everything should be self-hosted and not every cloud service is inherently bad.
-But understanding the trade-offs has never been more important.
+Sorry, not sorry. I am extremely fine being deleted from your service.
 
 ---
 
-# Start Small
+## What deletion reveals
 
-You don't need to disappear from the internet overnight.
+Like most people, I have accumulated online accounts for years.
 
-Start with a few simple questions.
+Some existed for a single purchase. Some were created to try a piece of software. Some existed because a website insisted that creating an account was the only way forward. Most of them had long disappeared from my memory.
 
-- Do I still use this account?
-- Does this company still need my personal data?
-- Could I replace this service with something more privacy-friendly?
-- What happens if this company is breached tomorrow?
-- Do I actually trust this organization with my information?
+Unfortunately, my data had not.
 
-Small changes compound surprisingly quickly. Reclaiming your digital life isn't a single decision -- it is a continuous process of becoming more intentional about where your data lives and who gets to keep it.
+Every account leaves something behind: name, email address, billing information, support conversations, purchase history, device identifiers, IP addresses, location signals, analytics, telemetry, behavioral data. Most of it is uninteresting on its own. At scale it becomes a profile of where I have been, what I tried, what I bought, what I asked for, and which systems I depended on.
 
-In 2026, I believe that's becoming one of the most valuable digital skills any of us can develop.
+The question that started this project was simple:
+
+> **If I no longer use a service, why should it continue storing my personal information?**
+
+GDPR gives me a mechanism to ask that question formally. Article 17 is useful because it turns "please delete my account" into a right that organizations have to handle. But the experience quickly stopped being only about legal compliance.
+
+The law is not the part that surprised me.
+
+The organizational reality did.
+
+Some companies processed requests within hours. Others took weeks simply to acknowledge that a request existed. Some were transparent about what they could delete, what they had to retain, and why. Others pointed me toward dead portals, asked me to fill out forms I had already completed, or left me stuck between support and privacy teams.
+
+This is not really a story about evil companies twirling mustaches over a database. It is more boring, and probably more common: technical debt, fragmented responsibility, cheap storage, old authentication systems, abandoned privacy pages, and internal processes that were never tested by someone who actually tried to leave.
+
+Creating an account has been optimized because every additional click risks losing a user.
+
+Deleting one often still feels like a favor.
+
+---
+
+## Beyond GDPR
+
+At some point I realized the project had become larger than a collection of deletion requests.
+
+GDPR is the tool. It is not the reason I started.
+
+What I actually want to understand is where my personal data lives, who still holds it, why it is still being retained, and how much control I have over my own digital identity once the easy opt-out buttons run out.
+
+That is what I mean by digital sovereignty here. Not disappearing from the internet. Not pretending every cloud service is bad. Not building a bunker out of self-hosted dashboards.
+
+Just being more deliberate about the services I depend on, the accounts I leave behind, and the amount of trust I give to organizations that no longer provide me with value.
+
+The AI angle makes this harder to ignore. Data that used to be treated as exhaust now has new uses: training, profiling, personalization, risk scoring, recommendation, automation. A support conversation or abandoned profile may be useless to me, but that does not mean it has no value to someone else.
+
+So the question is no longer simply whether companies collect data.
+
+It is whether leaving a service should also mean leaving its memory.
+
+---
+
+## Start small
+
+You do not need to disappear from the internet overnight.
+
+Start with one old account.
+
+Ask:
+
+- Do I still use this?
+- Does this company still need my data?
+- Can I delete the account from the interface?
+- If not, is there a privacy or DPO contact?
+- What happens when I ask?
+
+Then write down the answer.
+
+That last part matters. Once you start keeping notes, patterns become visible quickly. Which companies respond clearly. Which ones route you through support theatre. Which ones ask for more data than they need. Which ones cannot delete you because their own systems have forgotten how you logged in.
+
+The point is not to become perfectly private. I still use cloud services. I still use proprietary software. I still choose convenience when the trade-off makes sense.
+
+But I want those choices to be choices.
+
+For me, reclaiming my digital life starts there: with old accounts, broken deletion workflows, and the mildly absurd realization that leaving the internet is often much harder than joining it.
 
 ---
 
@@ -247,7 +162,7 @@ Below is a list of references so you can scan everything in one place.
 
 <li id="note-1">
 <strong>Your Digital Rights</strong><br/>
-noyb – European Center for Digital Rights<br/>
+noyb - European Center for Digital Rights<br/>
 <a href="https://yourdigitalrights.org/" target="_blank">https://yourdigitalrights.org/</a><br/>
 Generate GDPR requests and understand your rights across hundreds of online services.
 </li>
@@ -260,70 +175,17 @@ Overview of the GDPR and the rights granted to European citizens.
 </li>
 
 <li id="note-3">
-<strong>Article 17 – Right to Erasure</strong><br/>
+<strong>Article 17 - Right to Erasure</strong><br/>
 GDPR.eu<br/>
 <a href="https://gdpr.eu/article-17-right-to-be-forgotten/" target="_blank">https://gdpr.eu/article-17-right-to-be-forgotten/</a><br/>
 Explanation of the legal basis for deletion requests.
 </li>
 
 <li id="note-4">
-<strong>Article 12 – Transparent Communication and Time Limits</strong><br/>
+<strong>Article 12 - Transparent Communication and Time Limits</strong><br/>
 GDPR.eu<br/>
 <a href="https://gdpr.eu/article-12-how-to-exercise-the-rights-of-the-data-subject/" target="_blank">https://gdpr.eu/article-12-how-to-exercise-the-rights-of-the-data-subject/</a><br/>
 Defines how controllers must respond to data subject requests.
 </li>
 
-<li id="note-5">
-<strong>Article 19 – Notification of Erasure</strong><br/>
-GDPR.eu<br/>
-<a href="https://gdpr.eu/article-19-notification-obligation-regarding-rectification-or-erasure-of-personal-data-or-restriction-of-processing/" target="_blank">https://gdpr.eu/article-19-notification-obligation-regarding-rectification-or-erasure-of-personal-data-or-restriction-of-processing/</a><br/>
-Requires controllers to notify recipients when data has been erased where applicable.
-</li>
-
-<li id="note-6">
-<strong>The Age of Surveillance Capitalism</strong><br/>
-Shoshana Zuboff<br/>
-<a href="https://en.wikipedia.org/wiki/The_Age_of_Surveillance_Capitalism" target="_blank">Overview</a><br/>
-Foundational reading on the economics of personal data.
-</li>
-
-<li id="note-7">
-<strong>Electronic Frontier Foundation</strong><br/>
-<a href="https://www.eff.org/" target="_blank">https://www.eff.org/</a><br/>
-Privacy advocacy, digital rights, and surveillance resources.
-</li>
-
-<li id="note-8">
-<strong>Mozilla Privacy Not Included</strong><br/>
-<a href="https://foundation.mozilla.org/en/privacynotincluded/" target="_blank">https://foundation.mozilla.org/en/privacynotincluded/</a><br/>
-Independent reviews of consumer products from a privacy perspective.
-</li>
-
 </ol>
-
----
-
-## How to Use This Post
-
-### Share Your Experience
-
-Feel free to:
-
-- Share your own deletion stories.
-- Recommend privacy-friendly alternatives.
-- Share useful GDPR resources.
-- Suggest companies with exemplary (or terrible) deletion workflows.
-- Share this article with anyone beginning their own privacy journey.
-
-### Talk About It!
-
-Some questions worth discussing:
-
-- How many online accounts do you actually have?
-- Which companies still store your data?
-- Have you ever tried deleting an account?
-- Was the process easy?
-- Has AI fundamentally changed the value of personal data?
-- Should deleting an account be as easy as creating one?
-- What does **digital sovereignty** mean to you?
-- How much convenience are you willing to trade for privacy?
