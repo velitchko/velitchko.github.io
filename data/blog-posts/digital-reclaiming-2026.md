@@ -134,7 +134,7 @@ Here is the checklist I would use now:
 - [ ] If there is no reply after a month, follow up once with the original request date and ticket number. The point is to make the timeline visible.
 - [ ] Check the email address in Have I Been Pwned, then rotate passwords and enable two-factor authentication where the account is worth keeping.<sup>[4](#note-4)</sup>
 - [ ] Review one service you actively use: privacy settings, ad personalization, public profile fields, connected apps, location history, and email notification settings.
-- [ ] Replace one recurring service only if there is a better trade-off. Privacy Guides and EFF's Surveillance Self-Defense are useful starting points, but copying someone else's setup blindly is just another way to stop thinking.<sup>[5](#note-5)</sup>
+- [ ] Replace one recurring service only if there is a better trade-off. Privacy Guides and EFF's Surveillance Self-Defense are useful starting points.<sup>[5](#note-5)</sup>
 - [ ] Before buying a new connected device or app, check whether someone has already reviewed its privacy behavior. Mozilla's *Privacy Not Included* is useful for that kind of first pass.<sup>[6](#note-6)</sup>
 
 The point is not to completely disappear and go off-grid. I still use cloud services and some proprietary software. I am trying to limit this and I will detail more of my experiences in the upcoming post.
