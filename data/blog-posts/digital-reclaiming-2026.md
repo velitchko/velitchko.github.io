@@ -139,7 +139,7 @@ Here is the checklist I would use now:
 
 The point is not to completely disappear and go off-grid. I still use cloud services and some proprietary software. I am trying to limit this and I will detail more of my experiences in the upcoming post.
 
-But the important things is that **I want those choices to be choices**.
+But the important thing is that **I want those choices to be choices**.
 
 For me, reclaiming my digital life starts there: with old accounts, broken deletion workflows, and the absurd realization that leaving the internet is often much harder than joining it.
 
