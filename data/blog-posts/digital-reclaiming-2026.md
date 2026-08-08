@@ -1,0 +1,202 @@
+---
+title: "Reclaiming Your Digital Life"
+subtitle: "Why I'm deleting old accounts and finding out how much control I actually have."
+date: "2026-08-05"
+author: "Velitchko Filipov"
+hashtags:
+  - privacy
+  - digital-sovereignty
+categories:
+  - Privacy
+  - Technology
+  - Opinion
+excerpt: "I started deleting old accounts and expected boring GDPR admin. Instead I found broken forms, dead login systems, support loops, and a much clearer picture of how hard it is to leave."
+featured: true
+---
+
+# Reclaiming Your Digital Life
+
+![Reclaiming Your Digital Life](/blog/deleteme.png)
+
+Over the past few weeks I've done something I had never seriously attempted before.
+
+I've started deleting myself from the internet.
+
+Not in a dramatic "I'm leaving technology" sense. Quite the opposite. I work in AI, visualization, and software. Technology is central to my research and my daily life.
+
+What I am trying to leave behind is the assumption that every company should profile me and keep my personal data indefinitely because I once created an account. Or because I logged in with Google OAuth once and then forgot the service existed.
+
+To date I have sent hundreds of GDPR erasure requests to companies whose services I no longer use. Some processed the request within days. Others required manual verification. Many sent me through broken forms, non-functional login systems, or support loops that looked almost designed to make leaving annoying enough that I would stop. Sometimes our email exchange would look like:
+
+> Person A: Please contact email/person B<br/>
+> Person B: Please contact email/person A
+
+A surprising number simply never replied, ignored me, or thought I forgot.
+I had to fill in so many captchas, I actually got to the advanced captcha stage.
+
+One request has involved more than **37 emails**. Another has bounced between departments for weeks (*five to be precise*). Several companies pointed me toward forms that do not work, maybe never worked, and then asked me to use those same forms again. Others required me to repeatedly prove my identity just to delete an account I could no longer access because their own authentication systems were broken.
+
+<mark>None of this should be normal.</mark>
+
+And yet it is.
+
+---
+
+## My process
+
+The rules were simple. For every service I no longer use, I first try to delete the account through the web interface. If that fails, I look for a support address or data protection officer contact and request deletion of the account and associated personal data. Then I record what happened.
+
+I expected three possible outcomes:
+
+1. The company deletes my account.
+2. The company explains why it legally cannot delete some data.
+3. The company asks me to verify my identity.
+
+Instead I discovered a <mark>fourth</mark> possibility.
+
+**The process itself does not work.**
+
+Some observations after only a few weeks:
+
+- Login systems no longer worked.
+- OAuth authentication silently failed.
+- Password recovery mechanisms were broken.
+- Privacy forms redirected to dead links.
+- Privacy policies had placeholder text that looked like it was never meant to be published.
+- Some services had no public-facing privacy form or terms of service.
+- Some privacy forms did not include the required information about data processing.
+- Customer support redirected me to privacy, and privacy redirected me back to customer support.
+- Departments repeatedly requested information they already had.
+- Identity verification sometimes required more personal information than the account needed in the first place.
+- Some companies never replied. Some listed email addresses bounced. Some ceased to exist. *RIP*
+- Others handled everything professionally within a single day. Praise where it is due.
+
+At the start I assumed going against the big companies was gonna be challenging, and to my surprise they had the most straight forward process and quickly resolved the requests and for data they were legally required to retain, they gave clear explanations. The worst cases were often the sma;ller services or companies that seemed to have optimized account creation down to seconds and then never built a serious exit.
+
+The funniest, in the bleak sense, was the automated "sad to see you go" email after a deletion request finally succeeded.
+
+Sorry, not sorry. I am extremely fine being deleted from your service. Arrivederci!
+
+---
+
+## What deletion reveals
+
+Like most people, I have accumulated online accounts for years.
+
+Some existed for a single purchase. Some were created to try a piece of software. Some existed because a website insisted that creating an account was the only way forward. Most of them had long disappeared from my memory.
+
+Unfortunately, my data had not.
+
+Every account leaves something behind: name, email address, billing information, support conversations, purchase history, device identifiers, IP addresses, location signals, analytics, telemetry, behavioral data. Most of it is uninteresting on its own. But connected at scale it becomes a profile of where I have been, what I tried, what I bought, what I asked for, and which systems I depended on.
+
+This became my motivation:
+
+> **If I no longer use a service, why should it continue storing my personal information?**
+
+GDPR gives me a mechanism to ask that question formally. Article 17 is useful because it turns "please delete my account" into a right that organizations have to handle; Article 12 says organizations generally have one month to respond.<sup>[1](#note-1)</sup> But the experience quickly stopped being only about legal compliance.
+
+The law is not the part that surprised me. The organizational reality did.
+
+Deletion is a useful stress test because it touches parts of an organization that account creation can ignore: old authentication systems, support ownership, retention policies, legal obligations, and the question of who is actually responsible when a user wants to leave.
+
+This is not really a story about super evil companies hovering over a database. It is more boring, and probably more common: technical debt, fragmented responsibility, cheap storage, abandoned privacy pages, and internal processes that were never tested from the perspective of departure.
+
+On the one side creating an account has been optimized because every additional click risks losing a potential user. However, on the other side deleting one's account often still feels like companies are doing you a favor (*which they are not*).
+
+---
+
+## Beyond GDPR
+
+At some point I realized that what I actually want to understand is where my personal data lives, who still holds it, why it is still being retained, and how much control I have over my own digital identity once the easy opt-out buttons run out.
+
+That is what I my definition of digital sovereignty. Not disappearing from the internet. Not pretending every cloud service is bad. Not building a bunker out of self-hosted dashboards.
+
+But just being more deliberate about the services I depend on, the accounts I leave behind, and the amount of trust I give to organizations that no longer provide me with value.
+
+The AI angle makes this harder to ignore. Data that used to be treated as exhaust now has new uses: training, profiling, personalization, risk scoring, recommendation, automation. A support conversation or abandoned profile may be useless to me, but that does not mean it has no value to someone else. So maybe the following tips based on my experience might be useful to you. These are some things you can actionably do today.
+
+---
+
+## Start small
+
+You do not need to disappear from the internet overnight.
+
+Start with one old account and treat it as a small audit.
+
+Here is the checklist I would use now:
+
+- [ ] Pick one low-risk account you no longer use. Do not start with banking, tax, university, health, or anything where losing access would be a genuine problem.
+- [ ] Check how you logged in: password, Google OAuth, Apple ID, GitHub, Facebook, or something else. OAuth accounts are especially easy to forget because they may not have a normal password.
+- [ ] Look for a direct deletion path in the account settings. If you cannot find it, check a directory such as JustDeleteMe before opening a support ticket.<sup>[2](#note-2)</sup>
+- [ ] If there is no usable deletion path, send a short erasure request through the privacy contact, DPO address, or a service such as Your Digital Rights.<sup>[3](#note-3)</sup>
+- [ ] Keep a simple log: company, account email, login method, request date, contact address, ticket number, response, and follow-up date.
+- [ ] If the company asks for identity verification, check whether the request is proportionate. Deleting a throwaway account should not require handing over more data than the account ever had.
+- [ ] If there is no reply after a month, follow up once with the original request date and ticket number. The point is to make the timeline visible.
+- [ ] Check the email address in Have I Been Pwned, then rotate passwords and enable two-factor authentication where the account is worth keeping.<sup>[4](#note-4)</sup>
+- [ ] Review one service you actively use: privacy settings, ad personalization, public profile fields, connected apps, location history, and email notification settings.
+- [ ] Replace one recurring service only if there is a better trade-off. Privacy Guides and EFF's Surveillance Self-Defense are useful starting points, but copying someone else's setup blindly is just another way to stop thinking.<sup>[5](#note-5)</sup>
+- [ ] Before buying a new connected device or app, check whether someone has already reviewed its privacy behavior. Mozilla's *Privacy Not Included* is useful for that kind of first pass.<sup>[6](#note-6)</sup>
+
+The point is not to completely disappear and go off-grid. I still use cloud services and some proprietary software. I am trying to limit this and I will detail more of my experiences in the upcoming post.
+
+But the important things is that **I want those choices to be choices**.
+
+For me, reclaiming my digital life starts there: with old accounts, broken deletion workflows, and the absurd realization that leaving the internet is often much harder than joining it.
+
+This is the first post in a series about how I approached that process. Account deletion is just the visible edge. From there the questions start multiplying: which apps do I trust, which services do I depend on, what is my operating system doing in the background, what should I replace, and what is worth keeping because convenience still matters.
+
+In other words, this is where the rabbit hole starts. I am going down it piece by piece, and I will write up the route as I go.
+
+---
+
+## Notes & References
+
+Below is a short list of resources referenced above.
+
+<ol>
+
+<li id="note-1">
+<strong>European Commission - Dealing with requests from individuals</strong><br/>
+European Commission / EUR-Lex<br/>
+<a href="https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en" target="_blank">https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/dealing-requests-individuals_en</a><br/>
+<a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank">https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679</a><br/>
+Explains response timing for data-subject requests and links to the official GDPR text for Articles 12 and 17.
+</li>
+
+<li id="note-2">
+<strong>JustDeleteMe</strong><br/>
+JustDeleteMe community directory<br/>
+<a href="https://justdeleteme.xyz/" target="_blank">https://justdeleteme.xyz/</a><br/>
+A directory of direct account-deletion links and notes on how difficult different services make deletion.
+</li>
+
+<li id="note-3">
+<strong>Your Digital Rights</strong><br/>
+noyb - European Center for Digital Rights<br/>
+<a href="https://yourdigitalrights.org/" target="_blank">https://yourdigitalrights.org/</a><br/>
+Generates access, deletion, and other privacy requests for organizations across different jurisdictions.
+</li>
+
+<li id="note-4">
+<strong>Have I Been Pwned</strong><br/>
+Troy Hunt<br/>
+<a href="https://haveibeenpwned.com/" target="_blank">https://haveibeenpwned.com/</a><br/>
+Checks whether an email address appears in known public data breaches and can notify you about future breaches.
+</li>
+
+<li id="note-5">
+<strong>Privacy Guides and Surveillance Self-Defense</strong><br/>
+Privacy Guides / Electronic Frontier Foundation<br/>
+<a href="https://www.privacyguides.org/en/" target="_blank">https://www.privacyguides.org/en/</a><br/>
+<a href="https://ssd.eff.org/" target="_blank">https://ssd.eff.org/</a><br/>
+Practical starting points for choosing privacy-respecting tools and understanding basic threat modeling.
+</li>
+
+<li id="note-6">
+<strong>Mozilla Privacy Not Included</strong><br/>
+Mozilla Foundation<br/>
+<a href="https://foundation.mozilla.org/en/privacynotincluded/" target="_blank">https://foundation.mozilla.org/en/privacynotincluded/</a><br/>
+Consumer product privacy reviews for connected devices, apps, toys, cars, and other services.
+</li>
+
+</ol>

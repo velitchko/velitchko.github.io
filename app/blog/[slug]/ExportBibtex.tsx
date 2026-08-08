@@ -79,7 +79,7 @@ export default function ExportBibtex({ post, websiteUrl = 'https://velitchko.git
       </h3>
       
       <div className="retro-card bg-retro-darker/50">
-        <pre className="text-sm text-neon-cyan/80 font-mono overflow-x-auto mb-4 p-4 bg-black/30 border border-neon-cyan/20">
+        <pre className="text-sm text-neon-cyan/80 font-mono overflow-x-auto mb-4 p-4 bg-retro-darker/50 border border-neon-cyan/20">
           {generateBibtex()}
         </pre>
         
@@ -122,7 +122,7 @@ export default function ExportBibtex({ post, websiteUrl = 'https://velitchko.git
           </button>
         </div>
 
-        <p className="text-xs text-neon-cyan/50 font-mono mt-4">
+        <p className="text-xs text-neon-cyan/60 font-mono mt-4">
           Use this BibTeX entry to cite this blog post in your academic work.
         </p>
       </div>
