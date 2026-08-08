@@ -71,7 +71,7 @@ Some observations after only a few weeks:
 - Some companies never replied. Some listed email addresses bounced. Some ceased to exist. *RIP*
 - Others handled everything professionally within a single day. Praise where it is due.
 
-At the start I assumed going against the big companies was gonna be challenging, and to my surprise they had the most straight forward process and quickly resolved the requests and for data they were legally required to retain, they gave clear explanations. The worst cases were often the sma;ller services or companies that seemed to have optimized account creation down to seconds and then never built a serious exit.
+At the start I assumed going against the big companies was gonna be challenging, and to my surprise they had the most straight forward process and quickly resolved the requests. For data they were legally required to retain, they also gave clear explanations. The worst cases were often the smaller services or companies that seemed to have optimized account creation down to seconds and then never built a serious exit.
 
 The funniest, in the bleak sense, was the automated "sad to see you go" email after a deletion request finally succeeded.
 
