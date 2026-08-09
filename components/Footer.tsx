@@ -107,6 +107,17 @@ export default function Footer() {
                 </svg>
               </a>
               <a
+                href="https://bsky.app/profile/velitchko.bsky.social"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors"
+                aria-label="Bluesky"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-4.593.508-5.484 2.195-3.082 3.882 4.566 3.208 6.563-.805 7.075-2.46.512 1.655 2.509 5.668 7.075 2.46 2.402-1.687 1.511-3.374-3.082-3.882 2.67.296 5.568-.628 6.383-3.364.246-.829.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.205-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/>
+                </svg>
+              </a>
+              <a
                 href="https://orcid.org/0000-0001-9592-2179"
                 target="_blank"
                 rel="noopener noreferrer"

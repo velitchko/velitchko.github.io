@@ -407,7 +407,7 @@ export default function Home() {
             </p>
 
             {/* Social Links with Icons */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
               <a
                 href="https://github.com/velitchko"
                 target="_blank"
@@ -442,6 +442,18 @@ export default function Home() {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                 </svg>
                 <span className="text-sm text-neon-cyan transition-colors font-mono">LinkedIn</span>
+              </a>
+
+              <a
+                href="https://bsky.app/profile/velitchko.bsky.social"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link border-2 border-neon-cyan/30 p-4 flex flex-col items-center gap-2"
+              >
+                <svg className="w-8 h-8 text-neon-cyan transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.815 2.736 3.713 3.66 6.383 3.364-4.593.508-5.484 2.195-3.082 3.882 4.566 3.208 6.563-.805 7.075-2.46.512 1.655 2.509 5.668 7.075 2.46 2.402-1.687 1.511-3.374-3.082-3.882 2.67.296 5.568-.628 6.383-3.364.246-.829.624-5.79.624-6.478 0-.69-.139-1.861-.902-2.205-.659-.298-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/>
+                </svg>
+                <span className="text-sm text-neon-cyan transition-colors font-mono">Bluesky</span>
               </a>
 
               <a
