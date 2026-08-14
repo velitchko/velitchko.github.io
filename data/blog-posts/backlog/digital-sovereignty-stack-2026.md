@@ -56,6 +56,58 @@ The important part is that the decision is deliberate.
 
 ---
 
+## Practical Threads To Pull Into This Post
+
+This part should probably stay closer to tools, workflows, and trade-offs than the first two posts.
+
+Possible areas to cover:
+
+- Practical de-Googling, de-Microsofting, and reducing dependence on other large ecosystems.
+- The tools and services I eventually settled on.
+- The ones I tried and abandoned.
+- The ones I still tolerate because the convenience is worth it.
+- Self-hosting services without turning into a full-time system administrator.
+- Privacy-friendly communication.
+- AI, data brokers, and the changing value of personal information.
+- Practical resources that make privacy significantly easier.
+
+The goal should not be a universal checklist. It should be closer to: here is how I evaluated the stack, here is what changed, here is what stayed, and here is why.
+
+---
+
+## Questions Worth Keeping
+
+These are probably useful as a structure for the practical sections, or as a closing checklist.
+
+- Do I still use this account?
+- Does this company still need my personal data?
+- Could I replace this service with something more privacy-friendly?
+- What happens if this company is breached tomorrow?
+- Do I actually trust this organization with my information?
+- How many online accounts do I actually have?
+- Which companies still store my data?
+- Has AI changed the value of my personal data?
+- Should deleting an account be as easy as creating one?
+- How much convenience am I willing to trade for privacy?
+
+Small changes compound surprisingly quickly. Reclaiming your digital life is not a single decision. It is a continuous process of becoming more intentional about where your data lives, which services you rely on, and who gets to keep what.
+
+---
+
+## Probably A Separate GDPR Workflow Post
+
+The scraps file also has a longer argument about GDPR deletion requests, organizational failure, broken privacy portals, legal clarity versus operational mess, and the difference between Article 17 compliance and actual digital sovereignty.
+
+That material feels useful, but not for this stack/tools post. It probably belongs in a more practical deletion-workflow follow-up covering:
+
+- My GDPR deletion workflow.
+- Email templates that consistently worked.
+- What to pay attention to in privacy policies.
+- Useful services such as YourDigitalRights.org.
+- Examples of companies with good and bad deletion processes.
+
+---
+
 ## Notes & References
 
 Below is a list of references so you can scan everything in one place.
