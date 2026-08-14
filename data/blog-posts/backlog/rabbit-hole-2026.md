@@ -20,18 +20,6 @@ excerpt: "I didn't wake up one morning and decide to de-Google my life. It start
 featured: false
 ---
 
-## EDITORIAL COMMENTS
-- Make the windows bit somehow into a pun - A window of opportunity or when life closes a door - it opens a window or something
-- After windows - the other question that emerged was google - all the ads, the ai-generated summaries, the amount of times i misclicked on a result because it just didnt see the "promoted" tag - yeah thats probably where most of the clicks come from.
-  - So I swapped to duckduckgo -> all ai features off - no account or login needed; swapped from chrome to firefox - got a bunch of the privacy extensions some I REALLY RECOMMENTS (ghostery, privacy badger, ublock origin, cookie auto delete, clear URLs). 
-  - Also learned about browser and system fingerprinting and how that is used to track you even whne you dont have or use cookies or anything - yeah its easier than you think -> check this website https://coveryourtracks.eff.org/
-- Started with ubuntu - it was nice for a while - quickly realized how much things are assumed and baked into it (not necessarily bad as it is targeting people that want convinience and things within the eco system and the LTS to just work)
-- Arch really just fit and aligned with what i wanted - bare bones - no bloat - simple. I customized it to fit my workflow - not the other way around as with other operating systems or distros that are opinionated and make swapping a desktop environment just an impossible pain.
-- A thing with the phone is - I have a nothing phone 2 - I love that device - I started slow by swapping to the fossify apps (link) and then over time reducing my reliance on google and other big service prodivers - slightly paying attention to the permissions, background usage and things like that - Why do apps i close continue in the background - why does force close / shutdown not do the thing it says it does? Why is my phone at idle just uploading and downloading large chunks of internet packets. Whats going on? 
-  - Started eyeing graphene - sadly - only officially supported on pixel phones (and motorola - 2027 fingers crossed). So I bought a pixel phone installed it took all in all 10 minutes or so to flash the device - and it felt immediately clean and somehow I felt also just a bit free - as if i am not tied or weighed down - not sure how to describe this.
-  - The one drawback and thing I am trying to get used to - NFC payments over google wallet arent possible - was my default way of paying -> but yeah google wont whitelist the project - Jeez I wonder why. 
-  - Interesting story: https://techcrunch.com/2026/07/24/us-accuses-american-of-allegedly-wiping-his-phone-using-a-duress-password-during-border-search/- https://keepandroidopen.org/ -> One of the things that really was the last drop and made me go graphene. I am happy to have done this. 
-
 # The Rabbit Hole Starts With One Question
 
 > *The funny thing about curiosity is that it rarely stops where you expect it to.*
@@ -56,25 +44,75 @@ Why did shutting the computer down sometimes take surprisingly long? Why was the
 
 The repeated reappearance of Microsoft Copilot became almost symbolic. I would remove or disable it, another update would arrive, and there it was again. Over time, the issue stopped being about Copilot itself and became more about the feeling that I was not fully in control of the operating system running on my own machine.
 
-None of this, by itself, proves anything sinister. A modern operating system has legitimate reasons to synchronize state, complete updates, flush caches, stop services, upload diagnostics, and perform maintenance. But that was precisely the point: I could not tell which of those things were happening, when they were happening, or how much control I actually had over them.
+Windows Recall sharpened that feeling. Microsoft now describes Recall as opt-in, local, encrypted, and protected by Windows Hello. Fine. But the basic mechanism is still that the operating system can periodically save snapshots of your active screen and make them searchable.<sup>[1](#note-1)</sup> Emails, websites, private chats, half-visible windows, whatever happened to be on screen when the snapshot was taken: the operating system has become a witness.
+
+A recent video walkthrough of a clean Windows 11 system left idle makes the same problem feel less abstract. It reports background telemetry and network traffic to Microsoft and third-party advertising or market-research infrastructure, all while the user is doing nothing, and discusses Recall as part of the same ownership problem.<sup>[2](#note-2)</sup> The exact numbers depend on the setup, but the direction is familiar enough. The machine is not simply waiting for you.
+
+The setup process points in the same direction. Windows 11 Home and Windows 11 Pro for personal use require internet connectivity and a Microsoft account during initial device setup.<sup>[3](#note-3)</sup> That should not be a small footnote. Installing an operating system on your own computer should not begin by forcing the machine through a cloud account.
+
+So yes, Windows became a window.
+
+A window into alternatives, into different operating systems, and into the uncomfortable fact that I was increasingly just present on a machine whose defaults someone else had decided.
 
 At some point the question changed from *"Why is Windows doing this?"* to something much more useful:
 
 > **What is my computer actually doing when I am not actively telling it to do anything?**
 
-That question sent me into services, logs, startup processes, network activity, telemetry settings, permissions, and documentation. Privacy Guides has a useful discussion on minimizing Windows 11 data collection that shows just how many separate mechanisms are involved once you start looking.<sup>[1](#note-1)</sup>
+That question sent me into services, logs, startup processes, network activity, telemetry settings, permissions, and documentation. Privacy Guides has a useful discussion on minimizing Windows 11 data collection that shows just how many separate mechanisms are involved once you start looking.<sup>[4](#note-4)</sup>
 
-I was not searching for proof that Windows was "bad." I simply wanted to understand the system I spent most of my day using. The more I inspected, the more I realized that the thing bothering me was not only data collection. It was the lack of visibility into, and authority over, the defaults of my own operating system.
+The more I inspected, the more I realized that the thing bothering me was not only data collection. It was the lack of visibility into, and authority over, the defaults of my own operating system.
+
+---
+
+## Then Google Became The Next Default
+
+Once I started looking at operating-system defaults, the next question was almost too obvious.
+
+What about the browser?
+
+For a long time I used Google Search and Chrome because they were simply there. They worked, they were familiar, and changing them felt like one of those tasks that belongs in the same category as cleaning a drawer: probably useful, never urgent.
+
+Then Google Search started feeling less like search and more like a page I had to negotiate with.
+
+Ads. AI-generated summaries. Sponsored results. Interface changes that made it just a little too easy to click the wrong thing because the "promoted" label was technically visible but practically missable.
+
+Which, yes, is probably where a lot of those clicks come from.
+
+So I swapped search first. DuckDuckGo became the default, with the AI features turned off and no account required.<sup>[5](#note-5)</sup> Then I moved from Chrome to Firefox.<sup>[6](#note-6)</sup> The point was not that this magically solved tracking. It gave me a browser setup I could reason about more easily and configure more aggressively.
+
+Some extensions have become part of that baseline for me. They do different things, and they are not a substitute for understanding the sites you use, but together they made the browser feel less like a passive surface and more like something I had actually configured.
+
+| Extension | What I use it for |
+| --- | --- |
+| [uBlock Origin](https://ublockorigin.com/) | Blocking ads, trackers, and other unnecessary page requests |
+| [Privacy Badger](https://privacybadger.org/) | Learning-based tracker blocking from the EFF |
+| [Ghostery](https://www.ghostery.com/) | Additional tracker visibility and blocking |
+| [Cookie AutoDelete](https://github.com/Cookie-AutoDelete/Cookie-AutoDelete) | Removing cookies after tabs close, instead of letting them sit forever |
+| [ClearURLs](https://docs.clearurls.xyz/) | Cleaning tracking parameters from links before they spread further |
+
+This was also when I learned more about browser and system fingerprinting: the quiet art of recognizing you even when you are not logged in and even when cookies are not the whole story. The EFF's Cover Your Tracks test is a useful, mildly depressing place to start if you want to see how distinctive your browser can be.<sup>[7](#note-7)</sup>
+
+Again, the point was not panic.
+
+It was the same question in a different place:
+
+> **What am I exposing by default, and do I actually want that?**
 
 ---
 
 ## Linux Was a Consequence, Not the Goal
 
-That curiosity eventually pushed me toward Linux, and later Arch Linux.<sup>[4](#note-4)</sup> I did not move because I suddenly decided that proprietary software was morally unacceptable, nor because Linux somehow eliminates every privacy or security problem. I moved because I wanted a system that was easier for me to inspect, understand, modify, and maintain on my own terms.
+That curiosity eventually pushed me toward Linux, and later Arch Linux.<sup>[8](#note-8)</sup> I did not move because I suddenly decided that proprietary software was morally unacceptable, nor because Linux somehow eliminates every privacy or security problem. I moved because I wanted a system that was easier for me to inspect, understand, modify, and maintain on my own terms.
 
-Arch happened to fit that preference particularly well. The system starts relatively small, and much of what eventually runs on it is there because I installed, configured, or enabled it myself. I can inspect services, follow logs, read configuration files, replace components, monitor network traffic, and generally understand far more of the path between *"I asked the computer to do something"* and *"the computer did it."*
+I started with Ubuntu, and it was nice for a while. That is not a backhanded compliment. Ubuntu is good at what it tries to be: convenient, stable, approachable, and likely to work without turning every small configuration choice into a tiny research project.
 
-That difference sounds small, but it changed my relationship with the machine. I stopped treating the operating system as a sealed appliance and started treating it as something I could actually reason about.
+But after a while I noticed the same pattern again. Many assumptions were already baked in. Some of them were reasonable. Some were even helpful. But the system was still opinionated in ways that did not quite match what I wanted.
+
+Arch, on the other hand, does not assume much. The system starts relatively small, and much of what eventually runs on it is there because I installed, configured, or enabled it myself. I can inspect services, follow logs, read configuration files, replace components, monitor network traffic, and generally understand far more of the path between *"I asked the computer to do something"* and *"the computer did it."*
+
+More importantly, I could make the machine fit my workflow instead of reshaping my workflow around the machine. Desktop environment, window manager, services, packages, startup behavior, update cadence: all of it became something I could choose deliberately.
+
+That difference sounds small, but it changed my relationship with the machine. The operating system stopped being something I mostly tolerated and became something I could actually shape.
 
 Moving to Linux did not suddenly make my computer "private." What it gave me was something I had not appreciated until then: inspectability and control.
 
@@ -90,17 +128,39 @@ In many ways, the phone was the more uncomfortable device to examine. It spends 
 
 Yet I had spent far less time understanding what my phone was doing than I ever had with my desktop.
 
-I started paying more attention to permissions and background network activity. Applications I thought I had closed would still appear in background processes. Some apps continued communicating while the device was sitting idle. Disabling individual permissions did not always seem to correspond to the behavior I expected.
+This did not start with me throwing my phone away. I had a Nothing Phone 2, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity.<sup>[9](#note-9)</sup>
+
+Why did apps I had closed continue in the background? Why did force stop or shutdown not always seem to do the thing the words suggested? Why was the phone, while apparently idle, still uploading and downloading chunks of data?
+
+What was going on?
 
 Some of what initially looked suspicious turned out to have perfectly ordinary explanations: push notifications, synchronization, cached processes, background jobs, update checks, or operating-system services.
 
-That distinction mattered.
-
 I did not want to build my entire setup around assuming that every unexplained packet was malicious. I wanted a system where I could understand the behavior and meaningfully decide what I was comfortable allowing.
 
-That eventually led me to GrapheneOS.<sup>[2](#note-2)</sup>
+One detail that is easy to miss is the keyboard. Gboard is not a neutral layer just because it sits underneath the rest of the app stack. Google says Gboard can learn from keyboard and dictation use; federated learning is on by default, and while Google says typed or spoken text is not sent directly through that mechanism, what the keyboard learns is still sent back to improve Google's typing and speech models. Audio donation for dictation is voluntary, but if enabled, snippets can be sent to Google and reviewed by humans.<sup>[10](#note-10)</sup>
+
+So even if you replace a lot of the visible Google apps, the keyboard can remain a Google surface unless you deal with it deliberately.
+
+That eventually led me to GrapheneOS.<sup>[11](#note-11)</sup>
+
+The awkward part is that GrapheneOS is officially supported on Pixel phones. Motorola support is coming in 2027, fingers crossed, but that did not help my Nothing Phone 2. So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
+
+I expected it to be fiddly.
+
+It was not.
 
 What appealed to me was not simply the label "privacy-focused Android." It was the way GrapheneOS approaches application sandboxing, permissions, exploit mitigation, and optional Google services. In particular, the ability to install Google Play as ordinary sandboxed applications offered a much more practical middle ground than the usual framing of either accepting Google everywhere or removing it completely.
+
+The phone felt immediately clean in a way I did not quite expect. Not magical. Not perfect. Just lighter. As if fewer invisible agreements had been made on my behalf.
+
+There are trade-offs, obviously. The one I am still getting used to is NFC payments. Google Wallet had been my default way of paying, and it does not work on GrapheneOS because Google does not whitelist the project.
+
+Jeez, I wonder why.
+
+There were also external nudges. The Keep Android Open campaign helped make the platform politics more visible, and a recent TechCrunch story about a border-search case involving a duress password was the kind of detail that made the security model feel less abstract.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
+
+That was one of the last drops for me.
 
 Again, the goal was not to reject technology. It was to regain some control over the terms under which I used it.
 
@@ -114,9 +174,9 @@ Why did a simple application require an account? Why did a note-taking tool need
 
 At that point, replacing software stopped being a project in itself. It became a side effect of reviewing dependencies.
 
-Sometimes the answer was open source. Sometimes it was a privacy-respecting commercial service. Sometimes I kept exactly what I was already using because the convenience was worth it. The meaningful change was that I had stopped treating the default choice as automatically neutral.
+Sometimes the answer was open source. Sometimes it was a privacy-respecting commercial service. Sometimes I kept exactly what I was already using because the convenience was worth it. The important change was that the default choice no longer looked automatically neutral.
 
-This is also where projects such as Privacy Guides became genuinely useful to me.<sup>[3](#note-3)</sup> They provide starting points for browsers, communication tools, DNS, operating systems, authentication, storage, and other categories without pretending that one configuration fits everyone.
+This is also where projects such as Privacy Guides became genuinely useful to me.<sup>[14](#note-14)</sup> They provide starting points for browsers, communication tools, DNS, operating systems, authentication, storage, and other categories without pretending that one configuration fits everyone.
 
 I increasingly found myself using those resources not as shopping lists, but as prompts for asking better questions about the software already in my life.
 
@@ -135,7 +195,9 @@ Some of those changes looked roughly like this:
 | Area | What changed | Why |
 | --- | --- | --- |
 | Desktop OS | Windows → Arch Linux | More inspectability, control, and fewer imposed defaults |
-| Mobile OS | Stock Android → GrapheneOS | Stronger sandboxing, permissions, and control over Google services |
+| Search/browser | Google Search + Chrome → DuckDuckGo + Firefox | Fewer account assumptions, more control over AI/search defaults, and a browser I can configure |
+| Mobile apps | Default Google-heavy app stack → Fossify and other alternatives | Reduce background dependency on services I did not need for basic tasks |
+| Mobile OS | Stock Android → GrapheneOS on Pixel | Stronger sandboxing, permissions, and control over Google services |
 | Messaging | More use of Signal | End-to-end encryption and reduced dependence on larger social ecosystems |
 | Passwords | Dedicated password manager | Less dependence on browser or platform accounts for credentials |
 | Applications | Increasing preference for open-source alternatives | Better inspectability, fewer unnecessary accounts, and more local-first options |
@@ -144,42 +206,6 @@ Some of those changes looked roughly like this:
 I do not want to turn this into a giant "privacy stack" checklist, because I think that misses the point. The interesting part is not whether I use one particular application over another. It is why I made the change, what problem it solved, and what trade-offs came with it.
 
 That is something I want to go into in much more detail in the next post.
-
----
-
-## Open Source Became Part of the Answer
-
-As I started replacing software, I naturally gravitated toward open-source applications.
-
-Not because open source automatically means secure, private, or well-designed. It does not. Bad open-source software exists just as bad proprietary software does.
-
-What open source often gives me, however, is a better chance of understanding what a tool is doing and a lower dependency on a single vendor's business model. It also tends to make certain kinds of software easier to self-host, audit, migrate away from, or keep using even if the original developer changes direction.
-
-That matters to me more now than it used to.
-
-If I can choose between two applications that solve the same problem equally well, but one keeps my data locally, uses an open format, does not require an account, and can be replaced without losing everything, that increasingly feels like the better long-term choice.
-
-The benefit is not only privacy. It is resilience.
-
----
-
-## Convenience Still Matters
-
-There is a trap in privacy discussions where everything eventually becomes binary. Either you completely abandon mainstream technology, or you accept that privacy is impossible and stop caring.
-
-I do not find either extreme particularly useful.
-
-I still use cloud services. I still use proprietary software where it solves a problem exceptionally well. I still choose convenience when the trade-off makes sense, and I do not intend to self-host every service I touch simply because I technically can.
-
-The difference is that I now think much more consciously about those trade-offs instead of accepting them by default.
-
-That is really the theme connecting everything in this series. It is not about finding the "perfect" operating system, phone, cloud provider, or application. It is about understanding what those tools are doing, what they need access to, how difficult they are to leave, and whether that exchange still makes sense to me.
-
-Sometimes the answer is yes.
-
-Sometimes it is not.
-
-The important part is that the decision is deliberate.
 
 ---
 
@@ -217,63 +243,101 @@ Below is a list of references so you can scan everything in one place.
 
 <ol>
   <li id="note-1">
+    <strong>Microsoft Recall</strong><br />
+    Microsoft Support / Microsoft Learn<br />
+    <a href="https://support.microsoft.com/en-US/Windows/Ai/Ai-Features/retrace-your-steps-with-recall" target="_blank" rel="noopener noreferrer">https://support.microsoft.com/en-US/Windows/Ai/Ai-Features/retrace-your-steps-with-recall</a><br />
+    <a href="https://learn.microsoft.com/en-us/windows/client-management/manage-recall" target="_blank" rel="noopener noreferrer">https://learn.microsoft.com/en-us/windows/client-management/manage-recall</a><br />
+    Microsoft's own documentation for Recall, including periodic snapshots, local storage and analysis, opt-in controls, Windows Hello protection, filtering, and management policies.
+  </li>
+
+  <li id="note-2">
+    <strong>Leaving Windows 11 Idle</strong><br />
+    YouTube video walkthrough<br />
+    <a href="https://www.youtube.com/watch?v=Wtg_s1GQiMU" target="_blank" rel="noopener noreferrer">https://www.youtube.com/watch?v=Wtg_s1GQiMU</a><br />
+    A video walkthrough discussing Windows 11 idle network activity, telemetry, Recall, and the broader ownership problem around modern Windows defaults.
+  </li>
+
+  <li id="note-3">
+    <strong>Windows 11 System Requirements</strong><br />
+    Microsoft Support<br />
+    <a href="https://support.microsoft.com/en-US/Windows/Experience/Compatibility/windows-11-system-requirements" target="_blank" rel="noopener noreferrer">https://support.microsoft.com/en-US/Windows/Experience/Compatibility/windows-11-system-requirements</a><br />
+    Microsoft's system requirements page states that Windows 11 Home and Windows 11 Pro for personal use require internet connectivity and a Microsoft account during initial setup.
+  </li>
+
+  <li id="note-4">
     <strong>Privacy Guides – Minimizing Windows 11 Data Collection</strong><br />
     Privacy Guides Community<br />
     <a href="https://discuss.privacyguides.net/t/minimizing-windows-11-data-collection/28193" target="_blank" rel="noopener noreferrer">https://discuss.privacyguides.net/t/minimizing-windows-11-data-collection/28193</a><br />
     A community discussion covering Windows telemetry, privacy settings, and practical approaches to reducing unnecessary data collection. Useful as a starting point for understanding how many different services and settings participate in Windows data collection.
   </li>
 
-  <li id="note-2">
-    <strong>GrapheneOS</strong><br />
-    GrapheneOS Project<br />
-    <a href="https://grapheneos.org/" target="_blank" rel="noopener noreferrer">https://grapheneos.org/</a><br />
-    A security- and privacy-focused Android-based operating system for supported Pixel devices, with a strong emphasis on application sandboxing, exploit mitigation, permissions, and user control.
+  <li id="note-5">
+    <strong>DuckDuckGo</strong><br />
+    DuckDuckGo<br />
+    <a href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer">https://duckduckgo.com/</a><br />
+    A search engine that does not require an account and provides settings for turning off AI-assisted features.
   </li>
 
-  <li id="note-3">
-    <strong>Privacy Guides</strong><br />
-    Privacy Guides<br />
-    <a href="https://www.privacyguides.org/" target="_blank" rel="noopener noreferrer">https://www.privacyguides.org/</a><br />
-    A useful collection of privacy-oriented recommendations covering operating systems, browsers, communication, DNS, storage, authentication, and other parts of a modern software stack.
+  <li id="note-6">
+    <strong>Firefox</strong><br />
+    Mozilla<br />
+    <a href="https://www.mozilla.org/firefox/" target="_blank" rel="noopener noreferrer">https://www.mozilla.org/firefox/</a><br />
+    The browser I moved to because it gives me more control over extensions, defaults, and privacy-related configuration.
   </li>
 
-  <li id="note-4">
+  <li id="note-7">
+    <strong>Cover Your Tracks</strong><br />
+    Electronic Frontier Foundation<br />
+    <a href="https://coveryourtracks.eff.org/" target="_blank" rel="noopener noreferrer">https://coveryourtracks.eff.org/</a><br />
+    A browser test showing how tracking protection and fingerprinting resistance behave in practice.
+  </li>
+
+  <li id="note-8">
     <strong>Arch Linux</strong><br />
     Arch Linux Project<br />
     <a href="https://archlinux.org/" target="_blank" rel="noopener noreferrer">https://archlinux.org/</a><br />
     A lightweight and flexible Linux distribution that places much of the system configuration directly in the hands of the user.
   </li>
 
-  <li id="note-5">
-    <strong>Reclaiming Your Digital Life</strong><br />
-    Velitchko Filipov<br />
-    <a href="https://velitchko.github.io/blog/digital-reclaiming-2026" target="_blank" rel="noopener noreferrer">https://velitchko.github.io/blog/digital-reclaiming-2026</a><br />
-    The first post in this series, focusing on account deletion, GDPR requests, the growing value of personal data, and why I started thinking more seriously about digital sovereignty.
+  <li id="note-9">
+    <strong>Fossify</strong><br />
+    Fossify<br />
+    <a href="https://www.fossify.org/" target="_blank" rel="noopener noreferrer">https://www.fossify.org/</a><br />
+    Open-source Android apps that can replace many default utilities without requiring a larger account ecosystem.
+  </li>
+
+  <li id="note-10">
+    <strong>Learn how Gboard gets better</strong><br />
+    Google Gboard Help<br />
+    <a href="https://support.google.com/gboard/answer/12373137?hl=en" target="_blank" rel="noopener noreferrer">https://support.google.com/gboard/answer/12373137?hl=en</a><br />
+    Google's explanation of Gboard federated learning, conventional learning for dictation, default learning settings, and optional audio snippet donation.
+  </li>
+
+  <li id="note-11">
+    <strong>GrapheneOS</strong><br />
+    GrapheneOS Project<br />
+    <a href="https://grapheneos.org/" target="_blank" rel="noopener noreferrer">https://grapheneos.org/</a><br />
+    A security- and privacy-focused Android-based operating system for supported Pixel devices, with a strong emphasis on application sandboxing, exploit mitigation, permissions, and user control.
+  </li>
+
+  <li id="note-12">
+    <strong>Keep Android Open</strong><br />
+    Keep Android Open<br />
+    <a href="https://keepandroidopen.org/" target="_blank" rel="noopener noreferrer">https://keepandroidopen.org/</a><br />
+    A campaign documenting concerns about preserving the ability to install alternative Android operating systems.
+  </li>
+
+  <li id="note-13">
+    <strong>TechCrunch – Border Search Duress Password Story</strong><br />
+    TechCrunch<br />
+    <a href="https://techcrunch.com/2026/07/24/us-accuses-american-of-allegedly-wiping-his-phone-using-a-duress-password-during-border-search/" target="_blank" rel="noopener noreferrer">https://techcrunch.com/2026/07/24/us-accuses-american-of-allegedly-wiping-his-phone-using-a-duress-password-during-border-search/</a><br />
+    A recent story that made the practical meaning of mobile-device security features harder to treat as abstract.
+  </li>
+
+  <li id="note-14">
+    <strong>Privacy Guides</strong><br />
+    Privacy Guides<br />
+    <a href="https://www.privacyguides.org/" target="_blank" rel="noopener noreferrer">https://www.privacyguides.org/</a><br />
+    A useful collection of privacy-oriented recommendations covering operating systems, browsers, communication, DNS, storage, authentication, and other parts of a modern software stack.
   </li>
 </ol>
-
----
-
-## How to Use This Post
-
-### Share Your Experience
-
-Feel free to:
-
-- **Share your own journey** into privacy, Linux, open-source software, or self-hosting.
-- **Recommend tools** that helped you understand or regain control over your own devices.
-- **Suggest alternatives** that strike a useful balance between convenience and privacy.
-- **Challenge my assumptions**—different workflows and threat models will naturally lead to different choices.
-- **Share on social media** with `#Privacy #DigitalSovereignty #Linux #GrapheneOS #OpenSource`
-
-### Talk About It!
-
-**Discussion**  
-I am particularly interested in what first made other people start questioning the defaults they had accepted for years.
-
-- Was there a particular feature, update, or incident that changed how you thought about your devices?
-- Have you ever inspected what your computer or phone is doing while apparently "idle"?
-- Which software dependency would be hardest for you to replace?
-- Where do you draw the line between convenience, privacy, and control?
-- Have you moved away from a large ecosystem such as Google, Microsoft, Apple, or Amazon? What actually worked?
-- What does **digital sovereignty** mean to you in practice?
