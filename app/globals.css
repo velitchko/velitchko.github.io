@@ -68,28 +68,79 @@
 /* Global font size control */
 :root {
   --global-font-size: 1rem;
+  --home-hero-title-size: 3rem;
+  --home-hero-kicker-size: 1.5rem;
+  --home-hero-copy-size: 1.25rem;
+  --home-section-heading-size: 2.25rem;
+  --home-card-heading-size: 1.25rem;
+  --home-card-copy-size: 1rem;
+  --home-meta-size: 0.875rem;
+  --blog-card-title-size: 2rem;
+  --blog-card-subtitle-size: 1.25rem;
+  --blog-card-meta-size: 0.875rem;
 }
 
 :root[data-font-size="small"] {
   --global-font-size: 0.875rem;
+  --home-hero-title-size: 2.25rem;
+  --home-hero-kicker-size: 1.125rem;
+  --home-hero-copy-size: 1rem;
+  --home-section-heading-size: 1.75rem;
+  --home-card-heading-size: 1.05rem;
+  --home-card-copy-size: 0.9rem;
+  --home-meta-size: 0.75rem;
+  --blog-card-title-size: 1.55rem;
+  --blog-card-subtitle-size: 1.05rem;
+  --blog-card-meta-size: 0.75rem;
 }
 
 :root[data-font-size="medium"] {
   --global-font-size: 1rem;
+  --home-hero-title-size: 3rem;
+  --home-hero-kicker-size: 1.5rem;
+  --home-hero-copy-size: 1.25rem;
+  --home-section-heading-size: 2.25rem;
+  --home-card-heading-size: 1.25rem;
+  --home-card-copy-size: 1rem;
+  --home-meta-size: 0.875rem;
+  --blog-card-title-size: 1.75rem;
+  --blog-card-subtitle-size: 1.25rem;
+  --blog-card-meta-size: 0.875rem;
 }
 
 :root[data-font-size="large"] {
   --global-font-size: 1.125rem;
+  --home-hero-title-size: 3.4rem;
+  --home-hero-kicker-size: 1.65rem;
+  --home-hero-copy-size: 1.375rem;
+  --home-section-heading-size: 2.5rem;
+  --home-card-heading-size: 1.35rem;
+  --home-card-copy-size: 1.125rem;
+  --home-meta-size: 0.95rem;
+  --blog-card-title-size: 1.95rem;
+  --blog-card-subtitle-size: 1.375rem;
+  --blog-card-meta-size: 0.95rem;
 }
 
 :root[data-font-size="xlarge"] {
   --global-font-size: 1.25rem;
+  --home-hero-title-size: 3.75rem;
+  --home-hero-kicker-size: 1.85rem;
+  --home-hero-copy-size: 1.5rem;
+  --home-section-heading-size: 2.75rem;
+  --home-card-heading-size: 1.5rem;
+  --home-card-copy-size: 1.25rem;
+  --home-meta-size: 1.05rem;
+  --blog-card-title-size: 2.1rem;
+  --blog-card-subtitle-size: 1.5rem;
+  --blog-card-meta-size: 1.05rem;
 }
 
-/* Apply font size to retro cards and general content */
-.retro-card p,
-.retro-card li,
-.retro-card span:not(.text-neon-pink):not(.text-neon-cyan) {
+/* Apply font size control only to un-sized copy. Utility-sized labels,
+   badges, and headings keep their local hierarchy. */
+.home-content .retro-card p:not([class*="text-"]),
+.home-content .retro-card li:not([class*="text-"]),
+.home-content .retro-card span:not([class*="text-"]) {
   font-size: var(--global-font-size);
 }
 
@@ -932,7 +983,7 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(0, 255, 255, 0.9);
   line-height: 1.8;
   font-family: 'VT323', monospace;
-  font-size: var(--blog-font-size, 1.875rem);
+  font-size: var(--blog-body-size, 1.25rem);
   letter-spacing: 0.02em;
 }
 
@@ -941,16 +992,13 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--home-font-size, 1rem);
 }
 
-/* Target text content in home-content, avoiding UI elements like nav, buttons, and section titles */
-.home-content p,
-.home-content li,
-.home-content blockquote,
-.home-content span:not(nav *):not(button *):not(.retro-button *):not(.contact-button *),
-.home-content div:not(nav):not(nav *):not(button):not(button *):not(.retro-button):not(.contact-button),
-.home-content a:not(nav *):not(button *):not(.retro-button):not(.contact-button),
-.home-content h3:not(nav *):not(.font-retro),
+/* Target only un-sized prose on the home page. Do not flatten labels,
+   badges, project-card descriptions, or nested UI controls. */
+.home-content p:not([class*="text-"]),
+.home-content li:not([class*="text-"]),
+.home-content blockquote:not([class*="text-"]),
 .home-content .section-text {
-  font-size: inherit !important;
+  font-size: var(--home-font-size, 1rem);
 }
 
 /* ===== CHICKEN GAME STYLES ===== */
@@ -1300,74 +1348,109 @@ h1, h2, h3, h4, h5, h6 {
   animation: pulse-chicken 3s ease-in-out infinite;
 }
 
-/* Force ALL elements in blog-content to use the same font size */
-.blog-content *,
-.blog-content h1,
-.blog-content h2,
-.blog-content h3,
-.blog-content h4,
-.blog-content h5,
-.blog-content h6,
-.blog-content p,
-.blog-content li,
-.blog-content a,
-.blog-content span,
-.blog-content div,
-.blog-content blockquote,
-.blog-content code,
-.blog-content pre,
-.blog-content strong,
-.blog-content em,
-.blog-content table,
-.blog-content th,
-.blog-content td {
-  font-size: inherit !important;
-}
-
 /* Font size variants */
 .blog-content[data-font-size="small"] {
-  --blog-font-size: 1.375rem;
-  --blog-h3-size: 1.375rem;
-  --blog-h4-size: 1.25rem;
-  --blog-code-size: 1.125rem;
+  --blog-body-size: 1.125rem;
+  --blog-h1-size: 1.55rem;
+  --blog-h2-size: 1.4rem;
+  --blog-h3-size: 1.25rem;
+  --blog-h4-size: 1.15rem;
+  --blog-code-size: 1rem;
 }
 .home-content[data-font-size="small"] {
   --home-font-size: 1rem;
 }
 
 .blog-content[data-font-size="medium"] {
-  --blog-font-size: 1.75rem;
-  --blog-h3-size: 1.75rem;
-  --blog-h4-size: 1.625rem;
-  --blog-code-size: 1.375rem;
+  --blog-body-size: 1.25rem;
+  --blog-h1-size: 1.75rem;
+  --blog-h2-size: 1.55rem;
+  --blog-h3-size: 1.4rem;
+  --blog-h4-size: 1.25rem;
+  --blog-code-size: 1.1rem;
 }
 .home-content[data-font-size="medium"] {
   --home-font-size: 1.125rem;
 }
 
 .blog-content[data-font-size="large"] {
-  --blog-font-size: 2rem;
-  --blog-h3-size: 2rem;
-  --blog-h4-size: 1.875rem;
-  --blog-code-size: 1.625rem;
+  --blog-body-size: 1.375rem;
+  --blog-h1-size: 1.95rem;
+  --blog-h2-size: 1.7rem;
+  --blog-h3-size: 1.5rem;
+  --blog-h4-size: 1.35rem;
+  --blog-code-size: 1.2rem;
 }
 .home-content[data-font-size="large"] {
   --home-font-size: 1.25rem;
 }
 
 .blog-content[data-font-size="xlarge"] {
-  --blog-font-size: 2.25rem;
-  --blog-h3-size: 2.25rem;
-  --blog-h4-size: 2.125rem;
-  --blog-code-size: 1.875rem;
+  --blog-body-size: 1.5rem;
+  --blog-h1-size: 2.1rem;
+  --blog-h2-size: 1.85rem;
+  --blog-h3-size: 1.65rem;
+  --blog-h4-size: 1.45rem;
+  --blog-code-size: 1.3rem;
 }
 .home-content[data-font-size="xlarge"] {
   --home-font-size: 1.5rem;
 }
 
+/* Keep the font-size control hierarchical across the front page and post chrome. */
+.hero-section h1 {
+  font-size: var(--home-hero-title-size) !important;
+}
+
+.hero-section .cursor {
+  font-size: var(--home-hero-kicker-size) !important;
+}
+
+.hero-section p {
+  font-size: var(--home-hero-copy-size) !important;
+}
+
+.home-content section h2 {
+  font-size: var(--home-section-heading-size) !important;
+}
+
+.home-content .retro-card h3 {
+  font-size: var(--home-card-heading-size) !important;
+}
+
+.home-content .retro-card p,
+.home-content .retro-card li {
+  font-size: var(--home-card-copy-size) !important;
+}
+
+.home-content .retro-card span.text-xs,
+.home-content .retro-card span.text-sm,
+.home-content .retro-card a.text-xs,
+.home-content .retro-card a.text-sm,
+.home-content .retro-card button.text-xs,
+.home-content .retro-card button.text-sm,
+.home-content button.text-sm,
+.home-content a.text-sm,
+.home-content a.text-xs {
+  font-size: var(--home-meta-size) !important;
+}
+
+.blog-post-card > h1 {
+  font-size: var(--blog-card-title-size) !important;
+}
+
+.blog-post-card > h2 {
+  font-size: var(--blog-card-subtitle-size) !important;
+}
+
+.blog-post-card > .text-sm,
+.blog-post-card span.text-md {
+  font-size: var(--blog-card-meta-size) !important;
+}
+
 /* Headings */
 .blog-content h1 {
-  font-size: var(--blog-font-size, 1.75rem);
+  font-size: var(--blog-h1-size, 1.75rem);
   font-family: 'Press Start 2P', monospace;
   color: #ff00ff;
   text-shadow: 0 0 10px rgba(255, 0, 255, 0.7), 0 0 20px rgba(255, 0, 255, 0.5);
@@ -1378,17 +1461,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .blog-content h1:first-child {
-  margin-top: 0;
-}
-
-@media (min-width: 768px) {
-  .blog-content h1 {
-    font-size: var(--blog-font-size, 1.75rem);
-  }
+  display: none;
 }
 
 .blog-content h2 {
-  font-size: var(--blog-font-size, 1.75rem);
+  font-size: var(--blog-h2-size, 1.55rem);
   font-family: 'Press Start 2P', monospace;
   color: #00ffff;
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.7), 0 0 20px rgba(0, 255, 255, 0.5);
@@ -1398,14 +1475,8 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
 }
 
-@media (min-width: 768px) {
-  .blog-content h2 {
-    font-size: var(--blog-font-size, 1.75rem);
-  }
-}
-
 .blog-content h3 {
-  font-size: var(--blog-font-size, 1.75rem);
+  font-size: var(--blog-h3-size, 1.4rem);
   font-family: 'VT323', monospace;
   font-weight: bold;
   color: rgba(255, 0, 255, 0.9);
@@ -1415,7 +1486,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .blog-content h4 {
-  font-size: var(--blog-font-size, 1.75rem);
+  font-size: var(--blog-h4-size, 1.25rem);
   font-family: 'VT323', monospace;
   font-weight: bold;
   color: rgba(0, 255, 255, 0.9);
@@ -1424,15 +1495,9 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.03em;
 }
 
-@media (min-width: 768px) {
-  .blog-content h4 {
-    font-size: var(--blog-font-size, 1.75rem);
-  }
-}
-
 .blog-content h5,
 .blog-content h6 {
-  font-size: var(--blog-font-size, 1.75rem);
+  font-size: var(--blog-body-size, 1.25rem);
   font-family: 'VT323', monospace;
   font-weight: bold;
   color: rgba(0, 255, 255, 0.8);
@@ -1523,7 +1588,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow-x: auto;
   border-radius: 0;
   font-family: 'VT323', monospace;
-  font-size: inherit;
+  font-size: var(--blog-code-size, 1.1rem);
   line-height: 1.6;
 }
 
@@ -1547,7 +1612,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid rgba(0, 255, 255, 0.3);
   color: #00ffff;
   font-family: 'VT323', monospace;
-  font-size: inherit;
+  font-size: 0.95em;
 }
 
 /* Blockquotes */
@@ -1592,7 +1657,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5rem;
   border: 2px solid rgba(0, 255, 255, 0.3);
   font-family: 'VT323', monospace;
-  font-size: inherit;
+  font-size: 0.95em;
   display: block;
   overflow-x: auto;
   white-space: nowrap;
@@ -2154,7 +2219,7 @@ html[data-theme="professional"] {
   color: #0D0D0D;
   text-shadow: none;
   letter-spacing: -0.02em;
-  font-size: 2rem;
+  font-size: var(--blog-h1-size, 2rem);
 }
 
 [data-theme="professional"] .blog-content h2 {
@@ -2162,18 +2227,25 @@ html[data-theme="professional"] {
   color: #0D0D0D;
   text-shadow: none;
   letter-spacing: -0.01em;
-  font-size: 1.6rem;
+  font-size: var(--blog-h2-size, 1.6rem);
   border-bottom: 1px solid #DDD8CE;
   padding-bottom: 0.25rem;
 }
 
-[data-theme="professional"] .blog-content h3,
+[data-theme="professional"] .blog-content h3 {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: #8C4A2F;
+  text-shadow: none;
+  font-size: var(--blog-h3-size, 1.3rem);
+}
+
 [data-theme="professional"] .blog-content h4 {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   color: #8C4A2F;
   text-shadow: none;
-  font-size: 1.3rem;
+  font-size: var(--blog-h4-size, 1.15rem);
 }
 
 [data-theme="professional"] .blog-content h5,
@@ -2181,6 +2253,7 @@ html[data-theme="professional"] {
   font-family: 'Playfair Display', serif;
   color: #2A2A2A;
   text-shadow: none;
+  font-size: var(--blog-body-size, 1.05rem);
 }
 
 [data-theme="professional"] .blog-content p {
@@ -2474,7 +2547,7 @@ html[data-theme="professional"] {
 
 /* --- Font-size control: use CSS variable so the control panel works --- */
 [data-theme="professional"] .blog-content {
-  font-size: var(--blog-font-size, 1.125rem) !important;
+  font-size: var(--blog-body-size, 1.125rem) !important;
 }
 [data-theme="professional"] .home-content {
   font-size: var(--home-font-size, 1rem);
