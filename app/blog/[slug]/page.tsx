@@ -39,7 +39,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </Link>
 
         {/* Post Header */}
-        <article className="retro-card">
+        <article className="retro-card blog-post-card">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-retro text-neon-pink neon-glow-pink mb-2">
             {post.title}
           </h1>
