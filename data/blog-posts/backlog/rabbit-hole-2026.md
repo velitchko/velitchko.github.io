@@ -22,6 +22,8 @@ featured: false
 
 # The Rabbit Hole Starts With One Question
 
+![The Rabbit Hole Starts With One Question](/blog/rabbit-hole-cutaway.png)
+
 > *The funny thing about curiosity is that it rarely stops where you expect it to.*
 
 In my [previous post](https://velitchko.github.io/blog/digital-reclaiming-2026), I wrote about deleting old accounts and discovering how difficult it can be to reclaim personal data once it has already left your hands. What I left mostly unexplored was the question that came before all of that: why had I started paying attention to these dependencies in the first place?
