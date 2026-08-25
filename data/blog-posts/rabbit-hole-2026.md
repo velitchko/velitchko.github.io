@@ -121,17 +121,11 @@ Once I had spent some time paying closer attention to my desktop, it became diff
 
 In many ways, the phone was the more uncomfortable device to examine. It spends nearly every waking hour with me and has access to location, photographs, messages, contacts, microphones, cameras, authentication tokens, payment systems, and a remarkably detailed history of how I use it.
 
-# EDITORIAL: 
-- I would add here information about google takeout - and how insanely scary and surprised I was by how many things are being recorded with a typical android phone -> other os's probably have at least the same if not more level of tracking.
-- Add a reference to fossify apps on github & f-droid
-- Also ref to motorola graphene support
-- That was one of the last drops for me. -> this metaphor or statements needs a bit of improvement and context around the last drop for making the switch (i.e., the last straw) - something people know and is common.
-- Check the recency bias and ground it with ref - when you start paying attention to one specific detail (color, number, shape) - you start seeing that everywhere
-- In whats next I also want to provide practical steps and resources for auditing your digital footprint and how if i had to do this all over again - I would approach it.
+Downloading my Google Takeout archive made that discomfort much harder to dismiss. I expected the usual account export. Instead, I found a much more detailed record of my own activity than I had expected: location history, searches, device use, app activity, and metadata I had barely thought about at the time. It was not proof that every Android phone behaves identically, of course. But it was a very effective reminder of what a default Google-connected phone can accumulate over time.<sup>[15](#note-15)</sup>
 
 Yet I had spent far less time understanding what my phone was doing than I ever had with my desktop.
 
-This did not start with me throwing my phone away. I had a Nothing Phone, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity.<sup>[9](#note-9)</sup>
+This did not start with me throwing my phone away. I had a Nothing Phone, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity. Fossify publishes its source on GitHub and distributes its apps through F-Droid, which made it a straightforward place to start.<sup>[9](#note-9)</sup>
 
 Why did apps I had closed continue in the background? Why did force stop or shutdown not always seem to do the thing the words suggested? Why was the phone, while apparently idle, still uploading and downloading chunks of data? What was going on?
 
@@ -145,7 +139,7 @@ So even if you replace a lot of the visible Google apps, the keyboard can remain
 
 That eventually led me to GrapheneOS.<sup>[11](#note-11)</sup>
 
-The awkward detail (and quite ironic one) is that GrapheneOS is officially supported on Pixel phones. Motorola support is coming in 2027, fingers crossed, but that did not help my Nothing Phone 2. So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
+The awkward detail (and quite ironic one) is that GrapheneOS is officially supported on Pixel phones. Motorola support is planned for future 2027 flagships (fimgers crossed), which is promising, but it did not help my Nothing Phone.<sup>[16](#note-16)</sup> So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
 
 I expected it to be fiddly but it was not.
 
@@ -159,7 +153,7 @@ There are trade-offs, obviously. The one I am still getting used to is NFC payme
 
 There were also external nudges. The Keep Android Open campaign helped make the platform politics more visible, and a recent TechCrunch story about a border-search case involving a duress password was the kind of detail that made the security model feel less abstract.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
 
-That was one of the last drops for me.
+That specific detail was not decisive on its own, but it was simply the last straw. It was the moment where abstract concerns about control became reasons to understand the security model of the phone I carried.
 
 Again, the goal was not to reject technology. It was to regain some control over the terms under which I used it.
 
@@ -167,7 +161,7 @@ Again, the goal was not to reject technology. It was to regain some control over
 
 ## The Defaults Started Looking Less Default
 
-Once I had questioned the operating system and the phone, the same pattern started appearing everywhere else. I guess theres this psychological phenomena that people refer to as a recency bias that applies here.
+Once I had questioned the operating system and the phone, the same pattern started appearing everywhere else. There is a name for that feeling: the frequency illusion, sometimes called the Baader–Meinhof phenomenon. Once you notice a pattern, it can seem as if it has suddenly appeared everywhere. Usually, the world has not changed that quickly; your attention has.<sup>[17](#note-17)</sup>
 
 Why did a simple application require an account? Why did a note-taking tool need its own cloud? Why was authentication tied to Google when an email address would have been enough? Why did a service need location access continuously rather than only while I was using it? Why was a file format useful only inside one vendor's ecosystem?
 
@@ -226,7 +220,7 @@ Curiosity was simply a first step.
 
 The next part of this series will be much more practical. I want to go through the tools and services I eventually settled on, the ones I tried and abandoned, and the trade-offs involved in replacing parts of a mainstream software stack.
 
-That includes open-source applications, privacy-preserving alternatives, self-hosted services, de-Googling, reducing dependence on large cloud ecosystems, and some of the resources that made the process significantly easier.
+That includes open-source applications, privacy-preserving alternatives, self-hosted services, de-Googling, reducing dependence on large cloud ecosystems, and some of the resources that made the process significantly easier. I also want to make the first step less vague: how to audit a digital footprint, take stock of the accounts and data you have already spread around, and where I would begin if I had to do this all over again.
 
 The goal is not to convince anyone to reproduce my setup exactly. In fact, I would argue against doing that. Different threat models, workflows, technical abilities, and tolerances for inconvenience produce very different answers.
 
@@ -300,7 +294,7 @@ Below is a list of references so you can scan everything in one place.
     <strong>Fossify</strong><br />
     Fossify<br />
     <a href="https://www.fossify.org/" target="_blank" rel="noopener noreferrer">https://www.fossify.org/</a><br />
-    Open-source Android apps that can replace many default utilities without requiring a larger account ecosystem.
+    Open-source Android apps that can replace many default utilities without requiring a larger account ecosystem. The project source is available at <a href="https://github.com/FossifyOrg" target="_blank" rel="noopener noreferrer">github.com/FossifyOrg</a>; its apps are also available through <a href="https://f-droid.org/packages/" target="_blank" rel="noopener noreferrer">F-Droid</a>.
   </li>
 
   <li id="note-10">
@@ -336,5 +330,26 @@ Below is a list of references so you can scan everything in one place.
     Privacy Guides<br />
     <a href="https://www.privacyguides.org/" target="_blank" rel="noopener noreferrer">https://www.privacyguides.org/</a><br />
     A useful collection of privacy-oriented recommendations covering operating systems, browsers, communication, DNS, storage, authentication, and other parts of a modern software stack.
+  </li>
+
+  <li id="note-15">
+    <strong>Google Takeout</strong><br />
+    Google<br />
+    <a href="https://takeout.google.com/" target="_blank" rel="noopener noreferrer">https://takeout.google.com/</a><br />
+    Google's export service for reviewing and downloading data associated with a Google account.
+  </li>
+
+  <li id="note-16">
+    <strong>GrapheneOS – Future Devices</strong><br />
+    GrapheneOS Project<br />
+    <a href="https://grapheneos.org/faq#future-devices" target="_blank" rel="noopener noreferrer">https://grapheneos.org/faq#future-devices</a><br />
+    GrapheneOS's current information on its planned Motorola support for future devices.
+  </li>
+
+  <li id="note-17">
+    <strong>The Frequency Illusion</strong><br />
+    Wikipedia<br />
+    <a href="https://en.wikipedia.org/wiki/Frequency_illusion" target="_blank" rel="noopener noreferrer">https://en.wikipedia.org/wiki/Frequency_illusion</a><br />
+    The frequency illusion: noticing something and then overestimating how often it occurs.
   </li>
 </ol>
