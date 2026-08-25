@@ -6,12 +6,7 @@ author: "Velitchko Filipov"
 hashtags:
   - privacy
   - digital-sovereignty
-  - windows
-  - linux
-  - grapheneos
   - open-source
-  - self-hosting
-  - degoogle
 categories:
   - Privacy
   - Opinion
@@ -32,7 +27,7 @@ The honest answer is that I never planned to "de-Google" my life, switch operati
 
 I was perfectly happy using mainstream software as long as it solved the problem I needed it to solve.
 
-What changed was not my philosophy. It was my curiosity.
+What changed was my curiosity and led me to gain a new perspective on the topic.
 
 ---
 
@@ -42,39 +37,39 @@ For years, Windows was simply the operating system on my computer. I used it, up
 
 What changed was not one dramatic privacy incident. It was an accumulation of small moments that made me increasingly curious about how little I actually understood about the machine I was using every day.
 
-Why did shutting the computer down sometimes take surprisingly long? Why was there network activity during startup before I had even opened anything? Why did major updates introduce new services or quietly change settings I had previously configured?
+Why did shutting the computer down sometimes take surprisingly long? Why was there network activity during startup before I had even opened anything? Why did major updates introduce new services or quietly change settings I had previously configured (*cough* Microsoft Edge *cough*)?
 
-The repeated reappearance of Microsoft Copilot became almost symbolic. I would remove or disable it, another update would arrive, and there it was again. Over time, the issue stopped being about Copilot itself and became more about the feeling that I was not fully in control of the operating system running on my own machine.
+Why did Microsoft Copilot repeatedly reappear even after disabling it for the 100th time? Remove, disable, another update arrives, and there it is again! Over time, the issue stopped being about Copilot itself and became more about the feeling that I was not fully in control of the operating system running on my own machine. It did not feel like I owned my own machine.
 
-Windows Recall sharpened that feeling. Microsoft now describes Recall as opt-in, local, encrypted, and protected by Windows Hello. Fine. But the basic mechanism is still that the operating system can periodically save snapshots of your active screen and make them searchable.<sup>[1](#note-1)</sup> Emails, websites, private chats, half-visible windows, whatever happened to be on screen when the snapshot was taken: the operating system has become a witness.
+Windows Recall sharpened that feeling. Microsoft now describes Recall as opt-in, local, encrypted, and protected by Windows Hello. Sure. But the basic mechanism is still that the operating system periodically saves snapshots of your active screen and makes them searchable.<sup>[1](#note-1)</sup> Emails, websites, private chats, half-visible windows, whatever happened to be on screen when the snapshot was taken: the operating system has become a witness.
 
-A recent video walkthrough of a clean Windows 11 system left idle makes the same problem feel less abstract. It reports background telemetry and network traffic to Microsoft and third-party advertising or market-research infrastructure, all while the user is doing nothing, and discusses Recall as part of the same ownership problem.<sup>[2](#note-2)</sup> The exact numbers depend on the setup, but the direction is familiar enough. The machine is not simply waiting for you.
+A recent video walkthrough of a clean Windows 11 system left idle really highlights the issue I am describing. It reports background telemetry and network traffic to Microsoft and third-party advertising or market-research infrastructure, all while the user is doing nothing, and discusses Recall as part of the same ownership problem.<sup>[2](#note-2)</sup>
 
-The setup process points in the same direction. Windows 11 Home and Windows 11 Pro for personal use require internet connectivity and a Microsoft account during initial device setup.<sup>[3](#note-3)</sup> That should not be a small footnote. Installing an operating system on your own computer should not begin by forcing the machine through a cloud account.
+The setup process points in the same direction. Windows 11 Home and Windows 11 Pro for personal use require internet connectivity and a Microsoft account during initial device setup.<sup>[3](#note-3)</sup> Having a local account is close to impossible for the average person and that is not a small issue. Installing an operating system on your own computer should not begin by forcing the machine through a cloud account.
 
-So yes, Windows became a window.
+So yeah, Windows became a window.
 
 A window into alternatives, into different operating systems, and into the uncomfortable fact that I was increasingly just present on a machine whose defaults someone else had decided.
 
-At some point the question changed from *"Why is Windows doing this?"* to something much more useful:
+So my question became:
 
 > **What is my computer actually doing when I am not actively telling it to do anything?**
 
-That question sent me into services, logs, startup processes, network activity, telemetry settings, permissions, and documentation. Privacy Guides has a useful discussion on minimizing Windows 11 data collection that shows just how many separate mechanisms are involved once you start looking.<sup>[4](#note-4)</sup>
+And that question sent me into a rabbit hole of services, logs, startup processes, network activity, telemetry settings, permissions, and documentation. Privacy Guides has a useful discussion on minimizing Windows 11 data collection that shows just how many separate mechanisms are involved once you start looking.<sup>[4](#note-4)</sup>
 
-The more I inspected, the more I realized that the thing bothering me was not only data collection. It was the lack of visibility into, and authority over, the defaults of my own operating system.
+The more I inspected, the more I realized that the thing bothering me was not only data collection. It was the lack of transparency and visibility into (*and authority over*) the defaults of my own operating system.
 
 ---
 
-## Then Google Became The Next Default
+## Then Google Comes Along
 
 Once I started looking at operating-system defaults, the next question was almost too obvious.
 
-What about the browser?
+What about the browser and search engine?
 
 For a long time I used Google Search and Chrome because they were simply there. They worked, they were familiar, and changing them felt like one of those tasks that belongs in the same category as cleaning a drawer: probably useful, never urgent.
 
-Then Google Search started feeling less like search and more like a page I had to negotiate with.
+But recently Google Search started feeling less like search and helpful information and more like bloat.
 
 Ads. AI-generated summaries. Sponsored results. Interface changes that made it just a little too easy to click the wrong thing because the "promoted" label was technically visible but practically missable.
 
@@ -82,7 +77,7 @@ Which, yes, is probably where a lot of those clicks come from.
 
 So I swapped search first. DuckDuckGo became the default, with the AI features turned off and no account required.<sup>[5](#note-5)</sup> Then I moved from Chrome to Firefox.<sup>[6](#note-6)</sup> The point was not that this magically solved tracking. It gave me a browser setup I could reason about more easily and configure more aggressively.
 
-Some extensions have become part of that baseline for me. They do different things, and they are not a substitute for understanding the sites you use, but together they made the browser feel less like a passive surface and more like something I had actually configured.
+Some extensions have become part of that baseline for me. They do different things, and they are not a substitute for understanding the sites you use, but together they prevent tracking and try to preserve some of your privacy online.
 
 | Extension | What I use it for |
 | --- | --- |
@@ -92,49 +87,53 @@ Some extensions have become part of that baseline for me. They do different thin
 | [Cookie AutoDelete](https://github.com/Cookie-AutoDelete/Cookie-AutoDelete) | Removing cookies after tabs close, instead of letting them sit forever |
 | [ClearURLs](https://docs.clearurls.xyz/) | Cleaning tracking parameters from links before they spread further |
 
-This was also when I learned more about browser and system fingerprinting: the quiet art of recognizing you even when you are not logged in and even when cookies are not the whole story. The EFF's Cover Your Tracks test is a useful, mildly depressing place to start if you want to see how distinctive your browser can be.<sup>[7](#note-7)</sup>
+This was also when I learned more about browser and system fingerprinting: the quiet art of recognizing you even when you are not logged in and even when cookies are not the whole story. The EFF's Cover Your Tracks test is a useful and a pretty scary place to start if you want to see how distinctive your browser can be.<sup>[7](#note-7)</sup>
 
-Again, the point was not panic.
-
-It was the same question in a different place:
+I am not trying to instill a sense of panic into you (or myself for that matter). But a question eveyrone should ask themselves is:
 
 > **What am I exposing by default, and do I actually want that?**
 
 ---
 
-## Linux Was a Consequence, Not the Goal
+## Linux Was a Consequence
 
-That curiosity eventually pushed me toward Linux, and later Arch Linux.<sup>[8](#note-8)</sup> I did not move because I suddenly decided that proprietary software was morally unacceptable, nor because Linux somehow eliminates every privacy or security problem. I moved because I wanted a system that was easier for me to inspect, understand, modify, and maintain on my own terms.
+These considerations eventually pushed me toward Linux, and later Arch Linux (*btw*).<sup>[8](#note-8)</sup> I made this move because I wanted a system that was easier for me to inspect, understand, modify, and maintain on my own terms.
 
 I started with Ubuntu, and it was nice for a while. That is not a backhanded compliment. Ubuntu is good at what it tries to be: convenient, stable, approachable, and likely to work without turning every small configuration choice into a tiny research project.
 
-But after a while I noticed the same pattern again. Many assumptions were already baked in. Some of them were reasonable. Some were even helpful. But the system was still opinionated in ways that did not quite match what I wanted.
+But after a while I noticed the same pattern again. Many configurations, settings, and assumptions were already baked in. Some of them were reasonable. Some were even helpful. But the system was still opinionated in ways that did not quite match what I wanted.
 
-Arch, on the other hand, does not assume much. The system starts relatively small, and much of what eventually runs on it is there because I installed, configured, or enabled it myself. I can inspect services, follow logs, read configuration files, replace components, monitor network traffic, and generally understand far more of the path between *"I asked the computer to do something"* and *"the computer did it."*
+Arch, on the other hand, does not assume much. The system starts relatively small, and much of what eventually runs on it is there because I installed, configured, or enabled it myself. I can easily inspect services, follow logs, read configuration files, replace components, monitor network traffic, and generally understand far more of the path between *"I asked the computer to do something"* and *"the computer did it."* just because I set it up myself and did not click through some installer.
 
 More importantly, I could make the machine fit my workflow instead of reshaping my workflow around the machine. Desktop environment, window manager, services, packages, startup behavior, update cadence: all of it became something I could choose deliberately.
 
-That difference sounds small, but it changed my relationship with the machine. The operating system stopped being something I mostly tolerated and became something I could actually shape.
+That might not sound like a whole lot to a lot of people, but it changed my relationship with the machine. The operating system stopped being something I mostly tolerated and became something I could actually shape.
 
 Moving to Linux did not suddenly make my computer "private." What it gave me was something I had not appreciated until then: inspectability and control.
 
-<mark>What I was looking for was not purity. It was agency.</mark>
+<mark>My machine finally felt mine.</mark>
 
 ---
 
-## The Same Question Followed Me Onto My Phone
+## The Same Approach Followed Onto My Phone
 
 Once I had spent some time paying closer attention to my desktop, it became difficult not to apply the same thinking to the device I carried around in my pocket every day.
 
 In many ways, the phone was the more uncomfortable device to examine. It spends nearly every waking hour with me and has access to location, photographs, messages, contacts, microphones, cameras, authentication tokens, payment systems, and a remarkably detailed history of how I use it.
 
+# EDITORIAL: 
+- I would add here information about google takeout - and how insanely scary and surprised I was by how many things are being recorded with a typical android phone -> other os's probably have at least the same if not more level of tracking.
+- Add a reference to fossify apps on github & f-droid
+- Also ref to motorola graphene support
+- That was one of the last drops for me. -> this metaphor or statements needs a bit of improvement and context around the last drop for making the switch (i.e., the last straw) - something people know and is common.
+- Check the recency bias and ground it with ref - when you start paying attention to one specific detail (color, number, shape) - you start seeing that everywhere
+- In whats next I also want to provide practical steps and resources for auditing your digital footprint and how if i had to do this all over again - I would approach it.
+
 Yet I had spent far less time understanding what my phone was doing than I ever had with my desktop.
 
-This did not start with me throwing my phone away. I had a Nothing Phone 2, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity.<sup>[9](#note-9)</sup>
+This did not start with me throwing my phone away. I had a Nothing Phone, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity.<sup>[9](#note-9)</sup>
 
-Why did apps I had closed continue in the background? Why did force stop or shutdown not always seem to do the thing the words suggested? Why was the phone, while apparently idle, still uploading and downloading chunks of data?
-
-What was going on?
+Why did apps I had closed continue in the background? Why did force stop or shutdown not always seem to do the thing the words suggested? Why was the phone, while apparently idle, still uploading and downloading chunks of data? What was going on?
 
 Some of what initially looked suspicious turned out to have perfectly ordinary explanations: push notifications, synchronization, cached processes, background jobs, update checks, or operating-system services.
 
@@ -146,19 +145,17 @@ So even if you replace a lot of the visible Google apps, the keyboard can remain
 
 That eventually led me to GrapheneOS.<sup>[11](#note-11)</sup>
 
-The awkward part is that GrapheneOS is officially supported on Pixel phones. Motorola support is coming in 2027, fingers crossed, but that did not help my Nothing Phone 2. So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
+The awkward detail (and quite ironic one) is that GrapheneOS is officially supported on Pixel phones. Motorola support is coming in 2027, fingers crossed, but that did not help my Nothing Phone 2. So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
 
-I expected it to be fiddly.
+I expected it to be fiddly but it was not.
 
-It was not.
+What appealed to me was not simply the label "privacy-focused Android." It was the way GrapheneOS approaches application sandboxing, permissions, exploit mitigation, and optional Google services. In particular, the ability to install Google Play as ordinary sandboxed application offered a much more practical middle ground than the usual framing of either accepting Google everywhere or removing it completely.
 
-What appealed to me was not simply the label "privacy-focused Android." It was the way GrapheneOS approaches application sandboxing, permissions, exploit mitigation, and optional Google services. In particular, the ability to install Google Play as ordinary sandboxed applications offered a much more practical middle ground than the usual framing of either accepting Google everywhere or removing it completely.
-
-The phone felt immediately clean in a way I did not quite expect. Not magical. Not perfect. Just lighter. As if fewer invisible agreements had been made on my behalf.
+The phone felt immediately clean in a way I did not quite expect. Not magical, not perfect, just lighter. As if fewer invisible agreements had been made on my behalf.
 
 There are trade-offs, obviously. The one I am still getting used to is NFC payments. Google Wallet had been my default way of paying, and it does not work on GrapheneOS because Google does not whitelist the project.
 
-Jeez, I wonder why.
+*Jeez, I wonder why.*
 
 There were also external nudges. The Keep Android Open campaign helped make the platform politics more visible, and a recent TechCrunch story about a border-search case involving a duress password was the kind of detail that made the security model feel less abstract.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
 
@@ -170,23 +167,23 @@ Again, the goal was not to reject technology. It was to regain some control over
 
 ## The Defaults Started Looking Less Default
 
-Once I had questioned the operating system and the phone, the same pattern started appearing everywhere else.
+Once I had questioned the operating system and the phone, the same pattern started appearing everywhere else. I guess theres this psychological phenomena that people refer to as a recency bias that applies here.
 
 Why did a simple application require an account? Why did a note-taking tool need its own cloud? Why was authentication tied to Google when an email address would have been enough? Why did a service need location access continuously rather than only while I was using it? Why was a file format useful only inside one vendor's ecosystem?
 
 At that point, replacing software stopped being a project in itself. It became a side effect of reviewing dependencies.
 
-Sometimes the answer was open source. Sometimes it was a privacy-respecting commercial service. Sometimes I kept exactly what I was already using because the convenience was worth it. The important change was that the default choice no longer looked automatically neutral.
+Sometimes the answer was open source. Sometimes it was a privacy-respecting commercial service. Sometimes I kept exactly what I was already using because the convenience was worth it. The important change was that the default choice no longer looked automatically as a default.
 
 This is also where projects such as Privacy Guides became genuinely useful to me.<sup>[14](#note-14)</sup> They provide starting points for browsers, communication tools, DNS, operating systems, authentication, storage, and other categories without pretending that one configuration fits everyone.
 
-I increasingly found myself using those resources not as shopping lists, but as prompts for asking better questions about the software already in my life.
+I increasingly found myself using those resources not as shopping lists, but as starting points for asking better questions about the software already in my life.
 
 ---
 
-## One Question Led to Another
+## Down The Rabbit Hole
 
-Looking back, none of these decisions happened as part of a grand plan. One question simply kept exposing another dependency I had never consciously considered.
+One question led to another, which led to another, and another... Looking back, none of these decisions happened as part of a grand plan. One question simply kept exposing another dependency I had never consciously considered.
 
 Questioning Windows led me to inspect the desktop. Inspecting the desktop made me think about my phone. Thinking about my phone led me to app permissions, background services, and Google integration. From there it was only a small step toward looking at cloud storage, messaging platforms, authentication providers, password managers, browsers, navigation apps, and eventually self-hosted services.
 
@@ -199,15 +196,13 @@ Some of those changes looked roughly like this:
 | Desktop OS | Windows → Arch Linux | More inspectability, control, and fewer imposed defaults |
 | Search/browser | Google Search + Chrome → DuckDuckGo + Firefox | Fewer account assumptions, more control over AI/search defaults, and a browser I can configure |
 | Mobile apps | Default Google-heavy app stack → Fossify and other alternatives | Reduce background dependency on services I did not need for basic tasks |
-| Mobile OS | Stock Android → GrapheneOS on Pixel | Stronger sandboxing, permissions, and control over Google services |
+| Mobile OS | Vendor Android → GrapheneOS | Stronger sandboxing, permissions, and control over Google services |
 | Messaging | More use of Signal | End-to-end encryption and reduced dependence on larger social ecosystems |
 | Passwords | Dedicated password manager | Less dependence on browser or platform accounts for credentials |
 | Applications | Increasing preference for open-source alternatives | Better inspectability, fewer unnecessary accounts, and more local-first options |
 | Cloud services | Selective replacement or self-hosting | Reduce unnecessary third-party dependencies without abandoning the cloud entirely |
 
-I do not want to turn this into a giant "privacy stack" checklist, because I think that misses the point. The interesting part is not whether I use one particular application over another. It is why I made the change, what problem it solved, and what trade-offs came with it.
-
-That is something I want to go into in much more detail in the next post.
+I do not want to turn this into a giant "privacy stack" checklist, because I think that misses the point. The interesting and hopefully useful part is why I made the change, what problem it solved, and what trade-offs came with it.
 
 ---
 
@@ -219,11 +214,11 @@ Privacy is part of it, certainly, but what I am really interested in is **digita
 
 For me, that does not mean withdrawing from modern technology. It means reducing unnecessary dependencies, avoiding lock-in where practical, understanding where my data goes, and choosing tools that give me a reasonable path out if I ever decide to leave.
 
-In that sense, Arch Linux, GrapheneOS, open-source software, self-hosting, and deleting unused accounts are not separate hobbies. They are all different responses to the same underlying question:
+In that sense, Arch Linux, GrapheneOS, open-source software, self-hosting, and deleting unused accounts are different responses to the same underlying question:
 
 > **How much control do I actually have over my own digital life?**
 
-Curiosity was simply the first step.
+Curiosity was simply a first step.
 
 ---
 
