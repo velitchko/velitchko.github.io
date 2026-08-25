@@ -1,7 +1,7 @@
 ---
 title: "Down The Rabbit Hole"
 subtitle: "How curiosity led me toward digital sovereignty"
-date: "2026-08-11"
+date: "2026-08-25"
 author: "Velitchko Filipov"
 hashtags:
   - privacy
