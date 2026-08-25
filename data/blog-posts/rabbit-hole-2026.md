@@ -1,5 +1,5 @@
 ---
-title: "The Rabbit Hole Starts With One Question"
+title: "Down The Rabbit Hole"
 subtitle: "How curiosity led me toward digital sovereignty"
 date: "2026-08-11"
 author: "Velitchko Filipov"
@@ -35,9 +35,9 @@ What changed was my curiosity and led me to gain a new perspective on the topic.
 
 For years, Windows was simply the operating system on my computer. I used it, updated it, occasionally complained about it, and otherwise treated most of what happened below the application layer as somebody else's problem.
 
-What changed was not one dramatic privacy incident. It was an accumulation of small moments that made me increasingly curious about how little I actually understood about the machine I was using every day.
+An accumulation of small moments made me increasingly curious about how little I actually understood about the machine and software I was using every day.
 
-Why did shutting the computer down sometimes take surprisingly long? Why was there network activity during startup before I had even opened anything? Why did major updates introduce new services or quietly change settings I had previously configured (*cough* Microsoft Edge *cough*)?
+Why did shutting the computer down sometimes take surprisingly long? Why was there network activity during startup before I had even opened anything? Why did updates introduce new services or quietly change settings I had previously configured (*cough* Microsoft Edge *cough*)?
 
 Why did Microsoft Copilot repeatedly reappear even after disabling it for the 100th time? Remove, disable, another update arrives, and there it is again! Over time, the issue stopped being about Copilot itself and became more about the feeling that I was not fully in control of the operating system running on my own machine. It did not feel like I owned my own machine.
 
@@ -45,7 +45,7 @@ Windows Recall sharpened that feeling. Microsoft now describes Recall as opt-in,
 
 A recent video walkthrough of a clean Windows 11 system left idle really highlights the issue I am describing. It reports background telemetry and network traffic to Microsoft and third-party advertising or market-research infrastructure, all while the user is doing nothing, and discusses Recall as part of the same ownership problem.<sup>[2](#note-2)</sup>
 
-The setup process points in the same direction. Windows 11 Home and Windows 11 Pro for personal use require internet connectivity and a Microsoft account during initial device setup.<sup>[3](#note-3)</sup> Having a local account is close to impossible for the average person and that is not a small issue. Installing an operating system on your own computer should not begin by forcing the machine through a cloud account.
+The setup process points in the same direction. Windows requires internet connectivity and a Microsoft account during initial device setup.<sup>[3](#note-3)</sup> Having a local account is close to impossible for the average person and that is not a small issue. Installing an operating system on your own computer should not begin by forcing the machine through a cloud account.
 
 So yeah, Windows became a window.
 
@@ -103,7 +103,7 @@ I started with Ubuntu, and it was nice for a while. That is not a backhanded com
 
 But after a while I noticed the same pattern again. Many configurations, settings, and assumptions were already baked in. Some of them were reasonable. Some were even helpful. But the system was still opinionated in ways that did not quite match what I wanted.
 
-Arch, on the other hand, does not assume much. The system starts relatively small, and much of what eventually runs on it is there because I installed, configured, or enabled it myself. I can easily inspect services, follow logs, read configuration files, replace components, monitor network traffic, and generally understand far more of the path between *"I asked the computer to do something"* and *"the computer did it."* just because I set it up myself and did not click through some installer.
+Arch, on the other hand, does not assume much. The system starts relatively small, and much of what eventually runs on it is there because I installed, configured, or enabled it myself. I can easily inspect services, follow logs, read configuration files, replace components, monitor network traffic, and generally understand far more of the path between *"I asked the computer to do something"* and *"the computer did it"* just because I set it up myself and did not click through some installer.
 
 More importantly, I could make the machine fit my workflow instead of reshaping my workflow around the machine. Desktop environment, window manager, services, packages, startup behavior, update cadence: all of it became something I could choose deliberately.
 
@@ -123,23 +123,17 @@ In many ways, the phone was the more uncomfortable device to examine. It spends 
 
 Downloading my Google Takeout archive made that discomfort much harder to dismiss. I expected the usual account export. Instead, I found a much more detailed record of my own activity than I had expected: location history, searches, device use, app activity, and metadata I had barely thought about at the time. It was not proof that every Android phone behaves identically, of course. But it was a very effective reminder of what a default Google-connected phone can accumulate over time.<sup>[15](#note-15)</sup>
 
-Yet I had spent far less time understanding what my phone was doing than I ever had with my desktop.
+This did not start with me throwing my phone away. I had a Nothing Phone, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps<sup>[9](#note-9)</sup> where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity. 
 
-This did not start with me throwing my phone away. I had a Nothing Phone, and I liked that device a lot. The change started slowly: replacing default apps with Fossify apps where that made sense, reducing my reliance on Google services and other large providers one piece at a time, and paying slightly more attention to permissions, background usage, and network activity. Fossify publishes its source on GitHub and distributes its apps through F-Droid, which made it a straightforward place to start.<sup>[9](#note-9)</sup>
-
-Why did apps I had closed continue in the background? Why did force stop or shutdown not always seem to do the thing the words suggested? Why was the phone, while apparently idle, still uploading and downloading chunks of data? What was going on?
+Why did apps I had closed continue in the background? Why did force stop or shutdown not always seem to do the thing the words suggested? Why was the phone, while apparently idle, still uploading and downloading chunks of data? What was my keyboard logging<sup>[10](#note-10)</sup>? What was going on?
 
 Some of what initially looked suspicious turned out to have perfectly ordinary explanations: push notifications, synchronization, cached processes, background jobs, update checks, or operating-system services.
 
 I did not want to build my entire setup around assuming that every unexplained packet was malicious. I wanted a system where I could understand the behavior and meaningfully decide what I was comfortable allowing.
 
-One detail that is easy to miss is the keyboard. Gboard is not a neutral layer just because it sits underneath the rest of the app stack. Google says Gboard can learn from keyboard and dictation use; federated learning is on by default, and while Google says typed or spoken text is not sent directly through that mechanism, what the keyboard learns is still sent back to improve Google's typing and speech models. Audio donation for dictation is voluntary, but if enabled, snippets can be sent to Google and reviewed by humans.<sup>[10](#note-10)</sup>
-
-So even if you replace a lot of the visible Google apps, the keyboard can remain a Google surface unless you deal with it deliberately.
-
 That eventually led me to GrapheneOS.<sup>[11](#note-11)</sup>
 
-The awkward detail (and quite ironic one) is that GrapheneOS is officially supported on Pixel phones. Motorola support is planned for future 2027 flagships (fimgers crossed), which is promising, but it did not help my Nothing Phone.<sup>[16](#note-16)</sup> So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
+The awkward detail (and quite ironic one) is that GrapheneOS is officially supported on Pixel phones. Motorola support is planned for future 2027 flagships<sup>[16](#note-16)</sup> (fimgers crossed), which is promising, but it did not help my Nothing Phone. So I bought a Pixel, flashed GrapheneOS, and the whole process took about ten minutes.
 
 I expected it to be fiddly but it was not.
 
@@ -149,9 +143,9 @@ The phone felt immediately clean in a way I did not quite expect. Not magical, n
 
 There are trade-offs, obviously. The one I am still getting used to is NFC payments. Google Wallet had been my default way of paying, and it does not work on GrapheneOS because Google does not whitelist the project.
 
-*Jeez, I wonder why.*
+> *Jeez, I wonder why.*
 
-There were also external nudges. The Keep Android Open campaign helped make the platform politics more visible, and a recent TechCrunch story about a border-search case involving a duress password was the kind of detail that made the security model feel less abstract.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
+There were also external nudges. The Keep Android Open campaign helped make the platform politics more visible<sup>[12](#note-12)</sup>, and a recent TechCrunch story about a border-search case involving a duress password was the kind of detail that made the security model feel less abstract.<sup>[13](#note-13)</sup>
 
 That specific detail was not decisive on its own, but it was simply the last straw. It was the moment where abstract concerns about control became reasons to understand the security model of the phone I carried.
 
@@ -161,11 +155,11 @@ Again, the goal was not to reject technology. It was to regain some control over
 
 ## The Defaults Started Looking Less Default
 
-Once I had questioned the operating system and the phone, the same pattern started appearing everywhere else. There is a name for that feeling: the frequency illusion, sometimes called the Baader–Meinhof phenomenon. Once you notice a pattern, it can seem as if it has suddenly appeared everywhere. Usually, the world has not changed that quickly; your attention has.<sup>[17](#note-17)</sup>
+Once I had questioned the operating system and the phone, the same pattern started appearing everywhere else. There is a name for that feeling: <mark>the frequency illusion</mark>, sometimes called the Baader–Meinhof phenomenon<sup>[17](#note-17)</sup>. Once you notice a pattern, it can seem as if it has suddenly appeared everywhere. Usually, the world has not changed that quickly; your attention has.
 
 Why did a simple application require an account? Why did a note-taking tool need its own cloud? Why was authentication tied to Google when an email address would have been enough? Why did a service need location access continuously rather than only while I was using it? Why was a file format useful only inside one vendor's ecosystem?
 
-At that point, replacing software stopped being a project in itself. It became a side effect of reviewing dependencies.
+At that point, I started thinking about what software I could start replacing to minimize side effects and dependencies.
 
 Sometimes the answer was open source. Sometimes it was a privacy-respecting commercial service. Sometimes I kept exactly what I was already using because the convenience was worth it. The important change was that the default choice no longer looked automatically as a default.
 
@@ -179,7 +173,7 @@ I increasingly found myself using those resources not as shopping lists, but as 
 
 One question led to another, which led to another, and another... Looking back, none of these decisions happened as part of a grand plan. One question simply kept exposing another dependency I had never consciously considered.
 
-Questioning Windows led me to inspect the desktop. Inspecting the desktop made me think about my phone. Thinking about my phone led me to app permissions, background services, and Google integration. From there it was only a small step toward looking at cloud storage, messaging platforms, authentication providers, password managers, browsers, navigation apps, and eventually self-hosted services.
+Questioning Windows led me to inspect the desktop. Inspecting the desktop made me think about my phone. Thinking about my phone led me to app permissions, background services, and vendor lock-in. From there it was only a small step toward looking at cloud storage, messaging platforms, authentication providers, password managers, browsers, navigation apps, and eventually self-hosted services.
 
 Over time, I started replacing parts of my stack one application at a time. Not because I was trying to build some mythical "perfect privacy setup," but because each replacement addressed a concrete dependency I had already identified.
 
@@ -340,10 +334,10 @@ Below is a list of references so you can scan everything in one place.
   </li>
 
   <li id="note-16">
-    <strong>GrapheneOS – Future Devices</strong><br />
-    GrapheneOS Project<br />
-    <a href="https://grapheneos.org/faq#future-devices" target="_blank" rel="noopener noreferrer">https://grapheneos.org/faq#future-devices</a><br />
-    GrapheneOS's current information on its planned Motorola support for future devices.
+    <strong>Motorola - GrapheneOS</strong><br />
+    Motorola<br />
+    <a href="https://motorolanews.com/motorola-three-new-b2b-solutions-at-mwc-2026/" target="_blank" rel="noopener noreferrer">https://motorolanews.com/motorola-three-new-b2b-solutions-at-mwc-2026/</a><br />
+    Current information on the planned Motorola phone and support for GrapheneOS.
   </li>
 
   <li id="note-17">
