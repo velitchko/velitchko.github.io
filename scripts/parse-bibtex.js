@@ -32,12 +32,12 @@ while ((match = entryPattern.exec(bibContent)) !== null) {
   
   const entry = {
     id: citationKey.trim(),
-    type: getPublicationType(entryType.toLowerCase()),
     bibtex: fullMatch
   };
   
   // Parse fields
   const fields = parseFields(fieldsContent);
+  entry.type = getPublicationType(entryType.toLowerCase(), fields.type);
   
   // Extract required fields
   entry.title = fields.title || 'Unknown Title';
@@ -261,12 +261,26 @@ function parseAuthors(authorString) {
   });
 }
 
-function getPublicationType(bibtexType) {
+function getPublicationType(bibtexType, declaredType) {
+  const validDeclaredTypes = new Set([
+    'Conference',
+    'Journal',
+    'Workshop',
+    'Preprint',
+    'Book Chapter',
+    'Invited Talk'
+  ]);
+
+  if (validDeclaredTypes.has(declaredType)) {
+    return declaredType;
+  }
+
   const typeMap = {
     'article': 'Journal',
     'inproceedings': 'Conference',
     'incollection': 'Book Chapter',
     'inbook': 'Book Chapter',
+    'presentation': 'Invited Talk',
     'misc': 'Preprint',
     'techreport': 'Preprint',
     'phdthesis': 'Book Chapter',

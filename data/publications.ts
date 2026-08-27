@@ -84,10 +84,22 @@ export function parseBibtex(bibtexContent: string): Publication[] {
       'article': 'Journal',
       'inproceedings': 'Conference',
       'incollection': 'Book Chapter',
-      'misc': 'Preprint'
+      'misc': 'Preprint',
+      'presentation': 'Invited Talk'
     };
     
-    entry.type = typeMap[entryType.toLowerCase()] || 'Conference';
+    const declaredType = fields.match(/\btype\s*=\s*\{([^}]*)\}/i)?.[1];
+    const validDeclaredTypes = new Set<Publication['type']>([
+      'Conference',
+      'Journal',
+      'Workshop',
+      'Preprint',
+      'Book Chapter',
+      'Invited Talk'
+    ]);
+    entry.type = declaredType && validDeclaredTypes.has(declaredType as Publication['type'])
+      ? declaredType as Publication['type']
+      : typeMap[entryType.toLowerCase()] || 'Conference';
     
     if (entry.title && entry.authors && entry.venue && entry.year) {
       entries.push(entry as Publication);
