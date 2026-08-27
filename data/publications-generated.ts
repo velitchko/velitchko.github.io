@@ -1187,6 +1187,28 @@ export const publications: Publication[] = [
 	abstract     = {ArtVis won the 2025 Digital Humanities (DH) Award in the "Best Tool / Suite of Tools" category. ArtVis is an Austrian Science Fund (FWF) funded project, a collaboration between TU Wien and Universität Wien.},
 	keywords     = {Digital Humanities; Information Visualization; Art History; Network Visualization; Visual Analytics},
 	award        = {DH Award 2025 - Best Tool / Suite of Tools}
+}
+`
+  },
+  {
+    id: "20.500.12708_230359",
+    title: "From Data to Context: AI-Based Style Attribution in Art History",
+    authors: ["Kamencek, T.", "Filipov, V.", "Tuscher, M.", "Miksch, S.", "Rosenberg, R."],
+    venue: "AI and Artworks: Object Detection, Image Classification and Iconographic Analysis, Vienna, Austria",
+    year: 2026,
+    type: "Presentation",
+    doi: "10.34726/12521",
+    url: "https://doi.org/10.34726/12521",
+    keywords: ["Art History", "Visual Analytics", "Artificial Intelligence", "Large Language Models", "Visualization"],
+    bibtex: `@misc{20.500.12708_230359,
+	author       = {Teresa Kamencek and Velitchko Filipov and Michaela Tuscher and Silvia Miksch and Raphael Rosenberg},
+	title        = {{From Data to Context: AI-Based Style Attribution in Art History}},
+	year         = {2026},
+	venue        = {AI and Artworks: Object Detection, Image Classification and Iconographic Analysis, Vienna, Austria},
+	type         = {Presentation},
+	abstract     = {We present an exploratory approach to a relationally conceived art history, which does not consider its central categories of order in isolation, but models them in their interconnection. One of these categories is the concept of style. With the advent of AI, we must redefine “style,” which until now has been thought of as a definite and epochal entity. Recent developments in Digital Art History have addressed this problem through the multimodal input and recognition of visual image content. In the reality of art history, however, many works are only preserved in textual form (i.e., as titles or descriptions). Even the nearly 208,000 catalog entries (i.e., the identity of exhibited works and their style) recorded in the Database of Modern Exhibitions (DoME for short; http://exhibitions.univie.ac.at/) are mostly no longer identifiable due to changed titles, missing reproductions, loss, or destruction. In order to still be able to capture stylistic developments, within the ArtVis project (https://www.cvast.tuwien.ac.at/projects/artvis) we generated annual style attributions, including probability values, for all artists in DoME using LLMs (Gemma 3/12b) and transferred them to a graph database. A knowledge graph based on this data will make it possible to link stylistic developments to time, place, and context. For quality assurance and further development, a visual interface is being developed that enables subject matter experts to review, comment on, and validate stylistic attributions. In doing so, they can use the defined rules and restrictions from the knowledge graph to semantically correct or refine the generated style attributions. Once successfully validated, the resulting knowledge graph will serve as a basis for exploring networks of style attributions and as a reference dataset for developing and testing new LLM prompts and various generative models and their application in the field of art history. It also provides an empirical basis for investigating generative problems such as hallucinations, style bias, or temporal drift in the context of AI-supported style attribution.},
+	keywords     = {Art History; Visual Analytics; Artificial Intelligence; Large Language Models; Visualization},
+	doi          = {10.34726/12521}
 }`
   }
 ];

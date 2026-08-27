@@ -4,7 +4,7 @@ export interface Publication {
   authors: string[];
   venue: string;
   year: number;
-  type: 'Conference' | 'Journal' | 'Workshop' | 'Preprint' | 'Book Chapter' | 'Invited Talk';
+  type: 'Conference' | 'Journal' | 'Workshop' | 'Preprint' | 'Book Chapter' | 'Invited Talk' | 'Presentation';
   doi?: string;
   url?: string;
   arxiv?: string;
@@ -87,7 +87,19 @@ export function parseBibtex(bibtexContent: string): Publication[] {
       'misc': 'Preprint'
     };
     
-    entry.type = typeMap[entryType.toLowerCase()] || 'Conference';
+    const declaredType = fields.match(/\btype\s*=\s*\{([^}]*)\}/i)?.[1];
+    const validDeclaredTypes = new Set<Publication['type']>([
+      'Conference',
+      'Journal',
+      'Workshop',
+      'Preprint',
+      'Book Chapter',
+      'Invited Talk',
+      'Presentation'
+    ]);
+    entry.type = declaredType && validDeclaredTypes.has(declaredType as Publication['type'])
+      ? declaredType as Publication['type']
+      : typeMap[entryType.toLowerCase()] || 'Conference';
     
     if (entry.title && entry.authors && entry.venue && entry.year) {
       entries.push(entry as Publication);
