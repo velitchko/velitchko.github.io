@@ -268,8 +268,7 @@ function getPublicationType(bibtexType, declaredType) {
     'Workshop',
     'Preprint',
     'Book Chapter',
-    'Invited Talk',
-    'Presentation'
+    'Invited Talk'
   ]);
 
   if (validDeclaredTypes.has(declaredType)) {
@@ -281,6 +280,7 @@ function getPublicationType(bibtexType, declaredType) {
     'inproceedings': 'Conference',
     'incollection': 'Book Chapter',
     'inbook': 'Book Chapter',
+    'presentation': 'Invited Talk',
     'misc': 'Preprint',
     'techreport': 'Preprint',
     'phdthesis': 'Book Chapter',
