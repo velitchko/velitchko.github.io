@@ -18,7 +18,7 @@ export default function BlogListing({ posts, categories }: BlogListingProps) {
     : posts;
 
   return (
-    <>
+    <div className="blog-listing">
       {/* Category Filter */}
       {categories.length > 0 && (
         <div className="mb-12">
@@ -64,7 +64,7 @@ export default function BlogListing({ posts, categories }: BlogListingProps) {
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                 <div className="flex-1">
                   <Link href={`/blog/${post.slug}`}>
-                    <h2 className="text-xl sm:text-2xl font-retro text-neon-cyan group-hover:text-neon-pink group-hover:neon-glow transition-colors mb-2">
+                    <h2 className="blog-listing-title text-xl sm:text-2xl font-retro text-neon-cyan group-hover:text-neon-pink group-hover:neon-glow transition-colors mb-2">
                       {post.title}
                     </h2>
                   </Link>
@@ -80,7 +80,7 @@ export default function BlogListing({ posts, categories }: BlogListingProps) {
                 </div>
               </div>
 
-              <p className="text-neon-cyan/80 mb-4 leading-relaxed">
+              <p className="blog-listing-excerpt text-neon-cyan/80 mb-4 leading-relaxed">
                 {post.excerpt}
               </p>
 
@@ -130,6 +130,6 @@ export default function BlogListing({ posts, categories }: BlogListingProps) {
           ))
         )}
       </div>
-    </>
+    </div>
   );
 }

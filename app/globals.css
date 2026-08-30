@@ -1448,6 +1448,21 @@ h1, h2, h3, h4, h5, h6 {
   font-size: var(--blog-card-meta-size) !important;
 }
 
+/* The blog index is not Markdown content, so it needs its own connection to
+   the shared reading-size preference. Without this, its un-sized excerpts
+   inherit the oversized retro body type and the post-only control is absent. */
+.blog-listing {
+  font-size: var(--global-font-size);
+}
+
+.blog-listing-title {
+  font-size: var(--blog-card-title-size) !important;
+}
+
+.blog-listing-excerpt {
+  font-size: var(--global-font-size) !important;
+}
+
 /* Headings */
 .blog-content h1 {
   font-size: var(--blog-h1-size, 1.75rem);
