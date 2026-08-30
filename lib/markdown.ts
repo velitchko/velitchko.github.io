@@ -15,6 +15,7 @@ import dockerfile from 'highlight.js/lib/languages/dockerfile';
 import typescript from 'highlight.js/lib/languages/typescript';
 import python from 'highlight.js/lib/languages/python';
 import rehypeCopyButton from './rehypeCopyButton';
+import rehypeTableScroll from './rehypeTableScroll';
 import { BlogPost } from '@/data/blog';
 
 // Register languages for syntax highlighting
@@ -71,6 +72,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
         prefix: 'hljs-'
       })
       .use(rehypeCopyButton)
+      .use(rehypeTableScroll)
       .use(rehypeStringify, { allowDangerousHtml: true })
       .process(content);
 

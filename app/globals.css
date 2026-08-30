@@ -1652,9 +1652,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Tables */
-.blog-content table {
-  width: 100%;
+.blog-content .table-scroll {
+  max-width: 100%;
   margin-bottom: 1.5rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.blog-content table {
+  width: max-content;
+  min-width: 100%;
+  margin-bottom: 0;
   border: 2px solid rgba(0, 255, 255, 0.3);
   font-family: 'VT323', monospace;
   font-size: 0.95em;
@@ -1662,11 +1671,6 @@ h1, h2, h3, h4, h5, h6 {
      outer border full-width while the rows shrink-wrapped to their content. */
   display: table;
   white-space: nowrap;
-}
-
-/* Keep Markdown tables within the article width. */
-.blog-content > table {
-  max-width: 100%;
 }
 
 .blog-content thead {
