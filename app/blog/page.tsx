@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getAllBlogPosts, getAllCategories } from '@/lib/markdown';
 import BlogListing from '@/app/blog/BlogListing';
+import FontSizeControl from '@/components/FontSizeControl';
 
 export default async function BlogPage() {
   const posts = await getAllBlogPosts();
@@ -8,6 +9,7 @@ export default async function BlogPage() {
 
   return (
     <div className="min-h-screen pt-32 pb-20">
+      <FontSizeControl />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">
