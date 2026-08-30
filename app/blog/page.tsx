@@ -43,7 +43,7 @@ export default async function BlogPage() {
                 <span className="retro-only">[DISCLAIMER.txt]</span>
                 <span className="pro-only">Disclaimer</span>
               </h2>
-              <p className="text-neon-cyan/90 leading-relaxed text-sm" style={{fontFamily: 'inherit', fontSize: 'inherit'}}>
+              <p className="text-neon-cyan/90 leading-relaxed text-sm">
                 <span className="text-neon-pink">{'>'}</span> All opinions expressed here are my own and definitely not those of my employer, my goldfish, or that voice in my head. 
                 If you disagree, that&apos;s <span className="text-neon-pink font-bold">totally fine</span>. The internet is big enough for both of us. 
                 Feel free to yell at clouds, write your own blog post, or simply move on with your life. 
