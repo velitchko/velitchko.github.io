@@ -19,15 +19,15 @@ featured: false
 
 > *Before you start deleting accounts and rebuilding your software stack, you need to know what you actually have.*
 
-In the [previous post](https://velitchko.github.io/blog/rabbit-hole-2026), I wrote about the questions that pushed me down this rabbit hole in the first place: Windows, Google, the phone in my pocket, the applications running in the background, and the uncomfortable realization that a lot of the technology I used every day was operating on defaults I had never consciously chosen.<sup>[1](#note-1)</sup>
+In the [previous post](https://velitchko.github.io/blog/rabbit-hole-2026), I wrote about the questions that pushed me down this rabbit hole: Windows, Google, the phone in my pocket, the applications running in the background, and the uncomfortable realization that much of the technology I used every day ran on defaults I had never consciously chosen.<sup>[1](#note-1)</sup>
 
-I ended that post by promising something more practical. If somebody read the first two pieces and thought, *"Okay, fine. I really, really, really want to do this. Where do I actually start?"*, this is roughly the answer I would give them.
+If somebody read the first two pieces and thought, *"Okay, fine. I really, really, really want to do this. Where do I actually start?"*, this is roughly the answer I would give them.
 
 The temptation is to begin with the fun part. Install Linux. Flash GrapheneOS. Replace Google Search. Set up a home server. Delete Facebook. Spend a weekend moving everything into open-source software and emerge on Monday as a sovereign digital citizen. 😅
 
 I would not start there.
 
-If I had to do this again, I would begin with an audit. Before removing anything, migrating anything, or deleting anything, I would build a map of my existing digital footprint. The surprising part of this process is not how much data individual services have; it is how many services you have forgotten existed in the first place.
+I would begin with an audit. Before removing, migrating, or deleting anything, build a map of the footprint you already have. The surprising part is not how much data one service has. It is how many services you forgot existed at all.
 
 That changes the problem completely. Privacy stops being a shopping list of "better apps" and becomes an inventory problem: **what accounts exist, which identities connect them, what data they contain, which ones still matter, and which dependencies can I realistically remove?**
 
@@ -55,7 +55,7 @@ That is where I would start.
 
 Before deleting anything, collect the identifiers you have used over the years: current and old email addresses, usernames, aliases, phone numbers, and any recurring handles. Then use multiple sources to reconstruct the account history. No single technique finds everything, but the overlap becomes surprisingly informative.
 
-I am currently building a repository around exactly this workflow. **[TODO: add repository link once public]**. The idea is not to produce another magical "scan me and fix my privacy" tool; it is to combine several imperfect signals into one local audit that helps you remember where your digital footprint actually lives.
+I am currently building a [repository around this workflow](https://github.com/commrelayunit/digital-footprint-audit). The idea is not to produce another magical "scan me and fix my privacy" tool; it is to combine imperfect signals into one local audit that helps you remember where your digital footprint actually lives.
 
 ### The signals I currently use
 
@@ -191,37 +191,15 @@ That is a much more achievable objective.
 
 ---
 
-## My "Privacy Pack": Start With the Foundations
+## My "Privacy Pack": Change Defaults Selectively
 
-Once the footprint is mapped and the important accounts are secured, I would finally start changing the stack. I think of this as a **privacy pack** rather than a definitive privacy setup: a small collection of defaults that reduce unnecessary exposure without turning everyday computing into a full-time security hobby.
+Once the footprint is mapped and the important accounts are secured, I would start changing the stack. I call this a **privacy pack**, not a definitive setup: a few defaults that reduce unnecessary exposure without turning everyday computing into a full-time security hobby.
 
-### Desktop operating system
+If Linux fits your workflow, try it. I use Arch because I value inspectability and control, but that is not a recommendation to start there. Fedora, Ubuntu, Mint, and other mainstream distributions may be the better transition. If you stay on Windows or macOS, the project is not pointless: review telemetry and cloud integrations, remove unused software, use full-disk encryption, keep the system updated, and understand what starts with it. The best operating system is the one you can maintain and recover.
 
-If Linux fits your workflow, I think it is worth trying. I use Arch because I value inspectability and control, but I would not tell a new Linux user to start there simply because I did. Fedora, Ubuntu, Mint, and other mainstream distributions may provide a much easier transition.
+On supported hardware, GrapheneOS is my preferred Android setup because Google Play can run as ordinary sandboxed applications rather than privileged OS components.<sup>[7](#note-7)</sup> But no one needs to buy a Pixel and flash it tomorrow. Permissions, unnecessary background access, history settings, and unwanted apps are useful places to start on any phone.
 
-The more important question is whether you understand the system well enough to maintain it.
-
-If you stay on Windows or macOS, that does not make the entire exercise pointless. Review privacy and telemetry settings, remove software you do not use, inspect startup applications, use full-disk encryption, keep the system updated, and pay attention to which cloud-account integrations are actually necessary.
-
-The best operating system is not the one with the most impressive privacy subreddit. It is the one you can understand, maintain, update, and recover.
-
-### Mobile operating system
-
-On supported hardware, GrapheneOS has become my preferred Android setup. One reason is its ability to run Google Play as ordinary sandboxed applications rather than as privileged OS components, which gives me a pragmatic middle ground between app compatibility and reduced Google integration.<sup>[7](#note-7)</sup>
-
-That does not mean everyone needs to buy a Pixel and flash GrapheneOS tomorrow. You can get surprisingly far on a conventional phone by reviewing application permissions, disabling unnecessary background access, removing apps you do not need, turning off history features you do not use, and replacing data-hungry applications one at a time.
-
-Again, the point is not the brand of operating system. It is whether the device behaves in ways you understand and can meaningfully control.
-
----
-
-## Open Source Helps, But It Is Not a Religion
-
-My second post already touched on the fact that I increasingly prefer open-source software where it makes sense. I want to emphasize the *where it makes sense* part.
-
-Open source does not magically guarantee privacy, security, maintainability, or good product design. A neglected open-source application can be a much worse choice than a well-maintained proprietary service. What open source gives you is the possibility of inspection, modification, independent packaging, community maintenance, and—in many cases—a much easier exit path.
-
-Privacy Guides is one of the resources I use when I want a curated starting point rather than searching for "private alternative to X" and trusting whichever affiliate-marketing page has the best SEO.<sup>[8](#note-8)</sup> F-Droid is similarly useful on Android as a repository and ecosystem centered on free and open-source applications.<sup>[9](#note-9)</sup> The Awesome Privacy lists are useful when you want to explore a much wider set of alternatives, although—as with any community list—I would still evaluate individual projects rather than treating inclusion as an endorsement.<sup>[10](#note-10)</sup>
+Open source helps where it creates a real exit path, not because it is a religion. A neglected open-source project can be worse than a well-maintained proprietary service. What matters is whether you can inspect the trade-off, export your data, maintain the thing, and leave later. I use Privacy Guides, F-Droid, and Awesome Privacy as starting points, not endorsements.<sup>[8](#note-8)</sup><sup>[9](#note-9)</sup><sup>[10](#note-10)</sup>
 
 A rough map of the kinds of tools I look at is:
 
@@ -272,44 +250,24 @@ Self-hosting should reduce dependencies without creating a new dependency on you
 
 ## From the Audit to Actually Deleting Things
 
-Once the audit starts producing a list of accounts, the next question is what to do with them. For services I still use, the answer might be to secure the account, change the authentication method, reduce permissions, or simply leave it alone. For everything else, I start trying to remove it.
+Once the audit produces a list of accounts, the question is no longer abstract. Keep, secure, migrate, reduce permissions, or delete. The easy cases have a visible **Delete account** button. For those, use it. [JustDeleteMe](https://justdeleteme.xyz/) is useful for finding the links companies bury in settings; [YourDigitalRights.org](https://yourdigitalrights.org/) is a good starting point when the self-service route does not exist or does not work.<sup>[11](#note-11)</sup><sup>[12](#note-12)</sup>
 
-The easy cases are genuinely easy. Some services have a visible **Delete account** button, ask you to confirm once, and the whole thing is finished in a few minutes. I usually check [JustDeleteMe](https://justdeleteme.xyz/) first because it provides direct links to deletion pages for a large number of services and gives you a rough idea of how painful the process is likely to be.<sup>[11](#note-11)</sup> For companies where the self-service process does not exist or does not work, [YourDigitalRights.org](https://yourdigitalrights.org/) is an excellent starting point for generating a formal data-erasure request.<sup>[12](#note-12)</sup>
+For EU-based requests, this is the flow I would use. It is a practical workflow, not legal advice.
 
-For me, the workflow has gradually settled into something like this:
+1. **Export what you want to keep and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
+2. **Use the normal deletion route if it exists.** Save a confirmation or screenshot in the audit record.
+3. **Find the controller's privacy contact.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
+4. **Send a narrow, documented request.** Identify the account/identifier, say what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[13](#note-13)</sup>
+5. **Keep a small case file.** Record the date, addresses contacted, ticket number, identity checks requested, response, and any retention explanation.
+6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but should tell you within the first month and explain why.<sup>[14](#note-14)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
 
-1. **Try the normal deletion mechanism first.** If there is a working account-deletion button, use it.
-2. **Check whether the company has a documented deletion process.** JustDeleteMe is useful for finding links that companies sometimes bury several layers deep in account settings.
-3. **Find the privacy contact.** Look through the Privacy Policy for a privacy team, Data Protection Officer, EU representative, or other data-subject contact.
-4. **Submit a formal erasure request.** In the EU, this is where Article 17 GDPR becomes particularly useful.<sup>[13](#note-13)</sup>
-5. **Keep the entire correspondence.** Record when the original request was sent, which addresses you contacted, what the company requested from you, and whether they actually confirmed deletion.
-6. **Escalate when necessary.** If support starts sending you in circles, ask for the privacy team or DPO. If a valid request remains unanswered beyond the applicable GDPR timeframe, the supervisory authority exists for exactly this reason.<sup>[14](#note-14)</sup>
+The GDPR itself was rarely the difficult part for me. The organizational machinery around it was. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked. One request involved more than thirty emails.
 
-I also use LLMs heavily during this stage—not to decide what my legal rights are, but to reduce the administrative burden. After the fifteenth variation of *"please delete my account, your deletion form is broken"*, there is little value in manually drafting every email from scratch. I give the model the relevant correspondence, the company's response, and the outcome I want, then use it to draft a concise reply, translate it when necessary, or help identify which GDPR provisions are relevant.
+<mark>Creating accounts takes seconds. Leaving them often exposes the parts of an organization nobody designed properly.</mark>
 
-I still read and edit everything before sending it.
+This is not proof that every retained record is non-compliance. Some data has to be kept for legal, tax, fraud, or contractual reasons. What I want in those cases is a clear explanation of **what** remains, **why**, and **for how long**. That is why the inventory matters: it turns a frustrating pile of email into a set of cases with dates, evidence, and an obvious next action.
 
-That combination—automation for repetitive writing and human judgment for the actual decisions—has made the process considerably more manageable.
-
----
-
-## And Yes, Expect Pain
-
-This is the part I underestimated when I began.
-
-The GDPR itself was rarely difficult to understand. The organizational machinery surrounding it was.
-
-I encountered companies that deleted everything within hours and others that took weeks merely to acknowledge a request. Some were refreshingly clear about what they could erase, what they were legally required to retain, why they had to retain it, and for how long. Others sent me between support departments, pointed repeatedly to broken forms, asked me to complete the same privacy request several times, or required access to an account whose own authentication system no longer worked.
-
-One deletion request turned into more than thirty emails. Another sent me to the same form four times. Several required escalation to a Data Protection Officer before anything meaningful happened.
-
-The strange part is that creating these accounts originally took seconds.
-
-<mark>Our systems are extraordinarily well optimized for acquiring users and remarkably inconsistent at letting them leave.</mark>
-
-Some of this is technical debt, some is organizational complexity, and some involves genuine regulatory retention requirements. Whatever the reason, my advice is to approach the deletion phase as a process rather than a weekend cleanup. Track it, expect some requests to take time, and do not interpret every retained piece of data as non-compliance. If a company has a legitimate obligation to retain something, what I want from them is a clear explanation of **what**, **why**, and **for how long**.
-
-The painful cases are also why the inventory matters. Without one, I would have lost track of which companies had replied, which requests were approaching their deadlines, and which account had somehow generated email number thirty-seven. 😅
+I also use LLMs here, but only for the administrative drudgery: drafting a concise follow-up, translating a request, or summarizing a long support thread. I still decide what to ask for and read every message before it goes out.
 
 ---
 
@@ -337,47 +295,13 @@ The goal is not to reach a mythical state where no company has any information a
 
 ---
 
-## A Note About the Audit Repository
-
-The repository I am building is intended to make the inventory stage less manual, not to replace judgment.
-
-The basic idea is to combine public OSINT signals with evidence from data you already own. Sherlock can search known usernames. Have I Been Pwned can provide breach history. Email-account discovery can produce leads. Google Takeout can reveal years of account-related messages. A browser password export can reveal forgotten login domains. Google's own third-party connection list can show OAuth relationships.
-
-The output I want is not a dramatic "privacy score." I want a boring table.
-
-Boring is good.
-
-Something that says:
-
-```text
-service        evidence            identifier        access   decision      status
-example.com    gmail_registration  old@email.test    yes      delete        pending
-forum.test     sherlock_username   old_handle        unknown  investigate   open
-shop.test      firefox_login       alias@email.test  yes      delete        done
-critical.test  hibp+password_mgr   main@email.test   yes      keep+secure   mfa-added
-```
-
-That is actionable. It can be reviewed, corrected, exported, and gradually worked through.
-
-Most importantly, the sensitive parts should remain local. The tool should not need your plaintext passwords, and it should never upload a Firefox password CSV or raw mailbox archive to some external service just to tell you that you once had a Dropbox account.
-
-The entire point of the project would be somewhat undermined by that design decision. 🙃
-
----
-
 ## Things I Would *Not* Do
 
-There are a few mistakes I would actively avoid.
-
-I would not delete accounts before making sure I had exported the data I wanted to keep. I would not revoke an OAuth provider before establishing another login method for an account I wanted to retain. I would not upload mailbox archives or password exports to online "audit" services. I would not switch every tool simultaneously and then spend two weeks unable to work because my calendar, contacts, maps, notes, and passwords had all changed at once.
+I would not delete accounts before exporting the data I want to keep. I would not revoke an OAuth provider before establishing another login method. I would not upload mailbox archives or password exports to an online "audit" service. I would not switch every tool at once and then spend two weeks unable to work because my calendar, contacts, maps, notes, and passwords all changed together.
 
 I also would not try to eliminate every indirect Big Tech dependency. Discovering that a privacy-respecting service happens to use AWS does not automatically make migrating away from it worthwhile. There is an enormous difference between Amazon operating the infrastructure underneath a service and Amazon directly owning your identity, purchase history, voice recordings, photos, and behavioral profile.
 
 Focus on the relationships where your decisions actually change something.
-
-That keeps this practical.
-
----
 
 ## The Goal Is Optionality
 
@@ -387,11 +311,9 @@ Can I leave this service without losing years of data? Can I export in a useful 
 
 Those questions are much more useful to me than asking whether a product is simply "private" or "not private."
 
-The first post in this series was about realizing how difficult it can be to reclaim data once it has spread across dozens or hundreds of services. The second was about the curiosity that made me question the defaults underneath those relationships. This third part is the practical consequence of both: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
+This third part is the practical consequence of the first two: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
 
-That is probably the closest thing I have to a "privacy pack."
-
-Not a perfect stack. Not a purity test. Just a process for making the defaults a little less default.
+Not a perfect stack. Just a process for making the defaults a little less default.
 
 ---
 
@@ -501,27 +423,6 @@ Below is a list of references so you can scan everything in one place.
 
 ---
 
-## How to Use This Post
+## Discussion
 
-### Share Your Experience
-
-Feel free to:
-
-- **Quote sections** that resonate with you.
-- **Share your own audit workflow** or tools that helped you rediscover forgotten accounts.
-- **Recommend privacy-preserving software** that has worked well for you.
-- **Share on social media** with `#Privacy #DigitalSovereignty #OSINT #OpenSource #GrapheneOS #SelfHosting`.
-- **Write your own response**—I would genuinely like to see how other people approach the same problem.
-
-### Talk About It!
-
-**Discussion**  
-If you have gone through a similar process, I am particularly interested in the parts that turned out to be unexpectedly difficult.
-
-- How many accounts did you discover that you had completely forgotten about?
-- Which identity provider turned out to be the biggest dependency in your setup?
-- Have you ever exported your mailbox or password-manager history to reconstruct your digital footprint?
-- Which account was the most painful to delete?
-- Where do you draw the line between privacy, convenience, and the operational cost of self-hosting?
-- Which large ecosystem would be hardest for you to reduce your dependence on?
-- What would your own "privacy pack" contain?
+If you have done a similar audit, I am interested in the parts that were unexpectedly difficult: the accounts you had forgotten, the identity provider that held too much together, and the service that turned out to be absurdly hard to leave.
