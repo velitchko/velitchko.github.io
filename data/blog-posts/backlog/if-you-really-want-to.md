@@ -19,6 +19,10 @@ featured: false
 
 > *Before you start deleting accounts and rebuilding your software stack, you need to know what you actually have.*
 
+
+![Privacy Pack](/blog/privacypack.png)
+
+
 In the [previous post](https://velitchko.github.io/blog/rabbit-hole-2026), I wrote about the questions that pushed me down this rabbit hole: Windows, Google, the phone in my pocket, the applications running in the background, and the uncomfortable realization that much of the technology I used every day ran on defaults I had never consciously chosen.<sup>[1](#note-1)</sup>
 
 If somebody read the first two pieces and thought, *"Okay, fine. I really, really, really want to do this. Where do I actually start?"*, this is roughly the answer I would give them.
