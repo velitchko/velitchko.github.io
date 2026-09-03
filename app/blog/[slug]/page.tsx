@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogPostBySlug, getAllBlogPostSlugs } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
@@ -5,6 +6,57 @@ import ExportBibtex from './ExportBibtex';
 import FontSizeControl from '@/components/FontSizeControl';
 import InteractiveCheckboxes from '@/components/InteractiveCheckboxes';
 import CodeCopyHandler from '@/components/CodeCopyHandler';
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://velitchko.github.io';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getBlogPostBySlug(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const description = post.excerpt
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 160);
+
+  const defaultOgImage = new URL('/og-image.png', SITE_URL).toString();
+  const ogImage = post.previewImage
+    ? new URL(post.previewImage, SITE_URL).toString()
+    : defaultOgImage;
+
+  return {
+    title: post.title,
+    description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    keywords: [...post.categories, ...post.hashtags],
+    openGraph: {
+      title: post.title,
+      description,
+      type: 'article',
+      url: new URL(`/blog/${slug}`, SITE_URL).toString(),
+      publishedTime: post.date,
+      authors: [post.author],
+      tags: [...post.categories, ...post.hashtags],
+      images: [
+        {
+          url: ogImage,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description,
+      images: [ogImage],
+    },
+  };
+}
 
 export async function generateStaticParams() {
   const slugs = getAllBlogPostSlugs();

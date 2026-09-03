@@ -30,6 +30,35 @@ hljs.registerLanguage('bibtex', latex);
 
 const blogPostsDirectory = path.join(process.cwd(), 'data/blog-posts');
 
+function resolvePreviewImage(data: Record<string, unknown>, content: string): string | undefined {
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || 'https://velitchko.github.io';
+  const frontmatterValue =
+    typeof data.image === 'string' ? data.image :
+    typeof data.preview === 'string' ? data.preview :
+    typeof data.ogImage === 'string' ? data.ogImage :
+    undefined;
+
+  const markdownMatch = content.match(/!\[[^\]]*\]\(([^)]+)\)/);
+  const htmlMatch = content.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i);
+  const rawValue = frontmatterValue || markdownMatch?.[1] || htmlMatch?.[1];
+
+  if (!rawValue) {
+    return undefined;
+  }
+
+  const cleanedValue = rawValue.trim().replace(/^['"]|['"]$/g, '').split(' ')[0];
+
+  if (!cleanedValue || cleanedValue.startsWith('data:')) {
+    return undefined;
+  }
+
+  try {
+    return new URL(cleanedValue, siteUrl).toString();
+  } catch {
+    return cleanedValue;
+  }
+}
+
 /**
  * Get all blog post slugs from markdown files
  */
@@ -97,6 +126,7 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
       excerpt: data.excerpt || content.substring(0, 150) + '...',
       content: contentHtml,
       categories: Array.isArray(data.categories) ? data.categories : (data.categories || '').split(',').map((c: string) => c.trim()).filter(Boolean),
+      previewImage: resolvePreviewImage(data, content),
       attachments,
       readingTime,
       featured: data.featured || false,

@@ -8,6 +8,7 @@ export interface BlogPost {
   excerpt: string;
   content: string; // Markdown content
   categories: string[];
+  previewImage?: string;
   attachments?: Array<{
     name: string;
     url: string;

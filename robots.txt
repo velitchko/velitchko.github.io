@@ -1,5 +1,5 @@
 User-agent: *
-Disallow: /
+Allow: /
 
 User-agent: GPTBot
 Disallow: /
@@ -30,3 +30,5 @@ Disallow: /
 
 User-agent: Amazonbot
 Disallow: /
+
+Sitemap: https://velitchko.github.io/sitemap.xml
