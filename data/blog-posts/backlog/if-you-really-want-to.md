@@ -119,16 +119,15 @@ This order saves a surprising amount of pain.
 
 ---
 
-## Turn The Sources Into an Actual Audit
+## How To Make The Actual Audit
 
-Finding accounts is only useful if you can turn the findings into decisions. A giant list of 600 domains is not a privacy strategy; it is just a new source of anxiety.
+Finding accounts is only useful if you can turn the findings into decisions. A giant list of 600 domains is not really a strategy; it is just a new source of anxiety (oh yes, I have been there).
 
-The audit therefore needs structure. For each service I want at least:
+So to make it more useful the audit needs a bit of structure. For each service I wanted at least:
 
 | Field | Question |
 | --- | --- |
 | Service | What company or product is this? |
-| Evidence | Why do I think I have or had an account? |
 | Identifier | Which email, username, phone number, or OAuth identity was used? |
 | Access | Can I still log in? |
 | Usage | Do I still actively use it? |
@@ -140,70 +139,35 @@ The audit therefore needs structure. For each service I want at least:
 | Status | Not started, request sent, waiting, deleted, retained |
 | Notes | DPO contacts, deletion URLs, retention explanations, support history |
 
-Once that exists, the exercise becomes much less abstract. I can sort by risk, importance, and effort rather than randomly deleting whatever account happens to annoy me that afternoon.
+Once that exists, the exercise becomes to sort by risk, importance, and effort to systematically prune your digital exposure. Randomly deleting whatever account happens to annoy you that afternoon is also a strategy that tends to work. If you do it consistently at some point you will get through the list!
 
-My own priority order is roughly: secure the important accounts first, delete obvious junk second, investigate accounts I cannot access third, and only then start migrating services that I actively use.
+My own priority order is roughly: secure the important accounts: 1) delete obvious junk; 2) investigate accounts I cannot access; and 3) only then start migrating services that I actively use.
 
-That might sound backwards for a post about reducing your footprint, but there is little point deleting twenty abandoned forums while your primary email account still uses a reused password and no MFA.
-
----
-
-## Identity Is More Important Than the Apps
-
-If I had to pick one layer to fix before anything else, it would probably be identity.
-
-Your email account, password manager, recovery addresses, phone number, OAuth providers, and MFA methods are the skeleton underneath almost everything else. If those relationships are weak, replacing Google Maps with an open-source alternative is not going to save you.
-
-My baseline would be:
-
-- A dedicated password manager with unique passwords for every service.
-- MFA wherever it matters, preferably using passkeys or an authenticator rather than SMS where practical.
-- Recovery codes stored somewhere safe and offline.
-- Email aliases for new accounts where that makes sense.
-- Fewer "Sign in with Google / Facebook / Apple" dependencies.
-- A deliberate recovery strategy for the accounts that can reset everything else.
-
-This is also why the account audit is useful. It reveals how much of your digital life depends on one or two identity providers.
-
-If losing access to one Google, Apple, Microsoft, or Meta account would lock you out of dozens of unrelated services, that is a dependency worth reducing even if you have no intention of leaving the provider itself.
+That might sound backwards for a post about reducing your footprint, but there is little point deleting twenty abandoned forum accounts without having your primary email secured with proper MFA.
 
 ---
 
 ## Then Comes the "de-MAGA" Part
 
-I have jokingly started referring to one part of this as **de-MAGA**: reducing dependence on Meta, Microsoft, Amazon, Google, and Apple. Yes, the acronym cheats slightly. Please direct complaints to the acronym department. 😅
+I have started referring to one part of this as **de-MAGA**: reducing dependence on Meta/Microsoft, Amazon, Google, and Apple. Yes, the acronym cheats slightly. Please direct complaints to the acronym department 😅.
 
-The point is not to purge every trace of these companies from existence. That would be both unrealistic and, in many cases, counterproductive. Amazon alone sits underneath an enormous amount of web infrastructure through AWS; trying to avoid every indirect dependency would turn this into an archaeological project rather than a useful privacy exercise.
+You cannot really purge every trace of these companies from existence. Amazon alone sits underneath an enormous amount of web infrastructure through AWS; trying to avoid every indirect dependency is to a given extent impossible.
 
-Instead, I look at **direct relationships**: accounts, identity, storage, communication, operating systems, purchases, behavioral history, and the services where these companies are the primary party holding information about me.
+However, looking at your **direct relationships** with these services is much more useful. Check out what your exposure is: accounts, identity, storage, communication, operating systems, purchases, behavioral history,and where these companies are the primary party holding your information.
 
-### The questions I ask
-
-| Ecosystem | Things worth auditing |
-| --- | --- |
-| Meta | Facebook, Instagram, Messenger, WhatsApp, Threads, old profiles, advertising preferences, connected apps |
-| Microsoft | Windows account, Outlook, OneDrive, Microsoft 365, Teams, LinkedIn, Xbox, developer services |
-| Amazon | Retail account, Alexa, Kindle, Audible, Prime, Photos, Ring, purchase history and devices |
-| Google | Gmail, Search history, Chrome, Drive, Photos, Maps/Timeline, YouTube, Android, Play, OAuth connections |
-| Apple | Apple Account, iCloud, Photos, App Store, subscriptions, Sign in with Apple, device backups and location services |
-
-This is not a "delete everything immediately" table. Some of these services may be valuable enough that keeping them is the rational choice. The audit simply forces the relationship to become explicit.
-
-Google is a good example. My Google account had accumulated years of email, authentication relationships, app activity, search behavior, YouTube history, location-related data, and device information. I did not need to delete Google overnight to make meaningful progress. I could first move authentication away from Google where practical, replace the browser and search defaults, migrate selected services, reduce unnecessary history, and gradually turn Google from *the identity underneath my digital life* into *one provider among several*.
-
-That is a much more achievable objective.
+For me, Google is a good example to illustrate this. My Google account had accumulated years of email, authentication relationships, app activity, search behavior, YouTube history, location-related data, and device information. I did not need to delete Google overnight, its actually still ongoing. But, the first move I did was transfering my emails, authentication, and photos and drive contents away from Google. Then I replaced the browser and search engine defaults. I turned off any kind of history and tracking, and over time this gradually turned Google from *the one service* into *one of the services*.
 
 ---
 
 ## My "Privacy Pack": Change Defaults Selectively
 
-Once the footprint is mapped and the important accounts are secured, I would start changing the stack. I call this a **privacy pack**, not a definitive setup: a few defaults that reduce unnecessary exposure without turning everyday computing into a full-time security hobby.
+Once the footprint is mapped and the important accounts are secured, I would start changing the stack. People call these **privacy packs**<sup>[7](#note-7)</sup>, not a definitive setup: a few defaults that reduce unnecessary exposure without turning everyday computing into a full-time security hobby.
 
 If Linux fits your workflow, try it. I use Arch because I value inspectability and control, but that is not a recommendation to start there. Fedora, Ubuntu, Mint, and other mainstream distributions may be the better transition. If you stay on Windows or macOS, the project is not pointless: review telemetry and cloud integrations, remove unused software, use full-disk encryption, keep the system updated, and understand what starts with it. The best operating system is the one you can maintain and recover.
 
-On supported hardware, GrapheneOS is my preferred Android setup because Google Play can run as ordinary sandboxed applications rather than privileged OS components.<sup>[7](#note-7)</sup> But no one needs to buy a Pixel and flash it tomorrow. Permissions, unnecessary background access, history settings, and unwanted apps are useful places to start on any phone.
+On supported hardware, GrapheneOS is my preferred Android setup because Google Play can run as ordinary sandboxed applications rather than privileged OS components.<sup>[8](#note-8)</sup> But no one needs to buy a Pixel and flash it tomorrow. Permissions, unnecessary background access, history settings, and unwanted apps are useful places to start on any phone.
 
-Open source helps where it creates a real exit path, not because it is a religion. A neglected open-source project can be worse than a well-maintained proprietary service. What matters is whether you can inspect the trade-off, export your data, maintain the thing, and leave later. I use Privacy Guides, F-Droid, and Awesome Privacy as starting points, not endorsements.<sup>[8](#note-8)</sup><sup>[9](#note-9)</sup><sup>[10](#note-10)</sup>
+Open source helps where it creates a real exit path, not because it is a religion. A neglected open-source project can be worse than a well-maintained proprietary service. What matters is whether you can inspect the trade-off, export your data, maintain the thing, and leave later. I use Privacy Guides, F-Droid, and Awesome Privacy as starting points, not endorsements.<sup>[9](#note-9)</sup><sup>[10](#note-10)</sup><sup>[11](#note-11)</sup>
 
 A rough map of the kinds of tools I look at is:
 
@@ -211,59 +175,58 @@ A rough map of the kinds of tools I look at is:
 | --- | --- |
 | Browser | Firefox |
 | Search | DuckDuckGo, SearXNG |
-| Android app discovery | F-Droid |
-| Basic Android utilities | Fossify |
+| Android app discovery | F-Droid, Obtanium |
+| Basic Android utilities | Fossify, Libre-* |
 | Messaging | Signal |
 | Password management | Bitwarden, KeePassXC |
-| 2FA | Aegis |
-| Email aliases | SimpleLogin, addy.io |
+| 2FA | Proton Auth, Ente Auth |
+| Email | Proton Mail, Tuta Mail |
 | Maps/navigation | Organic Maps, OsmAnd |
-| Notes | Joplin, Notesnook, Standard Notes |
-| File synchronization | Syncthing |
-| Cloud collaboration | Nextcloud |
+| Notes | Standard Notes |
+| File synchronization | Nextcloud, Syncthing |
 | Photos | Immich |
 | Media | Jellyfin |
-| Network-wide filtering | Pi-hole, AdGuard Home |
+| Network-wide filtering | Pi-hole, WireGuard, OpSense |
 | Private metasearch | SearXNG |
 
-This is deliberately a list of **starting points**, not commandments. Tools change, projects get acquired, maintenance stops, threat models differ, and the "best" application today may be a poor recommendation two years from now.
-
-The habit I want to develop is not memorizing the right list. It is learning how to evaluate the next tool.
+This is my list of **starting points**. Things may change, projects get acquired, maintenance stops, and the "best" application today may be a poor recommendation two years from now. But this does not change the habit I want to develop: **becoming less dependent on cloud services and vendor lock-ins**.
 
 ---
 
 ## Self-Hosting Comes Later
 
-Self-hosting is one of the most satisfying parts of this journey because it makes ownership tangible. Your files are on your hardware. Your service runs because you run it. You decide when it updates and, at least in principle, who gets access.
+Self-hosting is one of the most satisfying parts of this journey because it makes ownership tangible. 
 
-It is also very easy to romanticize.
+<mark>Your files are on your hardware</mark>.
+
+<mark>Your service runs because you run it</mark>.
+
+<mark>You decide when it updates and, at least in principle, who gets access.</mark>
 
 When you self-host something, you are not removing responsibility; you are moving responsibility from a company onto yourself. Security updates, backups, authentication, storage failures, TLS certificates, remote access, monitoring, and disaster recovery are now your problem.
 
-That is why I would **not** begin this journey by self-hosting email, moving every password into a server you configured yesterday, and exposing twenty Docker containers directly to the internet.
+That is why I would **not** begin this journey by self-hosting email, moving every password into a server you configured yesterday, or exposing twenty Docker containers directly to the internet.
 
-Start with services where failure is educational rather than catastrophic. A media server, RSS reader, local DNS blocker, test SearXNG instance, or other replaceable service is a much more forgiving introduction. Add proper backups. Learn how updates work. Learn what you are exposing to the network. Only then move more important data.
+Start small, setup a media server, local DNS blocker, test SearXNG instance, or another replaceable service. Add proper backups. Learn how updates work. Learn what you are exposing to the network. Then you can move on to more.
 
-A useful rule of thumb:
+A small guiding principle:
 
 > **If losing the service on a Sunday night would ruin your week, it probably should not be your first self-hosted container.**
-
-Self-hosting should reduce dependencies without creating a new dependency on your own ability to be an unpaid systems administrator at 3 AM.
 
 ---
 
 ## From the Audit to Actually Deleting Things
 
-Once the audit produces a list of accounts, the question is no longer abstract. Keep, secure, migrate, reduce permissions, or delete. The easy cases have a visible **Delete account** button. For those, use it. [JustDeleteMe](https://justdeleteme.xyz/) is useful for finding the links companies bury in settings; [YourDigitalRights.org](https://yourdigitalrights.org/) is a good starting point when the self-service route does not exist or does not work.<sup>[11](#note-11)</sup><sup>[12](#note-12)</sup>
+Once the audit produces a list of accounts, the question is no longer abstract. Keep, secure, migrate, reduce permissions, or delete. The easy cases have a visible **Delete account** button. For those, use it. [JustDeleteMe](https://justdeleteme.xyz/) is useful for finding the links companies bury in settings; [YourDigitalRights.org](https://yourdigitalrights.org/) is a good starting point when the self-service route does not exist or does not work.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
 
 For EU-based requests, this is the flow I would use. It is a practical workflow, not legal advice.
 
 1. **Export what you want to keep and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
 2. **Use the normal deletion route if it exists.** Save a confirmation or screenshot in the audit record.
 3. **Find the controller's privacy contact.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
-4. **Send a narrow, documented request.** Identify the account/identifier, say what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[13](#note-13)</sup>
+4. **Send a narrow, documented request.** Identify the account/identifier, say what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
 5. **Keep a small case file.** Record the date, addresses contacted, ticket number, identity checks requested, response, and any retention explanation.
-6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but should tell you within the first month and explain why.<sup>[14](#note-14)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
+6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but should tell you within the first month and explain why.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
 
 The GDPR itself was rarely the difficult part for me. The organizational machinery around it was. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked. One request involved more than thirty emails.
 
@@ -315,9 +278,9 @@ Can I leave this service without losing years of data? Can I export in a useful 
 
 Those questions are much more useful to me than asking whether a product is simply "private" or "not private."
 
-This third part is the practical consequence of the first two: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
+This part was the practical consequence of the first two: **build the map, secure the foundations, reduce the dependencies that no longer make sense, and keep an exit path open for the ones you choose to keep.**
 
-Not a perfect stack. Just a process for making the defaults a little less default.
+This probably isn't a perfect stack but it is the one I use. The intent of the process I followed was to make the defaults a little less default. If you have suggestions, let me know!
 
 ---
 
@@ -369,55 +332,62 @@ Below is a list of references so you can scan everything in one place.
   </li>
 
   <li id="note-7">
+    <strong>Privacy Pack</strong><br />
+    Privacy Pack project<br />
+    <a href="https://privacypack.org/" target="_blank" rel="noopener noreferrer">https://privacypack.org/</a><br />
+    A practical “build your own” resource for assembling a privacy-oriented software stack and deliberately choosing defaults that reduce unnecessary exposure.
+  </li>
+
+  <li id="note-8">
     <strong>GrapheneOS</strong><br />
     GrapheneOS Project<br />
     <a href="https://grapheneos.org/" target="_blank" rel="noopener noreferrer">https://grapheneos.org/</a><br />
     A security- and privacy-focused Android-based operating system with a strong sandboxing model and support for installing Google Play as ordinary sandboxed applications.
   </li>
 
-  <li id="note-8">
+  <li id="note-9">
     <strong>Privacy Guides</strong><br />
     Privacy Guides<br />
     <a href="https://www.privacyguides.org/" target="_blank" rel="noopener noreferrer">https://www.privacyguides.org/</a><br />
     A curated collection of privacy-oriented recommendations for browsers, operating systems, communication, DNS, authentication, storage, and other parts of a modern software stack.
   </li>
 
-  <li id="note-9">
+  <li id="note-10">
     <strong>F-Droid</strong><br />
     F-Droid Project<br />
     <a href="https://f-droid.org/" target="_blank" rel="noopener noreferrer">https://f-droid.org/</a><br />
     A repository and distribution ecosystem for free and open-source Android applications.
   </li>
 
-  <li id="note-10">
+  <li id="note-11">
     <strong>Awesome Privacy</strong><br />
     Community-maintained resource<br />
     <a href="https://github.com/pluja/awesome-privacy" target="_blank" rel="noopener noreferrer">https://github.com/pluja/awesome-privacy</a><br />
     A broad community-curated collection of privacy-respecting alternatives and self-hostable tools. Individual projects should still be evaluated on their own merits.
   </li>
 
-  <li id="note-11">
+  <li id="note-12">
     <strong>JustDeleteMe</strong><br />
     Community project<br />
     <a href="https://justdeleteme.xyz/" target="_blank" rel="noopener noreferrer">https://justdeleteme.xyz/</a><br />
     A directory of direct account-deletion links and information about how difficult different services make account deletion.
   </li>
 
-  <li id="note-12">
+  <li id="note-13">
     <strong>Your Digital Rights</strong><br />
     noyb – European Center for Digital Rights<br />
     <a href="https://yourdigitalrights.org/" target="_blank" rel="noopener noreferrer">https://yourdigitalrights.org/</a><br />
     A practical service for generating privacy and data-erasure requests to companies, including GDPR requests for European users.
   </li>
 
-  <li id="note-13">
+  <li id="note-14">
     <strong>Article 17 GDPR – Right to Erasure</strong><br />
     European Union / GDPR.eu<br />
     <a href="https://gdpr.eu/article-17-right-to-be-forgotten/" target="_blank" rel="noopener noreferrer">https://gdpr.eu/article-17-right-to-be-forgotten/</a><br />
     The legal basis behind many of the deletion requests described in this workflow. Article 17 gives data subjects a right to request erasure in applicable circumstances, subject to a number of exceptions.
   </li>
 
-  <li id="note-14">
+  <li id="note-15">
     <strong>Article 12 GDPR – Transparent Information and Exercise of Data-Subject Rights</strong><br />
     European Union / GDPR.eu<br />
     <a href="https://gdpr.eu/article-12-how-to-exercise-the-rights-of-the-data-subject/" target="_blank" rel="noopener noreferrer">https://gdpr.eu/article-12-how-to-exercise-the-rights-of-the-data-subject/</a><br />
