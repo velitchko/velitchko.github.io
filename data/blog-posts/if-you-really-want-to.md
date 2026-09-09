@@ -217,22 +217,24 @@ A small guiding principle:
 
 ## From the Audit to Actually Deleting Things
 
-Once the audit produces a list of accounts, the next step is simply to start. You decide: keep, secure, migrate, reduce permissions, or delete. Sometimes it is easy: there is a visible **Delete account** button somewhere in the account settings. [JustDeleteMe](https://justdeleteme.xyz/)<sup>[12](#note-12)</sup> is useful for finding the links companies bury. [YourDigitalRights.org](https://yourdigitalrights.org/)<sup>[13](#note-13)</sup> is another good starting point when that button does not exist or does not work.
+Once the audit produces a list of accounts, the question is no longer abstract. Keep, secure, migrate, reduce permissions, or delete. The easy cases have a visible **Delete account** button. For those, use it. [JustDeleteMe](https://justdeleteme.xyz/) is useful for finding the links companies bury in settings; [YourDigitalRights.org](https://yourdigitalrights.org/) is a good starting point when the self-service route does not exist or does not work.<sup>[12](#note-12)</sup><sup>[13](#note-13)</sup>
 
-For EU-based requests (yes, we have the GDPR), this is the practical flow I would use. It is not legal advice.
+For EU-based requests, this is the flow I would use. It is a practical workflow, not legal advice.
 
-1. **Export your data if you want to keep it and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
+1. **Export what you want to keep and confirm how you will still log in.** Do this before deleting an account or revoking an OAuth connection.
 2. **Use the normal deletion route if it exists.** Save a confirmation or screenshot in the audit record.
-3. **If that fails, find the controller's privacy contact.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
-4. **Send a narrow, documented request.** Identify the account or identifier, state what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
-5. **Update your table with a status.** Record the date, addresses contacted, ticket number, response, and any retention explanation.
-6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but **should tell you within the first month and explain why**.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
+3. **Find the controller's privacy contact.** Check the privacy policy for a privacy team, DPO, EU representative, or data-subject-rights address.
+4. **Send a narrow, documented request.** Identify the account or identifier, say what you want erased, and ask for confirmation. Article 17 is the usual erasure route, subject to its conditions and exceptions.<sup>[14](#note-14)</sup>
+5. **Keep a small case file.** Record the date, addresses contacted, ticket number, identity checks requested, response, and any retention explanation.
+6. **Track the deadline and escalate deliberately.** Article 12 generally requires a response within one month; a controller can extend this by up to two further months for complex requests, but should tell you within the first month and explain why.<sup>[15](#note-15)</sup> If support loops, ask for the privacy team or DPO. If the response remains inadequate, the relevant supervisory authority is the next step.
 
-The GDPR itself was rarely the difficult part for me. The organizational and bureaucratic processes around it are major pain points. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked.
+The GDPR itself was rarely the difficult part for me. The organizational machinery around it was. Some companies deleted everything within hours. Others took weeks to acknowledge a request, sent me back to broken forms, or required access to an account whose login system no longer worked. One request involved more than thirty emails.
 
-It is important to realize that some data has to be kept for legal, tax, fraud, or contractual reasons and when making a request you can ask for the **exact** reasons that certain data needs to be kept on file. You have the right to I ask for clear explanation of **what** remains, **why**, and **for how long**. I can also recommend to use LLMs here. They are great to tackle the annoying part of drafting formal emails, requesting deletion, and referring to parts of the privacy policy and GDPR that apply. Very useful for drafting a concise follow-up, translating a request, or summarizing a long support thread.
+<mark>Creating accounts takes seconds. Leaving them often exposes the parts of an organization nobody designed properly.</mark>
 
-I also use LLMs here, but only for the administrative drudgery: drafting a concise follow-up, translating a request, or summarising a long support thread. I still decide what to ask for and read every message before it goes out.
+This is not proof that every retained record is non-compliance. Some data has to be kept for legal, tax, fraud, or contractual reasons. What I want in those cases is a clear explanation of **what** remains, **why**, and **for how long**. That is why the inventory matters: it turns a frustrating pile of email into a set of cases with dates, evidence, and an obvious next action.
+
+I also use LLMs here, but only for the administrative drudgery: drafting a concise follow-up, translating a request, or summarizing a long support thread. I still decide what to ask for and read every message before it goes out.
 
 ---
 
