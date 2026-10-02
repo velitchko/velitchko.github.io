@@ -20,7 +20,7 @@ featured: false
 ![Nobody Acts Unprompted](/blog/agency.png)
 
 
-People keep telling me these agents are autonomous — that they'll figure anything out, solve any problem, that we've basically built AGI. So I ask them: what do you actually mean by "agent" or "agency"? The definition gets fuzzy fast.
+People keep telling me these agents are autonomous — that they'll figure anything out, solve any problem, that we've basically built AGI. So I ask them: what do you actually mean by "agent" or "agency"? <mark>The definition gets fuzzy fast.</mark>
 
 Here's the simplest problem with it: most models sit there until something asks them to continue, answer, summarize, plan, classify, write, inspect, or call a tool. Left alone, they do not wake up in the morning, remember an unfinished argument, wonder if they left the stove on, and decide to revise a paper.
 
@@ -60,11 +60,11 @@ That does not make human action unprompted — it just makes what prompts us ric
 
 If agency means acting without any cause, then almost nothing has agency.
 
-That is not how we usually use the word. We do not think a person lacks agency because they responded to pain, curiosity, obligation, or a question. We do not think a researcher lacks agency because a deadline made them finish the abstract. Dennett<sup>[1](#note-1)</sup> made roughly this point about free will in general: the worry that being caused to act undermines freedom mostly rests on confused imagery, not a real argument. Having a cause is not the opposite of being an agent. It's closer to the precondition for being one.
+That is not how we usually use the word. We do not think a person lacks agency because they responded to pain, curiosity, obligation, or a question. We do not think a researcher lacks agency because a deadline made them finish the abstract. Dennett<sup>[1](#note-1)</sup> made roughly this point about free will in general: the worry that being caused to act undermines freedom mostly rests on confused imagery, not a real argument. <mark>Having a cause is not the opposite of being an agent.</mark> It's closer to the precondition for being one.
 
-The trigger matters, but it's not the whole story. Agency is in how a system interprets a situation, which signals it can perceive, what it can remember, what alternatives it can compare, which goals it can maintain, which actions it can take, and how accountable those actions are to the surrounding world. Floridi and Sanders<sup>[2](#note-2)</sup> tried to make something like this precise for artificial agents specifically, proposing that a system counts as an agent to the degree it is interactive (it responds to its environment), autonomous (it can change its own state without a dedicated external trigger for every single change), and adaptive (its behavior can improve based on what happened before). Nowhere on that list is "acts without being prompted." Their criteria ask for something closer to *does something non-trivial with what it receives*.
+The trigger matters, but it's not the whole story. Agency is in how a system interprets a situation, which signals it can perceive, what it can remember, what alternatives it can compare, which goals it can maintain, which actions it can take, and how accountable those actions are to the surrounding world. Floridi and Sanders<sup>[2](#note-2)</sup> tried to make something like this precise for artificial agents specifically, proposing that a system counts as an agent to the degree it is **interactive** (it responds to its environment), **autonomous** (it can change its own state without a dedicated external trigger for every single change), and **adaptive** (its behavior can improve based on what happened before). Nowhere on that list is "acts without being prompted." Their criteria ask for something closer to *does something non-trivial with what it receives*.
 
-That gap between the loose, hype-driven definition and a criteria-based one is the real disagreement. The hype version is: "these are agents, meaning autonomous, self-directed systems that can basically solve anything — we've built AGI." The more careful version is: "current LLM systems have narrow, externally managed channels for receiving prompts, maintaining goals, sensing the world, and acting back on it."
+That gap between the loose, hype-driven definition and a criteria-based one is the real disagreement. **The hype version** is: "these are agents, meaning autonomous, self-directed systems that can basically solve anything — we've built AGI." **The more careful version** is: "current LLM systems have narrow, externally managed channels for receiving prompts, maintaining goals, sensing the world, and acting back on it."
 
 ---
 
@@ -78,7 +78,7 @@ Horvitz's<sup>[4](#note-4)</sup> older work on mixed-initiative interfaces is th
 
 You can see the same model behave like two different kinds of agent depending entirely on what it's wired to. A chat-only assistant can tell you your calendar looks overloaded on Thursday and suggest moving a meeting. That's advice; you still have to go do it. The same model wired directly to the calendar API, with permission to act and a rule about what needs confirmation first, can just move the meeting and tell you afterward. Nothing changed about the model's weights between those two cases. What changed is how much of the loop — perceiving the conflict, deciding what to do about it, and acting on the world — got handed to it versus kept with the interface, the permissions layer, and the person who configured both.
 
-That's part of why the word "agent" feels slippery: sometimes it refers to the model, sometimes to the software wrapper, and sometimes to the whole sociotechnical arrangement — model, tools, permissions, memory, triggers, logs, policies, user expectations, and failure modes, none of which gets any tidier just because someone named a class `Agent`. If we say "the agent decided," we may be hiding a lot of design work: who configured the trigger, what state was visible, which tools were available, what permissions were granted, which memories were retained, which actions were reversible, and who remained accountable. Agency, it turns out, is partly an interface design problem.
+That's part of why the word "agent" feels slippery: sometimes it refers to the model, sometimes to the software wrapper, and sometimes to the whole sociotechnical arrangement — model, tools, permissions, memory, triggers, logs, policies, user expectations, and failure modes, none of which gets any tidier just because someone named a class `Agent`. If we say "the agent decided," we may be hiding a lot of design work: who configured the trigger, what state was visible, which tools were available, what permissions were granted, which memories were retained, which actions were reversible, and who remained accountable. <mark>Agency, it turns out, is partly an interface design problem.</mark>
 
 ---
 
@@ -100,7 +100,7 @@ A system can be prompted and still initiate action.
 
 Plenty of everyday software already works this way — a failing test can prompt a CI pipeline to block a merge without anyone watching it happen. That's not a rich form of agency, but it shows that "reactive" and "passive" aren't the same thing.
 
-Remember the coding agent from the start of this post. Nobody sat there supervising it in real time. What actually produced that pull request was a longer, genuinely non-trivial chain: a human had set up a webhook weeks earlier, a dependency maintainer pushed a breaking change in an unrelated repository, a CI job failed on schedule, and the agent picked up that failure, read the diff, worked out which change caused it, and judged itself confident enough to propose a fix. What's new isn't the chain — it's that one of the links in it is a model making that last call.
+Remember the coding agent from the start of this post. Nobody sat there supervising it in real time. What actually produced that pull request was a longer, genuinely non-trivial chain: a human had set up a webhook weeks earlier, a dependency maintainer pushed a breaking change in an unrelated repository, a CI job failed on schedule, and the agent picked up that failure, read the diff, worked out which change caused it, and judged itself confident enough to propose a fix. <mark>What's new isn't the chain — it's that one of the links in it is a model making that last call.</mark>
 
 With LLM systems, the question becomes more subtle than "it was triggered."
 
@@ -113,7 +113,7 @@ Was the action reversible?
 Could the user interrupt it?
 Did the system have enough context to act responsibly?
 
-That's where agency stops being metaphysical and turns into a question of invocation, permission, visibility, memory, and accountability. Andreas<sup>[6](#note-6)</sup> has made a version of this argument from the language side: LLMs are trained on text produced by agents pursuing goals, which means a lot of what looks like "the model deciding something" is really the model inferring what an agent in this situation would plausibly do or say next. That's a real effect, but it is not the same as the model having its own standing goals the way a person or an institution does. It's closer to pattern-matching on what an agent in this position would plausibly do next, running inside permissions and tools that a human configured and can still inspect.
+That's where agency stops being metaphysical and turns into a question of **invocation, permission, visibility, memory, and accountability**. Andreas<sup>[6](#note-6)</sup> has made a version of this argument from the language side: LLMs are trained on text produced by agents pursuing goals, which means a lot of what looks like "the model deciding something" is really the model inferring what an agent in this situation would plausibly do or say next. That's a real effect, but it is not the same as the model having its own standing goals the way a person or an institution does. It's closer to pattern-matching on what an agent in this position would plausibly do next, running inside permissions and tools that a human configured and can still inspect.
 
 ---
 
@@ -143,7 +143,7 @@ HCI has something useful to say here, not because it can resolve agency as a phi
 
 There's a sharper, less comfortable question here too — one the philosopher Andreas Matthias raised about autonomous systems in general<sup>[7](#note-7)</sup>: once a system's behavior is genuinely hard to predict from its own design, which is true of learning systems almost by definition, who is actually responsible when it does something wrong? Not "was it prompted," but "who configured the conditions under which it could act, and did they have enough visibility to be answerable for that."
 
-Neither the model nor we act from nowhere. The difference was never whether something prompted the action — it's what the system can do once it has one: what it can perceive, remember, decide on, and reach back out and touch.
+<mark>Neither the model nor we act from nowhere.</mark> The difference was never whether something prompted the action — it's what the system can do once it has one: what it can perceive, remember, decide on, and reach back out and touch.
 
 ---
 
