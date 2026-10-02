@@ -1,7 +1,16 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllBlogPosts, getAllCategories } from '@/lib/markdown';
 import BlogListing from '@/app/blog/BlogListing';
 import FontSizeControl from '@/components/FontSizeControl';
+
+export const metadata: Metadata = {
+  title: 'Writing',
+  description: 'Thoughts and reflections on visualization research, visual analytics, and complex networked data.',
+  alternates: {
+    canonical: '/blog',
+  },
+};
 
 export default async function BlogPage() {
   const posts = await getAllBlogPosts();

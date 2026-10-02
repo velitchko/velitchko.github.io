@@ -5,15 +5,44 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
-// Build an absolute OG image URL when a public site URL is provided via env.
-// In dev this will remain a relative path (localhost) which is expected.
-const PUBLIC_SITE = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "";
+const PUBLIC_SITE = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://velitchko.github.io";
+const SITE_URL = new URL(PUBLIC_SITE);
 const OG_PATH = "/og-image.png";
-const ogImage = PUBLIC_SITE ? new URL(OG_PATH, PUBLIC_SITE).toString() : OG_PATH;
+const ogImage = new URL(OG_PATH, SITE_URL).toString();
 
 export const metadata: Metadata = {
-  title: "<vfilipov/>",
-  description: "Personal academic website showcasing research, projects, and publications",
+  metadataBase: SITE_URL,
+  title: {
+    default: "Velitchko Filipov | Visualization Researcher",
+    template: "%s | Velitchko Filipov",
+  },
+  description:
+    "Velitchko Filipov is a visualization researcher studying network analysis, visual analytics, and interactive data exploration.",
+  keywords: [
+    "Velitchko Filipov",
+    "Visualization Research",
+    "Visual Analytics",
+    "Network Visualization",
+    "Human-Computer Interaction",
+    "Data Visualization",
+    "Academic Research",
+    "Postdoctoral Researcher",
+  ],
+  applicationName: "Velitchko Filipov",
+  authors: [{ name: "Velitchko Filipov" }],
+  creator: "Velitchko Filipov",
+  publisher: "Velitchko Filipov",
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   icons: {
     icon: [
       { url: '/favicon.png' },
@@ -23,17 +52,27 @@ export const metadata: Metadata = {
     apple: '/favicon.png',
   },
   openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Velitchko Filipov",
+    title: "Velitchko Filipov | Visualization Researcher",
+    description:
+      "Research on visualization, network analysis, and interactive data exploration.",
+    url: SITE_URL.origin,
     images: [
       {
         url: ogImage,
-        alt: 'Open graph preview',
+        width: 1200,
+        height: 630,
+        alt: "Velitchko Filipov personal website preview",
       },
     ],
-    // If we have a public site URL, expose it here; otherwise leave undefined.
-    url: PUBLIC_SITE || undefined,
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
+    title: "Velitchko Filipov | Visualization Researcher",
+    description:
+      "Research on visualization, network analysis, and interactive data exploration.",
     images: [ogImage],
   },
 };
@@ -50,6 +89,29 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem('site-theme')||'professional';document.documentElement.setAttribute('data-theme',t);}catch(e){}`,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Person',
+              name: 'Velitchko Filipov',
+              jobTitle: 'Postdoctoral Researcher',
+              affiliation: {
+                '@type': 'Organization',
+                name: 'TU Wien',
+              },
+              url: SITE_URL.origin,
+              image: ogImage,
+              knowsAbout: [
+                'Visualization',
+                'Visual Analytics',
+                'Network Science',
+                'Human-Computer Interaction',
+              ],
+            }),
           }}
         />
         {/* Syntax highlighting CSS */}
