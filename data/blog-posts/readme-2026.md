@@ -315,8 +315,8 @@ Note: Due to model updates, exact results may vary if reproduced
 at a later date. We provide all raw outputs in data/llm_outputs/.
 ```
 
-This is an emerging norm and we should help set it proactively.
-The problem quickly compounds over time if you let it and rather than trying retrofit a few years from now, there are steps we can undertake today to make this better.
+This is an emerging norm, and we should be the ones helping set it.
+The problem compounds over time if you let it — rather than retrofitting it a few years from now, there are steps we can take today to make this better.
 
 ---
 

@@ -92,8 +92,6 @@ The productive response to context rot in LLMs is exactly the same: <mark>struct
 
 ### What Thinking Like a Senior Actually Means
 
-This is where the gap is most visible.
-
 A lot of people treat LLMs the way a poor mentor would treat a junior researcher: hand them a vague task and evaluate the output, without ever communicating the constraints, the broader context, the dependencies, how successful execution looks like, or even the scope of the task.
 
 But thats not a model problem, its a management one. If you managed a junior researcher that way, the gap in their output wouldn't be their problem. It would be yours.
@@ -152,7 +150,7 @@ A few things worth carrying forward.
 
 You are the <mark>driver</mark>. The model is a tool, yes, powerful, fast, but occasionally overconfident and sometimes wrong. The work is yours and so are the outcomes. Whatever it produces, you're the one who decides what to do with it and you're the one responsible for that decision.
 
-<mark>Context is how you steer.</mark> What you put in, how you scope it, how deliberately you manage what the window holds. This is where the quality of the human-AI collaboration lives.
+<mark>Context is how you steer.</mark> What you put in, how you scope it, how deliberately you manage what the window holds.
 
 The goal isn't to do *more*. It's to do <mark>better</mark>. Use this technology to raise the ceiling on what you're capable of, not to lower the floor on how much thought you bring to it.
 

@@ -145,7 +145,7 @@ For me, reclaiming my digital life starts there: with old accounts, broken delet
 
 This is the first post in a series about how I approached that process. Account deletion is just the visible edge. From there the questions start multiplying: which apps do I trust, which services do I depend on, what is my operating system doing in the background, what should I replace, and what is worth keeping because convenience still matters.
 
-In other words, this is where the rabbit hole starts. I am going down it piece by piece, and I will write up the route as I go.
+This is where the rabbit hole starts, and I am going down it piece by piece, writing up the route as I go.
 
 ---
 
