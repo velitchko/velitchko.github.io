@@ -207,10 +207,16 @@ export default function Home() {
       {/* Projects */}
       <section id="projects" className="py-20 bg-retro-darker/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-12 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-retro neon-glow-pink mb-6 text-center">
             <span className="retro-only">[projects.tsx]</span>
             <span className="pro-only">Projects</span>
           </h2>
+
+          <div className="flex items-center justify-center mb-12">
+            <a href="/portfolio" className="inline-block text-lg sm:text-xl font-mono text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors" aria-label="Check out my portfolio">
+              → Check out my portfolio
+            </a>
+          </div>
 
           <div className="grid md:grid-cols-2 gap-8">
             {[
@@ -353,7 +359,7 @@ export default function Home() {
 
           {/* Golden separator with icon (under keywords, before first publication) */}
           <div className="flex items-center justify-center mb-8">
-            <a href="/coauthors" className="inline-block text-sm text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors" aria-label="Explore co-author network">
+            <a href="/coauthors" className="inline-block text-lg sm:text-xl font-mono text-neon-cyan hover:text-neon-pink hover:neon-glow transition-colors" aria-label="Explore co-author network">
               → Explore co-author network
             </a>
           </div>
