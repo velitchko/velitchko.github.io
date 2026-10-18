@@ -10,7 +10,7 @@ links:
   - label: "Project site"
     url: "https://refhub.io/"
     kind: "project"
-order: 8
+order: 1
 ---
 
 ## Overview

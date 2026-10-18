@@ -11,7 +11,7 @@ links:
     url: "https://artvis.cvast.tuwien.ac.at/"
     kind: "project"
 featured: true
-order: 1
+order: 2
 ---
 
 ## Overview

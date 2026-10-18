@@ -10,7 +10,7 @@ links:
   - label: "Workshop site"
     url: "https://visgames.netlify.app/"
     kind: "project"
-order: 6
+order: 3
 ---
 
 ## Overview

@@ -10,7 +10,7 @@ links:
   - label: "Repository"
     url: "https://github.com/velitchko/interactive-music-mapping-vienna"
     kind: "repository"
-order: 5
+order: 8
 ---
 
 ## Overview

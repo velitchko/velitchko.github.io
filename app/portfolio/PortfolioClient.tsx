@@ -1,17 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { PortfolioProject } from "@/data/portfolio";
+import { getProjectVisuals, type ProjectVisualSet } from "@/lib/placeholderArt";
+import { ProjectHero, ProjectVisualStrip } from "@/components/ProjectVisual";
 
-function ProjectMedia({ project }: { project: PortfolioProject }) {
+function ProjectMedia({ project, visuals }: { project: PortfolioProject; visuals: ProjectVisualSet }) {
   if (!project.media?.length) {
-    return (
-      <div className="portfolio-media-placeholder" aria-label={`Media placeholder for ${project.title}`}>
-        <span className="text-4xl" aria-hidden="true">▧</span>
-        <p>Project media to be added</p>
-        <small>Add a local image or GIF in <code>public/portfolio/</code> and its alt text in <code>data/portfolio-projects/{project.slug}.md</code>.</small>
-      </div>
-    );
+    return <ProjectVisualStrip id={project.slug} items={visuals.strip} />;
   }
 
   return (
@@ -31,8 +27,42 @@ function ProjectMedia({ project }: { project: PortfolioProject }) {
 export default function PortfolioClient({ projects }: { projects: PortfolioProject[] }) {
   const [activeProject, setActiveProject] = useState(projects[0]?.slug);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
+  const [isExportingPdf, setIsExportingPdf] = useState(false);
   const navigatorTriggerRef = useRef<HTMLButtonElement>(null);
   const navigatorCloseRef = useRef<HTMLButtonElement>(null);
+
+  // Deterministic per-project so the same project always gets the same concept
+  // art, both in the live page and in the exported PDF brochure.
+  const visualsBySlug = useMemo(() => {
+    const map = new Map<string, ProjectVisualSet>();
+    projects.forEach((project) => map.set(project.slug, getProjectVisuals(project.slug)));
+    return map;
+  }, [projects]);
+
+  const handleExportPdf = async () => {
+    if (isExportingPdf) return;
+    setIsExportingPdf(true);
+    try {
+      const [{ pdf }, { default: PortfolioPdfDocument }] = await Promise.all([
+        import("@react-pdf/renderer"),
+        import("@/components/PortfolioPdfDocument"),
+      ]);
+      const blob = await pdf(<PortfolioPdfDocument projects={projects} />).toBlob();
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "velitchko-filipov-portfolio.pdf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Failed to generate portfolio PDF, falling back to browser print.", error);
+      window.print();
+    } finally {
+      setIsExportingPdf(false);
+    }
+  };
 
   const jumpTo = (slug: string) => {
     setActiveProject(slug);
@@ -80,7 +110,10 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
         <h1>Projects that make complex systems easier to see, explore, and discuss.</h1>
         <p className="portfolio-lede">A working portfolio of research and applied projects across visual analytics, network visualization, and collaborative data exploration.</p>
         <div className="portfolio-cover-actions no-print">
-          <button className="retro-button" onClick={() => window.print()} type="button"><span className="retro-only">PRINT / SAVE PDF</span><span className="pro-only">Print / save as PDF</span></button>
+          <button className="retro-button" onClick={handleExportPdf} type="button" disabled={isExportingPdf} aria-busy={isExportingPdf}>
+            <span className="retro-only">{isExportingPdf ? "GENERATING PDF…" : "SAVE AS PDF"}</span>
+            <span className="pro-only">{isExportingPdf ? "Generating PDF…" : "Save as PDF"}</span>
+          </button>
           <a href="#case-studies" className="portfolio-text-link">Browse case studies ↓</a>
         </div>
         <p className="portfolio-print-note print-only">Portfolio · Velitchko Filipov · Visualization Researcher</p>
@@ -118,22 +151,27 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                     </li>
                   ))}
                 </ol>
-                <button className="portfolio-print-button" type="button" onClick={() => window.print()}>Print portfolio</button>
+                <button className="portfolio-print-button" type="button" onClick={handleExportPdf} disabled={isExportingPdf}>{isExportingPdf ? "Generating PDF…" : "Save as PDF"}</button>
               </aside>
             </div>
           )}
         </div>
         <main id="case-studies" className="portfolio-case-studies" aria-label="Portfolio case studies">
-          {projects.map((project, index) => (
+          {projects.map((project, index) => {
+            const visuals = visualsBySlug.get(project.slug)!;
+            return (
             <article className="portfolio-case-study print-page" id={project.slug} key={project.slug} tabIndex={-1}>
               <div className="portfolio-index">{String(index + 1).padStart(2, "0")}</div>
               <div className="portfolio-case-content">
-                <header>
-                  <div className="portfolio-meta"><span>{project.status ?? "project"}</span>{project.date && <span>{project.date}</span>}</div>
-                  <h2>{project.title}</h2>
-                  <p className="portfolio-blurb">{project.blurb}</p>
+                <header className="portfolio-case-header">
+                  {!project.media?.length && <ProjectHero id={project.slug} plan={visuals.hero} />}
+                  <div className="portfolio-case-header-text">
+                    <div className="portfolio-meta"><span>{project.status ?? "project"}</span>{project.date && <span>{project.date}</span>}</div>
+                    <h2>{project.title}</h2>
+                    <p className="portfolio-blurb">{project.blurb}</p>
+                  </div>
                 </header>
-                <ProjectMedia project={project} />
+                <ProjectMedia project={project} visuals={visuals} />
                 <div className="portfolio-details portfolio-details-desktop"><ProjectDetails project={project} /></div>
                 <details className="portfolio-details-mobile">
                   <summary>Read project details</summary>
@@ -145,7 +183,8 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                 </footer>
               </div>
             </article>
-          ))}
+            );
+          })}
 
           <section className="portfolio-outro print-page" aria-labelledby="portfolio-contact-title">
             <p className="portfolio-eyebrow">Let&apos;s make something legible</p>
