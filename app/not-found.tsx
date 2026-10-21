@@ -239,6 +239,26 @@ const sciFiReferences = [
     quote: "Groundhog Day: you hit refresh and still no page.",
     movie: "Groundhog Day",
     suggestion: "Maybe try a different link this time."
+  },
+  {
+    quote: "The navigation computer has filed this page under ‘later.’",
+    movie: "Unscheduled maintenance log",
+    suggestion: "The universe remains operational."
+  },
+  {
+    quote: "Signal acquired. Destination absent.",
+    movie: "Deep-space routing manual",
+    suggestion: "Try a known coordinate."
+  },
+  {
+    quote: "404: The probe returned with nothing but silence.",
+    movie: "Telemetry report",
+    suggestion: "A surprisingly honest result."
+  },
+  {
+    quote: "This sector is intentionally blank. Probably.",
+    movie: "Galactic zoning notice",
+    suggestion: "Proceed to a less theoretical address."
   }
 ];
 
@@ -326,14 +346,14 @@ export default function NotFound() {
         <div className="relative space-y-4">
           <h1 
             className="glitch text-8xl md:text-9xl font-bold text-cyan-400"
-            style={{ fontFamily: "'Press Start 2P', cursive" }}
+            style={{ fontFamily: "'Press Start 2P', monospace" }}
             data-text="404"
           >
             404
           </h1>
           <div 
             className="absolute inset-0 text-8xl md:text-9xl font-bold text-cyan-400 opacity-20 blur-xl pointer-events-none"
-            style={{ fontFamily: "'Press Start 2P', cursive" }}
+            style={{ fontFamily: "'Press Start 2P', monospace" }}
           >
             404
           </div>
@@ -357,7 +377,7 @@ export default function NotFound() {
           </div>
           
           <p 
-            className="text-3xl italic leading-relaxed mb-6"
+            className="text-3xl leading-relaxed mb-6"
             style={{ 
               fontFamily: "'VT323', monospace",
               color: '#00ffff',
@@ -378,7 +398,7 @@ export default function NotFound() {
           </p>
           
           <p 
-            className="text-xl italic"
+            className="text-xl"
             style={{ 
               fontFamily: "'VT323', monospace",
               color: 'rgba(0, 255, 255, 0.6)'
@@ -394,7 +414,7 @@ export default function NotFound() {
             href="/"
             className="group relative px-8 py-4 border-2 text-lg font-bold overflow-hidden transition-all duration-300"
             style={{ 
-              fontFamily: "'Press Start 2P', cursive",
+              fontFamily: "'Press Start 2P', monospace",
               borderColor: '#00ffff',
               color: '#00ffff',
               boxShadow: '0 0 10px rgba(0, 255, 255, 0.5)'
@@ -411,7 +431,7 @@ export default function NotFound() {
             href="/blog"
             className="group relative px-8 py-4 border-2 text-lg font-bold overflow-hidden transition-all duration-300"
             style={{ 
-              fontFamily: "'Press Start 2P', cursive",
+              fontFamily: "'Press Start 2P', monospace",
               borderColor: '#ff00ff',
               color: '#ff00ff',
               boxShadow: '0 0 10px rgba(255, 0, 255, 0.5)'
