@@ -251,7 +251,7 @@ const sciFiReferences = [
     suggestion: "This missing page is not. Try the homepage."
   },
   {
-    quote: "Open the pod bay doors, please, HAL.",
+    quote: "Open the pod bay doors, HAL.",
     movie: "2001: A Space Odyssey",
     suggestion: "HAL cannot open this page. Try another route."
   },
