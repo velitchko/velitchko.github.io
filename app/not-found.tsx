@@ -241,24 +241,24 @@ const sciFiReferences = [
     suggestion: "Maybe try a different link this time."
   },
   {
-    quote: "The navigation computer has filed this page under ‘later.’",
-    movie: "Unscheduled maintenance log",
-    suggestion: "The universe remains operational."
+    quote: "E.T. phone home.",
+    movie: "E.T.: The Extra-Terrestrial",
+    suggestion: "Phone home, or use the link below."
   },
   {
-    quote: "Signal acquired. Destination absent.",
-    movie: "Deep-space routing manual",
-    suggestion: "Try a known coordinate."
+    quote: "Soylent Green is people!",
+    movie: "Soylent Green",
+    suggestion: "This missing page is not. Try the homepage."
   },
   {
-    quote: "404: The probe returned with nothing but silence.",
-    movie: "Telemetry report",
-    suggestion: "A surprisingly honest result."
+    quote: "Open the pod bay doors, please, HAL.",
+    movie: "2001: A Space Odyssey",
+    suggestion: "HAL cannot open this page. Try another route."
   },
   {
-    quote: "This sector is intentionally blank. Probably.",
-    movie: "Galactic zoning notice",
-    suggestion: "Proceed to a less theoretical address."
+    quote: "Take your stinking paws off me, you damned dirty ape.",
+    movie: "Planet of the Apes",
+    suggestion: "Escape this URL and return home."
   }
 ];
 
