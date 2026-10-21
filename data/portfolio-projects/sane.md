@@ -1,27 +1,49 @@
+```yaml
 ---
 title: "SANE"
-blurb: "An umbrella visual analytics framework for event-based information diffusion with uncertainty across dynamic networks such as pandemics and misinformation campaigns — including TimeLighting, its 3D space-time projection technique for temporal networks."
+blurb: "A research project exploring how information, viruses, and ideas spread through networks over time, using visual analytics to make complex and uncertain processes easier to understand."
 tags:
+  - "Visual Analytics"
   - "Dynamic Networks"
-  - "Diffusion Processes"
-  - "Uncertainty"
-  - "Projections"
+  - "Information Diffusion"
+  - "Uncertainty Visualization"
 status: "research"
+hero: "sane_hero.png"
+images:
+  - "sane_1.png"
+  - "sane_2.png"
+  - "sane_3.png"
+highlights:
+  - "International research collaboration on event-based diffusion in networks"
+  - "Includes TimeLighting, an interactive case study for temporal network analysis"
 links:
   - label: "Project site"
     url: "https://www.cvast.tuwien.ac.at/projects/sane"
     kind: "project"
-  - label: "TimeLighting repository"
-    url: "https://github.com/velitchko/timelighting"
-    kind: "repository"
-featured: true
-order: 6
+  - label: "Research funding"
+    url: "https://www.fwf.ac.at/en/research-radar/10.55776/I6635"
+    kind: "external"
+featured: false
+order: 3
 ---
+```
 
-## Overview
+### Overview
 
-A visual analytics framework for event-based information diffusion with uncertainty across dynamic networks such as pandemics and misinformation campaigns.
+How do pandemics, misinformation, or computer malware spread? Although the context may differ, they all move through networks of connected people, devices, or systems.
 
-## TimeLighting
+**SANE** explores how these diffusion processes unfold over time and how interactive visualization can help researchers better understand them. The project focuses on event-based network data, allowing analysts to study change as it happens while also accounting for uncertainty — a key part of real-world diffusion processes.
 
-TimeLighting is SANE's technique for temporal networks: it projects node trajectories and edge surfaces from 3D space-time cubes down to 2D, making it easier to read how a dynamic network evolves over time without losing the temporal structure.
+### Case Study: TimeLighting
+
+To make these ideas tangible, **TimeLighting** serves as a key case study within SANE. It is an interactive visual analytics tool for exploring temporal networks, helping users investigate how relationships and activity evolve over time.
+
+Rather than relying only on static snapshots or animations, TimeLighting brings temporal patterns together in a single visual representation. It allows researchers to follow node trajectories, inspect how activity changes, and identify interesting moments or structures for deeper analysis.
+
+### Research Direction
+
+SANE aims to build a stronger foundation for analyzing dynamic and uncertain diffusion processes. By combining methodological research with practical tools such as TimeLighting, the project helps make complex network behavior more understandable, explorable, and actionable.
+
+### Collaboration
+
+SANE is a research collaboration involving **TU Wien**, the **University of Cologne**, and **Newcastle University**, supported by the **Austrian Science Fund (FWF)**.
