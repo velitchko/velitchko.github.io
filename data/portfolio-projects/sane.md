@@ -1,4 +1,3 @@
-```yaml
 ---
 title: "SANE"
 blurb: "A research project exploring how information, viruses, and ideas spread through networks over time, using visual analytics to make complex and uncertain processes easier to understand."
@@ -26,7 +25,6 @@ links:
 featured: false
 order: 3
 ---
-```
 
 ### Overview
 
