@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const sciFiReferences = [
   {
@@ -241,7 +242,32 @@ const sciFiReferences = [
   }
 ];
 
+function ProfessionalNotFound() {
+  return (
+    <section className="notfound-professional px-4" aria-labelledby="not-found-title">
+      <div className="notfound-professional__card">
+        <p className="notfound-professional__eyebrow">404 · Page not found</p>
+        <h1 id="not-found-title" className="text-4xl sm:text-5xl md:text-6xl font-semibold">
+          This address does not lead anywhere.
+        </h1>
+        <p className="notfound-professional__lede">
+          The page may have moved, been renamed, or never existed. You can return to the homepage or browse recent writing.
+        </p>
+        <nav className="notfound-professional__actions" aria-label="404 page navigation">
+          <Link href="/" className="notfound-professional__action notfound-professional__action--primary">
+            Go to homepage
+          </Link>
+          <Link href="/blog" className="notfound-professional__action notfound-professional__action--secondary">
+            Browse the blog
+          </Link>
+        </nav>
+      </div>
+    </section>
+  );
+}
+
 export default function NotFound() {
+  const { theme } = useTheme();
   // store the selected index to make it easy to pick a different random entry
   const [index, setIndex] = useState<number | null>(null);
   const reference = index !== null ? sciFiReferences[index] : null;
@@ -271,6 +297,10 @@ export default function NotFound() {
   const handlePointerDown = () => setIsPressed(true);
   const handlePointerUp = () => setIsPressed(false);
   const handlePointerCancel = () => setIsPressed(false);
+
+  if (theme === 'professional') {
+    return <ProfessionalNotFound />;
+  }
 
   // Show loading state until client-side random selection is complete
   if (!reference) {
