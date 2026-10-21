@@ -152,6 +152,81 @@ body {
   letter-spacing: 0.05em;
 }
 
+/* Shared, semantic 404 surface for the editorial theme. The retro 404 keeps
+   its intentionally arcade-specific treatment in its own component branch. */
+.notfound-professional {
+  display: grid;
+  min-height: min(44rem, calc(100vh - 4rem));
+  place-items: center;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+.notfound-professional__card {
+  border-block: 1px solid color-mix(in srgb, var(--foreground) 22%, transparent);
+  max-width: 48rem;
+  padding: clamp(2rem, 7vw, 5rem) 0;
+}
+
+.notfound-professional__eyebrow {
+  color: var(--color-neon-pink);
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.notfound-professional__lede {
+  color: color-mix(in srgb, var(--foreground) 72%, transparent);
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  margin-top: 1.5rem;
+  max-width: 40rem;
+}
+
+.notfound-professional__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.notfound-professional__action {
+  align-items: center;
+  border: 1px solid var(--foreground);
+  display: inline-flex;
+  font-family: 'Lora', 'Georgia', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1rem;
+  text-decoration: none;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.notfound-professional__action--primary {
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.notfound-professional__action--secondary {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.notfound-professional__action:hover {
+  background: var(--color-neon-pink);
+  border-color: var(--color-neon-pink);
+  color: var(--background);
+}
+
+.notfound-professional__action:focus-visible {
+  outline: 3px solid var(--color-neon-pink);
+  outline-offset: 3px;
+}
+
 /* Portfolio: intentionally CSS-native motion so the static export remains light. */
 .portfolio-page {
   --portfolio-surface: color-mix(in srgb, var(--background) 88%, #201033);
