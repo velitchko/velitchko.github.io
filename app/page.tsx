@@ -260,20 +260,20 @@ export default function Home() {
                 title: "CV3",
                 description: "Interactive exploration environment enabling recruiters to explore, assess, and compare multiple CVs simultaneously for efficient candidate selection.",
                 tags: ["Visual Analytics", "Comparison", "Human Resources"],
-                link: "https://github.com/velitchko/cvthree"
+                link: "https://cvthree.cvast.tuwien.ac.at/"
               },
               {
                 title: "PolyCube",
                 description: "Space-time cube visualization method for exploring cultural heritage data, integrating spatial and temporal information to improve mental model construction.",
                 tags: ["Space-Time-Cube", "Cultural Heritage", "Cognitive Science"],
-                link: "https://bigdata-vis.github.io/polycube/combined"
+                link: "https://github.com/bigdata-vis/polycube"
               },
               
               {
                 title: "IMMV",
                 description: "Interactive visual analytics platform exploring music as an urban identification tool, making the interaction between music and urban texture accessible.",
                 tags: ["Visual Analytics", "Musicology", "Cultural Heritage"],
-                link: "https://github.com/velitchko/interactive-music-mapping-vienna"
+                link: "https://immv-map.cvast.tuwien.ac.at/"
               }
             ].map((project, index) => (
               <div key={index} className="retro-card">
