@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import type { PortfolioMedia, PortfolioProject } from "@/data/portfolio";
 import { getProjectVisuals, type ProjectVisualSet } from "@/lib/placeholderArt";
@@ -11,6 +11,19 @@ type AssetLightboxState = {
   media: PortfolioMedia[];
   index: number;
 };
+
+const portfolioFontScales = [
+  { value: "small", label: "Small", scale: 0.9 },
+  { value: "default", label: "Default", scale: 1 },
+  { value: "large", label: "Large", scale: 1.15 },
+  { value: "extra-large", label: "Extra large", scale: 1.3 },
+] as const;
+
+type PortfolioFontScale = (typeof portfolioFontScales)[number]["value"];
+
+function isPortfolioFontScale(value: string | null): value is PortfolioFontScale {
+  return portfolioFontScales.some((size) => size.value === value);
+}
 
 function ProjectMedia({ project, visuals, onOpen }: { project: PortfolioProject; visuals: ProjectVisualSet; onOpen: (media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => void }) {
   if (!project.gallery?.length) {
@@ -56,6 +69,19 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
   const assetLightboxCloseRef = useRef<HTMLButtonElement>(null);
   const assetLightboxTriggerRef = useRef<HTMLButtonElement | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [fontScale, setFontScale] = useState<PortfolioFontScale>("default");
+
+  useEffect(() => {
+    const savedFontScale = window.localStorage.getItem("portfolio-font-scale");
+    if (isPortfolioFontScale(savedFontScale)) setFontScale(savedFontScale);
+  }, []);
+
+  const selectedFontScale = portfolioFontScales.find((size) => size.value === fontScale)!;
+
+  const handleFontScaleChange = (value: PortfolioFontScale) => {
+    setFontScale(value);
+    window.localStorage.setItem("portfolio-font-scale", value);
+  };
 
   // Deterministic per-project so the same project always gets the same concept
   // art, both in the live page and in the exported PDF brochure.
@@ -184,7 +210,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
   const hasMetadata = (project: PortfolioProject) => Boolean(project.abstract || project.role || project.collaborators?.length || project.outcomes?.length);
 
   return (
-    <div className="portfolio-page">
+    <div className="portfolio-page" style={{ "--portfolio-text-scale": selectedFontScale.scale } as CSSProperties}>
       <section className="portfolio-cover print-page">
         <p className="portfolio-eyebrow"><span className="retro-only">[selected_work.exe]</span><span className="pro-only">Selected work</span></p>
         <h1>Projects that make complex systems easier to see, explore, and discuss.</h1>
@@ -200,6 +226,23 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
       </section>
 
       <div className="portfolio-shell">
+        <fieldset className="portfolio-font-control no-print">
+          <legend>Reading size</legend>
+          <div className="portfolio-font-control-options">
+            {portfolioFontScales.map((size) => (
+              <label key={size.value}>
+                <input
+                  type="radio"
+                  name="portfolio-font-scale"
+                  value={size.value}
+                  checked={fontScale === size.value}
+                  onChange={() => handleFontScaleChange(size.value)}
+                />
+                <span>{size.label}</span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
         <div className="portfolio-navigator no-print">
           <button
             ref={navigatorTriggerRef}

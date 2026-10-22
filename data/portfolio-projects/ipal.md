@@ -9,11 +9,12 @@ tags:
 status: "research"
 hero:
   src: "/portfolio/ipal-1.png"
-  alt: "iPal interface for organizing decentralized knowledge vaults"
-  caption: "iPal gives creators control over sharing and access to knowledge."
+  alt: "iPal knowledge-vault marketplace with an NFT access-management dialog"
+  caption: "NFT-based access controls govern a knowledge vault."
 images:
   - src: "/portfolio/ipal-2.png"
-    alt: "iPal interface for a knowledge-vault subscription"
+    alt: "iPal workspace showing a vault list and a detailed knowledge item"
+    caption: "Vaults organize knowledge into shareable, managed spaces."
   - src: "/portfolio/ipal-3.png"
     alt: "Additional iPal knowledge marketplace view"
 highlights:

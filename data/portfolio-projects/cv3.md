@@ -10,15 +10,18 @@ tags:
 status: "research"
 hero:
   src: "/portfolio/cv3-1.png"
-  alt: "CV3 interface visualizing an interactive career history"
-  caption: "CV3 turns résumés into explorable professional journeys."
+  alt: "CV3 résumé browser showing candidate cards with skills, languages, and experience"
+  caption: "CV3 makes professional profiles scannable and comparable."
 images:
   - src: "/portfolio/cv3-2.png"
-    alt: "CV3 comparison view for candidate skills and experience"
+    alt: "CV3 comparison screen showing side-by-side candidate profiles and experience summaries"
+    caption: "Recruiters can compare candidate profiles in one view."
   - src: "/portfolio/cv3-3.png"
-    alt: "CV3 timeline and map for exploring career development"
+    alt: "CV3 skills comparison with a radar chart and relationship diagrams"
+    caption: "Skills and career attributes can be compared visually."
   - src: "/portfolio/cv3-4.png"
-    alt: "CV3 interface for comparing professional profiles"
+    alt: "CV3 career timeline connecting employers, roles, and locations"
+    caption: "A timeline situates each step of a professional journey."
 highlights:
   - "Published at EuroVis 2019"
   - "Evaluated with professional recruiters"

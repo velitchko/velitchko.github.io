@@ -9,13 +9,15 @@ tags:
 status: "research"
 hero:
   src: "/portfolio/artvis-hero.png"
-  alt: "ArtVis interface showing an interactive network of art-historical entities"
-  caption: "ArtVis connects people, artworks, institutions, and events."
+  alt: "ArtVis home page with project navigation and a search field"
+  caption: "ArtVis is an entry point for exploring art-historical relationships."
 images:
   - src: "/portfolio/artvis-1.png"
-    alt: "ArtVis visualization workspace with linked art-history records"
+    alt: "ArtVis dashboard combining a filtered record table, temporal charts, and a radial relationship view"
+    caption: "Coordinated views connect records, time, and relationships."
   - src: "/portfolio/artvis-2.png"
-    alt: "ArtVis network view revealing relationships between cultural entities"
+    alt: "ArtVis small-multiple line charts comparing event sequences across many records"
+    caption: "Small multiples make patterns across many art-historical records comparable."
   - src: "/portfolio/artvis-3.png"
     alt: "Additional ArtVis interface view"
 highlights:

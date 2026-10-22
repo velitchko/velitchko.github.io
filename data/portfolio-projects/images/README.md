@@ -5,7 +5,11 @@
 Keep the source asset once in this directory, named with hyphens as
 `<project>-<role>.png`. Portfolio Markdown uses typed media objects with a
 root-relative `src` of `/portfolio/<filename>`, descriptive `alt` text, and an
-optional caption. `public/portfolio` is a tracked symlink to this directory;
+optional caption. Alt text is the concise, faithful description of the visible
+image for people using assistive technology; it must not depend on a filename
+or repeat the surrounding heading. A caption is visible supporting context:
+use it only when it explains why the image matters or names the view's role.
+Do not use captions to restate alt text. `public/portfolio` is a tracked symlink to this directory;
 Next's static export therefore publishes these project-local files without a
 second committed asset copy. Missing named files deliberately remain in the
 Markdown so the web and PDF fallback treatment is visible until artwork is

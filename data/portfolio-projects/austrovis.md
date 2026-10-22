@@ -8,8 +8,8 @@ tags:
 status: "ongoing"
 hero:
   src: "/portfolio/austrovis-hero.png"
-  alt: "Participants at an AustroVis workshop session"
-  caption: "AustroVis brings Austria's visualization community together."
+  alt: "AustroVis workshop website home page with event navigation and a workshop introduction"
+  caption: "The workshop site is the shared entry point for Austria's visualization community."
 images:
   - src: "/portfolio/austrovis-1.png"
     alt: "AustroVis workshop activity"
