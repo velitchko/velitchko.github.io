@@ -7,11 +7,17 @@ tags:
   - "Dynamic Networks"
   - "Cultural Heritage"
 status: "research"
-hero: "immv_hero.png"
+hero:
+  src: "/portfolio/immv-hero.png"
+  alt: "Interactive Music Mapping Vienna visualization of cultural connections"
+  caption: "Interactive Music Mapping Vienna explores the city's musical heritage."
 images:
-  - "immv_1.png"
-  - "immv_2.png"
-  - "immv_3.png"
+  - src: "/portfolio/immv-1.png"
+    alt: "Circular view of historical music-network relationships"
+  - src: "/portfolio/immv-2.png"
+    alt: "Music Mapping Vienna interface with connected people and events"
+  - src: "/portfolio/immv-3.png"
+    alt: "Additional Interactive Music Mapping Vienna visualization"
 highlights:
   - "Published in Visual Informatics (2021)"
   - "Circular: interactive visualization of historical networks"

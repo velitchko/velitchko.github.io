@@ -7,12 +7,17 @@ tags:
   - "Human-Computer Interaction"
   - "Community"
 status: "ongoing"
-hero: "visgames_hero.png"
+hero:
+  src: "/portfolio/visgames-1.png"
+  alt: "VisGames workshop participants exploring visualization through play"
+  caption: "VisGames brings visualization, games, and community together."
 images:
-  - "visgames_1.png"
-  - "visgames_2.png"
-  - "visgames_3.png"
-  - "visgames_4.png"
+  - src: "/portfolio/visgames-2.png"
+    alt: "VisGames activity exploring data visualization through play"
+  - src: "/portfolio/visgames-3.png"
+    alt: "VisGames workshop game session"
+  - src: "/portfolio/visgames-4.png"
+    alt: "VisGames community event"
 highlights:
   - "Established at EuroVis 2025"
   - "Recurring international workshop"

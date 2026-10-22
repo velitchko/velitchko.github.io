@@ -8,11 +8,17 @@ tags:
   - "Human-Computer Interaction"
   - "Career Analytics"
 status: "research"
-hero: "cv3_hero.png"
+hero:
+  src: "/portfolio/cv3-1.png"
+  alt: "CV3 interface visualizing an interactive career history"
+  caption: "CV3 turns résumés into explorable professional journeys."
 images:
-  - "cv3_1.png"
-  - "cv3_2.png"
-  - "cv3_3.png"
+  - src: "/portfolio/cv3-2.png"
+    alt: "CV3 comparison view for candidate skills and experience"
+  - src: "/portfolio/cv3-3.png"
+    alt: "CV3 timeline and map for exploring career development"
+  - src: "/portfolio/cv3-4.png"
+    alt: "CV3 interface for comparing professional profiles"
 highlights:
   - "Published at EuroVis 2019"
   - "Evaluated with professional recruiters"

@@ -7,11 +7,16 @@ tags:
   - "Cultural Heritage"
   - "Human-Computer Interaction"
 status: "research"
-hero: "polycube_hero.png"
+hero:
+  src: "/portfolio/polycube-hero.png"
+  alt: "PolyCube visualization of cultural-heritage collections"
 images:
-  - "polycube_1.png"
-  - "polycube_2.png"
-  - "polycube_3.png"
+  - src: "/portfolio/polycube-1.png"
+    alt: "PolyCube coordinated cultural-collection view"
+  - src: "/portfolio/polycube-2.png"
+    alt: "PolyCube time and geography exploration view"
+  - src: "/portfolio/polycube-3.png"
+    alt: "PolyCube three-dimensional collection visualization"
 highlights:
   - "Published in IEEE Computer Graphics and Applications (2020)"
   - "Interactive multi-perspective visualization of cultural collections"

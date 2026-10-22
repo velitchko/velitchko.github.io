@@ -46,9 +46,13 @@ function localMediaExists(src: string): boolean {
 }
 
 function normalizeMediaSource(value: string): string | undefined {
-  if (value.startsWith("/")) return value;
+  // Portfolio media is authored as a root-relative `/portfolio/<filename>` URL.
+  // `public/portfolio` is a tracked symlink to the canonical project-local
+  // asset directory, so Next static export publishes the files without a
+  // second committed copy.
+  if (value.startsWith("/portfolio/")) return value;
   // The first published project files used simple filenames. Keep them as a
-  // supported shorthand for the documented public/portfolio/ convention.
+  // supported shorthand while migrating them to the documented convention.
   if (!value.includes("/") && !value.includes("\\")) return `/portfolio/${value}`;
   return undefined;
 }

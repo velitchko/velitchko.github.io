@@ -7,11 +7,15 @@ tags:
   - "Decentralized Applications"
   - "Smart Contracts"
 status: "research"
-hero: "ipal_hero.png"
+hero:
+  src: "/portfolio/ipal-1.png"
+  alt: "iPal interface for organizing decentralized knowledge vaults"
+  caption: "iPal gives creators control over sharing and access to knowledge."
 images:
-  - "ipal_1.png"
-  - "ipal_2.png"
-  - "ipal_3.png"
+  - src: "/portfolio/ipal-2.png"
+    alt: "iPal interface for a knowledge-vault subscription"
+  - src: "/portfolio/ipal-3.png"
+    alt: "Additional iPal knowledge marketplace view"
 highlights:
   - "NFT-based access to knowledge vaults"
   - "Automated subscription and revenue management"
