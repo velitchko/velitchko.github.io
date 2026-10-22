@@ -1,23 +1,38 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { PortfolioProject } from "@/data/portfolio";
+import { createPortal } from "react-dom";
+import type { PortfolioMedia, PortfolioProject } from "@/data/portfolio";
 import { getProjectVisuals, type ProjectVisualSet } from "@/lib/placeholderArt";
 import { ProjectHero, ProjectVisualStrip } from "@/components/ProjectVisual";
 
-function ProjectMedia({ project, visuals }: { project: PortfolioProject; visuals: ProjectVisualSet }) {
+type AssetLightboxState = {
+  projectTitle: string;
+  media: PortfolioMedia[];
+  index: number;
+};
+
+function ProjectMedia({ project, visuals, onOpen }: { project: PortfolioProject; visuals: ProjectVisualSet; onOpen: (media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => void }) {
   if (!project.gallery?.length) {
     return <ProjectVisualStrip id={project.slug} items={visuals.strip} />;
   }
+
+  const availableMedia = project.gallery.filter((media) => media.isAvailable);
 
   return (
     <div className="portfolio-media-grid" aria-label="Supporting project media">
       {project.gallery.map((media, index) => (
         <figure key={media.src}>
           {media.isAvailable ? (
-            // Native img keeps static export and local GIFs simple.
-            // eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export
-            <img src={media.src} alt={media.alt} />
+            <button
+              type="button"
+              className="portfolio-media-trigger"
+              onClick={(event) => onOpen(availableMedia, availableMedia.indexOf(media), event.currentTarget)}
+              aria-label={`Enlarge supporting image ${index + 1}: ${media.alt}`}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
+              <img src={media.src} alt={media.alt} />
+            </button>
           ) : (
             <div className="portfolio-media-placeholder" role="img" aria-label={`Supporting image ${index + 1} pending`}>
               <span>Supporting image {index + 1}</span>
@@ -35,8 +50,12 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
   const [activeProject, setActiveProject] = useState(projects[0]?.slug);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
   const [isExportingPdf, setIsExportingPdf] = useState(false);
+  const [assetLightbox, setAssetLightbox] = useState<AssetLightboxState | null>(null);
   const navigatorTriggerRef = useRef<HTMLButtonElement>(null);
   const navigatorCloseRef = useRef<HTMLButtonElement>(null);
+  const assetLightboxCloseRef = useRef<HTMLButtonElement>(null);
+  const assetLightboxTriggerRef = useRef<HTMLButtonElement | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
 
   // Deterministic per-project so the same project always gets the same concept
   // art, both in the live page and in the exported PDF brochure.
@@ -96,6 +115,62 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
       trigger?.focus();
     };
   }, [isNavigatorOpen]);
+
+  useEffect(() => setIsMounted(true), []);
+
+  const openAssetLightbox = (projectTitle: string, media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => {
+    assetLightboxTriggerRef.current = trigger;
+    setAssetLightbox({ projectTitle, media, index });
+  };
+
+  const closeAssetLightbox = () => {
+    setAssetLightbox(null);
+    assetLightboxTriggerRef.current?.focus();
+  };
+
+  const moveAssetLightbox = (direction: -1 | 1) => {
+    setAssetLightbox((current) => current && {
+      ...current,
+      index: Math.min(Math.max(current.index + direction, 0), current.media.length - 1),
+    });
+  };
+
+  useEffect(() => {
+    if (!assetLightbox) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") closeAssetLightbox();
+      if (event.key === "ArrowRight") moveAssetLightbox(1);
+      if (event.key === "ArrowLeft") moveAssetLightbox(-1);
+      if (event.key === "Tab") {
+        const dialog = document.querySelector<HTMLElement>(".portfolio-asset-lightbox");
+        const focusable = dialog ? Array.from(dialog.querySelectorAll<HTMLElement>('button:not([disabled])')) : [];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) return;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    assetLightboxCloseRef.current?.focus();
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  // The state object changes as images advance; keep focus on the control the
+  // visitor used instead of refocusing the close button on every navigation.
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- deliberately bind only while the dialog opens/closes
+  }, [Boolean(assetLightbox)]);
 
   const ProjectMetadata = ({ project }: { project: PortfolioProject }) => (
     <>
@@ -164,6 +239,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
         <main id="case-studies" className="portfolio-case-studies" aria-label="Portfolio case studies">
           {projects.map((project, index) => {
             const visuals = visualsBySlug.get(project.slug)!;
+            const availableProjectMedia = [project.hero, ...(project.gallery ?? [])].filter((media): media is PortfolioMedia => Boolean(media?.isAvailable));
             return (
             <article className="portfolio-case-study print-page" id={project.slug} key={project.slug} tabIndex={-1}>
               <div className="portfolio-index">{String(index + 1).padStart(2, "0")}</div>
@@ -171,8 +247,15 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                 <header className="portfolio-case-header">
                   {project.hero?.isAvailable ? (
                     <figure className="portfolio-hero portfolio-hero-image">
-                      {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
-                      <img src={project.hero.src} alt={project.hero.alt} />
+                      <button
+                        type="button"
+                        className="portfolio-hero-trigger"
+                        onClick={(event) => openAssetLightbox(project.title, availableProjectMedia, 0, event.currentTarget)}
+                        aria-label={`Enlarge hero image: ${project.hero.alt}`}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
+                        <img src={project.hero.src} alt={project.hero.alt} />
+                      </button>
                       {project.hero.caption && <figcaption>{project.hero.caption}</figcaption>}
                     </figure>
                   ) : (
@@ -184,7 +267,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                     <p className="portfolio-blurb">{project.blurb}</p>
                   </div>
                 </header>
-                <ProjectMedia project={project} visuals={visuals} />
+                <ProjectMedia project={project} visuals={visuals} onOpen={(media, imageIndex, trigger) => openAssetLightbox(project.title, [project.hero, ...media].filter((item): item is PortfolioMedia => Boolean(item?.isAvailable)), project.hero?.isAvailable ? imageIndex + 1 : imageIndex, trigger)} />
                 {project.contentHtml && <section className="portfolio-markdown" aria-label={`${project.title} case study`} dangerouslySetInnerHTML={{ __html: project.contentHtml }} />}
                 {hasMetadata(project) && <div className="portfolio-details portfolio-details-desktop"><ProjectMetadata project={project} /></div>}
                 {hasMetadata(project) && <details className="portfolio-details-mobile">
@@ -212,6 +295,29 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
           </section>
         </main>
       </div>
+      {isMounted && assetLightbox && createPortal(
+        <div className="portfolio-lightbox-backdrop no-print" onClick={closeAssetLightbox}>
+          <div className="portfolio-lightbox portfolio-asset-lightbox" role="dialog" aria-modal="true" aria-label={`${assetLightbox.projectTitle}: ${assetLightbox.media[assetLightbox.index].alt}`} onClick={(event) => event.stopPropagation()}>
+            <button ref={assetLightboxCloseRef} type="button" className="portfolio-lightbox-close" onClick={closeAssetLightbox} aria-label="Close enlarged image">
+              <svg className="portfolio-icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18" /><line x1="18" y1="6" x2="6" y2="18" /></svg>
+            </button>
+            <div className="portfolio-asset-lightbox-frame">
+              {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
+              <img src={assetLightbox.media[assetLightbox.index].src} alt={assetLightbox.media[assetLightbox.index].alt} />
+            </div>
+            {(assetLightbox.media[assetLightbox.index].caption || assetLightbox.media.length > 1) && <p className="portfolio-lightbox-caption">{assetLightbox.media[assetLightbox.index].caption}{assetLightbox.media.length > 1 && <span className="portfolio-lightbox-count">{assetLightbox.index + 1} / {assetLightbox.media.length}</span>}</p>}
+            {assetLightbox.media.length > 1 && <>
+              <button type="button" className="portfolio-lightbox-nav portfolio-lightbox-nav-prev" onClick={() => moveAssetLightbox(-1)} aria-label="Previous image" disabled={assetLightbox.index === 0}>
+                <svg className="portfolio-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 6 9 12 15 18" /></svg>
+              </button>
+              <button type="button" className="portfolio-lightbox-nav portfolio-lightbox-nav-next" onClick={() => moveAssetLightbox(1)} aria-label="Next image" disabled={assetLightbox.index === assetLightbox.media.length - 1}>
+                <svg className="portfolio-icon" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18" /></svg>
+              </button>
+            </>}
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }
