@@ -9,7 +9,7 @@ import type { PortfolioLink, PortfolioLinkKind, PortfolioMedia, PortfolioProject
 
 const portfolioProjectsDirectory = path.join(process.cwd(), "data/portfolio-projects");
 
-const linkKinds: PortfolioLinkKind[] = ["project", "publication", "repository", "demo"];
+const linkKinds: PortfolioLinkKind[] = ["project", "publication", "repository", "demo", "documentation", "external"];
 const statuses = ["ongoing", "completed", "research"] as const;
 
 function asString(value: unknown): string | undefined {
@@ -39,24 +39,53 @@ function parseLinks(value: unknown): PortfolioLink[] {
   });
 }
 
-function parseMedia(value: unknown): PortfolioMedia[] | undefined {
+function localMediaExists(src: string): boolean {
+  const publicDirectory = path.join(process.cwd(), "public");
+  const candidate = path.resolve(publicDirectory, `.${src}`);
+  return candidate.startsWith(`${publicDirectory}${path.sep}`) && fs.existsSync(candidate);
+}
+
+function normalizeMediaSource(value: string): string | undefined {
+  if (value.startsWith("/")) return value;
+  // The first published project files used simple filenames. Keep them as a
+  // supported shorthand for the documented public/portfolio/ convention.
+  if (!value.includes("/") && !value.includes("\\")) return `/portfolio/${value}`;
+  return undefined;
+}
+
+function parseMediaItem(value: unknown): PortfolioMedia | undefined {
+  if (typeof value === "string") {
+    const src = normalizeMediaSource(value);
+    return src ? { src, alt: "", isAvailable: false } : undefined;
+  }
+  if (!value || typeof value !== "object") return undefined;
+
+  const record = value as Record<string, unknown>;
+  const rawSrc = asString(record.src);
+  const src = rawSrc && normalizeMediaSource(rawSrc);
+  const alt = asString(record.alt);
+  const caption = asString(record.caption);
+  const type = asString(record.type);
+  if (!src) return undefined;
+
+  const mediaItem: PortfolioMedia = {
+    src,
+    alt: alt ?? "",
+    // An image without author-provided alternative text is intentionally held
+    // as a placeholder instead of exposing inaccessible artwork.
+    isAvailable: Boolean(alt && localMediaExists(src)),
+  };
+  if (caption) mediaItem.caption = caption;
+  if (type === "image" || type === "gif") mediaItem.type = type;
+  return mediaItem;
+}
+
+function parseMediaList(value: unknown): PortfolioMedia[] | undefined {
   if (!Array.isArray(value)) return undefined;
-
   const media = value.flatMap((item) => {
-    if (!item || typeof item !== "object") return [];
-    const record = item as Record<string, unknown>;
-    const src = asString(record.src);
-    const alt = asString(record.alt);
-    const caption = asString(record.caption);
-    const type = asString(record.type);
-
-    if (!src || !alt || !src.startsWith("/")) return [];
-    const mediaItem: PortfolioMedia = { src, alt };
-    if (caption) mediaItem.caption = caption;
-    if (type === "image" || type === "gif") mediaItem.type = type;
-    return [mediaItem];
+    const parsed = parseMediaItem(item);
+    return parsed ? [parsed] : [];
   });
-
   return media.length ? media : undefined;
 }
 
@@ -72,14 +101,22 @@ async function renderProjectMarkdown(markdown: string): Promise<string> {
   return processed.toString();
 }
 
+function normalizeFrontMatterFence(source: string): string {
+  // A previously published entry wrapped its YAML front matter in a Markdown
+  // code fence. Accept that harmless legacy form without changing author copy.
+  return source.replace(/^```ya?ml\r?\n(---\r?\n[\s\S]*?\r?\n---)\r?\n```\r?\n?/, "$1\n");
+}
+
 async function getPortfolioProjectByFileName(fileName: string): Promise<PortfolioProject | null> {
   const fullPath = path.join(portfolioProjectsDirectory, fileName);
   const slug = fileName.replace(/\.md$/, "");
-  const { data, content } = matter(fs.readFileSync(fullPath, "utf8"));
+  const { data, content } = matter(normalizeFrontMatterFence(fs.readFileSync(fullPath, "utf8")));
   const title = asString(data.title);
   const blurb = asString(data.blurb);
   const order = typeof data.order === "number" && Number.isFinite(data.order) ? data.order : undefined;
   const links = parseLinks(data.links);
+  const hero = parseMediaItem(data.hero);
+  const gallery = parseMediaList(data.gallery) ?? parseMediaList(data.images) ?? parseMediaList(data.media);
 
   if (!title || !blurb || order === undefined || !links.length) {
     console.warn(`Skipping invalid portfolio project: ${fileName}`);
@@ -103,7 +140,10 @@ async function getPortfolioProjectByFileName(fileName: string): Promise<Portfoli
     ...(statuses.includes(status as (typeof statuses)[number]) ? { status: status as PortfolioProject["status"] } : {}),
     ...(asStringArray(data.outcomes).length ? { outcomes: asStringArray(data.outcomes) } : {}),
     ...(typeof data.featured === "boolean" ? { featured: data.featured } : {}),
-    ...(parseMedia(data.media) ? { media: parseMedia(data.media) } : {}),
+    ...(hero ? { hero } : {}),
+    // `images` is the published field name; `media` is retained for projects
+    // authored against the previous template.
+    ...(gallery ? { gallery } : {}),
     contentHtml,
   };
 }

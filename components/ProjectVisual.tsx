@@ -47,12 +47,12 @@ function VisualSvg({ id, plan, className }: { id: string; plan: VisualPlan; clas
 }
 
 /** Full-bleed concept banner behind a case study's header, fading into the page. */
-export function ProjectHero({ id, plan }: { id: string; plan: VisualPlan }) {
+export function ProjectHero({ id, plan, label = "Concept visual" }: { id: string; plan: VisualPlan; label?: string }) {
   return (
     <div className="portfolio-hero">
       <VisualSvg id={`${id}-hero`} plan={plan} className="portfolio-hero-svg" />
       <div className="portfolio-hero-fade" aria-hidden="true" />
-      <span className="portfolio-visual-badge">Concept visual</span>
+      <span className="portfolio-visual-badge">{label}</span>
     </div>
   );
 }
