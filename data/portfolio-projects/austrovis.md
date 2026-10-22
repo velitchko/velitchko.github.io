@@ -6,11 +6,17 @@ tags:
   - "Workshop Organization"
   - "Community Building"
 status: "ongoing"
-hero: "austrovis_hero.png"
+hero:
+  src: "/portfolio/austrovis-hero.png"
+  alt: "Participants at an AustroVis workshop session"
+  caption: "AustroVis brings Austria's visualization community together."
 images:
-  - "austrovis_1.png"
-  - "austrovis_2.png"
-  - "austrovis_3.png"
+  - src: "/portfolio/austrovis-1.png"
+    alt: "AustroVis workshop activity"
+  - src: "/portfolio/austrovis-2.png"
+    alt: "AustroVis community discussion"
+  - src: "/portfolio/austrovis-3.png"
+    alt: "AustroVis workshop participants"
 highlights:
   - "Six workshop editions since 2023"
   - "Organized the sixth edition at TU Wien in 2026"

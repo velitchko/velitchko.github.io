@@ -7,11 +7,17 @@ tags:
   - "Digital Humanities"
   - "Art History"
 status: "research"
-hero: "artvis_hero.png"
+hero:
+  src: "/portfolio/artvis-hero.png"
+  alt: "ArtVis interface showing an interactive network of art-historical entities"
+  caption: "ArtVis connects people, artworks, institutions, and events."
 images:
-  - "artvis_1.png"
-  - "artvis_2.png"
-  - "artvis_3.png"
+  - src: "/portfolio/artvis-1.png"
+    alt: "ArtVis visualization workspace with linked art-history records"
+  - src: "/portfolio/artvis-2.png"
+    alt: "ArtVis network view revealing relationships between cultural entities"
+  - src: "/portfolio/artvis-3.png"
+    alt: "Additional ArtVis interface view"
 highlights:
   - "2025 Digital Humanities Award — Best Tool / Suite of Tools"
 links:
