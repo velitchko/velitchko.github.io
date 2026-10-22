@@ -2,20 +2,25 @@ import { Circle, Defs, Document, Font, Image, Line, Link, LinearGradient, Page, 
 import type { PortfolioProject } from "@/data/portfolio";
 import { getProjectVisuals, HERO_VIEWBOX, STRIP_VIEWBOX, type VisualPlan } from "@/lib/placeholderArt";
 
+function fontAssetSource(fileName: string): string {
+  if (typeof window !== "undefined") return `/fonts/${fileName}`;
+  return `${process.cwd()}/public/fonts/${fileName}`;
+}
+
 Font.register({
   family: "Playfair Display",
   fonts: [
-    { src: "/fonts/PlayfairDisplay-Regular.woff", fontWeight: 400 },
-    { src: "/fonts/PlayfairDisplay-Bold.woff", fontWeight: 700 },
+    { src: fontAssetSource("PlayfairDisplay-Regular.woff"), fontWeight: 400 },
+    { src: fontAssetSource("PlayfairDisplay-Bold.woff"), fontWeight: 700 },
   ],
 });
 
 Font.register({
   family: "Lora",
   fonts: [
-    { src: "/fonts/Lora-Regular.woff", fontWeight: 400 },
-    { src: "/fonts/Lora-Italic.woff", fontWeight: 400, fontStyle: "italic" },
-    { src: "/fonts/Lora-SemiBold.woff", fontWeight: 600 },
+    { src: fontAssetSource("Lora-Regular.woff"), fontWeight: 400 },
+    { src: fontAssetSource("Lora-Italic.woff"), fontWeight: 400, fontStyle: "italic" },
+    { src: fontAssetSource("Lora-SemiBold.woff"), fontWeight: 600 },
   ],
 });
 
@@ -340,11 +345,13 @@ const styles = StyleSheet.create({
   },
 });
 
-/** Strips rendered markdown HTML down to plain paragraphs for the PDF body copy. */
-function htmlToParagraphs(html: string): string[] {
+type MarkdownBlock = {
+  kind: "heading" | "paragraph" | "listItem";
+  text: string;
+};
+
+function textFromHtml(html: string): string {
   return html
-    .replace(/<li>/gi, "\u2022 ")
-    .replace(/<\/(li|p|h[1-6])>/gi, "\n\n")
     .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<[^>]+>/g, "")
     .replace(/&amp;/g, "&")
@@ -353,9 +360,32 @@ function htmlToParagraphs(html: string): string[] {
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
     .replace(/&nbsp;/g, " ")
-    .split("\n\n")
-    .map((paragraph) => paragraph.replace(/\s+/g, " ").trim())
-    .filter(Boolean);
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/**
+ * Keep author-provided Markdown structure in the brochure. The website
+ * already serializes Markdown to a safe, small HTML subset at build time, so
+ * reading its block tags here keeps the PDF and web case-study narratives in
+ * sync without inventing any copy.
+ */
+function htmlToMarkdownBlocks(html: string): MarkdownBlock[] {
+  const blocks: MarkdownBlock[] = [];
+  const blockPattern = /<(h[1-6]|p|li)[^>]*>([\s\S]*?)<\/\1>/gi;
+  let match: RegExpExecArray | null;
+
+  while ((match = blockPattern.exec(html))) {
+    const text = textFromHtml(match[2]);
+    if (!text) continue;
+    const tag = match[1].toLowerCase();
+    blocks.push({
+      kind: tag.startsWith("h") ? "heading" : tag === "li" ? "listItem" : "paragraph",
+      text,
+    });
+  }
+
+  return blocks;
 }
 
 function PageFooter({ label }: { label: string }) {
@@ -420,10 +450,7 @@ function PdfVisual({ id, plan, width, height, fade }: { id: string; plan: Visual
 }
 
 function ProjectPage({ project, index }: { project: PortfolioProject; index: number }) {
-  const noteParagraphs = project.abstract
-    ? [project.abstract]
-    : ["Case-study abstract to be added. This seed entry is intentionally limited to verified project copy already present on this website."];
-  const bodyParagraphs = project.contentHtml ? htmlToParagraphs(project.contentHtml) : [];
+  const markdownBlocks = project.contentHtml ? htmlToMarkdownBlocks(project.contentHtml) : [];
   const gallery = project.gallery?.filter((media) => media.isAvailable) ?? [];
   const hasRealMedia = Boolean(project.hero?.isAvailable || gallery.length);
   const visuals = hasRealMedia ? null : getProjectVisuals(project.slug);
@@ -494,34 +521,49 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
 
         <View style={styles.ruleSpaced} />
 
-        <Text style={styles.sectionHeading}>Project note</Text>
-        <View style={styles.sectionRule} />
-        {noteParagraphs.map((paragraph, i) => (
-          <Text key={i} style={styles.paragraph}>{paragraph}</Text>
-        ))}
+        {project.abstract && (
+          <View wrap={false}>
+            <Text style={styles.sectionHeading}>Project summary</Text>
+            <View style={styles.sectionRule} />
+            <Text style={styles.paragraph}>{project.abstract}</Text>
+          </View>
+        )}
 
-        {bodyParagraphs.map((paragraph, i) => (
-          <Text key={i} style={styles.paragraph}>{paragraph}</Text>
-        ))}
+        {markdownBlocks.map((block, i) => {
+          if (block.kind === "heading") {
+            // Keep an authored heading and its rule away from a page bottom.
+            return <View key={`${block.kind}-${i}`} wrap={false} minPresenceAhead={42}>
+              <Text style={styles.sectionHeading}>{block.text}</Text>
+              <View style={styles.sectionRule} />
+            </View>;
+          }
+          if (block.kind === "listItem") {
+            return <View key={`${block.kind}-${i}`} style={styles.bulletRow}>
+              <Text style={styles.bulletMark}>{"\u2022"}</Text>
+              <Text style={styles.bulletText}>{block.text}</Text>
+            </View>;
+          }
+          return <Text key={`${block.kind}-${i}`} style={styles.paragraph}>{block.text}</Text>;
+        })}
 
         {project.role && (
-          <>
+          <View wrap={false}>
             <Text style={styles.sectionHeading}>Contribution</Text>
             <View style={styles.sectionRule} />
             <Text style={styles.paragraph}>{project.role}</Text>
-          </>
+          </View>
         )}
 
         {project.collaborators?.length ? (
-          <>
+          <View wrap={false}>
             <Text style={styles.sectionHeading}>Collaborators</Text>
             <View style={styles.sectionRule} />
             <Text style={styles.paragraph}>{project.collaborators.join(", ")}</Text>
-          </>
+          </View>
         ) : null}
 
         {project.outcomes?.length ? (
-          <>
+          <View>
             <Text style={styles.sectionHeading}>Outcomes</Text>
             <View style={styles.sectionRule} />
             {project.outcomes.map((outcome, i) => (
@@ -530,7 +572,7 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
                 <Text style={styles.bulletText}>{outcome}</Text>
               </View>
             ))}
-          </>
+          </View>
         ) : null}
 
         <View style={styles.tagsRow}>
