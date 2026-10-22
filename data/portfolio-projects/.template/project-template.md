@@ -15,19 +15,21 @@ links:
   - label: "Project site"
     url: "https://example.com"
     kind: "project" # project | publication | repository | demo | documentation | external
-# One leading image. `src` must be a local public path and `alt` must describe
-# what the image communicates. A missing asset or alt text becomes a labelled
-# placeholder, so it is safe to prepare the entry before the artwork is ready.
+# One leading image. `src` must be a local public path and `alt` must concisely
+# describe what is visibly shown (not the filename or repeated project title).
+# `caption` is optional visible context: use it only when it explains why the
+# view matters without restating the alt text. A missing asset or alt text
+# becomes a labelled placeholder, so it is safe to prepare the entry first.
 hero:
   src: "/portfolio/my-project/hero.jpg"
   alt: "Describe the project interface or result shown in the hero image"
-  caption: "Optional concise context for the image"
+  caption: "Optional visible context explaining why this view matters"
   type: "image" # image | gif
 # Ordered supporting figures. Add at least three when they are ready.
 gallery:
   - src: "/portfolio/my-project/01.jpg"
-    alt: "Describe the first supporting image"
-    caption: "Optional caption"
+    alt: "Concise description of the visible interface or result"
+    caption: "Optional context that adds meaning beyond the alt text"
     type: "image"
   - src: "/portfolio/my-project/02.jpg"
     alt: "Describe the second supporting image"
@@ -43,7 +45,7 @@ Write the richer case-study narrative here in Markdown. Standard Markdown and GF
 
 ## Process
 
-Describe the question, approach, or interaction. Add local images/GIFs under `public/portfolio/my-project/`, then list them in `hero` and `gallery` above with useful alt text.
+Describe the question, approach, or interaction. Add local images/GIFs under `data/portfolio-projects/images/`, then list them in `hero` and `gallery` above with useful alt text and only meaningful captions.
 
 ## What changed
 

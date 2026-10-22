@@ -9,8 +9,8 @@ tags:
 status: "ongoing"
 hero:
   src: "/portfolio/visgames-1.png"
-  alt: "VisGames workshop participants exploring visualization through play"
-  caption: "VisGames brings visualization, games, and community together."
+  alt: "VisGames workshop website with illustrated game pieces and event information"
+  caption: "VisGames invites people to explore visualization through play."
 images:
   - src: "/portfolio/visgames-2.png"
     alt: "VisGames activity exploring data visualization through play"

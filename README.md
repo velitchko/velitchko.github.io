@@ -101,13 +101,13 @@ Use the filename as the stable project URL anchor (for example, `my-project.md` 
 
 ### Portfolio front-matter schema
 
-Links are an ordered list of `{ label, url, kind }`; `kind` is one of `project`, `publication`, `repository`, `demo`, `documentation`, or `external`. Use a `hero` object for the leading image and an ordered `gallery` list for supporting figures. Each media object has a local `src`, descriptive `alt`, optional `caption`, and optional `type` (`image` or `gif`):
+Links are an ordered list of `{ label, url, kind }`; `kind` is one of `project`, `publication`, `repository`, `demo`, `documentation`, or `external`. Use a `hero` object for the leading image and an ordered `gallery` list for supporting figures. Each media object has a local `src`, descriptive `alt`, optional `caption`, and optional `type` (`image` or `gif`). Alt text is a concise, faithful description of what is visible for people using assistive technology; do not use a filename or repeat the project title. A caption is visible context, so add one only when it helps explain the image's role or significance without restating the alt text:
 
 ```yaml
 hero:
   src: "/portfolio/my-project/hero.jpg"
   alt: "A concise description of the information visible in the image"
-  caption: "Optional context"
+  caption: "Optional visible context explaining why this view matters"
 gallery:
   - src: "/portfolio/my-project/01.jpg"
     alt: "What this supporting image shows"
@@ -117,6 +117,6 @@ gallery:
     alt: "What this supporting image shows"
 ```
 
-Put assets in `public/portfolio/<project-slug>/`; their `src` begins with `/portfolio/` and must not use an external host. The renderer checks that the local file exists and that useful alternative text is supplied. Until either is ready, it keeps the authored hero/gallery slot as a clearly labelled placeholder rather than a broken or misleading image. The older `hero: filename.png`, `images: [filename.png]`, and `media` forms remain read-compatible, but should be migrated to the schema above when accurate alt text and assets are available.
+Put canonical assets in `data/portfolio-projects/images/`; `public/portfolio` is the tracked symlink published by the static export. Their `src` begins with `/portfolio/` and must not use an external host. The renderer checks that the local file exists and that useful alternative text is supplied. Until either is ready, it keeps the authored hero/gallery slot as a clearly labelled placeholder rather than a broken or misleading image. The older `hero: filename.png`, `images: [filename.png]`, and `media` forms remain read-compatible, but should be migrated to the schema above when accurate alt text and assets are available.
 
 The Portfolio navigation item leads to `/portfolio`; its sticky project list supports jumping through long case studies. Select **Save as PDF** to generate and download a brochure-style PDF (cover, one page per case study, and a closing contact page) rendered client-side with `@react-pdf/renderer` — see [components/PortfolioPdfDocument.tsx](components/PortfolioPdfDocument.tsx). The page's print stylesheet (`@media print` in [app/globals.css](app/globals.css)) remains available as a fallback via the browser's print command.

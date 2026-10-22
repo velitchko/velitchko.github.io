@@ -9,13 +9,15 @@ tags:
 status: "research"
 hero:
   src: "/portfolio/immv-hero.png"
-  alt: "Interactive Music Mapping Vienna visualization of cultural connections"
-  caption: "Interactive Music Mapping Vienna explores the city's musical heritage."
+  alt: "Interactive Music Mapping Vienna start page over a city map with 1955 and festival imagery"
+  caption: "The project opens Vienna's musical history through time and place."
 images:
   - src: "/portfolio/immv-1.png"
-    alt: "Circular view of historical music-network relationships"
+    alt: "Interactive Music Mapping Vienna landing page with event and location counts and an exploration prompt"
+    caption: "The landing page frames a data-driven exploration of Vienna's musical past."
   - src: "/portfolio/immv-2.png"
-    alt: "Music Mapping Vienna interface with connected people and events"
+    alt: "Interactive Music Mapping Vienna story view about the 1955 event 'Ikonisierung & Ehrung'"
+    caption: "A story view connects an event record to its historical context."
   - src: "/portfolio/immv-3.png"
     alt: "Additional Interactive Music Mapping Vienna visualization"
 highlights:

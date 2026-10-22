@@ -10,15 +10,18 @@ tags:
 status: "ongoing"
 hero:
   src: "/portfolio/hyperlines-hero.png"
-  alt: "Hyperlines trading interface with market data and chart controls"
-  caption: "Hyperlines combines market insight, community signals, and execution."
+  alt: "Hyperlines beta welcome screen prompting a wallet connection"
+  caption: "Wallet onboarding grants access to the Hyperlines beta."
 images:
   - src: "/portfolio/hyperlines-1.png"
-    alt: "Hyperlines market chart with interactive price levels"
+    alt: "Hyperlines market browser listing crypto assets, prices, and percentage changes"
+    caption: "A market browser gives traders a quick view of available assets."
   - src: "/portfolio/hyperlines-2.png"
-    alt: "Hyperlines trading signal and alert controls"
+    alt: "Hyperlines vault workspace showing a shared trading insight and collaboration controls"
+    caption: "Shared vaults turn trading insights into collaborative resources."
   - src: "/portfolio/hyperlines-3.png"
-    alt: "Hyperlines dashboard for community market intelligence"
+    alt: "Hyperlines candlestick chart with drawn price levels and a trigger-alert order panel"
+    caption: "Chart annotations can be turned into monitored trading triggers."
   - src: "/portfolio/hyperlines-4.png"
     alt: "Additional Hyperlines trading interface view"
 highlights:
