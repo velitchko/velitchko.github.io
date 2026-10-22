@@ -6,17 +6,24 @@ import { getProjectVisuals, type ProjectVisualSet } from "@/lib/placeholderArt";
 import { ProjectHero, ProjectVisualStrip } from "@/components/ProjectVisual";
 
 function ProjectMedia({ project, visuals }: { project: PortfolioProject; visuals: ProjectVisualSet }) {
-  if (!project.media?.length) {
+  if (!project.gallery?.length) {
     return <ProjectVisualStrip id={project.slug} items={visuals.strip} />;
   }
 
   return (
-    <div className="portfolio-media-grid">
-      {project.media.map((media) => (
+    <div className="portfolio-media-grid" aria-label="Supporting project media">
+      {project.gallery.map((media, index) => (
         <figure key={media.src}>
-          {/* Native img keeps static export and local GIFs simple. */}
-          {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
-          <img src={media.src} alt={media.alt} />
+          {media.isAvailable ? (
+            // Native img keeps static export and local GIFs simple.
+            // eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export
+            <img src={media.src} alt={media.alt} />
+          ) : (
+            <div className="portfolio-media-placeholder" role="img" aria-label={`Supporting image ${index + 1} pending`}>
+              <span>Supporting image {index + 1}</span>
+              <small>Local asset and descriptive text pending</small>
+            </div>
+          )}
           {media.caption && <figcaption>{media.caption}</figcaption>}
         </figure>
       ))}
@@ -90,18 +97,16 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
     };
   }, [isNavigatorOpen]);
 
-  const ProjectDetails = ({ project }: { project: PortfolioProject }) => (
+  const ProjectMetadata = ({ project }: { project: PortfolioProject }) => (
     <>
-      <section>
-        <h3>Project note</h3>
-        {project.abstract ? <p>{project.abstract}</p> : <p>Case-study abstract to be added. This seed entry is intentionally limited to verified project copy already present on this website.</p>}
-      </section>
-      {project.contentHtml && <section className="portfolio-markdown" dangerouslySetInnerHTML={{ __html: project.contentHtml }} />}
+      {project.abstract && <section><h3>Project summary</h3><p>{project.abstract}</p></section>}
       {project.role && <section><h3>Contribution</h3><p>{project.role}</p></section>}
       {project.collaborators?.length && <section><h3>Collaborators</h3><p>{project.collaborators.join(", ")}</p></section>}
       {project.outcomes?.length && <section><h3>Outcomes</h3><ul>{project.outcomes.map((outcome) => <li key={outcome}>{outcome}</li>)}</ul></section>}
     </>
   );
+
+  const hasMetadata = (project: PortfolioProject) => Boolean(project.abstract || project.role || project.collaborators?.length || project.outcomes?.length);
 
   return (
     <div className="portfolio-page">
@@ -164,7 +169,15 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
               <div className="portfolio-index">{String(index + 1).padStart(2, "0")}</div>
               <div className="portfolio-case-content">
                 <header className="portfolio-case-header">
-                  {!project.media?.length && <ProjectHero id={project.slug} plan={visuals.hero} />}
+                  {project.hero?.isAvailable ? (
+                    <figure className="portfolio-hero portfolio-hero-image">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
+                      <img src={project.hero.src} alt={project.hero.alt} />
+                      {project.hero.caption && <figcaption>{project.hero.caption}</figcaption>}
+                    </figure>
+                  ) : (
+                    <ProjectHero id={project.slug} plan={visuals.hero} label={project.hero ? "Hero image pending" : "Concept visual"} />
+                  )}
                   <div className="portfolio-case-header-text">
                     <div className="portfolio-meta"><span>{project.status ?? "project"}</span>{project.date && <span>{project.date}</span>}</div>
                     <h2>{project.title}</h2>
@@ -172,14 +185,15 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                   </div>
                 </header>
                 <ProjectMedia project={project} visuals={visuals} />
-                <div className="portfolio-details portfolio-details-desktop"><ProjectDetails project={project} /></div>
-                <details className="portfolio-details-mobile">
-                  <summary>Read project details</summary>
-                  <div className="portfolio-details"><ProjectDetails project={project} /></div>
-                </details>
+                {project.contentHtml && <section className="portfolio-markdown" aria-label={`${project.title} case study`} dangerouslySetInnerHTML={{ __html: project.contentHtml }} />}
+                {hasMetadata(project) && <div className="portfolio-details portfolio-details-desktop"><ProjectMetadata project={project} /></div>}
+                {hasMetadata(project) && <details className="portfolio-details-mobile">
+                  <summary>Project metadata</summary>
+                  <div className="portfolio-details"><ProjectMetadata project={project} /></div>
+                </details>}
                 <footer className="portfolio-case-footer">
                   <div className="portfolio-tags" aria-label="Project tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                  <div className="portfolio-links">{project.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label} <span aria-hidden="true">↗</span><span className="print-url"> · {link.url}</span></a>)}</div>
+                  <div className="portfolio-links">{project.links.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer"><span className="portfolio-link-kind">{link.kind}</span>{link.label} <span aria-hidden="true">↗</span><span className="print-url"> · {link.url}</span></a>)}</div>
                 </footer>
               </div>
             </article>

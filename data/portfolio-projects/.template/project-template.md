@@ -14,12 +14,25 @@ outcomes:
 links:
   - label: "Project site"
     url: "https://example.com"
-    kind: "project" # project | publication | repository | demo
-media:
-  # - src: "/portfolio/project-image.jpg"
-  #   alt: "Describe what the image shows"
-  #   caption: "Optional caption"
-  #   type: "image" # image | gif
+    kind: "project" # project | publication | repository | demo | documentation | external
+# One leading image. `src` must be a local public path and `alt` must describe
+# what the image communicates. A missing asset or alt text becomes a labelled
+# placeholder, so it is safe to prepare the entry before the artwork is ready.
+hero:
+  src: "/portfolio/my-project/hero.jpg"
+  alt: "Describe the project interface or result shown in the hero image"
+  caption: "Optional concise context for the image"
+  type: "image" # image | gif
+# Ordered supporting figures. Add at least three when they are ready.
+gallery:
+  - src: "/portfolio/my-project/01.jpg"
+    alt: "Describe the first supporting image"
+    caption: "Optional caption"
+    type: "image"
+  - src: "/portfolio/my-project/02.jpg"
+    alt: "Describe the second supporting image"
+  - src: "/portfolio/my-project/03.jpg"
+    alt: "Describe the third supporting image"
 featured: false
 order: 99
 ---
@@ -30,7 +43,7 @@ Write the richer case-study narrative here in Markdown. Standard Markdown and GF
 
 ## Process
 
-Describe the question, approach, or interaction. Add local images/GIFs under `public/portfolio/`, then list them in `media` above with useful alt text.
+Describe the question, approach, or interaction. Add local images/GIFs under `public/portfolio/my-project/`, then list them in `hero` and `gallery` above with useful alt text.
 
 ## What changed
 

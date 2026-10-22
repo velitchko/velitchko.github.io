@@ -1,4 +1,4 @@
-import { Circle, Defs, Document, Font, Line, Link, LinearGradient, Page, Polyline, Rect, StyleSheet, Stop, Svg, Text, View } from "@react-pdf/renderer";
+import { Circle, Defs, Document, Font, Image, Line, Link, LinearGradient, Page, Polyline, Rect, StyleSheet, Stop, Svg, Text, View } from "@react-pdf/renderer";
 import type { PortfolioProject } from "@/data/portfolio";
 import { getProjectVisuals, HERO_VIEWBOX, STRIP_VIEWBOX, type VisualPlan } from "@/lib/placeholderArt";
 
@@ -269,6 +269,11 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     overflow: "hidden",
   },
+  mediaHero: {
+    height: 190,
+    marginBottom: 16,
+    objectFit: "cover",
+  },
   heroCaption: {
     fontFamily: "Lora",
     fontStyle: "italic",
@@ -286,6 +291,13 @@ const styles = StyleSheet.create({
     borderColor: COLORS.line,
     borderRadius: 4,
     overflow: "hidden",
+  },
+  mediaCaption: {
+    fontFamily: "Lora",
+    fontSize: 7.5,
+    color: COLORS.muted,
+    lineHeight: 1.25,
+    marginTop: 4,
   },
   stripCaption: {
     fontFamily: "Lora",
@@ -358,6 +370,10 @@ function PageFooter({ label }: { label: string }) {
 /** Usable width inside caseBody: page width minus horizontal padding and the spine indent. */
 const CASE_WIDTH = 595.28 - 56 * 2 - 20;
 
+function pdfAssetSource(src: string): string {
+  return typeof window === "undefined" ? src : new URL(src, window.location.href).href;
+}
+
 /** Renders a deterministic concept-visual plan as native PDF vector shapes. `fade` adds a gradient wash into the page background, used for hero banners. */
 function PdfVisual({ id, plan, width, height, fade }: { id: string; plan: VisualPlan; width: number; height: number; fade?: boolean }) {
   const gradId = `pv-${id}-bg`;
@@ -408,7 +424,8 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
     ? [project.abstract]
     : ["Case-study abstract to be added. This seed entry is intentionally limited to verified project copy already present on this website."];
   const bodyParagraphs = project.contentHtml ? htmlToParagraphs(project.contentHtml) : [];
-  const hasRealMedia = Boolean(project.media?.length);
+  const gallery = project.gallery?.filter((media) => media.isAvailable) ?? [];
+  const hasRealMedia = Boolean(project.hero?.isAvailable || gallery.length);
   const visuals = hasRealMedia ? null : getProjectVisuals(project.slug);
   const heroWidth = CASE_WIDTH;
   const heroHeight = visuals ? heroWidth * (HERO_VIEWBOX.h / HERO_VIEWBOX.w) : 0;
@@ -424,6 +441,14 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
       <View style={styles.caseBody}>
         <Text style={styles.index}>{String(index + 1).padStart(2, "0")}</Text>
 
+        {project.hero?.isAvailable && (
+          <>
+            {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
+            <Image src={pdfAssetSource(project.hero.src)} style={[styles.mediaHero, { width: CASE_WIDTH }]} />
+            {project.hero.caption && <Text style={styles.mediaCaption}>{project.hero.caption}</Text>}
+          </>
+        )}
+
         {visuals && (
           <View style={styles.heroWrap}>
             <PdfVisual id={`${project.slug}-hero`} plan={visuals.hero} width={heroWidth} height={heroHeight} fade />
@@ -436,6 +461,20 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
         </View>
         <Text style={styles.title}>{project.title}</Text>
         <Text style={styles.blurb}>{project.blurb}</Text>
+
+        {gallery.length > 0 && (
+          <View style={styles.stripRow}>
+            {gallery.slice(0, 3).map((media, i) => (
+              <View key={media.src} style={i < Math.min(gallery.length, 3) - 1 ? { width: (CASE_WIDTH - 20) / 3, marginRight: 10 } : { width: (CASE_WIDTH - 20) / 3 }}>
+                <View style={[styles.stripCardFrame, { height: ((CASE_WIDTH - 20) / 3) * (STRIP_VIEWBOX.h / STRIP_VIEWBOX.w) }]}>
+                  {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
+                  <Image src={pdfAssetSource(media.src)} style={{ height: "100%", objectFit: "cover", width: "100%" }} />
+                </View>
+                {media.caption && <Text style={styles.mediaCaption}>{media.caption}</Text>}
+              </View>
+            ))}
+          </View>
+        )}
 
         {visuals && (
           <>

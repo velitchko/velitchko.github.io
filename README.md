@@ -97,8 +97,26 @@ cp data/portfolio-projects/.template/project-template.md \\
   data/portfolio-projects/my-project.md
 ```
 
-Use the filename as the stable project URL anchor (for example, `my-project.md` becomes `#my-project`). Required front matter is `title`, `blurb`, one or more `links`, and numeric `order`. `tags` is strongly recommended. Optional fields are `date`, `abstract`, `role`, `collaborators`, `outcomes`, `status`, `featured`, and `media`. The Markdown body is for the fuller case-study prose; headings, lists, links, emphasis, and tables are supported. Raw HTML is intentionally not rendered.
+Use the filename as the stable project URL anchor (for example, `my-project.md` becomes `#my-project`). Required front matter is `title`, `blurb`, one or more `links`, and numeric `order`. `tags` is strongly recommended. Optional fields are `date`, `abstract`, `role`, `collaborators`, `outcomes`, `status`, and `featured`. The Markdown body is for the fuller case-study prose; headings, lists, links, emphasis, and tables are supported. Raw HTML is intentionally not rendered.
 
-Put images and GIFs under `public/portfolio/`, then add them to front matter as `media` items with `src`, `alt`, optional `caption`, and `type` (`image` or `gif`). Do not use external image hosts. Entries with no media render an intentional, non-deceptive placeholder until local assets are available.
+### Portfolio front-matter schema
+
+Links are an ordered list of `{ label, url, kind }`; `kind` is one of `project`, `publication`, `repository`, `demo`, `documentation`, or `external`. Use a `hero` object for the leading image and an ordered `gallery` list for supporting figures. Each media object has a local `src`, descriptive `alt`, optional `caption`, and optional `type` (`image` or `gif`):
+
+```yaml
+hero:
+  src: "/portfolio/my-project/hero.jpg"
+  alt: "A concise description of the information visible in the image"
+  caption: "Optional context"
+gallery:
+  - src: "/portfolio/my-project/01.jpg"
+    alt: "What this supporting image shows"
+  - src: "/portfolio/my-project/02.jpg"
+    alt: "What this supporting image shows"
+  - src: "/portfolio/my-project/03.jpg"
+    alt: "What this supporting image shows"
+```
+
+Put assets in `public/portfolio/<project-slug>/`; their `src` begins with `/portfolio/` and must not use an external host. The renderer checks that the local file exists and that useful alternative text is supplied. Until either is ready, it keeps the authored hero/gallery slot as a clearly labelled placeholder rather than a broken or misleading image. The older `hero: filename.png`, `images: [filename.png]`, and `media` forms remain read-compatible, but should be migrated to the schema above when accurate alt text and assets are available.
 
 The Portfolio navigation item leads to `/portfolio`; its sticky project list supports jumping through long case studies. Select **Save as PDF** to generate and download a brochure-style PDF (cover, one page per case study, and a closing contact page) rendered client-side with `@react-pdf/renderer` — see [components/PortfolioPdfDocument.tsx](components/PortfolioPdfDocument.tsx). The page's print stylesheet (`@media print` in [app/globals.css](app/globals.css)) remains available as a fallback via the browser's print command.

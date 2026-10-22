@@ -5,7 +5,7 @@
  * lib/portfolio.ts reads those files at build time for both the web page and
  * its printable brochure layout.
  */
-export type PortfolioLinkKind = "project" | "publication" | "repository" | "demo";
+export type PortfolioLinkKind = "project" | "publication" | "repository" | "demo" | "documentation" | "external";
 
 export type PortfolioLink = {
   label: string;
@@ -18,6 +18,8 @@ export type PortfolioMedia = {
   alt: string;
   caption?: string;
   type?: "image" | "gif";
+  /** `false` keeps an authored slot visible without rendering a broken image. */
+  isAvailable: boolean;
 };
 
 export type PortfolioProject = {
@@ -32,7 +34,10 @@ export type PortfolioProject = {
   status?: "ongoing" | "completed" | "research";
   outcomes?: string[];
   links: PortfolioLink[];
-  media?: PortfolioMedia[];
+  /** The main case-study image, displayed before the project title. */
+  hero?: PortfolioMedia;
+  /** Ordered supporting figures. `media` remains supported for older entries. */
+  gallery?: PortfolioMedia[];
   featured?: boolean;
   order: number;
   contentHtml: string;
