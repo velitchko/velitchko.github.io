@@ -305,12 +305,22 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   galleryItem: {
-    marginBottom: 14,
+    marginTop: 14,
+    marginBottom: 16,
   },
   galleryImage: {
-    height: 470,
+    height: 300,
     objectFit: "contain",
     width: "100%",
+  },
+  figureLabel: {
+    fontFamily: "Lora",
+    fontWeight: 600,
+    fontSize: 8.5,
+    textTransform: "uppercase",
+    letterSpacing: 1.1,
+    color: COLORS.accent,
+    marginBottom: 5,
   },
   stripCaption: {
     fontFamily: "Lora",
@@ -358,6 +368,16 @@ type MarkdownBlock = {
   text: string;
 };
 
+type NarrativeSection = {
+  key: string;
+  blocks: MarkdownBlock[];
+};
+
+type NumberedFigure = {
+  media: NonNullable<PortfolioProject["gallery"]>[number];
+  figureNumber: number;
+};
+
 function textFromHtml(html: string): string {
   return html
     .replace(/<br\s*\/?>/gi, "\n")
@@ -394,6 +414,27 @@ function htmlToMarkdownBlocks(html: string): MarkdownBlock[] {
   }
 
   return blocks;
+}
+
+/**
+ * A Markdown heading starts a new authored section. Keeping its following
+ * blocks together gives supporting figures meaningful places to interrupt the
+ * narrative without ever splitting an authored paragraph.
+ */
+function markdownSections(blocks: MarkdownBlock[]): NarrativeSection[] {
+  const sections: NarrativeSection[] = [];
+  let current: MarkdownBlock[] = [];
+
+  blocks.forEach((block) => {
+    if (block.kind === "heading" && current.length) {
+      sections.push({ key: `markdown-${sections.length}`, blocks: current });
+      current = [];
+    }
+    current.push(block);
+  });
+
+  if (current.length) sections.push({ key: `markdown-${sections.length}`, blocks: current });
+  return sections;
 }
 
 function PageFooter({ label }: { label: string }) {
@@ -457,29 +498,40 @@ function PdfVisual({ id, plan, width, height, fade }: { id: string; plan: Visual
   );
 }
 
-function GalleryPage({ project, index, media, figureNumber, figureCount }: { project: PortfolioProject; index: number; media: NonNullable<PortfolioProject["gallery"]>[number]; figureNumber: number; figureCount: number }) {
+function SupportingFigure({ media, figureNumber, imageHeight }: { media: NonNullable<PortfolioProject["gallery"]>[number]; figureNumber: number; imageHeight: number }) {
   const caption = media.caption ?? media.alt;
 
   return (
-    <Page size="A4" style={styles.page}>
-      <View style={styles.topBar} fixed />
-      <View style={styles.spine} fixed />
-      <View style={styles.caseBody}>
-        <Text style={styles.index}>{String(index + 1).padStart(2, "0")}.{figureNumber}</Text>
-        <View style={styles.metaRow}>
-          <Text style={styles.metaPill}>Supporting figure {figureNumber} of {figureCount}</Text>
-        </View>
-        <Text style={styles.title}>{project.title}</Text>
-        <View style={styles.galleryItem} wrap={false}>
-          <View style={styles.stripCardFrame}>
-            {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
-            <Image src={pdfAssetSource(media.src)} style={styles.galleryImage} />
-          </View>
-          <Text style={styles.mediaCaption}>Figure {figureNumber}. {caption}</Text>
-        </View>
+    <View style={styles.galleryItem} wrap={false} minPresenceAhead={340}>
+      <Text style={styles.figureLabel}>Supporting figure {figureNumber}</Text>
+      <View style={styles.stripCardFrame}>
+        {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
+        <Image src={pdfAssetSource(media.src)} style={[styles.galleryImage, { height: imageHeight }]} />
       </View>
-      <PageFooter label="Portfolio · Velitchko Filipov" />
-    </Page>
+      <Text style={styles.mediaCaption}>Figure {figureNumber}. {caption}</Text>
+    </View>
+  );
+}
+
+/**
+ * A section can have fewer boundaries than selected figures. Keep such figure
+ * runs together at a reduced but still full-width reading size so a short case
+ * study does not turn into a sequence of image-only pages.
+ */
+function SupportingFigures({ figures }: { figures: NumberedFigure[] }) {
+  const imageHeight = figures.length === 1 ? 300 : figures.length === 2 ? 205 : 145;
+
+  return (
+    <View wrap={false} minPresenceAhead={figures.length === 1 ? 340 : 500}>
+      {figures.map(({ media, figureNumber }) => (
+        <SupportingFigure
+          key={media.src}
+          media={media}
+          figureNumber={figureNumber}
+          imageHeight={imageHeight}
+        />
+      ))}
+    </View>
   );
 }
 
@@ -496,6 +548,48 @@ function ProjectPages({ project, index }: { project: PortfolioProject; index: nu
   const stripCount = visuals?.strip.length ?? 0;
   const stripCardWidth = stripCount ? (CASE_WIDTH - stripGap * (stripCount - 1)) / stripCount : 0;
   const stripCardHeight = stripCardWidth * (STRIP_VIEWBOX.h / STRIP_VIEWBOX.w);
+  const narrativeSections: NarrativeSection[] = [
+    ...(project.abstract ? [{
+      key: "project-summary",
+      blocks: [
+        { kind: "heading" as const, text: "Project summary" },
+        { kind: "paragraph" as const, text: project.abstract },
+      ],
+    }] : []),
+    ...markdownSections(markdownBlocks),
+  ];
+  // Keep the opening context text-first, then spread the established three
+  // figures over the remaining authored section boundaries. If there is only
+  // one section, each figure still follows that context in the normal page
+  // flow rather than becoming a detached figure page.
+  const figuresAfterSection = new Map<number, NumberedFigure[]>();
+  if (narrativeSections.length) {
+    brochureGallery.forEach((media, figureIndex) => {
+      const sectionIndex = brochureGallery.length === 1
+        ? 0
+        : Math.round((figureIndex * (narrativeSections.length - 1)) / (brochureGallery.length - 1));
+      const figures = figuresAfterSection.get(sectionIndex) ?? [];
+      figures.push({ media, figureNumber: figureIndex + 1 });
+      figuresAfterSection.set(sectionIndex, figures);
+    });
+  }
+
+  const renderBlock = (block: MarkdownBlock, key: string) => {
+    if (block.kind === "heading") {
+      // Keep an authored heading and its rule away from a page bottom.
+      return <View key={key} wrap={false} minPresenceAhead={42}>
+        <Text style={styles.sectionHeading}>{block.text}</Text>
+        <View style={styles.sectionRule} />
+      </View>;
+    }
+    if (block.kind === "listItem") {
+      return <View key={key} style={styles.bulletRow}>
+        <Text style={styles.bulletMark}>{"\u2022"}</Text>
+        <Text style={styles.bulletText}>{block.text}</Text>
+      </View>;
+    }
+    return <Text key={key} style={styles.paragraph}>{block.text}</Text>;
+  };
 
   return (
     <>
@@ -544,30 +638,16 @@ function ProjectPages({ project, index }: { project: PortfolioProject; index: nu
 
         <View style={styles.ruleSpaced} />
 
-        {project.abstract && (
-          <View wrap={false}>
-            <Text style={styles.sectionHeading}>Project summary</Text>
-            <View style={styles.sectionRule} />
-            <Text style={styles.paragraph}>{project.abstract}</Text>
+        {narrativeSections.map((section, sectionIndex) => (
+          <View key={section.key}>
+            {section.blocks.map((block, blockIndex) => renderBlock(block, `${section.key}-${blockIndex}`))}
+            {figuresAfterSection.get(sectionIndex) && (
+              <SupportingFigures figures={figuresAfterSection.get(sectionIndex)!} />
+            )}
           </View>
-        )}
+        ))}
 
-        {markdownBlocks.map((block, i) => {
-          if (block.kind === "heading") {
-            // Keep an authored heading and its rule away from a page bottom.
-            return <View key={`${block.kind}-${i}`} wrap={false} minPresenceAhead={42}>
-              <Text style={styles.sectionHeading}>{block.text}</Text>
-              <View style={styles.sectionRule} />
-            </View>;
-          }
-          if (block.kind === "listItem") {
-            return <View key={`${block.kind}-${i}`} style={styles.bulletRow}>
-              <Text style={styles.bulletMark}>{"\u2022"}</Text>
-              <Text style={styles.bulletText}>{block.text}</Text>
-            </View>;
-          }
-          return <Text key={`${block.kind}-${i}`} style={styles.paragraph}>{block.text}</Text>;
-        })}
+        {!narrativeSections.length && brochureGallery.length > 0 && <SupportingFigures figures={brochureGallery.map((media, figureIndex) => ({ media, figureNumber: figureIndex + 1 }))} />}
 
         {project.role && (
           <View wrap={false}>
@@ -617,16 +697,6 @@ function ProjectPages({ project, index }: { project: PortfolioProject; index: nu
         <PageFooter label="Portfolio · Velitchko Filipov" />
       </Page>
 
-      {brochureGallery.map((media, figureIndex) => (
-        <GalleryPage
-          key={media.src}
-          project={project}
-          index={index}
-          media={media}
-          figureNumber={figureIndex + 1}
-          figureCount={brochureGallery.length}
-        />
-      ))}
     </>
   );
 }
