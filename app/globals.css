@@ -432,8 +432,10 @@ body {
   .portfolio-visual-strip { flex-wrap: wrap; overflow: visible; }
   .portfolio-visual-card { break-inside: avoid; width: 45mm; }
   .portfolio-visual-nav { display: none; }
-  .portfolio-media-grid { gap: 5mm; grid-template-columns: repeat(3, 1fr); }
-  .portfolio-media-grid figure { break-inside: avoid; }
+  .portfolio-media-grid { display: block; margin-top: 7mm; }
+  .portfolio-media-grid figure { break-inside: avoid; margin: 0 0 7mm; page-break-inside: avoid; }
+  .portfolio-media-grid img, .portfolio-media-placeholder { aspect-ratio: auto; max-height: 128mm; object-fit: contain; }
+  .portfolio-media-grid figcaption { color: #202020; font-size: 9pt; line-height: 1.35; margin-top: 2mm; }
   .portfolio-media-placeholder { background: #f2f2f2; border-color: #bbb; color: #555; }
   .portfolio-details { gap: 5mm; }
   .portfolio-details section { border-color: #6d2b71; break-inside: avoid; }
