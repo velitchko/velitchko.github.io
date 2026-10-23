@@ -304,6 +304,14 @@ const styles = StyleSheet.create({
     lineHeight: 1.25,
     marginTop: 4,
   },
+  galleryItem: {
+    marginBottom: 14,
+  },
+  galleryImage: {
+    height: 230,
+    objectFit: "contain",
+    width: "100%",
+  },
   stripCaption: {
     fontFamily: "Lora",
     fontSize: 7.5,
@@ -489,19 +497,16 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
         <Text style={styles.title}>{project.title}</Text>
         <Text style={styles.blurb}>{project.blurb}</Text>
 
-        {gallery.length > 0 && (
-          <View style={styles.stripRow}>
-            {gallery.slice(0, 3).map((media, i) => (
-              <View key={media.src} style={i < Math.min(gallery.length, 3) - 1 ? { width: (CASE_WIDTH - 20) / 3, marginRight: 10 } : { width: (CASE_WIDTH - 20) / 3 }}>
-                <View style={[styles.stripCardFrame, { height: ((CASE_WIDTH - 20) / 3) * (STRIP_VIEWBOX.h / STRIP_VIEWBOX.w) }]}>
-                  {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
-                  <Image src={pdfAssetSource(media.src)} style={{ height: "100%", objectFit: "cover", width: "100%" }} />
-                </View>
-                {media.caption && <Text style={styles.mediaCaption}>{media.caption}</Text>}
-              </View>
-            ))}
+        {/* The brochure promotes one lead supporting image per project; the web gallery retains the full set. */}
+        {gallery.slice(0, 1).map((media) => (
+          <View key={media.src} style={styles.galleryItem} wrap={false} minPresenceAhead={250}>
+            <View style={styles.stripCardFrame}>
+              {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
+              <Image src={pdfAssetSource(media.src)} style={styles.galleryImage} />
+            </View>
+            {media.caption && <Text style={styles.mediaCaption}>{media.caption}</Text>}
           </View>
-        )}
+        ))}
 
         {visuals && (
           <>
