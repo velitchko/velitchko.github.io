@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     marginBottom: 14,
   },
   galleryImage: {
-    height: 230,
+    height: 470,
     objectFit: "contain",
     width: "100%",
   },
@@ -457,9 +457,37 @@ function PdfVisual({ id, plan, width, height, fade }: { id: string; plan: Visual
   );
 }
 
-function ProjectPage({ project, index }: { project: PortfolioProject; index: number }) {
+function GalleryPage({ project, index, media, figureNumber, figureCount }: { project: PortfolioProject; index: number; media: NonNullable<PortfolioProject["gallery"]>[number]; figureNumber: number; figureCount: number }) {
+  const caption = media.caption ?? media.alt;
+
+  return (
+    <Page size="A4" style={styles.page}>
+      <View style={styles.topBar} fixed />
+      <View style={styles.spine} fixed />
+      <View style={styles.caseBody}>
+        <Text style={styles.index}>{String(index + 1).padStart(2, "0")}.{figureNumber}</Text>
+        <View style={styles.metaRow}>
+          <Text style={styles.metaPill}>Supporting figure {figureNumber} of {figureCount}</Text>
+        </View>
+        <Text style={styles.title}>{project.title}</Text>
+        <View style={styles.galleryItem} wrap={false}>
+          <View style={styles.stripCardFrame}>
+            {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
+            <Image src={pdfAssetSource(media.src)} style={styles.galleryImage} />
+          </View>
+          <Text style={styles.mediaCaption}>Figure {figureNumber}. {caption}</Text>
+        </View>
+      </View>
+      <PageFooter label="Portfolio · Velitchko Filipov" />
+    </Page>
+  );
+}
+
+function ProjectPages({ project, index }: { project: PortfolioProject; index: number }) {
   const markdownBlocks = project.contentHtml ? htmlToMarkdownBlocks(project.contentHtml) : [];
   const gallery = project.gallery?.filter((media) => media.isAvailable) ?? [];
+  // Preserve the established three-figure selection; pages below keep images readable.
+  const brochureGallery = gallery.slice(0, 3);
   const hasRealMedia = Boolean(project.hero?.isAvailable || gallery.length);
   const visuals = hasRealMedia ? null : getProjectVisuals(project.slug);
   const heroWidth = CASE_WIDTH;
@@ -470,7 +498,8 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
   const stripCardHeight = stripCardWidth * (STRIP_VIEWBOX.h / STRIP_VIEWBOX.w);
 
   return (
-    <Page size="A4" style={styles.page}>
+    <>
+      <Page size="A4" style={styles.page}>
       <View style={styles.topBar} fixed />
       <View style={styles.spine} fixed />
       <View style={styles.caseBody}>
@@ -496,17 +525,6 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
         </View>
         <Text style={styles.title}>{project.title}</Text>
         <Text style={styles.blurb}>{project.blurb}</Text>
-
-        {/* The brochure promotes one lead supporting image per project; the web gallery retains the full set. */}
-        {gallery.slice(0, 1).map((media) => (
-          <View key={media.src} style={styles.galleryItem} wrap={false} minPresenceAhead={250}>
-            <View style={styles.stripCardFrame}>
-              {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image does not expose an alt prop */}
-              <Image src={pdfAssetSource(media.src)} style={styles.galleryImage} />
-            </View>
-            {media.caption && <Text style={styles.mediaCaption}>{media.caption}</Text>}
-          </View>
-        ))}
 
         {visuals && (
           <>
@@ -596,8 +614,20 @@ function ProjectPage({ project, index }: { project: PortfolioProject; index: num
         </View>
       </View>
 
-      <PageFooter label="Portfolio · Velitchko Filipov" />
-    </Page>
+        <PageFooter label="Portfolio · Velitchko Filipov" />
+      </Page>
+
+      {brochureGallery.map((media, figureIndex) => (
+        <GalleryPage
+          key={media.src}
+          project={project}
+          index={index}
+          media={media}
+          figureNumber={figureIndex + 1}
+          figureCount={brochureGallery.length}
+        />
+      ))}
+    </>
   );
 }
 
@@ -621,7 +651,7 @@ export default function PortfolioPdfDocument({ projects }: { projects: Portfolio
       </Page>
 
       {projects.map((project, index) => (
-        <ProjectPage key={project.slug} project={project} index={index} />
+        <ProjectPages key={project.slug} project={project} index={index} />
       ))}
 
       <Page size="A4" style={styles.page}>
