@@ -10,13 +10,6 @@ hero:
   src: "/portfolio/austrovis-hero.png"
   alt: "AustroVis workshop website home page with event navigation and a workshop introduction"
   caption: "The workshop site is the shared entry point for Austria's visualization community."
-images:
-  - src: "/portfolio/austrovis-1.png"
-    alt: "AustroVis workshop activity"
-  - src: "/portfolio/austrovis-2.png"
-    alt: "AustroVis community discussion"
-  - src: "/portfolio/austrovis-3.png"
-    alt: "AustroVis workshop participants"
 highlights:
   - "Six workshop editions since 2023"
   - "Organized the sixth edition at TU Wien in 2026"

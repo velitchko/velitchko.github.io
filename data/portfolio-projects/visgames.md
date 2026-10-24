@@ -11,13 +11,6 @@ hero:
   src: "/portfolio/visgames-1.png"
   alt: "VisGames workshop website with illustrated game pieces and event information"
   caption: "VisGames invites people to explore visualization through play."
-images:
-  - src: "/portfolio/visgames-2.png"
-    alt: "VisGames activity exploring data visualization through play"
-  - src: "/portfolio/visgames-3.png"
-    alt: "VisGames workshop game session"
-  - src: "/portfolio/visgames-4.png"
-    alt: "VisGames community event"
 highlights:
   - "Established at EuroVis 2025"
   - "Recurring international workshop"

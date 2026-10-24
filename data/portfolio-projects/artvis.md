@@ -19,7 +19,8 @@ images:
     alt: "ArtVis small-multiple line charts comparing event sequences across many records"
     caption: "Small multiples make patterns across many art-historical records comparable."
   - src: "/portfolio/artvis-3.png"
-    alt: "Additional ArtVis interface view"
+    alt: ""
+    caption: ""
 highlights:
   - "2025 Digital Humanities Award — Best Tool / Suite of Tools"
 links:
