@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { PortfolioMedia, PortfolioProject } from "@/data/portfolio";
 import { getProjectVisuals, type ProjectVisualSet } from "@/lib/placeholderArt";
-import { ProjectHero, ProjectVisualStrip } from "@/components/ProjectVisual";
+import { ProjectHero } from "@/components/ProjectVisual";
 import FontSizeControl from "@/components/FontSizeControl";
 
 type AssetLightboxState = {
@@ -13,9 +13,9 @@ type AssetLightboxState = {
   index: number;
 };
 
-function ProjectMedia({ project, visuals, onOpen }: { project: PortfolioProject; visuals: ProjectVisualSet; onOpen: (media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => void }) {
+function ProjectMedia({ project, onOpen }: { project: PortfolioProject; onOpen: (media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => void }) {
   if (!project.gallery?.length) {
-    return <ProjectVisualStrip id={project.slug} items={visuals.strip} />;
+    return null;
   }
 
   const availableMedia = project.gallery.filter((media) => media.isAvailable);
@@ -270,7 +270,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                     <p className="portfolio-blurb">{project.blurb}</p>
                   </div>
                 </header>
-                <ProjectMedia project={project} visuals={visuals} onOpen={(media, imageIndex, trigger) => openAssetLightbox(project.title, [project.hero, ...media].filter((item): item is PortfolioMedia => Boolean(item?.isAvailable)), project.hero?.isAvailable ? imageIndex + 1 : imageIndex, trigger)} />
+                <ProjectMedia project={project} onOpen={(media, imageIndex, trigger) => openAssetLightbox(project.title, [project.hero, ...media].filter((item): item is PortfolioMedia => Boolean(item?.isAvailable)), project.hero?.isAvailable ? imageIndex + 1 : imageIndex, trigger)} />
                 {project.contentHtml && <section className="portfolio-markdown" aria-label={`${project.title} case study`} dangerouslySetInnerHTML={{ __html: project.contentHtml }} />}
                 {hasMetadata(project) && <div className="portfolio-details portfolio-details-desktop"><ProjectMetadata project={project} /></div>}
                 {hasMetadata(project) && <details className="portfolio-details-mobile">
