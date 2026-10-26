@@ -723,19 +723,6 @@ export default function PortfolioPdfDocument({ projects }: { projects: Portfolio
       {projects.map((project, index) => (
         <ProjectPages key={project.slug} project={project} index={index} />
       ))}
-
-      <Page size="A4" style={styles.page}>
-        <View style={styles.topBar} />
-        <Text style={styles.coverEyebrow}>Let&apos;s make something legible</Text>
-        <View style={styles.accentUnderline} />
-        <Text style={styles.outroTitle}>Interested in a research collaboration or visualization project?</Text>
-        <Text style={styles.outroBody}>I work on visual analytics, network visualization, visualization literacy, and collaborative ways of engaging with complex data.</Text>
-        <Link src="mailto:velitchko.filipov@tuwien.ac.at" style={styles.contactLink}>velitchko.filipov@tuwien.ac.at</Link>
-        <Link src="https://github.com/velitchko" style={styles.contactLink}>github.com/velitchko</Link>
-        <Link src="https://www.linkedin.com/in/velitchko-filipov" style={styles.contactLink}>linkedin.com/in/velitchko-filipov</Link>
-
-        <PageFooter label="Portfolio · Velitchko Filipov" />
-      </Page>
     </Document>
   );
 }
