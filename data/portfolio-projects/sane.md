@@ -19,8 +19,8 @@ images:
     alt: "TimeLighting star-shaped temporal network view with labelled trajectory clusters and a time overview"
     caption: "A different layout foregrounds the structure of network trajectories."
   - src: "/portfolio/timelighting-3.png"
-    alt: ""
-    caption: ""
+    alt: "TimeLighting temporal network with colored node trajectories and a density timeline spanning the bottom of the view"
+    caption: "The density timeline helps locate periods of concentrated activity within a temporal network."
 highlights:
   - "International research collaboration on event-based diffusion in networks"
   - "Includes TimeLighting, an interactive case study for temporal network analysis"

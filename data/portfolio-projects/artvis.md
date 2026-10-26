@@ -19,8 +19,8 @@ images:
     alt: "ArtVis small-multiple line charts comparing event sequences across many records"
     caption: "Small multiples make patterns across many art-historical records comparable."
   - src: "/portfolio/artvis-3.png"
-    alt: ""
-    caption: ""
+    alt: "Artist Groups view with blue artist nodes, orange group nodes, and a selected society shown in an interactive bipartite network"
+    caption: "Artist Groups makes memberships and the groups that connect artists directly explorable."
 highlights:
   - "2025 Digital Humanities Award — Best Tool / Suite of Tools"
 links:
