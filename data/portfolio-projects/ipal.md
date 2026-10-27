@@ -13,9 +13,12 @@ hero:
   focalPoint: "50% 46%"
   caption: "A knowledge-market view combines curated material with collaborative comparison."
 images:
+  - src: "/portfolio/ipal-1.png"
+    alt: "iPal knowledge-vault workspace showing a curated decentralized-banking resource and comparison table"
+    caption: "A knowledge vault is a structured, curated collection that its owner or owners can share and potentially monetize."
   - src: "/portfolio/ipal-2.png"
     alt: "iPal workspace showing a decentralized-banking article, navigation, and a comparison table"
-    caption: "A workspace keeps research material, source context, and structured comparison together."
+    caption: "Owners define a subscription's duration and cost, then mint NFT-based access through a smart contract."
   - src: "/portfolio/ipal-3.png"
     alt: "iPal knowledge-vault page with an NFT access-management dialog"
     caption: "Token-based access controls specify how a knowledge vault can be shared."
