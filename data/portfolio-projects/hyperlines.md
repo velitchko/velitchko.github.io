@@ -10,9 +10,9 @@ tags:
 status: "ongoing"
 hero:
   src: "/portfolio/hyperlines-hero.png"
-  alt: "Hyperlines beta welcome screen prompting a wallet connection"
+  alt: "Hyperlines beta welcome screen for connecting a wallet and setting up trading automation"
   focalPoint: "50% 48%"
-  caption: "Wallet onboarding grants access to the Hyperlines beta."
+  caption: "Set up trading lines and automate their execution from the Hyperlines workspace."
 images:
   - src: "/portfolio/hyperlines-1.png"
     alt: "Hyperlines market browser listing crypto assets, prices, and percentage changes"
@@ -21,8 +21,8 @@ images:
     alt: "Hyperlines vault workspace showing a shared trading insight and collaboration controls"
     caption: "Shared vaults turn trading insights into collaborative resources."
   - src: "/portfolio/hyperlines-3.png"
-    alt: "Hyperlines candlestick chart with drawn price levels and a trigger-alert order panel"
-    caption: "Chart annotations can be turned into monitored trading triggers."
+    alt: "Hyperlines home page bringing markets, insights, and automation into one workspace"
+    caption: "The Hyperlines home page brings markets, insights, and automation into one workspace."
   - src: "/portfolio/hyperlines-4.png"
     alt: "Hyperlines account screen for linking a Telegram identity and managing a referral link"
     caption: "Account settings connect a trading workspace with its notification channel."
