@@ -16,6 +16,12 @@ images:
   - src: "/portfolio/vellum-1.png"
     alt: "Vellum writing view showing a selected draft document, Markdown preview, and a collapsed agent chat panel"
     caption: "The writing surface keeps source editing, preview, file controls, and optional agent assistance close at hand."
+  - src: "/portfolio/vellum-2.png"
+    alt: "Vellum settings screen listing drafting, research, and review agents with their workspace status"
+    caption: "Agents can be configured deliberately, with clear workspace activation rather than an opaque default assistant."
+  - src: "/portfolio/vellum-3.png"
+    alt: "Vellum project overview showing four writing projects and their associated Markdown files"
+    caption: "A compact project overview keeps related drafts, notes, and workshop materials within reach."
 links:
   - label: "GitHub"
     url: "https://github.com/commrelayunit/vellum"
