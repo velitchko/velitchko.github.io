@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import Link from "next/link";
 import type { PortfolioMedia, PortfolioProject } from "@/data/portfolio";
 import { getProjectVisuals, type ProjectVisualSet } from "@/lib/placeholderArt";
 import { ProjectHero } from "@/components/ProjectVisual";
@@ -12,6 +13,13 @@ type AssetLightboxState = {
   media: PortfolioMedia[];
   index: number;
 };
+
+const blogCtaPhrases = [
+  "Or take a detour through my research rambles →",
+  "Or browse a few notes from the workbench →",
+  "Or see what I’ve been thinking about →",
+  "Or follow an occasional research ramble →",
+];
 
 function ProjectMedia({ project, onOpen }: { project: PortfolioProject; onOpen: (media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => void }) {
   if (!project.gallery?.length) {
@@ -57,6 +65,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
   const assetLightboxCloseRef = useRef<HTMLButtonElement>(null);
   const assetLightboxTriggerRef = useRef<HTMLButtonElement | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const [blogCtaPhrase, setBlogCtaPhrase] = useState(blogCtaPhrases[0]);
   // Deterministic per-project so the same project always gets the same concept
   // art, both in the live page and in the exported PDF brochure.
   const visualsBySlug = useMemo(() => {
@@ -116,7 +125,10 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
     };
   }, [isNavigatorOpen]);
 
-  useEffect(() => setIsMounted(true), []);
+  useEffect(() => {
+    setIsMounted(true);
+    setBlogCtaPhrase(blogCtaPhrases[Math.floor(Math.random() * blogCtaPhrases.length)]);
+  }, []);
 
   const openAssetLightbox = (projectTitle: string, media: PortfolioMedia[], index: number, trigger: HTMLButtonElement) => {
     assetLightboxTriggerRef.current = trigger;
@@ -290,12 +302,14 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
 
           <section className="portfolio-outro print-page" aria-labelledby="portfolio-contact-title">
             <p className="portfolio-eyebrow">Let&apos;s make something legible</p>
-            <h2 id="portfolio-contact-title">Interested in a research collaboration or visualization project?</h2>
-            <p>I work on visual analytics, network visualization, visualization literacy, and collaborative ways of engaging with complex data.</p>
-            <div className="portfolio-contact-links">
-              <a href="mailto:velitchko.filipov@tuwien.ac.at">velitchko.filipov@tuwien.ac.at</a>
-              <a href="https://github.com/velitchko">github.com/velitchko</a>
-              <a href="https://www.linkedin.com/in/velitchko-filipov">linkedin.com/in/velitchko-filipov</a>
+            <h2 id="portfolio-contact-title">Have a question, an idea, or a troublesome dataset?</h2>
+            <div className="portfolio-outro-actions">
+              <a className="retro-button portfolio-contact-cta" href="mailto:velitchko.filipov@tuwien.ac.at">
+                <span>Get in touch <span aria-hidden="true">→</span></span>
+              </a>
+              <Link className="portfolio-text-link portfolio-blog-cta" href="/blog" aria-label="Read the blog">
+                {blogCtaPhrase}
+              </Link>
             </div>
           </section>
         </main>
