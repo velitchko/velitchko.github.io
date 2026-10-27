@@ -9,6 +9,7 @@ status: "ongoing"
 hero:
   src: "/portfolio/austrovis-hero.png"
   alt: "AustroVis workshop website home page with event navigation and a workshop introduction"
+  focalPoint: "50% 38%"
   caption: "The workshop site is the shared entry point for Austria's visualization community."
 highlights:
   - "Six workshop editions since 2023"

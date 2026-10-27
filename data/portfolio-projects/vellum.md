@@ -10,6 +10,7 @@ status: "ongoing"
 hero:
   src: "/portfolio/vellum-hero.png"
   alt: "Vellum project overview listing two sample workspaces and their Markdown files"
+  focalPoint: "50% 44%"
   caption: "Projects provide a small, deliberate home for related writing and notes."
 images:
   - src: "/portfolio/vellum-1.png"

@@ -10,6 +10,7 @@ status: "research"
 hero:
   src: "/portfolio/artvis-hero.png"
   alt: "ArtVis home page with project navigation and a search field"
+  focalPoint: "50% 44%"
   caption: "ArtVis is an entry point for exploring art-historical relationships."
 images:
   - src: "/portfolio/artvis-1.png"

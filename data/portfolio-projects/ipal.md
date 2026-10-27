@@ -10,6 +10,7 @@ status: "research"
 hero:
   src: "/portfolio/ipal-1.png"
   alt: "iPal knowledge-vault marketplace with an NFT access-management dialog"
+  focalPoint: "50% 46%"
   caption: "NFT-based access controls govern a knowledge vault."
 images:
   - src: "/portfolio/ipal-2.png"

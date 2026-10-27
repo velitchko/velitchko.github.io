@@ -249,17 +249,19 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
               <div className="portfolio-case-content">
                 <header className="portfolio-case-header">
                   {project.hero?.isAvailable ? (
-                    <figure className="portfolio-hero portfolio-hero-image">
-                      <button
-                        type="button"
-                        className="portfolio-hero-trigger"
-                        onClick={(event) => openAssetLightbox(project.title, availableProjectMedia, 0, event.currentTarget)}
-                        aria-label={`Enlarge hero image: ${project.hero.alt}`}
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
-                        <img src={project.hero.src} alt={project.hero.alt} />
-                      </button>
-                      {project.hero.caption && <figcaption>{project.hero.caption}</figcaption>}
+                    <figure className="portfolio-hero-figure">
+                      <div className="portfolio-hero portfolio-hero-image">
+                        <button
+                          type="button"
+                          className="portfolio-hero-trigger"
+                          onClick={(event) => openAssetLightbox(project.title, availableProjectMedia, 0, event.currentTarget)}
+                          aria-label={`Enlarge hero image: ${project.hero.alt}`}
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element -- local images/GIFs stay compatible with static export */}
+                          <img src={project.hero.src} alt={project.hero.alt} style={project.hero.focalPoint ? { objectPosition: project.hero.focalPoint } : undefined} />
+                        </button>
+                      </div>
+                      {project.hero.caption && <figcaption className="portfolio-hero-caption">{project.hero.caption}</figcaption>}
                     </figure>
                   ) : (
                     <ProjectHero id={project.slug} plan={visuals.hero} label={project.hero ? "Hero image pending" : "Concept visual"} />

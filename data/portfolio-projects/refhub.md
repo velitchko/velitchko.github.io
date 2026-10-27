@@ -11,6 +11,7 @@ status: "ongoing"
 hero:
   src: "/portfolio/refhub-hero.png"
   alt: "refhub.io landing page describing research organization beside an interactive citation network"
+  focalPoint: "50% 38%"
   caption: "RefHub combines literature management with citation-network exploration."
 images:
   - src: "/portfolio/refhub-1.png"
