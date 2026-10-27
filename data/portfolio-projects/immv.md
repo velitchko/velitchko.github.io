@@ -10,6 +10,7 @@ status: "research"
 hero:
   src: "/portfolio/immv-hero.png"
   alt: "Interactive Music Mapping Vienna start page over a city map with 1955 and festival imagery"
+  focalPoint: "50% 43%"
   caption: "The project opens Vienna's musical history through time and place."
 images:
   - src: "/portfolio/immv-1.png"

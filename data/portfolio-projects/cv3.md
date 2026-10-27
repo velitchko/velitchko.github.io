@@ -11,6 +11,7 @@ status: "research"
 hero:
   src: "/portfolio/cv3-1.png"
   alt: "CV3 résumé browser showing candidate cards with skills, languages, and experience"
+  focalPoint: "50% 50%"
   caption: "CV3 makes professional profiles scannable and comparable."
 images:
   - src: "/portfolio/cv3-2.png"

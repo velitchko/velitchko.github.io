@@ -10,6 +10,7 @@ status: "research"
 hero:
   src: "/portfolio/polycube-hero.png"
   alt: "PolyCube visualization of cultural-heritage collections"
+  focalPoint: "50% 45%"
 images:
   - src: "/portfolio/polycube-1.png"
     alt: "PolyCube coordinated cultural-collection view"

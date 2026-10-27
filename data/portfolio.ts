@@ -17,6 +17,8 @@ export type PortfolioMedia = {
   src: string;
   alt: string;
   caption?: string;
+  /** Focus point used when a wide portfolio hero crops a source screenshot. */
+  focalPoint?: string;
   type?: "image" | "gif";
   /** `false` keeps an authored slot visible without rendering a broken image. */
   isAvailable: boolean;

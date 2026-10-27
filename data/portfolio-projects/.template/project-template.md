@@ -24,6 +24,8 @@ hero:
   src: "/portfolio/my-project/hero.jpg"
   alt: "Describe the project interface or result shown in the hero image"
   caption: "Optional visible context explaining why this view matters"
+  # Optional focal point for wide responsive crops, for example "50% 40%".
+  focalPoint: "50% 50%"
   type: "image" # image | gif
 # Ordered supporting figures. Add at least three when they are ready.
 gallery:

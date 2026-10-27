@@ -11,6 +11,7 @@ status: "ongoing"
 hero:
   src: "/portfolio/hyperlines-hero.png"
   alt: "Hyperlines beta welcome screen prompting a wallet connection"
+  focalPoint: "50% 48%"
   caption: "Wallet onboarding grants access to the Hyperlines beta."
 images:
   - src: "/portfolio/hyperlines-1.png"

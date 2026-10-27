@@ -69,6 +69,7 @@ function parseMediaItem(value: unknown): PortfolioMedia | undefined {
   const src = rawSrc && normalizeMediaSource(rawSrc);
   const alt = asString(record.alt);
   const caption = asString(record.caption);
+  const focalPoint = asString(record.focalPoint);
   const type = asString(record.type);
   if (!src) return undefined;
 
@@ -80,6 +81,7 @@ function parseMediaItem(value: unknown): PortfolioMedia | undefined {
     isAvailable: Boolean(alt && localMediaExists(src)),
   };
   if (caption) mediaItem.caption = caption;
+  if (focalPoint) mediaItem.focalPoint = focalPoint;
   if (type === "image" || type === "gif") mediaItem.type = type;
   return mediaItem;
 }

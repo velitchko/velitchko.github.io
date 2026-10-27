@@ -10,6 +10,7 @@ status: "ongoing"
 hero:
   src: "/portfolio/visgames-1.png"
   alt: "VisGames workshop website with illustrated game pieces and event information"
+  focalPoint: "50% 46%"
   caption: "VisGames invites people to explore visualization through play."
 highlights:
   - "Established at EuroVis 2025"

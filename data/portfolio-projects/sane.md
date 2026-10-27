@@ -10,6 +10,7 @@ status: "research"
 hero:
   src: "/portfolio/timelighting-hero.png"
   alt: "TimeLighting view of separated colored temporal network trajectories above a density timeline"
+  focalPoint: "50% 45%"
   caption: "TimeLighting shows how relationships unfold across time."
 images:
   - src: "/portfolio/timelighting-1.png"
