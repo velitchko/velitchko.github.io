@@ -9,9 +9,9 @@ tags:
 status: "ongoing"
 hero:
   src: "/portfolio/vellum-hero.png"
-  alt: "Vellum project overview listing two sample workspaces and their Markdown files"
-  focalPoint: "50% 44%"
-  caption: "Projects provide a small, deliberate home for related writing and notes."
+  alt: "Vellum writing workspace with a Markdown draft and a contextual conversation with the writing agent"
+  focalPoint: "50% 36%"
+  caption: "A focused draft stays beside a small, file-specific conversation with the writing agent."
 images:
   - src: "/portfolio/vellum-1.png"
     alt: "Vellum writing view showing a selected draft document, Markdown preview, and a collapsed agent chat panel"
