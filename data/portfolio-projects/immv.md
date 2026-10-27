@@ -19,8 +19,9 @@ images:
   - src: "/portfolio/immv-2.png"
     alt: "Interactive Music Mapping Vienna story view about the 1955 event 'Ikonisierung & Ehrung'"
     caption: "A story view connects an event record to its historical context."
-  - src: "/portfolio/immv-3.png"
-    alt: "Additional Interactive Music Mapping Vienna visualization"
+  - src: "/portfolio/immv-3.jpg"
+    alt: "Interactive Music Mapping Vienna overview combining project statistics, a timeline, and a map background"
+    caption: "The overview situates the archive through its events, people, places, and historical span."
 highlights:
   - "Published in Visual Informatics (2021)"
   - "Circular: interactive visualization of historical networks"

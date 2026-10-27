@@ -24,7 +24,11 @@ images:
     alt: "Hyperlines candlestick chart with drawn price levels and a trigger-alert order panel"
     caption: "Chart annotations can be turned into monitored trading triggers."
   - src: "/portfolio/hyperlines-4.png"
-    alt: "Additional Hyperlines trading interface view"
+    alt: "Hyperlines account screen for linking a Telegram identity and managing a referral link"
+    caption: "Account settings connect a trading workspace with its notification channel."
+  - src: "/portfolio/hyperlines-5.png"
+    alt: "Hyperlines vault workspace empty state with options to create a vault or browse the marketplace"
+    caption: "Vaults provide a home for organizing, collaborating on, and monetizing trading insights."
 highlights:
   - "Built on Hyperliquid"
   - "Interactive price alerts and trading automation"
