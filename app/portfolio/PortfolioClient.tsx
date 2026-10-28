@@ -56,7 +56,11 @@ function ProjectMedia({ project, onOpen }: { project: PortfolioProject; onOpen: 
 }
 
 export default function PortfolioClient({ projects }: { projects: PortfolioProject[] }) {
-  const [activeProject, setActiveProject] = useState(projects[0]?.slug);
+  // Keep every UI that presents project numbers tied to the same display list.
+  // The site currently displays all projects, while PDF export uses its own
+  // featured-only list below.
+  const displayProjects = projects;
+  const [activeProject, setActiveProject] = useState(displayProjects[0]?.slug);
   const [isNavigatorOpen, setIsNavigatorOpen] = useState(false);
   const [isExportingPdf, setIsExportingPdf] = useState(false);
   const [assetLightbox, setAssetLightbox] = useState<AssetLightboxState | null>(null);
@@ -238,7 +242,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
                   <button ref={navigatorCloseRef} className="portfolio-navigator-close" type="button" onClick={() => setIsNavigatorOpen(false)}>Close <span aria-hidden="true">×</span></button>
                 </div>
                 <ol>
-                  {projects.map((project, index) => (
+                  {displayProjects.map((project, index) => (
                     <li key={project.slug}>
                       <button className={activeProject === project.slug ? "is-active" : ""} type="button" onClick={() => jumpTo(project.slug)} aria-current={activeProject === project.slug ? "location" : undefined}>
                         <span>{String(index + 1).padStart(2, "0")}</span>{project.title}
@@ -252,7 +256,7 @@ export default function PortfolioClient({ projects }: { projects: PortfolioProje
           )}
         </div>
         <main id="case-studies" className="portfolio-case-studies" aria-label="Portfolio case studies">
-          {projects.map((project, index) => {
+          {displayProjects.map((project, index) => {
             const visuals = visualsBySlug.get(project.slug)!;
             const availableProjectMedia = [project.hero, ...(project.gallery ?? [])].filter((media): media is PortfolioMedia => Boolean(media?.isAvailable));
             return (
