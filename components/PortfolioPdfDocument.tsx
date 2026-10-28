@@ -92,6 +92,20 @@ const styles = StyleSheet.create({
     color: COLORS.muted,
     maxWidth: 400,
   },
+  coverSelectionNote: {
+    fontFamily: "Lora",
+    fontSize: 10.5,
+    lineHeight: 1.5,
+    color: COLORS.muted,
+    marginTop: 22,
+    maxWidth: 400,
+  },
+  coverPortfolioLink: {
+    fontFamily: "Lora",
+    fontSize: 10.5,
+    color: COLORS.navy,
+    textDecoration: "underline",
+  },
   coverFooter: {
     position: "absolute",
     bottom: 60,
@@ -702,6 +716,10 @@ function ProjectPages({ project, index }: { project: PortfolioProject; index: nu
 }
 
 export default function PortfolioPdfDocument({ projects }: { projects: PortfolioProject[] }) {
+  // Numbering is positional within the exported selection, never the source
+  // project's `order`. Excluding a project therefore cannot leave a gap.
+  const displayProjects = projects.filter((project) => project.featured);
+
   return (
     <Document title="Velitchko Filipov · Portfolio" author="Velitchko Filipov">
       <Page size="A4" style={styles.page}>
@@ -710,6 +728,8 @@ export default function PortfolioPdfDocument({ projects }: { projects: Portfolio
         <View style={styles.accentUnderline} />
         <Text style={styles.coverTitle}>Projects that make complex systems easier to see, explore, and discuss.</Text>
         <Text style={styles.coverLede}>A working portfolio of research and applied projects across visual analytics, network visualization, and collaborative data exploration.</Text>
+        <Text style={styles.coverSelectionNote}>This document is a selected set of projects. View the full portfolio at </Text>
+        <Link src="https://velitchko.github.io/portfolio" style={styles.coverPortfolioLink}>velitchko.github.io/portfolio</Link>
 
         <View style={styles.coverFooter}>
           <View style={styles.coverFooterRule} />
@@ -720,7 +740,7 @@ export default function PortfolioPdfDocument({ projects }: { projects: Portfolio
         </View>
       </Page>
 
-      {projects.map((project, index) => (
+      {displayProjects.map((project, index) => (
         <ProjectPages key={project.slug} project={project} index={index} />
       ))}
     </Document>
